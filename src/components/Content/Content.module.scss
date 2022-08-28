@@ -1,0 +1,13 @@
+@import "src/scss/variables";
+
+.wrapper {
+  width: 100%;
+
+  &__container {
+    border-radius: 20px;
+    width: 640px;
+    min-height: 840px;
+    margin: 0 auto;
+    background: #FBE0DC;
+  }
+}
