@@ -1,7 +1,14 @@
 @import "mixins";
 
-$bg_dark: #1D1D1D;
-$bg_light: #F8F8F7;
 $bg_light-dark: #282828;
-$bg_more-light-dark: #333333;
 $main_color: #8C8C8C;
+$white_color: #FFFFFF;
+
+:root {
+  --bg_color: #F8F8F7;
+  --bg_content_color: #FFFFFF;
+  --title_color: #000000;
+  --bg_icon: #FFFFFF;
+  --btn_bg: #FFFFFF;
+  --btn_color: #FF868E;
+}

@@ -1,0 +1,10 @@
+@import "src/scss/variables";
+
+.wrapper {
+  width: 100%;
+  @include flex(flex-end);
+
+  &__container {
+    width: 640px;
+  }
+}
