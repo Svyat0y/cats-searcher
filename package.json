@@ -1,6 +1,7 @@
 {
   "name": "cats-searcher",
   "version": "0.1.0",
+  "author": "Alexander Pop",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
