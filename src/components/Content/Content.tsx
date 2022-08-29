@@ -10,7 +10,7 @@ const Content: React.FC = () => {
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__container }>
 				<Routes>
-					<Route path='/' element={ <Preview/> }/>
+					<Route path={ '/' } element={ <Preview/> }/>
 				</Routes>
 			</div>
 		</div>
