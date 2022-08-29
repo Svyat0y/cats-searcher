@@ -109,7 +109,6 @@ dist
 /.pnp
 .pnp.js
 .idea
-/html-layout-source
 
 # testing
 /coverage
