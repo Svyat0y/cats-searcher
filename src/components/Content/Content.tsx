@@ -9,9 +9,9 @@ const Content: React.FC = () => {
 	return (
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__container }>
-				<Routes>
-					<Route path='' element={ <Preview/> }/>
-				</Routes>
+				{/*<Routes>*/ }
+				{/*	<Route path='' element={ <Preview/> }/>*/ }
+				{/*</Routes>*/ }
 			</div>
 		</div>
 	)
