@@ -2,12 +2,9 @@
 
 .wrapper {
   width: 100%;
+  @include flex(flex-end);
 
   &__container {
-    border-radius: 20px;
     width: 640px;
-    min-height: 840px;
-    margin: 0 auto;
-    background: #FBE0DC;
   }
 }

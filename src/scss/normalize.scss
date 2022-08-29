@@ -7,7 +7,7 @@
 }
 
 html {
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 body {
@@ -16,7 +16,6 @@ body {
   background: var(--bg_color);
   font-family: 'Nunito', sans-serif;
   width: 100%;
-  overflow-x: hidden;
   color: $main_color;
 }
 

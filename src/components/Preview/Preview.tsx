@@ -1,9 +1,16 @@
 import React from 'react'
+import s     from './Preview.module.scss'
+
+import previewImg from '../../assets/images/preview.png'
 
 
-const Preview = () => {
+const Preview: React.FC = () => {
 	return (
-		<div></div>
+		<div className={ s.wrapper }>
+			<div className={ s.wrapper__img_wr }>
+				<img src={ previewImg } alt='preview_img'/>
+			</div>
+		</div>
 	)
 }
 

@@ -1,0 +1,17 @@
+.wrapper {
+  border-radius: 20px;
+  width: 100%;
+  min-height: 840px;
+  margin: 0 auto;
+  background: #FBE0DC;
+  z-index: 0;
+  position: relative;
+
+  &__img_wr {
+    width: 833px;
+    height: 900px;
+    position: absolute;
+    right: -45px;
+    top: -30px;
+  }
+}
