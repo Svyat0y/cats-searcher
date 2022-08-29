@@ -4,7 +4,7 @@
   min-height: 840px;
   margin: 0 auto;
   background: #FBE0DC;
-  z-index: 0;
+  z-index: -1;
   position: relative;
 
   &__img_wr {
@@ -13,5 +13,13 @@
     position: absolute;
     right: -45px;
     top: -30px;
+
+    @media (max-width: 1400px) {
+      width: 760px;
+    }
+
+    @media (max-width: 1290px) {
+      width: 700px;
+    }
   }
 }
