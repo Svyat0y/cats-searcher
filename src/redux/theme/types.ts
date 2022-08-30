@@ -1,5 +1,5 @@
 export interface IThemeSlice {
-	theme?: ITheme
+	theme: ITheme
 }
 
 export type ITheme = 'light' | 'dark'

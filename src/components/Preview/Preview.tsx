@@ -1,7 +1,7 @@
 import React from 'react'
 import s     from './Preview.module.scss'
 
-import previewImg from '../../assets/images/preview.png'
+import previewImg from '../../assets/images/preview.webp'
 
 
 const Preview: React.FC = () => {

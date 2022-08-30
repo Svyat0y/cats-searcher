@@ -1,0 +1,57 @@
+@import '../../scss/variables';
+
+.header {
+  @include flex(space-between);
+
+
+  &__navigation {
+    @include flex(space-between, center);
+  }
+
+  &__img_wr {
+    background: var(--bg_icon);
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    @include flex(center, center);
+    transition: all .2s ease;
+  }
+
+  &__switcher {
+    background: rgba(255, 134, 142, 0.2);
+    border-radius: 50px;
+    width: 44px;
+    height: 24px;
+    margin-left: 10px;
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+
+    input {
+      -webkit-appearance: none;
+      appearance: none;
+      position: absolute;
+      z-index: -1;
+    }
+
+    label::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: #FF868E;
+      border-radius: 50%;
+      right: 0;
+      top: 4px;
+      transform: translateX(-5px);
+      transition: all .2s ease;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    input:checked + label::after {
+      transform: translateX(-24px);
+      transition: all .2s ease;
+    }
+  }
+}
