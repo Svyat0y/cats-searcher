@@ -13,7 +13,7 @@
     max-width: 470px;
     width: 100%;
 
-    &::before {
+    div {
       content: '';
       position: absolute;
       width: 40px;
@@ -25,20 +25,23 @@
       border-radius: 10px;
       cursor: pointer;
 
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background: url("../../assets/images/voting/search.png") center no-repeat;
+      }
+
       &:hover {
         background: #FF868E;
-      }
-    }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 40px;
-      height: 40px;
-      background: url("../../assets/images/voting/search.png") center no-repeat;
-      cursor: pointer;
+        &::after {
+          background: url("../../assets/images/voting/searchWhite.png") center no-repeat;
+        }
+      }
     }
 
     input {

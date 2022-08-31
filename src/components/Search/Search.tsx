@@ -5,7 +5,10 @@ import s     from './Search.module.scss'
 const Search = () => {
 	return (
 		<div className={ s.search }>
-			<div className={ s.search__input_wr }><input type='text' placeholder='Search for breeds by name'/></div>
+			<div className={ s.search__input_wr }>
+				<input type='text' placeholder='Search for breeds by name'/>
+				<div></div>
+			</div>
 			<div className={ s.search__icons }>
 				<div className={ s.icon_wr }>
 					<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
