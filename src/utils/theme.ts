@@ -8,6 +8,7 @@ export const onDarkTheme = () => {
 	document.body.style.setProperty('--title_color', '#FFFFFF')
 	document.body.style.setProperty('--bg_icon', '#282828')
 	document.body.style.setProperty('--btn_bg', '#282828')
+	document.body.style.setProperty('--input_search_bg', '#543C3D')
 }
 export const onLightTheme = () => {
 	document.body.style.setProperty('--bg_color', '#F8F8F7')
@@ -15,6 +16,7 @@ export const onLightTheme = () => {
 	document.body.style.setProperty('--title_color', '#000000')
 	document.body.style.setProperty('--bg_icon', '#FFFFFF')
 	document.body.style.setProperty('--btn_bg', '#FFFFFF')
+	document.body.style.setProperty('--input_search_bg', '#FBE0DC')
 }
 
 

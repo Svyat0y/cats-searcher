@@ -5,6 +5,7 @@
   @include flex(flex-end);
 
   &__container {
-    width: 640px;
+    width: 680px;
+    min-height: 840px;
   }
 }

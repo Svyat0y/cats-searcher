@@ -10,9 +10,9 @@ import Card from './Card'
 
 const MainNav: React.FC = () => {
 	const cards = [
-		{ name: 'Voting', img: voteImg, color: 'violet' },
-		{ name: 'Breeds', img: petBreedImg, color: 'green' },
-		{ name: 'Gallery', img: searchImg, color: 'yellow' },
+		{ name: 'Voting', img: voteImg, color: 'violet', to: 'voting/' },
+		{ name: 'Breeds', img: petBreedImg, color: 'green', to: 'breeds/' },
+		{ name: 'Gallery', img: searchImg, color: 'yellow', to: 'gallery/' },
 	]
 
 	return (
@@ -32,6 +32,7 @@ const MainNav: React.FC = () => {
 							name={ card.name }
 							img={ card.img }
 							color={ card.color }
+							to={ card.to }
 						/>
 					) }
 				</div>

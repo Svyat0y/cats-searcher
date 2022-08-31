@@ -3,6 +3,7 @@ import s                 from './Content.module.scss'
 import { Route, Routes } from 'react-router-dom'
 
 import { Preview } from '../Preview'
+import { Voting }  from '../Voting'
 
 
 const Content: React.FC = () => {
@@ -11,6 +12,7 @@ const Content: React.FC = () => {
 			<div className={ s.wrapper__container }>
 				<Routes>
 					<Route path='/' element={ <Preview/> }/>
+					<Route path='/voting' element={ <Voting/> }/>
 				</Routes>
 			</div>
 		</div>
