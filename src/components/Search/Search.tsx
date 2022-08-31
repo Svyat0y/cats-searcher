@@ -2,7 +2,7 @@ import React from 'react'
 import s     from './Search.module.scss'
 
 
-const Search = () => {
+const Search: React.FC = () => {
 	return (
 		<div className={ s.search }>
 			<div className={ s.search__input_wr }>
