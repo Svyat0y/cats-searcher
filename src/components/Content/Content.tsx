@@ -11,10 +11,10 @@ const Content: React.FC = () => {
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__container }>
 				<Routes>
-					<Route path='/' element={ <Preview/> }/>
 					<Route path='/voting' element={ <Voting/> }/>
 					<Route path='/breeds' element={ <div>Breeds! (in development)</div> }/>
 					<Route path='/gallery' element={ <div>Gallery! (in development)</div> }/>
+					<Route path='/' element={ <Preview/> }/>
 				</Routes>
 			</div>
 		</div>

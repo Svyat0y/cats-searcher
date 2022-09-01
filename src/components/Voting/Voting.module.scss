@@ -4,6 +4,7 @@
   width: 100%;
 
   &__body {
+    user-select: none;
     padding: 20px;
     background: var(--bg_content_color);
     border-radius: 20px;
@@ -64,6 +65,12 @@
       overflow: hidden;
       position: relative;
 
+      &:active {
+        svg {
+          transform: translateY(2px);
+        }
+      }
+
       &:last-child {
         margin-right: 0;
       }
@@ -77,12 +84,10 @@
       }
 
       &.heart_bg {
-        background: #FF868E;
+        background: url("../../assets/images/voting/heartTransperent.png") center no-repeat #FF868E;
 
         &:active {
-          svg {
-            background: url("../../assets/images/voting/heart.svg");
-          }
+          background: url("../../assets/images/voting/heartWhite.png") center no-repeat #FF868E;
         }
       }
 
@@ -116,7 +121,6 @@
     margin-right: 20px;
     border-radius: 10px;
     color: var(--title_color);
-    user-select: none;
   }
 
   .id_desc {
