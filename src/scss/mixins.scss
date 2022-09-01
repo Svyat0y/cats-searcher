@@ -4,3 +4,22 @@
   align-items: $align-items;
   flex-direction: $flex-direction;
 }
+
+@mixin transition {
+  transition: all .2s ease;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+  &:-moz-placeholder {
+    @content
+  }
+  &::-moz-placeholder {
+    @content
+  }
+  &:-ms-input-placeholder {
+    @content
+  }
+}

@@ -1,10 +1,11 @@
-import React from 'react'
-import s     from './MainNav.module.scss'
-
+import React     from 'react'
+import s         from './MainNav.module.scss'
 import { TCard } from './types'
 
+import { Link } from 'react-router-dom'
 
-const Card: React.FC<TCard> = ({ name, img, color }) => {
+
+const Card: React.FC<TCard> = ({ name, img, color, to }) => {
 	return (
 		<div className={ s.content__card }>
 			<div className={ `${ s.card } ${ s[color] }` }>
@@ -12,7 +13,9 @@ const Card: React.FC<TCard> = ({ name, img, color }) => {
 					<img src={ img } alt='card'/>
 				</div>
 			</div>
-			<div className={ `btn ${ s.card__btn }` }>{ name }</div>
+			<Link to={ to }>
+				<div className={ `btn ${ s.card__btn }` }>{ name }</div>
+			</Link>
 		</div>
 
 	)
