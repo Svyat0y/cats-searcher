@@ -1,9 +1,7 @@
 @import "src/scss/variables";
 
 .search {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(space-between, center);
   height: 60px;
   margin-bottom: 10px;
 
@@ -84,9 +82,7 @@
       height: 60px;
       background: var(--bg_icon);
       border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex(center, center);
       margin-right: 10px;
       cursor: pointer;
       user-select: none;

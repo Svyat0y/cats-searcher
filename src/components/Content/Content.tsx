@@ -13,6 +13,8 @@ const Content: React.FC = () => {
 				<Routes>
 					<Route path='/' element={ <Preview/> }/>
 					<Route path='/voting' element={ <Voting/> }/>
+					<Route path='/breeds' element={ <div>Breeds! (in development)</div> }/>
+					<Route path='/gallery' element={ <div>Gallery! (in development)</div> }/>
 				</Routes>
 			</div>
 		</div>
