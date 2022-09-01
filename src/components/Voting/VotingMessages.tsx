@@ -2,7 +2,7 @@ import React from 'react'
 import s     from './Voting.module.scss'
 
 
-const VotingMessages = () => {
+const VotingMessages: React.FC = () => {
 	return (
 		<div className={ s.voting__messages }>
 			<div className={ s.voting__message_wr }>

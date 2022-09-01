@@ -2,7 +2,7 @@ import React from 'react'
 import s     from './Voting.module.scss'
 
 
-const NavButtons = () => {
+const NavButtons: React.FC = () => {
 	return (
 		<div className={ s.voting__nav_buttons }>
 			<div className={ `${ s.nav_button_wr } ${ s.like_bg }` }>

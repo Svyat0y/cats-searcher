@@ -1,12 +1,12 @@
-import React                  from 'react'
-import s                      from './Voting.module.scss'
-import { Search }             from '../Search'
-import { BackButton, Button } from '../common/Buttons'
+import React from 'react'
+import s     from './Voting.module.scss'
 
 import testImg from '../../assets/images/voting/1.jpg'
 
-import NavButtons     from './NavButtons'
-import VotingMessages from './VotingMessages'
+import { Search }             from '../Search'
+import { BackButton, Button } from '../common/Buttons'
+import NavButtons             from './NavButtons'
+import VotingMessages         from './VotingMessages'
 
 
 const Voting: React.FC = () => {

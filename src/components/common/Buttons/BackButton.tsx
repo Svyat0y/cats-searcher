@@ -3,7 +3,7 @@ import React from 'react'
 import s from './BackButton.module.scss'
 
 
-const BackButton = () => {
+const BackButton: React.FC = () => {
 	return (
 		<button className={ s.back_btn }>
 			<svg width='12' height='20' viewBox='0 0 12 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
