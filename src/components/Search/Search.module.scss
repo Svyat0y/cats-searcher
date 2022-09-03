@@ -19,7 +19,7 @@
       right: 10px;
       top: 10px;
       color: white;
-      background: var(--input_search_bg);
+      background: var(--bg_input_search);
       border-radius: 10px;
       cursor: pointer;
 
@@ -47,7 +47,7 @@
       border: none;
       height: 100%;
       width: 100%;
-      background: var(--bg_content_color);
+      background: var(--bg_white-grey);
       border-radius: 20px;
       font-size: 20px;
       color: #8C8C8C;
@@ -80,7 +80,7 @@
     .icon_wr {
       width: 60px;
       height: 60px;
-      background: var(--bg_icon);
+      background: var(--bg_white-grey);
       border-radius: 20px;
       @include flex(center, center);
       margin-right: 10px;
