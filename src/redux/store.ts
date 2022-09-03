@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch }    from 'react-redux'
 
-import themeSlice from './theme/slice'
+import themeSlice  from './theme/slice'
+import votingSlice from './voting/slice'
 
 
 export const store = configureStore({
 	reducer: {
-		themeSlice
+		themeSlice,
+		votingSlice
 	},
 })
 

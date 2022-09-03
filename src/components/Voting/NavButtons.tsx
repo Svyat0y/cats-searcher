@@ -1,11 +1,14 @@
 import React from 'react'
 import s     from './Voting.module.scss'
 
+import { TNavButtons } from './types'
 
-const NavButtons: React.FC = () => {
+
+const NavButtons: React.FC<TNavButtons> = ({ onLike, onUnlike, imgObj }) => {
+
 	return (
 		<div className={ s.voting__nav_buttons }>
-			<div className={ `${ s.nav_button_wr } ${ s.like_bg }` }>
+			<div onClick={ () => onLike(imgObj) } className={ `${ s.nav_button_wr } ${ s.like_bg }` }>
 				<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
 					<path
 						fillRule='nonzero'
@@ -17,7 +20,7 @@ const NavButtons: React.FC = () => {
 			<div className={ `${ s.nav_button_wr } ${ s.heart_bg }` }>
 
 			</div>
-			<div className={ `${ s.nav_button_wr } ${ s.unlike_bg }` }>
+			<div onClick={ () => onUnlike(imgObj) } className={ `${ s.nav_button_wr } ${ s.unlike_bg }` }>
 				<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
 					<path
 						fillRule='nonzero'
