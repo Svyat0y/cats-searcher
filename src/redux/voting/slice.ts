@@ -20,7 +20,6 @@ export const votingSlice = createSlice({
 			state.likeData = [ ...state.likeData, action.payload ]
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoLike>) => {
-			console.log(action.payload)
 			state.infoLikes = [ ...state.infoLikes, action.payload ]
 		}
 	},

@@ -4,6 +4,16 @@ import { dataObj }                   from './types'
 import { setInfoMessage, setToLike } from './slice'
 
 
+const getDate = () => {
+	const date = new Date()
+	const newDate = [
+		'0' + date.getHours(),
+		'0' + date.getMinutes()
+	].map(el => el.slice(-2))
+	
+	return newDate.join(':')
+}
+
 export const fetchVoteImg = createAsyncThunk<dataObj>(
 	'votingSlice/fetchVoteImg',
 	async () => {
@@ -26,11 +36,9 @@ export const fetchVote = createAsyncThunk(
 		try {
 			const { status, data } = await instance.post('votes', body)
 			if (status.toString()[0] === '2') {
-				const date = new Date
-				const hours = date.getHours()
-				const minutes = date.getMinutes()
+				const newDate = getDate()
 				imgObj && dispatch(setToLike(imgObj))
-				value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'Likes', time: [ hours, minutes ] }))
+				value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'Likes', time: newDate }))
 			}
 		}
 		catch (e) {

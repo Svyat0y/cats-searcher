@@ -7,7 +7,7 @@ const VotingMessages: React.FC<TVotingMessages> = ({ id, message, time }) => {
 
 	return (
 		<div className={ s.voting__message_wr }>
-			<span className={ s.voting__time }>{ time[0] }:{ time[1] }</span>
+			<span className={ s.voting__time }>{ time }</span>
 			<span className={ s.voting__desc }>
 					Image ID: <span className={ s.id_desc }>{ id }</span> was added to { message }
 				</span>

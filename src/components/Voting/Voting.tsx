@@ -17,7 +17,6 @@ import { dataObj }                 from '../../redux/voting/types'
 const Voting: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { voteData, likeData, unlikeData, infoLikes } = useSelector(selectVoting)
-	console.log(voteData)
 
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
