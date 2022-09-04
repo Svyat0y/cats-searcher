@@ -26,8 +26,11 @@ export const fetchVote = createAsyncThunk(
 		try {
 			const { status, data } = await instance.post('votes', body)
 			if (status.toString()[0] === '2') {
+				const date = new Date
+				const hours = date.getHours()
+				const minutes = date.getMinutes()
 				imgObj && dispatch(setToLike(imgObj))
-				value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'Likes', date: new Date() }))
+				value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'Likes', time: [ hours, minutes ] }))
 			}
 		}
 		catch (e) {

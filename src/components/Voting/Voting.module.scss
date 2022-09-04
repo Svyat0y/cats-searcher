@@ -34,6 +34,7 @@
 
   &__img_wr {
     width: 100%;
+    min-height: 360px;
     border-radius: 20px;
     @include flex(center, center);
     margin-bottom: 52px;
