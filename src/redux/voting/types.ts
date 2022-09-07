@@ -1,4 +1,5 @@
 export interface IVoteData {
+	userId: string,
 	voteData: TDataObj | null,
 	likeData: TDataObj[],
 	unlikeData: TDataObj[],
@@ -26,6 +27,11 @@ export type TDataImgVoted = {
 	image_id: string,
 	message: string,
 	value: number,
+}
+
+export type TVotingFavourites = {
+	message: string,
+	id: number
 }
 
 export enum Status {

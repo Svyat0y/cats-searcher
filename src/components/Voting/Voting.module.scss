@@ -65,6 +65,8 @@
       cursor: pointer;
       overflow: hidden;
       position: relative;
+      outline: none;
+      border: none;
 
       &:active {
         svg {
@@ -85,10 +87,16 @@
       }
 
       &.heart_bg {
-        background: url("../../assets/images/voting/heartTransperent.webp") center no-repeat #FF868E;
+        background: #FF868E;
+
+        img {
+          padding: 15px;
+        }
 
         &:active {
-          background: url("../../assets/images/voting/heartWhite.webp") center no-repeat #FF868E;
+          img {
+            transform: translateY(2px);
+          }
         }
       }
 
