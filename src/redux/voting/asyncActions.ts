@@ -38,18 +38,18 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 		}
 
 		try {
-			const { status, data } = await instance.post<TDataImgVoted>('votess', body)
+			const { status, data } = await instance.post<TDataImgVoted>('votes', body)
 			console.log(data)
 			if (status.toString()[0] === '2') {
 				const newDate = getDate()
 
 				if (value === 1) {
 					imgObj && dispatch(setToLike(imgObj))
-					value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'Likes', time: newDate }))
+					value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Likes', time: newDate }))
 				}
 				if (value === 0) {
 					imgObj && dispatch(setToUnlike(imgObj))
-					value === 0 && dispatch(setInfoMessage({ id: data.image_id, message: 'Dislikes', time: newDate }))
+					value === 0 && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes', time: newDate }))
 				}
 			}
 		}
@@ -73,16 +73,20 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 		}
 		try {
 			if (!foundObjInFavorite) {
-				const { status, data } = await instance.post<TVotingFavourites>('favouritess', body)
+				const { status, data } = await instance.post<TVotingFavourites>('favourites', body)
 				objIdFromRequest = data.id
 				if (status.toString()[0] === '2') {
+					const newDate = getDate()
 					dispatch(setToFavourites(imgObj))
+					dispatch(setInfoMessage({ id: imgObj?.id, message: 'was added to Favourites', time: newDate }))
 				}
 			}
 			else{
-				const { status } = await instance.delete<TVotingFavourites>(`favouritess/${ objIdFromRequest }`,)
+				const { status } = await instance.delete<TVotingFavourites>(`favourites/${ objIdFromRequest }`,)
 				if (status.toString()[0] === '2') {
+					const newDate = getDate()
 					dispatch(deleteFavouritesItem(favouritedId))
+					dispatch(setInfoMessage({ id: imgObj?.id, message: 'was deleted from Favourites', time: newDate }))
 				}
 			}
 		}

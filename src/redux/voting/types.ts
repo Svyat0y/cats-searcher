@@ -9,7 +9,7 @@ export interface IVoteData {
 }
 
 export type TInfoLike = {
-	id: string,
+	id?: string,
 	message: string,
 	time: string,
 }
