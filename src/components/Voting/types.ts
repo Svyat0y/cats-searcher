@@ -1,10 +1,10 @@
-import { dataObj } from '../../redux/voting/types'
+import { TDataObj } from '../../redux/voting/types'
 
 
 export type TNavButtons = {
-	onLike: (imgObj: dataObj | null) => void,
-	onUnlike: (imgObj: dataObj | null) => void,
-	imgObj: dataObj | null,
+	onLike: (imgObj: TDataObj) => void,
+	onUnlike: (imgObj: TDataObj) => void,
+	imgObj: TDataObj,
 }
 
 export type TVotingMessages = {

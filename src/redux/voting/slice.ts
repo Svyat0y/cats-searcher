@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction }            from '@reduxjs/toolkit'
-import { dataObj, IVoteData, Status, TInfoLike } from './types'
-import { fetchVoteImg }                          from './asyncActions'
+import { createSlice, PayloadAction }             from '@reduxjs/toolkit'
+import { TDataObj, IVoteData, Status, TInfoLike } from './types'
+import { fetchVoteImg }                           from './asyncActions'
 
 
 const initialState: IVoteData = {
@@ -16,7 +16,7 @@ export const votingSlice = createSlice({
 	name: 'voting',
 	initialState,
 	reducers: {
-		setToLike: (state, action: PayloadAction<dataObj>) => {
+		setToLike: (state, action: PayloadAction<TDataObj>) => {
 			state.likeData = [ ...state.likeData, action.payload ]
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoLike>) => {
@@ -29,7 +29,7 @@ export const votingSlice = createSlice({
 			state.status = Status.PENDING
 		})
 		builder.addCase(fetchVoteImg.fulfilled, (state, action) => {
-			state.voteData = action.payload
+			if (action.payload) state.voteData = action.payload
 			state.status = Status.SUCCESS
 		})
 		builder.addCase(fetchVoteImg.rejected, (state) => {

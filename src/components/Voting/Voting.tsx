@@ -11,7 +11,7 @@ import { useSelector }             from 'react-redux'
 import { useAppDispatch }          from '../../redux/store'
 import { selectVoting }            from '../../redux/voting/selectors'
 import { fetchVote, fetchVoteImg } from '../../redux/voting/asyncActions'
-import { dataObj }                 from '../../redux/voting/types'
+import { TDataObj }                from '../../redux/voting/types'
 
 
 const Voting: React.FC = () => {
@@ -25,11 +25,13 @@ const Voting: React.FC = () => {
 		}
 	}, [ likeData, unlikeData ])
 
-	const onLike = (imgObj: dataObj | null) => {
+	const onLike = (imgObj: TDataObj) => {
+
 		dispatch(fetchVote([ imgObj, 1 ]))
 	}
 
-	const onUnlike = (imgObj: dataObj | null) => {
+	const onUnlike = (imgObj: TDataObj) => {
+
 		dispatch(fetchVote([ imgObj, 0 ]))
 	}
 
