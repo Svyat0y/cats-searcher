@@ -12,7 +12,7 @@ export type TNavButtons = {
 
 export type TVotingMessages = {
 	key: number,
-	id: string,
+	id?: string,
 	message: string,
 	time: string,
 }

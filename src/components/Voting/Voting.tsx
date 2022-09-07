@@ -26,7 +26,6 @@ const Voting: React.FC = () => {
 	}, [ likeData, unlikeData ])
 
 	const onLike = (imgObj: TDataObj) => {
-
 		dispatch(fetchVote([ imgObj, 1 ]))
 	}
 
@@ -35,7 +34,7 @@ const Voting: React.FC = () => {
 	}
 
 	const onFavourite = (imgObj: TDataObj) => {
-		if (imgObj) dispatch(fetchFavourite(imgObj))
+		dispatch(fetchFavourite(imgObj))
 	}
 
 	return (
