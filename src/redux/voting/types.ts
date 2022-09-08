@@ -1,3 +1,6 @@
+import { AsyncThunk } from '@reduxjs/toolkit'
+
+
 export interface IVoteData {
 	userId: string,
 	voteData: TDataObj | null,

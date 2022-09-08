@@ -1,6 +1,8 @@
-import { createSlice, PayloadAction }              from '@reduxjs/toolkit'
-import { TDataObj, IVoteData, Status, TInfoLike }  from './types'
-import { fetchFavourite, fetchVote, fetchVoteImg } from './asyncActions'
+import { createSlice, PayloadAction }             from '@reduxjs/toolkit'
+import { TDataObj, IVoteData, Status, TInfoLike } from './types'
+import { fetchVoteImg }                           from './asyncActions'
+
+import { isFulfilledAction, isPendingAction, isRejectedAction } from './utilsAction'
 
 
 const initialState: IVoteData = {
@@ -38,31 +40,19 @@ export const votingSlice = createSlice({
 			state.voteData = null
 			state.status = Status.PENDING
 		})
-		builder.addCase(fetchFavourite.pending, (state) => {
-			state.status = Status.PENDING
-		})
-		builder.addCase(fetchVote.pending, (state) => {
-			state.status = Status.PENDING
-		})
 		builder.addCase(fetchVoteImg.fulfilled, (state, action) => {
 			if (action.payload) state.voteData = action.payload
 			state.status = Status.SUCCESS
 		})
-		builder.addCase(fetchFavourite.fulfilled, (state) => {
-			state.status = Status.SUCCESS
-		})
-		builder.addCase(fetchVote.fulfilled, (state) => {
-			state.status = Status.SUCCESS
-		})
-		builder.addCase(fetchVoteImg.rejected, (state) => {
-			state.status = Status.ERROR
-		})
-		builder.addCase(fetchFavourite.rejected, (state) => {
-			state.status = Status.ERROR
-		})
-		builder.addCase(fetchVote.rejected, (state) => {
-			state.status = Status.ERROR
-		})
+			.addMatcher(isPendingAction, (state) => {
+				state.status = Status.PENDING
+			})
+			.addMatcher(isFulfilledAction, (state) => {
+				state.status = Status.SUCCESS
+			})
+			.addMatcher(isRejectedAction, (state) => {
+				state.status = Status.ERROR
+			})
 	}
 })
 
