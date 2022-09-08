@@ -1,17 +1,14 @@
-import { AsyncThunk } from '@reduxjs/toolkit'
-
-
 export interface IVoteData {
 	userId: string,
 	voteData: TDataObj | null,
 	likeData: TDataObj[],
 	unlikeData: TDataObj[],
-	favoriteData: TDataObj[],
-	infoLikes: TInfoLike[]
+	favouriteData: TDataObj[],
+	infoMessage: TInfoInfoMessage[]
 	status: Status
 }
 
-export type TInfoLike = {
+export type TInfoInfoMessage = {
 	id?: string,
 	message: string,
 	time: string,

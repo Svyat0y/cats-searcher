@@ -49,7 +49,7 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 				}
 				if (value === 0) {
 					imgObj && dispatch(setToUnlike(imgObj))
-					value === 0 && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes', time: newDate }))
+					value === 0 && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
 				}
 			}
 		}
@@ -64,7 +64,7 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 	async (imgObj, thunkAPI) => {
 		const votingState = thunkAPI.getState().votingSlice
 		const dispatch = thunkAPI.dispatch
-		const foundObjInFavorite = votingState.favoriteData.find((el: TDataObj) => el?.id === imgObj?.id)
+		const foundObjInFavorite = votingState.favouriteData.find((el: TDataObj) => el?.id === imgObj?.id)
 		const favouritedId = imgObj?.id
 
 		const body = {

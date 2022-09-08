@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction }             from '@reduxjs/toolkit'
-import { TDataObj, IVoteData, Status, TInfoLike } from './types'
-import { fetchVoteImg }                           from './asyncActions'
+import { createSlice, PayloadAction }                    from '@reduxjs/toolkit'
+import { TDataObj, IVoteData, Status, TInfoInfoMessage } from './types'
+import { fetchVoteImg }                                  from './asyncActions'
 
 import { isFulfilledAction, isPendingAction, isRejectedAction } from './utilsAction'
 
@@ -10,8 +10,8 @@ const initialState: IVoteData = {
 	voteData: null,
 	likeData: [],
 	unlikeData: [],
-	favoriteData: [],
-	infoLikes: [],
+	favouriteData: [],
+	infoMessage: [],
 	status: Status.PENDING
 }
 
@@ -26,13 +26,13 @@ export const votingSlice = createSlice({
 			state.unlikeData = [ ...state.unlikeData, action.payload ]
 		},
 		setToFavourites: (state, action: PayloadAction<TDataObj>) => {
-			state.favoriteData = [ ...state.favoriteData, action.payload ]
+			state.favouriteData = [ ...state.favouriteData, action.payload ]
 		},
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {
-			state.favoriteData = state.favoriteData.filter(el => el?.id !== action.payload)
+			state.favouriteData = state.favouriteData.filter(el => el?.id !== action.payload)
 		},
-		setInfoMessage: (state, action: PayloadAction<TInfoLike>) => {
-			state.infoLikes = [ ...state.infoLikes, action.payload ]
+		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
+			state.infoMessage = [ ...state.infoMessage, action.payload ]
 		}
 	},
 	extraReducers: (builder) => {

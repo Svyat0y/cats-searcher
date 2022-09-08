@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import s                    from './Voting.module.scss'
+import { Route, Routes }    from 'react-router-dom'
 
 import { Search }             from '../Search'
+import { VotingImage }        from './VotingImage'
+import { VotingMessage }      from './VotingMessages'
 import { BackButton, Button } from '../common/Buttons'
-import NavButtons             from './NavButtons/NavButtons'
-import VotingMessage          from './VotingMessages/VotingMessage'
+import { Likes }              from './Likes'
+import { Favourites }         from './Favourites'
+import { Dislikes }           from './Dislikes'
 
 
 import { useSelector }                             from 'react-redux'
@@ -16,7 +20,7 @@ import { TDataObj }                                from '../../redux/voting/type
 
 const Voting: React.FC = () => {
 	const dispatch = useAppDispatch()
-	const { voteData, likeData, unlikeData, infoLikes, favoriteData, status } = useSelector(selectVoting)
+	const { voteData, likeData, unlikeData, infoMessage, favouriteData, status } = useSelector(selectVoting)
 
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
@@ -45,18 +49,21 @@ const Voting: React.FC = () => {
 					<BackButton/>
 					<Button name='Voting'/>
 				</div>
-				<div className={ s.voting__img_wr }>
-					<img src={ voteData?.url } alt='image'/>
-					<NavButtons
-						imgObj={ voteData }
-						favoriteData={ favoriteData }
+				<Routes>
+					<Route path={ '/*' } element={ <VotingImage
+						voteData={ voteData }
+						favouriteData={ favouriteData }
+						status={ status }
 						onLike={ onLike }
 						onUnlike={ onUnlike }
 						onFavourite={ onFavourite }
-						status={ status }/>
-				</div>
+					/> }/>
+					<Route path={ '/likes' } element={ <Likes/> }/>
+					<Route path={ '/favourites' } element={ <Favourites/> }/>
+					<Route path={ '/dislikes' } element={ <Dislikes/> }/>
+				</Routes>
 				<div className={ s.voting__messages }>
-					{ infoLikes && infoLikes.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }
+					{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }
 				</div>
 			</div>
 		</div>
