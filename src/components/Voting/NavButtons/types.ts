@@ -1,4 +1,4 @@
-import { TDataObj } from '../../redux/voting/types'
+import { TDataObj } from '../../../redux/voting/types'
 
 
 export type TNavButtons = {
@@ -8,11 +8,4 @@ export type TNavButtons = {
 	imgObj: TDataObj,
 	favoriteData: TDataObj[],
 	status: string,
-}
-
-export type TVotingMessages = {
-	key: number,
-	id?: string,
-	message: string,
-	time: string,
 }

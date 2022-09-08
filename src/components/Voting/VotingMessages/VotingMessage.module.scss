@@ -1,0 +1,45 @@
+@import "../../../scss/variables";
+
+.voting__message_wr {
+  background: var(--bg_color);
+  border-radius: 10px;
+  @include flex(flex-start, center);
+  padding: 15px 60px 15px 15px;
+  height: 60px;
+  position: relative;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.voting__time, .voting__desc {
+  display: inline-block;
+}
+
+.voting__time {
+  background: var(--bg_blackWhite);
+  padding: 3px 10px;
+  margin-right: 20px;
+  border-radius: 10px;
+  color: var(--title_color);
+}
+
+.id_desc {
+  color: var(--title_color);
+}
+
+.info__icon_wr {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  right: 20px;
+
+  svg {
+    fill: #97EAB9;
+  }
+}
+

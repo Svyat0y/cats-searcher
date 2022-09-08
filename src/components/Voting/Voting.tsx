@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './Voting.module.scss'
+import React, { useEffect } from 'react'
+import s                    from './Voting.module.scss'
 
 import { Search }             from '../Search'
 import { BackButton, Button } from '../common/Buttons'
-import NavButtons             from './NavButtons'
-import VotingMessages         from './VotingMessages'
+import NavButtons             from './NavButtons/NavButtons'
+import VotingMessage          from './VotingMessages/VotingMessage'
 
 
 import { useSelector }                             from 'react-redux'
@@ -56,7 +56,7 @@ const Voting: React.FC = () => {
 						status={ status }/>
 				</div>
 				<div className={ s.voting__messages }>
-					{ infoLikes && infoLikes.map((el, i) => <VotingMessages key={ i } { ...el }/>).reverse() }
+					{ infoLikes && infoLikes.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }
 				</div>
 			</div>
 		</div>

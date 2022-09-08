@@ -1,10 +1,10 @@
 import React           from 'react'
-import s               from './Voting.module.scss'
+import s               from './NavButtons.module.scss'
+import { TDataObj }    from '../../../redux/voting/types'
 import { TNavButtons } from './types'
-import { TDataObj }    from '../../redux/voting/types'
 
-import heartTransparentImg from '../../assets/images/voting/heartTransparent.webp'
-import heartTWhiteImg      from '../../assets/images/voting/heartWhite.webp'
+import heartTransparentImg from '../../../assets/images/voting/heartTransparent.webp'
+import heartTWhiteImg      from '../../../assets/images/voting/heartWhite.webp'
 
 
 const NavButtons: React.FC<TNavButtons> = ({ onLike, onUnlike, imgObj, onFavourite, favoriteData, status }) => {
