@@ -27,29 +27,31 @@ export const fetchVoteImg = createAsyncThunk<TDataObj | undefined>(
 		}
 	})
 
-export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: number ]>(
+export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: number ], { state: RootState }>(
 	'votingSlice/fetchVote',
 	async (params, thunkAPI) => {
 		const [ imgObj, value ] = params
 		const dispatch = thunkAPI.dispatch
+		const { userId } = thunkAPI.getState().votingSlice
 		const body = {
 			image_id: imgObj?.id,
+			sub_id: userId,
 			value: value,
 		}
 
 		try {
-			const { status, data } = await instance.post<TDataImgVoted>('votes', body)
+			const { status, data } = await instance.post<TDataImgVoted>('votes/', body)
 			console.log(data)
 			if (status.toString()[0] === '2') {
 				const newDate = getDate()
 
-				if (value === 1) {
+				if (value) {
 					imgObj && dispatch(setToLike(imgObj))
-					value === 1 && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Likes', time: newDate }))
+					value && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Likes', time: newDate }))
 				}
-				if (value === 0) {
+				if (!value) {
 					imgObj && dispatch(setToUnlike(imgObj))
-					value === 0 && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
+					!value && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
 				}
 			}
 		}
