@@ -1,0 +1,61 @@
+@import "src/scss/variables";
+
+.voting__nav_buttons {
+  position: absolute;
+  @include flex(flex-start, center);
+  bottom: -40px;
+  width: 248px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 4px solid var(--bg_white-grey);
+  background: white;
+
+  .nav_button_wr {
+    @include flex(center, center);
+    width: 100%;
+    height: 100%;
+    margin-right: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    outline: none;
+    border: none;
+
+    &:active {
+      svg {
+        transform: translateY(2px);
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    svg {
+      fill: white;
+    }
+
+    &.like_bg {
+      background: #97EAB9;
+    }
+
+    &.heart_bg {
+      background: #FF868E;
+
+      img {
+        padding: 15px;
+      }
+
+      &:active {
+        img {
+          transform: translateY(2px);
+        }
+      }
+    }
+
+    &.unlike_bg {
+      background: #FFD280;
+    }
+  }
+}

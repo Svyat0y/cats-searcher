@@ -1,4 +1,4 @@
 export type THeader = {
-	theme: string,
+	theme: string
 	onChangeTheme: () => void
 }

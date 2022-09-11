@@ -1,5 +1,5 @@
 {
-  "name": "cats-searcher",
+  "name": "cat-searcher",
   "version": "1.0.0",
   "author": "Alexander Pop",
   "private": true,
@@ -12,6 +12,7 @@
     "@types/node": "^18.7.13",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",

@@ -3,15 +3,20 @@
 $bg_light-dark: #282828;
 $main_color: #8C8C8C;
 
-:root {
+:root, [data-theme="light"] {
   --bg_color: #F8F8F7;
-  --bg_content_color: #FFFFFF;
   --title_color: #000000;
-  --bg_icon: #FFFFFF;
-  --btn_bg: #FFFFFF;
+  --bg_white-grey: #FFFFFF;
   --btn_color: #FF868E;
-  --input_search_bg: #FBE0DC;
+  --bg_input_search: #FBE0DC;
   --bg_blackWhite: #FFFFFF;
-  --bg_infoColor: #F8F8F7;
-  --bg_vote_btn_border: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --bg_color: #1D1D1D;
+  --title_color: #FFFFFF;
+  --bg_white-grey: #292929;
+  --btn_color: #FF868E;
+  --bg_input_search: #543C3D;
+  --bg_blackWhite: #343434;
 }

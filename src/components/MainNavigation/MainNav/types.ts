@@ -1,6 +1,6 @@
 export type TCard = {
-	name: string,
-	img: string,
-	color: string,
-	to: string,
+	name: string
+	img: string
+	color: string
+	to: string
 }

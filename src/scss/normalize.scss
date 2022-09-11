@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: all .3s ease;
 }
 
 html {
@@ -30,7 +31,6 @@ p {
 
 img {
   max-width: 100%;
-  height: auto;
   vertical-align: middle;
 }
 
