@@ -1,35 +1,39 @@
-import { createSlice, PayloadAction }                    from '@reduxjs/toolkit'
-import { TDataObj, IVoteData, Status, TInfoInfoMessage } from './types'
-import { fetchVoteImg }                                  from './asyncActions'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { fetchVoteImg }               from './asyncActions'
 
-import { isFulfilledAction, isPendingAction, isRejectedAction } from './utilsAction'
+import { TDataObj, IVoteData, Status, TInfoInfoMessage, TFavouritesData, TLikesData } from './types'
+import { isFulfilledAction, isPendingAction, isRejectedAction }                       from './utilsAction'
 
 
 const initialState: IVoteData = {
 	userId: 'user-001',
 	voteData: null,
 	likeData: [],
+	favoritesData: [],
 	unlikeData: [],
-	favouriteData: [],
+	onFavourites: [],
 	infoMessage: [],
-	status: Status.PENDING
+	status: Status.PENDING,
 }
 
 export const votingSlice = createSlice({
 	name: 'voting',
 	initialState,
 	reducers: {
-		setToLike: (state, action: PayloadAction<TDataObj>) => {
-			state.likeData = [ ...state.likeData, action.payload ]
+		setToLike: (state, action: PayloadAction<TLikesData[]>) => {
+			state.likeData = action.payload
 		},
 		setToUnlike: (state, action: PayloadAction<TDataObj>) => {
 			state.unlikeData = [ ...state.unlikeData, action.payload ]
 		},
 		setToFavourites: (state, action: PayloadAction<TDataObj>) => {
-			state.favouriteData = [ ...state.favouriteData, action.payload ]
+			state.onFavourites = [ ...state.onFavourites, action.payload ]
+		},
+		setToFavoritesData: (state, action: PayloadAction<TFavouritesData[]>) => {
+			state.favoritesData = action.payload
 		},
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {
-			state.favouriteData = state.favouriteData.filter(el => el?.id !== action.payload)
+			state.onFavourites = state.onFavourites.filter(el => el?.id !== action.payload)
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
 			state.infoMessage = [ ...state.infoMessage, action.payload ]
@@ -56,6 +60,6 @@ export const votingSlice = createSlice({
 	}
 })
 
-export const { setToLike, setToUnlike, setInfoMessage, setToFavourites, deleteFavouritesItem } = votingSlice.actions
+export const { setToLike, setToUnlike, setInfoMessage, setToFavourites, deleteFavouritesItem, setToFavoritesData } = votingSlice.actions
 
 export default votingSlice.reducer

@@ -5,13 +5,13 @@ import { NavButtons }   from '../NavButtons'
 import { TVotingImage } from './types'
 
 
-const VotingImage: React.FC<TVotingImage> = ({ voteData, favouriteData, onLike, onUnlike, onFavourite, status }) => {
+const VotingImage: React.FC<TVotingImage> = ({ voteData, onFavourites, onLike, onUnlike, onFavourite, status }) => {
 	return (
 		<div className={ s.voting__img_wr }>
 			<img src={ voteData?.url } alt='image'/>
 			<NavButtons
 				imgObj={ voteData }
-				favoriteData={ favouriteData }
+				onFavourites={ onFavourites }
 				onLike={ onLike }
 				onUnlike={ onUnlike }
 				onFavourite={ onFavourite }

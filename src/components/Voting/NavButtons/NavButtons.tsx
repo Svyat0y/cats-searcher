@@ -7,9 +7,9 @@ import heartTransparentImg from '../../../assets/images/voting/heartTransparent.
 import heartTWhiteImg      from '../../../assets/images/voting/heartWhite.webp'
 
 
-const NavButtons: React.FC<TNavButtons> = ({ onLike, onUnlike, imgObj, onFavourite, favoriteData, status }) => {
+const NavButtons: React.FC<TNavButtons> = ({ onLike, onUnlike, imgObj, onFavourite, onFavourites, status }) => {
 
-	const imgInFavourites = favoriteData.find((el: TDataObj) => el?.id === imgObj?.id)
+	const imgInFavourites = onFavourites.find((el: TDataObj) => el?.id === imgObj?.id)
 
 	return (
 		<div className={ s.voting__nav_buttons }>

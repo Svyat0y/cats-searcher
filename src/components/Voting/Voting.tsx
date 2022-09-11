@@ -20,7 +20,7 @@ import { TDataObj }                                from '../../redux/voting/type
 
 const Voting: React.FC = () => {
 	const dispatch = useAppDispatch()
-	const { voteData, likeData, unlikeData, infoMessage, favouriteData, status } = useSelector(selectVoting)
+	const { voteData, likeData, favoritesData, unlikeData, infoMessage, onFavourites, status } = useSelector(selectVoting)
 
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
@@ -52,15 +52,15 @@ const Voting: React.FC = () => {
 				<Routes>
 					<Route path={ '/*' } element={ <VotingImage
 						voteData={ voteData }
-						favouriteData={ favouriteData }
+						onFavourites={ onFavourites }
 						status={ status }
 						onLike={ onLike }
 						onUnlike={ onUnlike }
 						onFavourite={ onFavourite }
 					/> }/>
-					<Route path={ '/likes' } element={ <Likes/> }/>
-					<Route path={ '/favourites' } element={ <Favourites/> }/>
-					<Route path={ '/dislikes' } element={ <Dislikes/> }/>
+					<Route path={ '/likes' } element={ <Likes dispatch={ dispatch } likeData={ likeData }/> }/>
+					<Route path={ '/favourites' } element={ <Favourites dispatch={ dispatch } favoritesData={ favoritesData }/> }/>
+					<Route path={ '/dislikes' } element={ <Dislikes unlikeData={ unlikeData }/> }/>
 				</Routes>
 				<div className={ s.voting__messages }>
 					{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }

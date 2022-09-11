@@ -1,8 +1,10 @@
-import { instance }                                                                      from '../../api/api'
-import { RootState }                                                                     from '../store'
-import { createAsyncThunk }                                                              from '@reduxjs/toolkit'
-import { TDataImgVoted, TDataObj, TVotingFavourites }                                    from './types'
-import { deleteFavouritesItem, setInfoMessage, setToFavourites, setToLike, setToUnlike } from './slice'
+import { instance } from '../../api/api'
+
+import { RootState }                                                                                         from '../store'
+import { deleteFavouritesItem, setInfoMessage, setToFavoritesData, setToFavourites, setToLike, setToUnlike } from './slice'
+import { createAsyncThunk }                                                                                  from '@reduxjs/toolkit'
+
+import { TDataImgVoted, TDataObj, TFavouritesData, TVotingFavourites } from './types'
 
 
 const getDate = () => {
@@ -40,18 +42,18 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 		}
 
 		try {
-			const { status, data } = await instance.post<TDataImgVoted>('votes/', body)
+			const { status, data } = await instance.post<TDataImgVoted>('votes', body)
 			console.log(data)
 			if (status.toString()[0] === '2') {
+				dispatch(fetchVoteImg())
 				const newDate = getDate()
 
-				if (value) {
-					imgObj && dispatch(setToLike(imgObj))
-					value && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Likes', time: newDate }))
+				if (value === 1) {
+					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Likes', time: newDate }))
 				}
-				if (!value) {
-					imgObj && dispatch(setToUnlike(imgObj))
-					!value && dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
+				if (value === 0) {
+					dispatch(setToUnlike(imgObj))
+					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
 				}
 			}
 		}
@@ -66,7 +68,7 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 	async (imgObj, thunkAPI) => {
 		const votingState = thunkAPI.getState().votingSlice
 		const dispatch = thunkAPI.dispatch
-		const foundObjInFavorite = votingState.favouriteData.find((el: TDataObj) => el?.id === imgObj?.id)
+		const foundObjInFavorite = votingState.onFavourites.find((el: TDataObj) => el?.id === imgObj?.id)
 		const favouritedId = imgObj?.id
 
 		const body = {
@@ -91,6 +93,32 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 					dispatch(setInfoMessage({ id: imgObj?.id, message: 'was deleted from Favourites', time: newDate }))
 				}
 			}
+		}
+		catch (e) {
+			console.log(e)
+		}
+	}
+)
+
+export const fetchGetFavourites = createAsyncThunk(
+	'voting/fetchGetFavourites',
+	async (_, { dispatch }) => {
+		try {
+			const { data } = await instance.get<TFavouritesData[]>('favourites?&limit=20&order=DESC')
+			dispatch(setToFavoritesData(data))
+		}
+		catch (e) {
+			console.log(e)
+		}
+	}
+)
+
+export const fetchGetLikes = createAsyncThunk(
+	'voting/fetchGetLikes',
+	async (_, { dispatch }) => {
+		try {
+			const { data } = await instance.get('votes?&limit=20&order=DESC')
+			dispatch(setToLike(data))
 		}
 		catch (e) {
 			console.log(e)
