@@ -5,18 +5,23 @@ import { TDataObj }  from '../../../redux/voting/types'
 import { TDislikes } from './types'
 
 
-const Dislikes: React.FC<TDislikes> = ({ unlikeData }) => {
+const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
+
+	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
 	return (
-		<div className={ s.dislikes }>
-			{ unlikeData?.map((el: TDataObj, i) => {
-				return (
-					<div className={ s.dislikes__img_wr } key={ el?.id }>
-						<img src={ el?.url } alt='image'/>
-					</div>
-				)
-			}) }
-		</div>
+		<>
+			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
+			<div className={ s.dislikes }>
+				{ unlikeData?.map((el: TDataObj) => {
+					return (
+						<div className={ s.dislikes__img_wr } key={ el?.id }>
+							<img src={ el?.url } alt='image'/>
+						</div>
+					)
+				}) }
+			</div>
+		</>
 	)
 }
 

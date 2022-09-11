@@ -1,4 +1,4 @@
-import { TDataObj } from '../../../redux/voting/types'
+import { TDataObj, TInfoInfoMessage } from '../../../redux/voting/types'
 
 
 export type TVotingImage = {
@@ -7,5 +7,6 @@ export type TVotingImage = {
 	onLike: (imgObj: TDataObj) => void
 	onUnlike: (imgObj: TDataObj) => void
 	onFavourite: (imgId: TDataObj) => void
+	infoMessage: TInfoInfoMessage[]
 	status: string
 }

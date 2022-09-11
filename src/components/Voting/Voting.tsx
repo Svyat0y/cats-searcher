@@ -4,7 +4,6 @@ import { Route, Routes }    from 'react-router-dom'
 
 import { Search }             from '../Search'
 import { VotingImage }        from './VotingImage'
-import { VotingMessage }      from './VotingMessages'
 import { BackButton, Button } from '../common/Buttons'
 import { Likes }              from './Likes'
 import { Favourites }         from './Favourites'
@@ -57,14 +56,18 @@ const Voting: React.FC = () => {
 						onLike={ onLike }
 						onUnlike={ onUnlike }
 						onFavourite={ onFavourite }
+						infoMessage={ infoMessage }
 					/> }/>
-					<Route path={ '/likes' } element={ <Likes dispatch={ dispatch } likeData={ likeData }/> }/>
-					<Route path={ '/favourites' } element={ <Favourites dispatch={ dispatch } favoritesData={ favoritesData }/> }/>
-					<Route path={ '/dislikes' } element={ <Dislikes unlikeData={ unlikeData }/> }/>
+					<Route path={ '/likes' } element={ <Likes dispatch={ dispatch } likeData={ likeData } status={ status }/> }/>
+					<Route
+						path={ '/favourites' }
+						element={ <Favourites
+							dispatch={ dispatch }
+							infoMessage={ infoMessage }
+							favoritesData={ favoritesData }
+							status={ status }/> }/>
+					<Route path={ '/dislikes' } element={ <Dislikes unlikeData={ unlikeData } status={ status }/> }/>
 				</Routes>
-				<div className={ s.voting__messages }>
-					{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }
-				</div>
 			</div>
 		</div>
 	)

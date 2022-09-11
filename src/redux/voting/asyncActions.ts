@@ -100,11 +100,12 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 	}
 )
 
-export const fetchGetFavourites = createAsyncThunk(
+export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetFavourites',
-	async (_, { dispatch }) => {
+	async (_, { dispatch, getState }) => {
+		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get<TFavouritesData[]>('favourites?&limit=20&order=DESC')
+			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=1&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e) {
@@ -113,11 +114,12 @@ export const fetchGetFavourites = createAsyncThunk(
 	}
 )
 
-export const fetchGetLikes = createAsyncThunk(
+export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetLikes',
-	async (_, { dispatch }) => {
+	async (_, { dispatch, getState }) => {
+		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get('votes?&limit=20&order=DESC')
+			const { data } = await instance.get(`votes?sub_id=${ userId }&limit=1&order=DESC`,)
 			dispatch(setToLike(data))
 		}
 		catch (e) {
