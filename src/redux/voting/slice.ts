@@ -35,6 +35,9 @@ export const votingSlice = createSlice({
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {
 			state.onFavourites = state.onFavourites.filter(el => el?.id !== action.payload)
 		},
+		deleteFromFavouritesData: (state, action: PayloadAction<number>) => {
+			state.favoritesData = state.favoritesData.filter(el => el?.id !== action.payload)
+		},
 		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
 			state.infoMessage = [ ...state.infoMessage, action.payload ]
 		}
@@ -60,6 +63,14 @@ export const votingSlice = createSlice({
 	}
 })
 
-export const { setToLike, setToUnlike, setInfoMessage, setToFavourites, deleteFavouritesItem, setToFavoritesData } = votingSlice.actions
+export const {
+	setToLike,
+	setToUnlike,
+	setInfoMessage,
+	setToFavourites,
+	deleteFavouritesItem,
+	setToFavoritesData,
+	deleteFromFavouritesData
+} = votingSlice.actions
 
 export default votingSlice.reducer

@@ -4,7 +4,7 @@ import s                              from '../Voting.module.scss'
 import { TDataObj }  from '../../../redux/voting/types'
 import { TDislikes } from './types'
 
-import Spinner from '../../Spinner/Spinner'
+import { Spinner } from '../../Spinner'
 
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
@@ -15,7 +15,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
 		setIsLoading(true)
 		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
 
-	}, [ unlikeData, status ])
+	}, [])
 
 	if (isLoading) return <Spinner/>
 

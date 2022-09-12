@@ -1,8 +1,16 @@
 import { instance } from '../../api/api'
 
-import { RootState }                                                                                         from '../store'
-import { deleteFavouritesItem, setInfoMessage, setToFavoritesData, setToFavourites, setToLike, setToUnlike } from './slice'
-import { createAsyncThunk }                                                                                  from '@reduxjs/toolkit'
+import { RootState }        from '../store'
+import {
+	deleteFavouritesItem,
+	deleteFromFavouritesData,
+	setInfoMessage,
+	setToFavoritesData,
+	setToFavourites,
+	setToLike,
+	setToUnlike
+}                           from './slice'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { TDataImgVoted, TDataObj, TFavouritesData, TVotingFavourites } from './types'
 
@@ -91,6 +99,24 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 					dispatch(deleteFavouritesItem(favouritedId))
 					dispatch(setInfoMessage({ id: imgObj?.id, message: 'was deleted from Favourites', time: newDate }))
 				}
+			}
+		}
+		catch (e) {
+			console.log(e)
+		}
+	}
+)
+
+export const fetchDeleteFromFav = createAsyncThunk<void, { numId: number, strId: string }, { state: RootState }>(
+	'voting/fetchDeleteFromFav',
+	async ({ numId, strId }, thunkAPI) => {
+		const dispatch = thunkAPI.dispatch
+
+		try {
+			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ numId }`)
+			if (status.toString()[0] === '2') {
+				dispatch(deleteFavouritesItem(strId))
+				dispatch(deleteFromFavouritesData(numId))
 			}
 		}
 		catch (e) {
