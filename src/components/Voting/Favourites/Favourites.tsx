@@ -15,7 +15,8 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
-		dispatch(fetchGetFavourites())
+		const promise = dispatch(fetchGetFavourites())
+		return () => promise.abort()
 	}, [])
 
 	useEffect(() => {

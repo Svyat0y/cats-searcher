@@ -12,7 +12,8 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
-		dispatch(fetchGetLikes())
+		const promise = dispatch(fetchGetLikes())
+		return () => promise.abort()
 	}, [])
 
 	useEffect(() => {
