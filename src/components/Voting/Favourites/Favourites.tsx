@@ -1,29 +1,40 @@
-import React, { useEffect } from 'react'
-import s                    from './Favourites.module.scss'
+import React, { useEffect, useState } from 'react'
+import s                              from '../Voting.module.scss'
 
 import { fetchGetFavourites } from '../../../redux/voting/asyncActions'
 import { TFavouritesData }    from '../../../redux/voting/types'
 import { TFavourites }        from './types'
 
-import emptyImage        from '../../../assets/images/voting/empty_img.png'
 import { VotingMessage } from '../VotingMessages'
+import Spinner           from '../../Spinner/Spinner'
+
+import emptyImage from '../../../assets/images/voting/empty_img.png'
 
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status }) => {
+	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
 		dispatch(fetchGetFavourites())
 	}, [])
 
+	useEffect(() => {
+		setIsLoading(true)
+		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+
+	}, [ favoritesData, status ])
+
 	const noItemsBoolean = (favoritesData.length === 0 && status === 'success')
+
+	if (isLoading) return <Spinner/>
 
 	return (
 		<>
 			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
-			<div className={ s.favourites }>
+			<div className={ s.voting__items }>
 				{ favoritesData?.map((el: TFavouritesData, i) => {
 					return (
-						<div className={ s.favourites__img_wr } key={ el?.id }>
+						<div className={ s.voting__itemsImg_wr } key={ el?.id }>
 							<img src={ el?.image?.url ? el?.image?.url : emptyImage } alt='image'/>
 						</div>
 					)

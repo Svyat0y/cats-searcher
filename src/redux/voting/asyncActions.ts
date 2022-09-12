@@ -43,7 +43,6 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 
 		try {
 			const { status, data } = await instance.post<TDataImgVoted>('votes', body)
-			console.log(data)
 			if (status.toString()[0] === '2') {
 				dispatch(fetchVoteImg())
 				const newDate = getDate()
@@ -53,7 +52,7 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 				}
 				if (value === 0) {
 					dispatch(setToUnlike(imgObj))
-					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
+					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes', time: newDate }))
 				}
 			}
 		}
@@ -105,7 +104,7 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 	async (_, { dispatch, getState }) => {
 		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=15&order=DESC`)
+			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=10&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e) {
@@ -119,7 +118,7 @@ export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 	async (_, { dispatch, getState }) => {
 		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get(`votes?sub_id=${ userId }&limit=15&order=DESC`,)
+			const { data } = await instance.get(`votes?sub_id=${ userId }&limit=10&order=DESC`,)
 			dispatch(setToLike(data))
 		}
 		catch (e) {
