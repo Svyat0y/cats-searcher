@@ -61,6 +61,7 @@ const Voting: React.FC = () => {
 						path={ '/favourites' }
 						element={ <Favourites
 							dispatch={ dispatch }
+							onFavourite={ onFavourite }
 							infoMessage={ infoMessage }
 							favoritesData={ favoritesData }
 							status={ status }/> }/>

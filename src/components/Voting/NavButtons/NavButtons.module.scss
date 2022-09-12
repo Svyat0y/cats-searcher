@@ -44,12 +44,12 @@
       background: #FF868E;
 
       img {
-        padding: 15px;
+        border-radius: unset;
       }
 
       &:active {
         img {
-          transform: translateY(2px);
+          transform: translateY(3px);
         }
       }
     }
