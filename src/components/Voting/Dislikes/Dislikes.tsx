@@ -1,13 +1,23 @@
-import React from 'react'
-import s     from '../Voting.module.scss'
+import React, { useEffect, useState } from 'react'
+import s                              from '../Voting.module.scss'
 
 import { TDataObj }  from '../../../redux/voting/types'
 import { TDislikes } from './types'
 
+import Spinner from '../../Spinner/Spinner'
+
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
-
+	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
+
+	useEffect(() => {
+		setIsLoading(true)
+		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+
+	}, [ unlikeData, status ])
+
+	if (isLoading) return <Spinner/>
 
 	return (
 		<>
