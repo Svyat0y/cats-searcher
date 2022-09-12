@@ -1,15 +1,22 @@
 import React    from 'react'
+import s        from './Spinner.module.scss'
 import { Puff } from 'react-loader-spinner'
 
 
-const SmallSpinner = () => {
+type TSmallSpinner = {
+	height: number
+	width: number
+	color: string
+}
+
+const SmallSpinner: React.FC<TSmallSpinner> = ({ height, width, color }) => {
 	return (
-		<div>
+		<div className={ s.wrapper__small }>
 			<Puff
-				height='20'
-				width='40'
+				height={ height }
+				width={ width }
 				radius={ 20 }
-				color='#FF868E'
+				color={ color }
 				ariaLabel='puff-loading'
 				visible={ true }
 			/>
