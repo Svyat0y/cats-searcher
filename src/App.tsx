@@ -28,7 +28,6 @@ export default App
 * - highlight active buttons
 * - added pagination
 * - rewrite the styles of the main navigation menu, hover on cards
-* - implement hover on the picture in favourites component with the button - action "add to favourites" and "delete from favourites"
 * - implement the searching functionality
 *
 * */

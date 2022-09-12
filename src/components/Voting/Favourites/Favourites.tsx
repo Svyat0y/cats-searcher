@@ -8,9 +8,8 @@ import { TFavourites }                            from './types'
 import { VotingMessage }         from '../VotingMessages'
 import { SmallSpinner, Spinner } from '../../Spinner'
 
-import emptyImage        from '../../../assets/images/voting/empty_img.png'
-import heartBorderRedImg from '../../../assets/images/voting/heartBorderRed.png'
-import heartBgRedImg     from '../../../assets/images/voting/heartBgRed.png'
+import emptyImage    from '../../../assets/images/voting/empty_img.png'
+import heartBgRedImg from '../../../assets/images/voting/heartBgRed.png'
 
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status, onFavourite }) => {
@@ -48,7 +47,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 							<button disabled={ status === 'pending' } onClick={ () => deleteFromFavourites(el) }
 									className={ s.item__hoverIcon }>
 								{ status === 'pending'
-									? <SmallSpinner/>
+									? <SmallSpinner height={ 40 } width={ 20 } color='#FF868E'/>
 									: <img src={ heartBgRedImg } alt=''/>
 								}
 							</button>

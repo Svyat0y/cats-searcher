@@ -5,5 +5,11 @@
   height: 360px;
   position: relative;
   top: -60px;
-  @include flex(center, center)
+  @include flex(center, center);
+
+  &__small {
+    width: 100%;
+    height: 100%;
+    @include flex(center, center);
+  }
 }
