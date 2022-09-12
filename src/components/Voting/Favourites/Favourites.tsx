@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import s                    from './Favourites.module.scss'
+import s                    from '../Voting.module.scss'
 
 import { fetchGetFavourites } from '../../../redux/voting/asyncActions'
 import { TFavouritesData }    from '../../../redux/voting/types'
@@ -20,10 +20,10 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	return (
 		<>
 			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
-			<div className={ s.favourites }>
+			<div className={ s.voting__items }>
 				{ favoritesData?.map((el: TFavouritesData, i) => {
 					return (
-						<div className={ s.favourites__img_wr } key={ el?.id }>
+						<div className={ s.voting__itemsImg_wr } key={ el?.id }>
 							<img src={ el?.image?.url ? el?.image?.url : emptyImage } alt='image'/>
 						</div>
 					)

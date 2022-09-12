@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import s                    from './Likes.module.scss'
+import s                    from '../Voting.module.scss'
 
 import { fetchGetLikes } from '../../../redux/voting/asyncActions'
 import { TLikesData }    from '../../../redux/voting/types'
@@ -17,10 +17,10 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status }) => {
 	return (
 		<>
 			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
-			<div className={ s.likes }>
+			<div className={ s.voting__items }>
 				{ likeData?.map((el: TLikesData, i) => {
 					return (
-						<div className={ s.likes__img_wr } key={ el.id }>
+						<div className={ s.voting__itemsImg_wr } key={ el.id }>
 							<img src={ el.image.url } alt='image'/>
 						</div>
 					)

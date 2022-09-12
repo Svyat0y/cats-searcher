@@ -20,3 +20,14 @@ const App: React.FC = () => {
 }
 
 export default App
+
+// new features in development
+/*
+* voting component
+*
+* - implement loader
+* - highlight active buttons
+* - rewrite the styles of the main navigation menu, hover on cards
+* - implement hover on the picture in favourites component with the button - action "add to favourites" and "delete from favourites"
+*
+* */

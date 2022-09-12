@@ -43,7 +43,6 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 
 		try {
 			const { status, data } = await instance.post<TDataImgVoted>('votes', body)
-			console.log(data)
 			if (status.toString()[0] === '2') {
 				dispatch(fetchVoteImg())
 				const newDate = getDate()
@@ -53,7 +52,7 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 				}
 				if (value === 0) {
 					dispatch(setToUnlike(imgObj))
-					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes.tsx', time: newDate }))
+					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes', time: newDate }))
 				}
 			}
 		}
