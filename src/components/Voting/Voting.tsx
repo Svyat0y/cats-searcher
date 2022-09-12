@@ -22,7 +22,8 @@ const Voting: React.FC = () => {
 	const { voteData, likeData, favoritesData, unlikeData, infoMessage, onFavourites, status } = useSelector(selectVoting)
 
 	useEffect(() => {
-		dispatch(fetchVoteImg())
+		const promise = dispatch(fetchVoteImg())
+		return () => promise.abort()
 	}, [])
 
 	const onLike = (imgObj: TDataObj) => {

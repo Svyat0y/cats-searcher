@@ -1,20 +1,32 @@
-import React, { useEffect } from 'react'
-import DesktopLayout        from './components/layouts/DesktopLayout'
+import React, { useEffect, useState } from 'react'
+import DesktopLayout                  from './components/layouts/DesktopLayout'
 
 import { useAppDispatch } from './redux/store'
 import { getLSTheme }     from './utils/theme'
+import Spinner            from './components/Spinner/Spinner'
 
+
+const stylesForMainSpinner = {
+	width: '100%',
+	height: '100vh',
+	display: 'flex',
+	'justify-content': 'center',
+	'align-items': 'center',
+}
 
 const App: React.FC = () => {
 	const dispatch = useAppDispatch()
+	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
+		setIsLoading(true)
 		getLSTheme(dispatch)
+		setTimeout(() => setIsLoading(false), 2000)
 	}, [])
 
 	return (
 		<main className='App'>
-			<DesktopLayout/>
+			{ isLoading ? <div style={ stylesForMainSpinner }><Spinner/></div> : <DesktopLayout/> }
 		</main>
 	)
 }
