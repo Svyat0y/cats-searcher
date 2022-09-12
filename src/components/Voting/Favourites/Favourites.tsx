@@ -47,7 +47,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 							<button disabled={ status === 'pending' } onClick={ () => deleteFromFavourites(el) }
 									className={ s.item__hoverIcon }>
 								{ status === 'pending'
-									? <SmallSpinner height={ 40 } width={ 20 } color='#FF868E'/>
+									? <SmallSpinner height={ 20 } width={ 40 } color='#FF868E'/>
 									: <img src={ heartBgRedImg } alt=''/>
 								}
 							</button>
