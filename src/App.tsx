@@ -26,7 +26,6 @@ export default App
 * voting component
 *
 * - added pagination
-* - rewrite the styles of the main navigation menu, hover on cards
 * - implement the searching functionality
 *
 * */

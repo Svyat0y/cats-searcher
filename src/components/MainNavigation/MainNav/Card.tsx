@@ -11,14 +11,12 @@ const Card: React.FC<TCard> = ({ name, img, color, to }) => {
 
 	return (
 		<div className={ s.content__card }>
-			<div className={ `${ s.card } ${ s[color] }` }>
+			<Link to={ to } className={ `${ s.card } ${ s[color] }` }>
 				<div className={ s.card__img_wr }>
 					<img src={ img } alt='card'/>
 				</div>
-			</div>
-			<Link to={ to }>
-				<div className={ `btn ${ s.card__btn } ${ loc ? s.card__active : '' }` }>{ name }</div>
 			</Link>
+			<div className={ `btn ${ s.card__btn } ${ loc ? s.active : '' }` }>{ name }</div>
 		</div>
 
 	)
