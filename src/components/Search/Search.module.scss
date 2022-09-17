@@ -108,6 +108,14 @@
       &:last-child {
         margin-right: 0;
       }
+
+      &.iconActive {
+        background: #FF868E;
+
+        svg {
+          fill: #FFFFFF;
+        }
+      }
     }
   }
 }

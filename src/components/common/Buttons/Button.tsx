@@ -3,9 +3,9 @@ import s           from './Button.module.scss'
 import { TButton } from './types'
 
 
-const Button: React.FC<TButton> = ({ name }) => {
+const Button: React.FC<TButton> = ({ name, isActive }) => {
 	return (
-		<button className={ s.btn }>
+		<button className={ `${ s.btn } ${ isActive && s.btnActive }` }>
 			{ name }
 		</button>
 	)

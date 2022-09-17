@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import s                    from './Voting.module.scss'
-import { Route, Routes }    from 'react-router-dom'
+import React, { useEffect }           from 'react'
+import s                              from './Voting.module.scss'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 import { Search }             from '../Search'
 import { VotingImage }        from './VotingImage'
@@ -18,8 +18,11 @@ import { TDataObj }                                from '../../redux/voting/type
 
 
 const Voting: React.FC = () => {
+	const location = useLocation()
 	const dispatch = useAppDispatch()
 	const { voteData, likeData, favoritesData, unlikeData, infoMessage, onFavourites, status } = useSelector(selectVoting)
+
+	const locVoting = location.pathname.includes('voting')
 
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
@@ -44,7 +47,7 @@ const Voting: React.FC = () => {
 			<div className={ s.voting__body }>
 				<div className={ s.voting__breadCrumbs }>
 					<BackButton/>
-					<Button name='Voting'/>
+					<Button name='Voting' isActive={ locVoting }/>
 				</div>
 				<Routes>
 					<Route path={ '/*' } element={ <VotingImage

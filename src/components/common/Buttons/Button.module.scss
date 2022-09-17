@@ -13,7 +13,7 @@
   letter-spacing: 2px;
   cursor: pointer;
 
-  &:active {
+  &:active, &Active {
     background: var(--btn_color);
     color: #FFFFFF;
   }

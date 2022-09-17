@@ -16,15 +16,6 @@
   cursor: pointer;
   transition: all .2s ease;
   user-select: none;
-
-  &:hover {
-    background: #FBE0DC;
-  }
-
-  &:active {
-    background: #FF868E;
-    color: #FFFFFF;
-  }
 }
 
 .noItemFound {
