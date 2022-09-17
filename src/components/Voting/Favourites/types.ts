@@ -7,5 +7,4 @@ export type TFavourites = {
 	favoritesData: TFavouritesData[]
 	infoMessage: TInfoInfoMessage[]
 	status: string
-	onFavourite: (imgId: TDataObj) => void
 }

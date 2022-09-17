@@ -12,25 +12,19 @@ import emptyImage    from '../../../assets/images/voting/empty_img.png'
 import heartBgRedImg from '../../../assets/images/voting/heartBgRed.png'
 
 
-const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status, onFavourite }) => {
+const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (favoritesData.length === 0 && status === 'success')
 
 	useEffect(() => {
-		const promise = dispatch(fetchGetFavourites())
-		return () => promise.abort()
-	}, [])
-
-	useEffect(() => {
 		setIsLoading(true)
+		dispatch(fetchGetFavourites())
 		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
-
 	}, [])
 
 	const deleteFromFavourites = (obj: TFavouritesData) => {
 		if (obj) {
-			const { id, image_id }: { id: number, image_id: string } = obj
-			dispatch(fetchDeleteFromFav({ numId: id, strId: image_id }))
+			dispatch(fetchDeleteFromFav(obj))
 		}
 	}
 
@@ -56,7 +50,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 				}) }
 			</div>
 			<div className={ s.voting__messages }>
-				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }
+				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>
 	)

@@ -70,8 +70,8 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 	})
 
 let objIdFromRequest: number
-export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootState }>(
-	'voting/fetchFavourite',
+export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: RootState }>(
+	'voting/fetchActionFavourite',
 	async (imgObj, thunkAPI) => {
 		const votingState = thunkAPI.getState().votingSlice
 		const dispatch = thunkAPI.dispatch
@@ -107,16 +107,18 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 	}
 )
 
-export const fetchDeleteFromFav = createAsyncThunk<void, { numId: number, strId: string }, { state: RootState }>(
+export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { state: RootState }>(
 	'voting/fetchDeleteFromFav',
-	async ({ numId, strId }, thunkAPI) => {
+	async (imgObj, thunkAPI) => {
 		const dispatch = thunkAPI.dispatch
 
 		try {
-			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ numId }`)
+			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
-				dispatch(deleteFavouritesItem(strId))
-				dispatch(deleteFromFavouritesData(numId))
+				const newDate = getDate()
+				dispatch(deleteFavouritesItem(imgObj?.image_id))
+				dispatch(deleteFromFavouritesData(imgObj?.id))
+				dispatch(setInfoMessage({ id: imgObj?.image_id, message: 'was deleted from Favourites', time: newDate }))
 			}
 		}
 		catch (e: any) {
@@ -130,7 +132,7 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 	async (_, { dispatch, getState }) => {
 		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=10&order=DESC`)
+			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=5&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {

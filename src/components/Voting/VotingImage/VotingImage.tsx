@@ -30,7 +30,7 @@ const VotingImage: React.FC<TVotingImage> = (
 					status={ status }/>
 			</div>
 			<div className={ s.voting__messages }>
-				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>).reverse() }
+				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>
 	)

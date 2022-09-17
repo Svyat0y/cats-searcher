@@ -35,11 +35,11 @@ export const votingSlice = createSlice({
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {
 			state.onFavourites = state.onFavourites.filter(el => el?.id !== action.payload)
 		},
-		deleteFromFavouritesData: (state, action: PayloadAction<number>) => {
+		deleteFromFavouritesData: (state, action: PayloadAction<number | undefined>) => {
 			state.favoritesData = state.favoritesData.filter(el => el?.id !== action.payload)
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
-			state.infoMessage = [ ...state.infoMessage, action.payload ]
+			state.infoMessage = [ action.payload, ...state.infoMessage ]
 		}
 	},
 	extraReducers: (builder) => {
