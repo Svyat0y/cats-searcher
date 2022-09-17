@@ -47,7 +47,7 @@ const Voting: React.FC = () => {
 			<div className={ s.voting__body }>
 				<div className={ s.voting__breadCrumbs }>
 					<BackButton/>
-					<Button name='Voting' isActive={ locVoting }/>
+					<Button name='Voting' isActive={ locVoting } linkTo={ '/voting' }/>
 				</div>
 				<Routes>
 					<Route path={ '/*' } element={ <VotingImage
