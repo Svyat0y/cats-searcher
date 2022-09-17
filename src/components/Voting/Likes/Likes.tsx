@@ -10,19 +10,16 @@ import { Spinner } from '../../Spinner'
 
 const Likes: React.FC<TLikes> = ({ likeData, dispatch, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
-
-	useEffect(() => {
-		const promise = dispatch(fetchGetLikes())
-		return () => promise.abort()
-	}, [])
+	const noItemsBoolean = (likeData.length === 0 && status === 'success')
 
 	useEffect(() => {
 		setIsLoading(true)
-		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
-
+		dispatch(fetchGetLikes())
 	}, [])
 
-	const noItemsBoolean = (likeData.length === 0 && status === 'success')
+	useEffect(() => {
+		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+	}, [ likeData ])
 
 	if (isLoading) return <Spinner/>
 
@@ -30,7 +27,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status }) => {
 		<>
 			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
 			<div className={ s.voting__items }>
-				{ likeData?.map((el: TLikesData, i) => {
+				{ likeData?.map((el: TLikesData) => {
 					return (
 						<div className={ `${ s.voting__itemsImg_wr } ${ s.unHoverClass }` } key={ el.id }>
 							<img src={ el.image.url } alt='image'/>

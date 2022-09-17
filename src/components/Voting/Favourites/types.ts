@@ -1,5 +1,5 @@
-import { AppDispatch }                                 from '../../../redux/store'
-import { TDataObj, TFavouritesData, TInfoInfoMessage } from '../../../redux/voting/types'
+import { AppDispatch }                       from '../../../redux/store'
+import { TFavouritesData, TInfoInfoMessage } from '../../../redux/voting/types'
 
 
 export type TFavourites = {
@@ -8,3 +8,9 @@ export type TFavourites = {
 	infoMessage: TInfoInfoMessage[]
 	status: string
 }
+export type TFavoriteItem = {
+	el: TFavouritesData
+	status: string
+	dispatch: AppDispatch
+}
+
