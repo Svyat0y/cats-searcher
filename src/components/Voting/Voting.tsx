@@ -10,11 +10,11 @@ import { Favourites }         from './Favourites'
 import { Dislikes }           from './Dislikes'
 
 
-import { useSelector }                             from 'react-redux'
-import { useAppDispatch }                          from '../../redux/store'
-import { selectVoting }                            from '../../redux/voting/selectors'
-import { fetchFavourite, fetchVote, fetchVoteImg } from '../../redux/voting/asyncActions'
-import { TDataObj }                                from '../../redux/voting/types'
+import { useSelector }                                   from 'react-redux'
+import { useAppDispatch }                                from '../../redux/store'
+import { selectVoting }                                  from '../../redux/voting/selectors'
+import { fetchActionFavourite, fetchVote, fetchVoteImg } from '../../redux/voting/asyncActions'
+import { TDataObj }                                      from '../../redux/voting/types'
 
 
 const Voting: React.FC = () => {
@@ -30,15 +30,15 @@ const Voting: React.FC = () => {
 	}, [])
 
 	const onLike = (imgObj: TDataObj) => {
-		dispatch(fetchVote([ imgObj, 1 ]))
+		if (status === 'success') dispatch(fetchVote([ imgObj, 1 ]))
 	}
 
 	const onUnlike = (imgObj: TDataObj) => {
-		dispatch(fetchVote([ imgObj, 0 ]))
+		if (status === 'success') dispatch(fetchVote([ imgObj, 0 ]))
 	}
 
 	const onFavourite = (imgObj: TDataObj) => {
-		dispatch(fetchFavourite(imgObj))
+		if (status === 'success') dispatch(fetchActionFavourite(imgObj))
 	}
 
 	return (
@@ -47,7 +47,7 @@ const Voting: React.FC = () => {
 			<div className={ s.voting__body }>
 				<div className={ s.voting__breadCrumbs }>
 					<BackButton/>
-					<Button name='Voting' isActive={ locVoting }/>
+					<Button name='Voting' isActive={ locVoting } linkTo={ '/voting' }/>
 				</div>
 				<Routes>
 					<Route path={ '/*' } element={ <VotingImage
@@ -64,7 +64,6 @@ const Voting: React.FC = () => {
 						path={ '/favourites' }
 						element={ <Favourites
 							dispatch={ dispatch }
-							onFavourite={ onFavourite }
 							infoMessage={ infoMessage }
 							favoritesData={ favoritesData }
 							status={ status }/> }/>
