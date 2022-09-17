@@ -25,7 +25,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
 			<div className={ s.voting__items }>
 				{ unlikeData?.map((el: TDataObj) => {
 					return (
-						<div className={ s.voting__itemsImg_wr } key={ el?.id }>
+						<div className={ `${ s.voting__itemsImg_wr } ${ s.unHoverClass }` } key={ el?.id }>
 							<img src={ el?.url } alt='image'/>
 						</div>
 					)

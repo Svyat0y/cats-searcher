@@ -32,8 +32,8 @@ export const fetchVoteImg = createAsyncThunk<TDataObj | undefined>(
 			const { data } = await instance.get<TDataObj[]>('images/search?limit=1&size=full&mime_types=gif,jpg,png')
 			return data[0]
 		}
-		catch (e) {
-			console.log(e)
+		catch (e: any) {
+			console.log(e.message)
 		}
 	})
 
@@ -64,8 +64,8 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 				}
 			}
 		}
-		catch (e) {
-			console.log(e)
+		catch (e: any) {
+			console.log(e.message)
 		}
 	})
 
@@ -101,8 +101,8 @@ export const fetchFavourite = createAsyncThunk<void, TDataObj, { state: RootStat
 				}
 			}
 		}
-		catch (e) {
-			console.log(e)
+		catch (e: any) {
+			console.log(e.message)
 		}
 	}
 )
@@ -119,8 +119,8 @@ export const fetchDeleteFromFav = createAsyncThunk<void, { numId: number, strId:
 				dispatch(deleteFromFavouritesData(numId))
 			}
 		}
-		catch (e) {
-			console.log(e)
+		catch (e: any) {
+			console.log(e.message)
 		}
 	}
 )
@@ -133,8 +133,8 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=10&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
-		catch (e) {
-			console.log(e)
+		catch (e: any) {
+			console.log(e.message)
 		}
 	}
 )
@@ -147,8 +147,8 @@ export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 			const { data } = await instance.get(`votes?sub_id=${ userId }&limit=10&order=DESC`,)
 			dispatch(setToLike(data))
 		}
-		catch (e) {
-			console.log(e)
+		catch (e: any) {
+			console.log(e.message)
 		}
 	}
 )
