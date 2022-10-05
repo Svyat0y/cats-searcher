@@ -11,7 +11,7 @@ const initialState: IVoteData = {
 	likeData: [],
 	likePage: 1,
 	favoritesData: [],
-	favPage: 1,
+	favPage: 0,
 	unlikeData: [],
 	onFavourites: [],
 	infoMessage: [],

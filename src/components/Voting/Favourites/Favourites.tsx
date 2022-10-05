@@ -16,7 +16,7 @@ import { Button }   from '../../common/Buttons'
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status, favPage }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (favoritesData.length === 0)
-	const zeroPage = (favPage - 1) < 1
+	const zeroPage = (favPage - 1) < 0
 	const lastPage = favoritesData.length < 15
 
 	useEffect(() => {
@@ -64,7 +64,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 							}
 						</div>
 						{
-							(favPage === 1 && lastPage)
+							(favPage === 0 && lastPage)
 								? ''
 								: <div className={ `${ s.voting__pagination_wr } ${ s.pagination__favourites }` }>
 									<div className={ s.prev }><Button disabled={ zeroPage } onclick={ onClickPrev } name='<<' linkTo=''/></div>
