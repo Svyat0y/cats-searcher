@@ -13,6 +13,7 @@ import {
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { TDataImgVoted, TDataObj, TFavouritesData, TVotingFavourites } from './types'
+import { setLsMessages }                                               from '../../utils/infoMessageLS'
 
 
 const getDate = () => {
@@ -55,11 +56,15 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 				const newDate = getDate()
 
 				if (value === 1) {
-					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Likes', time: newDate }))
+					const message = { id: data.image_id, message: 'was added to Likes', time: newDate }
+					dispatch(setInfoMessage(message))
+					setLsMessages(message)
 				}
 				if (value === 0) {
+					const message = { id: data.image_id, message: 'was added to Dislikes', time: newDate }
 					dispatch(setToUnlike(imgObj))
-					dispatch(setInfoMessage({ id: data.image_id, message: 'was added to Dislikes', time: newDate }))
+					dispatch(setInfoMessage(message))
+					setLsMessages(message)
 				}
 				dispatch(fetchVoteImg())
 			}
@@ -88,16 +93,20 @@ export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: Ro
 				objIdFromRequest = data.id
 				if (status.toString()[0] === '2') {
 					const newDate = getDate()
+					const message = { id: imgObj?.id, message: 'was added to Favourites', time: newDate }
 					dispatch(setToFavourites(imgObj))
-					dispatch(setInfoMessage({ id: imgObj?.id, message: 'was added to Favourites', time: newDate }))
+					dispatch(setInfoMessage(message))
+					setLsMessages(message)
 				}
 			}
 			else{
 				const { status } = await instance.delete<TVotingFavourites>(`favourites/${ objIdFromRequest }`,)
 				if (status.toString()[0] === '2') {
 					const newDate = getDate()
+					const message = { id: imgObj?.id, message: 'was deleted from Favourites', time: newDate }
 					dispatch(deleteFavouritesItem(favouritedId))
-					dispatch(setInfoMessage({ id: imgObj?.id, message: 'was deleted from Favourites', time: newDate }))
+					dispatch(setInfoMessage(message))
+					setLsMessages(message)
 				}
 			}
 		}
@@ -111,14 +120,18 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 	'voting/fetchDeleteFromFav',
 	async (imgObj, thunkAPI) => {
 		const dispatch = thunkAPI.dispatch
+		const { favoritesData } = thunkAPI.getState().votingSlice
 
 		try {
 			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
 				const newDate = getDate()
+				const message = { id: imgObj?.image_id, message: 'was deleted from Favourites', time: newDate }
 				dispatch(deleteFavouritesItem(imgObj?.image_id))
 				dispatch(deleteFromFavouritesData(imgObj?.id))
-				dispatch(setInfoMessage({ id: imgObj?.image_id, message: 'was deleted from Favourites', time: newDate }))
+				dispatch(setInfoMessage(message))
+				setLsMessages(message)
+				if (favoritesData.length === 1) dispatch(fetchGetFavourites())
 			}
 		}
 		catch (e: any) {
@@ -132,7 +145,7 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 	async (_, { dispatch, getState }) => {
 		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=5&order=DESC`)
+			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=10&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {

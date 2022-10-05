@@ -13,7 +13,7 @@ import FavoriteItem from './FavoriteItem'
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
-	const noItemsBoolean = (favoritesData.length === 0 && status === 'success')
+	const noItemsBoolean = (favoritesData.length === 0)
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -21,22 +21,26 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	}, [])
 
 	useEffect(() => {
-		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+		setTimeout(() => setIsLoading(false), 1000)
 	}, [ favoritesData ])
-
-	if (isLoading) return <Spinner/>
 
 	return (
 		<>
-			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
-			<div className={ s.voting__items }>
-				{ favoritesData?.map((el: TFavouritesData) =>
-					<FavoriteItem
-						key={ el?.id }
-						el={ el }
-						dispatch={ dispatch }
-						status={ status }/>) }
-			</div>
+			{
+				isLoading
+					? <Spinner/>
+					: <>
+						{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
+						<div className={ s.voting__items }>
+							{ favoritesData?.map((el: TFavouritesData) =>
+								<FavoriteItem
+									key={ el?.id }
+									el={ el }
+									dispatch={ dispatch }
+									status={ status }/>) }
+						</div>
+					</>
+			}
 			<div className={ s.voting__messages }>
 				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>

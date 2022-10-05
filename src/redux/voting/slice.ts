@@ -39,9 +39,12 @@ export const votingSlice = createSlice({
 			state.favoritesData = state.favoritesData.filter(el => el?.id !== action.payload)
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
-			state.infoMessage = [ action.payload, ...state.infoMessage ]
-			if (state.infoMessage.length > 4) state.infoMessage.pop()
-		}
+			if (Array.isArray(action.payload)) state.infoMessage = action.payload
+			else{
+				state.infoMessage = [ action.payload, ...state.infoMessage ]
+				if (state.infoMessage.length > 4) state.infoMessage.pop()
+			}
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchVoteImg.pending, (state) => {
@@ -71,7 +74,7 @@ export const {
 	setToFavourites,
 	deleteFavouritesItem,
 	setToFavoritesData,
-	deleteFromFavouritesData
+	deleteFromFavouritesData,
 } = votingSlice.actions
 
 export default votingSlice.reducer

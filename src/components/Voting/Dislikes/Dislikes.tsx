@@ -13,7 +13,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
 
 	useEffect(() => {
 		setIsLoading(true)
-		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+		setTimeout(() => setIsLoading(false), 1000)
 	}, [ status ])
 
 	if (isLoading) return <Spinner/>
