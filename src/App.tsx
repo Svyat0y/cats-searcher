@@ -29,6 +29,5 @@ export default App
 *
 * - added pagination
 * - implement the searching functionality
-* - need to fix bug, when reloading the page after click f5 snippet don't offed
 *
 * */

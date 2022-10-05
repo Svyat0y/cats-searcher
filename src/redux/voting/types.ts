@@ -7,6 +7,8 @@ export interface IVoteData {
 	onFavourites: TDataObj[]
 	infoMessage: TInfoInfoMessage[]
 	status: Status
+	likePage: number
+	favPage: number
 }
 
 type TImage = {

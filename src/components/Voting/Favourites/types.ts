@@ -7,6 +7,7 @@ export type TFavourites = {
 	favoritesData: TFavouritesData[]
 	infoMessage: TInfoInfoMessage[]
 	status: string
+	favPage: number
 }
 export type TFavoriteItem = {
 	el: TFavouritesData

@@ -147,4 +147,35 @@
       }
     }
   }
+
+  &__pagination_wr {
+    width: 300px;
+    margin: 25px auto 0px auto;
+    @include flex(space-between, center);
+
+    a {
+      &:hover {
+        min-width: 90px;
+        background: #FBE0DC;
+        transition: all 0.2s ease;
+      }
+
+      &:active {
+        background: #FF868E;
+      }
+
+    }
+
+    .next {
+      text-align: right;
+    }
+
+    .prev {
+      text-align: left;
+    }
+  }
+
+  .pagination__favourites {
+    margin-bottom: 25px;
+  }
 }

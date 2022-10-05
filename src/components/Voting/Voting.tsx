@@ -20,7 +20,17 @@ import { TDataObj }                                      from '../../redux/votin
 const Voting: React.FC = () => {
 	const location = useLocation()
 	const dispatch = useAppDispatch()
-	const { voteData, likeData, favoritesData, unlikeData, infoMessage, onFavourites, status } = useSelector(selectVoting)
+	const {
+		voteData,
+		likeData,
+		favoritesData,
+		unlikeData,
+		infoMessage,
+		onFavourites,
+		status,
+		likePage,
+		favPage,
+	} = useSelector(selectVoting)
 
 	const locVoting = location.pathname.includes('voting')
 
@@ -50,7 +60,8 @@ const Voting: React.FC = () => {
 					<Button name='Voting' isActive={ locVoting } linkTo={ '/voting' }/>
 				</div>
 				<Routes>
-					<Route path={ '/*' } element={ <VotingImage
+					<Route
+						path={ '/*' } element={ <VotingImage
 						voteData={ voteData }
 						onFavourites={ onFavourites }
 						status={ status }
@@ -59,15 +70,26 @@ const Voting: React.FC = () => {
 						onFavourite={ onFavourite }
 						infoMessage={ infoMessage }
 					/> }/>
-					<Route path={ '/likes' } element={ <Likes dispatch={ dispatch } likeData={ likeData } status={ status }/> }/>
+					<Route
+						path={ '/likes' }
+						element={ <Likes
+							dispatch={ dispatch }
+							likeData={ likeData }
+							likePage={ likePage }
+							status={ status }/> }/>
 					<Route
 						path={ '/favourites' }
 						element={ <Favourites
 							dispatch={ dispatch }
 							infoMessage={ infoMessage }
 							favoritesData={ favoritesData }
+							favPage={ favPage }
 							status={ status }/> }/>
-					<Route path={ '/dislikes' } element={ <Dislikes unlikeData={ unlikeData } status={ status }/> }/>
+					<Route
+						path={ '/dislikes' }
+						element={ <Dislikes
+							unlikeData={ unlikeData }
+							status={ status }/> }/>
 				</Routes>
 			</div>
 		</div>

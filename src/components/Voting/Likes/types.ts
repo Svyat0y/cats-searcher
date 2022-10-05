@@ -6,4 +6,5 @@ export type TLikes = {
 	dispatch: AppDispatch
 	likeData: TLikesData[]
 	status: string
+	likePage: number
 }
