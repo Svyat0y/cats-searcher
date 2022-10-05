@@ -14,11 +14,11 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status }) => {
 
 	useEffect(() => {
 		setIsLoading(true)
-		dispatch(fetchGetLikes()).then(() => setIsLoading(false))
+		dispatch(fetchGetLikes())
 	}, [])
 
 	useEffect(() => {
-		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+		setTimeout(() => setIsLoading(false), 1000)
 	}, [ likeData ])
 
 	if (isLoading) return <Spinner/>

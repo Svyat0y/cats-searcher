@@ -17,11 +17,11 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 
 	useEffect(() => {
 		setIsLoading(true)
-		dispatch(fetchGetFavourites()).then(() => setIsLoading(false))
+		dispatch(fetchGetFavourites())
 	}, [])
 
 	useEffect(() => {
-		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+		setTimeout(() => setIsLoading(false), 1000)
 	}, [ favoritesData ])
 
 	if (isLoading) return <Spinner/>

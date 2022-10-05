@@ -131,10 +131,7 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 				dispatch(deleteFromFavouritesData(imgObj?.id))
 				dispatch(setInfoMessage(message))
 				setLsMessages(message)
-
-				setTimeout(() => {
-					if (favoritesData.length === 1) dispatch(fetchGetFavourites())
-				})
+				if (favoritesData.length === 1) dispatch(fetchGetFavourites())
 			}
 		}
 		catch (e: any) {
@@ -148,7 +145,7 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 	async (_, { dispatch, getState }) => {
 		const userId = getState().votingSlice.userId
 		try {
-			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=10&order=DESC`)
+			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=1&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {
