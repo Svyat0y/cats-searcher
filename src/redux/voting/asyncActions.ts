@@ -4,7 +4,7 @@ import { RootState }        from '../store'
 import {
 	deleteFavouritesItem,
 	deleteFromFavouritesData,
-	setInfoMessage,
+	setInfoMessage, setPrevFavPage,
 	setToFavoritesData,
 	setToFavourites,
 	setToLike,
@@ -131,7 +131,10 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 				dispatch(deleteFromFavouritesData(imgObj?.id))
 				dispatch(setInfoMessage(message))
 				setLsMessages(message)
-				if (favoritesData.length === 1) dispatch(fetchGetFavourites())
+				if (favoritesData.length === 1) {
+					dispatch(setPrevFavPage())
+					dispatch(fetchGetFavourites())
+				}
 			}
 		}
 		catch (e: any) {
@@ -143,9 +146,10 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetFavourites',
 	async (_, { dispatch, getState }) => {
-		const userId = getState().votingSlice.userId
+		const { userId, favPage } = getState().votingSlice
 		try {
-			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&limit=10&order=DESC`)
+			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&page=${ favPage }&limit=15&order=DESC`)
+			console.log(data)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {
@@ -156,10 +160,11 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 
 export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetLikes',
-	async (_, { dispatch, getState }) => {
-		const userId = getState().votingSlice.userId
+	async (page, { dispatch, getState }) => {
+		const { userId, likePage } = getState().votingSlice
+
 		try {
-			const { data } = await instance.get(`votes?sub_id=${ userId }&limit=10&order=DESC`,)
+			const { data } = await instance.get(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
 			dispatch(setToLike(data))
 		}
 		catch (e: any) {

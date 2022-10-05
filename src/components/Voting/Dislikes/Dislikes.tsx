@@ -11,6 +11,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
+
 	useEffect(() => {
 		setIsLoading(true)
 		setTimeout(() => setIsLoading(false), 1000)
@@ -20,7 +21,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
 
 	return (
 		<>
-			{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
+			{ noItemsBoolean && <div className='noItemFound'><span>No item found.</span></div> }
 			<div className={ s.voting__items }>
 				{ unlikeData?.map((el: TDataObj) => {
 					return (

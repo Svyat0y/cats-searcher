@@ -17,4 +17,11 @@
     background: var(--btn_color);
     color: #FFFFFF;
   }
+
+  &.btnNoActive {
+    pointer-events: none;
+    cursor: default;
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 134, 142, 0.5);
+  }
 }

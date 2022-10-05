@@ -9,7 +9,9 @@ const initialState: IVoteData = {
 	userId: 'user-001',
 	voteData: null,
 	likeData: [],
+	likePage: 1,
 	favoritesData: [],
+	favPage: 1,
 	unlikeData: [],
 	onFavourites: [],
 	infoMessage: [],
@@ -45,6 +47,18 @@ export const votingSlice = createSlice({
 				if (state.infoMessage.length > 4) state.infoMessage.pop()
 			}
 		},
+		setNextFavPage: (state) => {
+			state.favPage = state.favPage + 1
+		},
+		setPrevFavPage: (state) => {
+			state.favPage = state.favPage - 1
+		},
+		setNextLikePage: (state) => {
+			state.likePage = state.likePage + 1
+		},
+		setPrevLikePage: (state) => {
+			state.likePage = state.likePage - 1
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchVoteImg.pending, (state) => {
@@ -75,6 +89,10 @@ export const {
 	deleteFavouritesItem,
 	setToFavoritesData,
 	deleteFromFavouritesData,
+	setNextFavPage,
+	setPrevFavPage,
+	setNextLikePage,
+	setPrevLikePage,
 } = votingSlice.actions
 
 export default votingSlice.reducer
