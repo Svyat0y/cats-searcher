@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router'
 
 
 const BackButton: React.FC = () => {
-
 	const navigate = useNavigate()
 
 	return (

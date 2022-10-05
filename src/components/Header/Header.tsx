@@ -25,7 +25,7 @@ const Header: React.FC<THeader> = ({ theme, onChangeTheme }) => {
 				<div onClick={ onChangeTheme } className={ s.header__switcher }>
 					<input
 						readOnly
-						checked={ theme !== 'light' }
+						checked={ theme === 'dark' }
 						id='switcher'
 						type='checkbox'/>
 					<label></label>
