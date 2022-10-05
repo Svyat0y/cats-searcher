@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
 import DesktopLayout        from './components/layouts/DesktopLayout'
 
-import { useAppDispatch } from './redux/store'
-import { getLSTheme }     from './utils/theme'
+import { AppDispatch, useAppDispatch } from './redux/store'
+import { getLSTheme }                  from './utils/theme'
+import { getLsMessages }               from './utils/infoMessageLS'
 
 
 const App: React.FC = () => {
-	const dispatch = useAppDispatch()
+	const dispatch: AppDispatch = useAppDispatch()
 
 	useEffect(() => {
 		getLSTheme(dispatch)
+		getLsMessages(dispatch)
 	}, [])
 
 	return (
