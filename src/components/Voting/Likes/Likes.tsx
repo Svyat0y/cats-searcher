@@ -14,7 +14,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status }) => {
 
 	useEffect(() => {
 		setIsLoading(true)
-		dispatch(fetchGetLikes())
+		dispatch(fetchGetLikes()).then(() => setIsLoading(false))
 	}, [])
 
 	useEffect(() => {
