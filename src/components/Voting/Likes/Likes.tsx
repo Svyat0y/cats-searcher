@@ -13,7 +13,7 @@ import { Button }  from '../../common/Buttons'
 const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (likeData.length === 0 && status === 'success')
-	const zeroPage = (likePage - 1) < 1
+	const zeroPage = (likePage - 1) < 0
 	const lastPage = likeData.length < 15
 
 	useEffect(() => {
@@ -47,7 +47,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 				}) }
 			</div>
 			{
-				likePage === 1 && lastPage
+				likePage === 0 && lastPage
 					? ''
 					: <div className={ s.voting__pagination_wr }>
 						<div className={ s.prev }><Button disabled={ zeroPage } onclick={ onClickPrev } name='<<' linkTo=''/></div>
