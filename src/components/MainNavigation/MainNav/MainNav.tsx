@@ -22,9 +22,9 @@ const MainNav: React.FC = () => {
 				<p>Welcome to MI 2022 Frontend test</p>
 			</div>
 			<div className={ s.content__cards_wr }>
-						<span className={ s.content__cards_desc }>
-							Lets start using The Cat API
-						</span>
+				<span className={ s.content__cards_desc }>
+					Lets start using The Cat API
+				</span>
 				<div className={ s.content__cards }>
 					{ cards.map((card, i) =>
 						<Card

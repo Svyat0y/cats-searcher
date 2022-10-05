@@ -11,7 +11,7 @@ const Card: React.FC<TCard> = ({ name, img, color, to }) => {
 
 	return (
 		<div className={ s.content__card }>
-			<Link to={ to } className={ `${ s.card } ${ s[color] }` }>
+			<Link to={ to } className={ `${ s.card } ${ s[color] } ${ loc ? s.active : '' }` }>
 				<div className={ s.card__img_wr }>
 					<img src={ img } alt='card'/>
 				</div>

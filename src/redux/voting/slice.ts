@@ -40,6 +40,7 @@ export const votingSlice = createSlice({
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
 			state.infoMessage = [ action.payload, ...state.infoMessage ]
+			if (state.infoMessage.length > 4) state.infoMessage.pop()
 		}
 	},
 	extraReducers: (builder) => {

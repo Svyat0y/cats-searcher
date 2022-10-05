@@ -9,8 +9,7 @@ const VotingMessage: React.FC<TVotingMessages> = ({ id, message, time }) => {
 		<div className={ s.voting__message_wr }>
 			<span className={ s.voting__time }>{ time }</span>
 			<span className={ s.voting__desc }>
-					Image ID: <span className={ s.id_desc }>{ id }</span> { message }
-				</span>
+					Image ID: <span className={ s.id_desc }>{ id }</span> { message } </span>
 			<div className={ s.info__icon_wr }>
 
 				{ message.includes('Likes') &&
