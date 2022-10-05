@@ -13,7 +13,7 @@ import FavoriteItem from './FavoriteItem'
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
-	const noItemsBoolean = (favoritesData.length === 0 && !isLoading)
+	const noItemsBoolean = (favoritesData.length === 0)
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -30,7 +30,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 				isLoading
 					? <Spinner/>
 					: <>
-						{ (noItemsBoolean) && <div className='noItemFound '><span>No item found</span></div> }
+						{ noItemsBoolean && <div className='noItemFound '><span>No item found</span></div> }
 						<div className={ s.voting__items }>
 							{ favoritesData?.map((el: TFavouritesData) =>
 								<FavoriteItem
