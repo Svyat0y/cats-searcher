@@ -1,8 +1,8 @@
 export interface IVoteData {
 	userId: string
 	voteData: TDataObj | null
-	likeData: TLikesData[]
-	favoritesData: TFavouritesData[]
+	likeData: TLikesData[] | null
+	favoritesData: TFavouritesData[] | null
 	unlikeData: TDataObj[]
 	onFavourites: TDataObj[]
 	infoMessage: TInfoInfoMessage[]

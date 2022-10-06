@@ -125,16 +125,18 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 		try {
 			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
-				const newDate = getDate()
-				const message = { id: imgObj?.image_id, message: 'was deleted from Favourites', time: newDate }
-				dispatch(deleteFavouritesItem(imgObj?.image_id))
-				dispatch(deleteFromFavouritesData(imgObj?.id))
-				dispatch(setInfoMessage(message))
-				setLsMessages(message)
-				if (favoritesData.length === 1) {
+				if (favoritesData?.length === 1) {
 					dispatch(setPrevFavPage())
 					dispatch(fetchGetFavourites())
 				}
+				setTimeout(() => {
+					const newDate = getDate()
+					const message = { id: imgObj?.image_id, message: 'was deleted from Favourites', time: newDate }
+					dispatch(deleteFavouritesItem(imgObj?.image_id))
+					dispatch(deleteFromFavouritesData(imgObj?.id))
+					dispatch(setInfoMessage(message))
+					setLsMessages(message)
+				}, 0)
 			}
 		}
 		catch (e: any) {
