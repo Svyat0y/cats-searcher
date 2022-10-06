@@ -22,7 +22,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	}, [ likePage ])
 
 	useEffect(() => {
-		setTimeout(() => setIsLoading(false), 1000)
+		if (likeData.length > 1) setTimeout(() => setIsLoading(false), 1000)
 	}, [ likeData ])
 
 	const onClickNext = () => {

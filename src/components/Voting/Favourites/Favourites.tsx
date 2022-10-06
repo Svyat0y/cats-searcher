@@ -25,7 +25,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	}, [ favPage ])
 
 	useEffect(() => {
-		setTimeout(() => setIsLoading(false), 1000)
+		if (favoritesData.length > 1) setTimeout(() => setIsLoading(false), 1000)
 	}, [ favoritesData ])
 
 	const onClickNext = () => {

@@ -149,7 +149,6 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 		const { userId, favPage } = getState().votingSlice
 		try {
 			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&page=${ favPage }&limit=15&order=DESC`)
-			console.log(data)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {
