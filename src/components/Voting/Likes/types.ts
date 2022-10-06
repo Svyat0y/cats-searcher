@@ -4,7 +4,7 @@ import { TLikesData }  from '../../../redux/voting/types'
 
 export type TLikes = {
 	dispatch: AppDispatch
-	likeData: TLikesData[]
+	likeData: TLikesData[] | null
 	status: string
 	likePage: number
 }

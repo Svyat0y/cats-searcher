@@ -27,7 +27,6 @@ export default App
 /*
 * voting component
 *
-* - added pagination
 * - implement the searching functionality
 *
 * */

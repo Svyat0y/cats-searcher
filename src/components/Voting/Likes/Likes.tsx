@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
 
-import { fetchGetLikes }                    from '../../../redux/voting/asyncActions'
-import { TLikesData }                       from '../../../redux/voting/types'
-import { setNextLikePage, setPrevLikePage } from '../../../redux/voting/slice'
-import { TLikes }                           from './types'
+import { fetchGetLikes }                                  from '../../../redux/voting/asyncActions'
+import { TLikesData }                                     from '../../../redux/voting/types'
+import { setActiveBtn, setNextLikePage, setPrevLikePage } from '../../../redux/voting/slice'
+import { TLikes }                                         from './types'
 
 import { Spinner } from '../../Spinner'
 import { Button }  from '../../common/Buttons'
@@ -14,15 +14,16 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (likeData?.length === 0 && status === 'success')
 	const zeroPage = (likePage - 1) < 0
-	const lastPage = likeData?.length < 15
+	const lastPage = likeData && likeData.length < 15
 
 	useEffect(() => {
+		dispatch(setActiveBtn('likes'))
 		setIsLoading(true)
 		dispatch(fetchGetLikes())
 	}, [ likePage ])
 
 	useEffect(() => {
-		if (likeData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
+		if (likeData && likeData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
 	}, [ likeData ])
 
 	const onClickNext = () => {

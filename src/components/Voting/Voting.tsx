@@ -30,9 +30,12 @@ const Voting: React.FC = () => {
 		status,
 		likePage,
 		favPage,
+		activeButton
 	} = useSelector(selectVoting)
 
 	const locVoting = location.pathname.includes('voting')
+
+	console.log(location)
 
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
@@ -57,11 +60,14 @@ const Voting: React.FC = () => {
 			<div className={ s.voting__body }>
 				<div className={ s.voting__breadCrumbs }>
 					<BackButton/>
-					<Button name='Voting' isActive={ locVoting } linkTo={ '/voting' }/>
+					<Button
+						name={ activeButton }
+						isActive={ locVoting }/>
 				</div>
 				<Routes>
 					<Route
 						path={ '/*' } element={ <VotingImage
+						dispatch={ dispatch }
 						voteData={ voteData }
 						onFavourites={ onFavourites }
 						status={ status }
@@ -88,6 +94,7 @@ const Voting: React.FC = () => {
 					<Route
 						path={ '/dislikes' }
 						element={ <Dislikes
+							dispatch={ dispatch }
 							unlikeData={ unlikeData }
 							status={ status }/> }/>
 				</Routes>

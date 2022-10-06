@@ -15,6 +15,7 @@ const initialState: IVoteData = {
 	unlikeData: [],
 	onFavourites: [],
 	infoMessage: [],
+	activeButton: '',
 	status: Status.PENDING,
 }
 
@@ -61,6 +62,9 @@ export const votingSlice = createSlice({
 			if ((state.likePage - 1) < 0) state.likePage = 0
 			else state.likePage = state.likePage - 1
 		},
+		setActiveBtn: (state, action: PayloadAction<string>) => {
+			state.activeButton = action.payload
+		}
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchVoteImg.pending, (state) => {
@@ -95,6 +99,7 @@ export const {
 	setPrevFavPage,
 	setNextLikePage,
 	setPrevLikePage,
+	setActiveBtn,
 } = votingSlice.actions
 
 export default votingSlice.reducer

@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
 
-import { TDataObj }  from '../../../redux/voting/types'
-import { TDislikes } from './types'
+import { TDataObj }     from '../../../redux/voting/types'
+import { setActiveBtn } from '../../../redux/voting/slice'
+import { TDislikes }    from './types'
 
 import { Spinner } from '../../Spinner'
 
 
-const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
+const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
 
 	useEffect(() => {
+		dispatch(setActiveBtn('Dislikes'))
 		setIsLoading(true)
 		setTimeout(() => setIsLoading(false), 1000)
 	}, [ status ])
