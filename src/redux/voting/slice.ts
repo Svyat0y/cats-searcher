@@ -8,9 +8,9 @@ import { isFulfilledAction, isPendingAction, isRejectedAction }                 
 const initialState: IVoteData = {
 	userId: 'user-001',
 	voteData: null,
-	likeData: [],
+	likeData: null,
 	likePage: 1,
-	favoritesData: [],
+	favoritesData: null,
 	favPage: 0,
 	unlikeData: [],
 	onFavourites: [],
@@ -38,7 +38,7 @@ export const votingSlice = createSlice({
 			state.onFavourites = state.onFavourites.filter(el => el?.id !== action.payload)
 		},
 		deleteFromFavouritesData: (state, action: PayloadAction<number | undefined>) => {
-			state.favoritesData = state.favoritesData.filter(el => el?.id !== action.payload)
+			if (state.favoritesData) state.favoritesData = state.favoritesData.filter(el => el?.id !== action.payload)
 		},
 		setInfoMessage: (state, action: PayloadAction<TInfoInfoMessage>) => {
 			if (Array.isArray(action.payload)) state.infoMessage = action.payload
@@ -51,13 +51,15 @@ export const votingSlice = createSlice({
 			state.favPage = state.favPage + 1
 		},
 		setPrevFavPage: (state) => {
-			state.favPage = state.favPage - 1
+			if ((state.favPage - 1) < 0) state.favPage = 0
+			else state.favPage = state.favPage - 1
 		},
 		setNextLikePage: (state) => {
 			state.likePage = state.likePage + 1
 		},
 		setPrevLikePage: (state) => {
-			state.likePage = state.likePage - 1
+			if ((state.likePage - 1) < 0) state.likePage = 0
+			else state.likePage = state.likePage - 1
 		},
 	},
 	extraReducers: (builder) => {

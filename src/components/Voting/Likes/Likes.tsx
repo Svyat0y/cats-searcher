@@ -12,9 +12,9 @@ import { Button }  from '../../common/Buttons'
 
 const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
-	const noItemsBoolean = (likeData.length === 0 && status === 'success')
+	const noItemsBoolean = (likeData?.length === 0 && status === 'success')
 	const zeroPage = (likePage - 1) < 0
-	const lastPage = likeData.length < 15
+	const lastPage = likeData?.length < 15
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -22,7 +22,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	}, [ likePage ])
 
 	useEffect(() => {
-		setTimeout(() => setIsLoading(false), 1000)
+		if (likeData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
 	}, [ likeData ])
 
 	const onClickNext = () => {

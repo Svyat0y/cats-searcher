@@ -15,9 +15,9 @@ import { Button }   from '../../common/Buttons'
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status, favPage }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
-	const noItemsBoolean = (favoritesData.length === 0)
+	const noItemsBoolean = (favoritesData?.length === 0)
 	const zeroPage = (favPage - 1) < 0
-	const lastPage = favoritesData.length < 15
+	const lastPage = favoritesData?.length < 15
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -25,12 +25,13 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	}, [ favPage ])
 
 	useEffect(() => {
-		setTimeout(() => setIsLoading(false), 1000)
+		if (favoritesData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
 	}, [ favoritesData ])
 
 	const onClickNext = () => {
 		if (!lastPage) dispatch(setNextFavPage())
 	}
+
 	const onClickPrev = () => {
 		if (!zeroPage) dispatch(setPrevFavPage())
 	}
@@ -44,13 +45,10 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 						{
 							noItemsBoolean &&
 							<div className='noItemFound'>
-								<span>No item found.</span>
-							</div>
-						}
-						{
-							noItemsBoolean &&
-							<div className='noItemFound'>
-								<span>Please return to the previous page.</span>
+								<span>
+									No item found.
+									{ (noItemsBoolean && favPage > 0) && <div>Please return to the previous page.</div> }
+								</span>
 							</div>
 						}
 						<div className={ s.voting__items }>
