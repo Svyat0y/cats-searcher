@@ -6,13 +6,15 @@ import { TVotingImage } from './types'
 
 import { VotingMessage } from '../VotingMessages'
 import Spinner           from '../../Spinner/Spinner'
+import { setActiveBtn }  from '../../../redux/voting/slice'
 
 
 const VotingImage: React.FC<TVotingImage> = (
-	{ voteData, onFavourites, onLike, onUnlike, onFavourite, status, infoMessage }) => {
+	{ voteData, onFavourites, onLike, onUnlike, onFavourite, status, infoMessage, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
+		dispatch(setActiveBtn('Voting'))
 		setIsLoading(true)
 		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
 	}, [ voteData ])

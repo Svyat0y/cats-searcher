@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
 
-import { fetchGetFavourites }             from '../../../redux/voting/asyncActions'
-import { TFavouritesData }                from '../../../redux/voting/types'
-import { setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
-import { TFavourites }                    from './types'
+import { fetchGetFavourites }                           from '../../../redux/voting/asyncActions'
+import { TFavouritesData }                              from '../../../redux/voting/types'
+import { setActiveBtn, setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
+import { TFavourites }                                  from './types'
 
 import { VotingMessage } from '../VotingMessages'
 import { Spinner }       from '../../Spinner'
@@ -17,15 +17,16 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (favoritesData?.length === 0)
 	const zeroPage = (favPage - 1) < 0
-	const lastPage = favoritesData?.length < 15
+	const lastPage = favoritesData && favoritesData?.length < 15
 
 	useEffect(() => {
+		dispatch(setActiveBtn('Favourites'))
 		setIsLoading(true)
 		dispatch(fetchGetFavourites())
 	}, [ favPage ])
 
 	useEffect(() => {
-		if (favoritesData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
+		if (favoritesData && favoritesData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
 	}, [ favoritesData ])
 
 	const onClickNext = () => {

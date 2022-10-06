@@ -4,7 +4,7 @@ import { TFavouritesData, TInfoInfoMessage } from '../../../redux/voting/types'
 
 export type TFavourites = {
 	dispatch: AppDispatch
-	favoritesData: TFavouritesData[]
+	favoritesData: TFavouritesData[] | null
 	infoMessage: TInfoInfoMessage[]
 	status: string
 	favPage: number

@@ -19,19 +19,6 @@
     }
   }
 
-  &__breadCrumbs {
-    @include flex(flex-start, center);
-    margin-bottom: 20px;
-
-    button {
-      margin-right: 10px;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
   &__img_wr {
     width: 100%;
     min-height: 360px;

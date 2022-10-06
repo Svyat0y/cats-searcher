@@ -11,7 +11,8 @@
   font-weight: 500;
   color: var(--btn_color);
   letter-spacing: 2px;
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
 
   &:active, &Active {
     background: var(--btn_color);

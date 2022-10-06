@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
 
-import { TDataObj }  from '../../../redux/voting/types'
-import { TDislikes } from './types'
+import { TDataObj }     from '../../../redux/voting/types'
+import { setActiveBtn } from '../../../redux/voting/slice'
+import { TDislikes }    from './types'
 
 import { Spinner } from '../../Spinner'
 
 
-const Dislikes: React.FC<TDislikes> = ({ unlikeData, status }) => {
+const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
+	// axios.get('https://api.thecatapi.com/v1/breeds/search/?q=american').then(data => console.log(data.data))
+
 
 	useEffect(() => {
+		dispatch(setActiveBtn('Dislikes'))
 		setIsLoading(true)
 		setTimeout(() => setIsLoading(false), 1000)
 	}, [ status ])

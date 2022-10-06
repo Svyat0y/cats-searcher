@@ -3,5 +3,5 @@ export type TButton = {
 	isActive?: boolean
 	linkTo?: string
 	onclick?: () => void
-	disabled?: boolean
+	disabled?: boolean | null
 }

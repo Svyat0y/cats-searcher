@@ -9,6 +9,7 @@ export interface IVoteData {
 	status: Status
 	likePage: number
 	favPage: number
+	activeButton: string
 }
 
 type TImage = {
