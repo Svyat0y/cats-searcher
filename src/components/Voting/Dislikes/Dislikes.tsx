@@ -12,6 +12,8 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
+	// axios.get('https://api.thecatapi.com/v1/breeds/search/?q=american').then(data => console.log(data.data))
+
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Dislikes'))

@@ -58,7 +58,7 @@ const Voting: React.FC = () => {
 		<div className={ s.voting }>
 			<Search/>
 			<div className={ s.voting__body }>
-				<div className={ s.voting__breadCrumbs }>
+				<div className='breadCrumbs'>
 					<BackButton/>
 					<Button
 						name={ activeButton }

@@ -31,3 +31,16 @@
     margin-bottom: 0;
   }
 }
+
+.breadCrumbs {
+  @include flex(flex-start, center, center);
+  margin-bottom: 20px;
+
+  button {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

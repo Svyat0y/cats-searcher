@@ -1,0 +1,121 @@
+@import "src/scss/variables";
+
+.search {
+  @include flex(space-between, center);
+  height: 60px;
+  margin-bottom: 10px;
+
+  &__input_wr {
+    position: relative;
+    height: 60px;
+    max-width: 470px;
+    width: 100%;
+
+    a {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      right: 10px;
+      top: 10px;
+      color: white;
+      background: var(--bg_input_search);
+      border-radius: 10px;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background: url("../../assets/images/voting/search.webp") center no-repeat;
+      }
+
+      &:hover {
+        background: #FF868E;
+
+        &::after {
+          background: url("../../assets/images/voting/searchWhite.webp") center no-repeat;
+        }
+      }
+    }
+
+    input {
+      outline: none;
+      border: none;
+      height: 100%;
+      width: 100%;
+      background: var(--bg_white-grey);
+      border-radius: 20px;
+      font-size: 20px;
+      color: #8C8C8C;
+      padding: 0 60px 0 20px;
+
+      @include placeholder {
+        opacity: .7;
+        transition: opacity 300ms;
+      }
+
+      &:hover {
+        outline: 2px solid #FBE0DC;
+      }
+
+      &:focus {
+        outline: 2px solid #FF868E;
+        @include transition();
+
+        @include placeholder {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: flex-end;
+
+    .icon_wr {
+      width: 60px;
+      height: 60px;
+      background: var(--bg_white-grey);
+      border-radius: 20px;
+      @include flex(center, center);
+      margin-right: 10px;
+      cursor: pointer;
+      user-select: none;
+      @include transition();
+
+      svg {
+        fill: #FF868E;
+      }
+
+      &:hover {
+        background: #FBE0DC;
+        @include transition();
+      }
+
+      &:active {
+        background: #FF868E;
+
+        svg {
+          fill: #FFFFFF;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.iconActive {
+        background: #FF868E;
+
+        svg {
+          fill: #FFFFFF;
+        }
+      }
+    }
+  }
+}
