@@ -4,4 +4,5 @@ export type TButton = {
 	linkTo?: string
 	onclick?: () => void
 	disabled?: boolean | null
+	breadCrumbs?: boolean
 }

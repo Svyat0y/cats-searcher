@@ -11,12 +11,16 @@
   font-weight: 500;
   color: var(--btn_color);
   letter-spacing: 2px;
-  cursor: default;
-  pointer-events: none;
+  cursor: pointer;
 
   &:active, &Active {
     background: var(--btn_color);
     color: #FFFFFF;
+  }
+
+  &.breadCrumbs {
+    pointer-events: none;
+    cursor: default;
   }
 
   &.btnNoActive {

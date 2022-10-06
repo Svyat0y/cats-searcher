@@ -6,6 +6,7 @@ export interface IVoteData {
 	unlikeData: TDataObj[]
 	onFavourites: TDataObj[]
 	infoMessage: TInfoInfoMessage[]
+	searchData: any
 	status: Status
 	likePage: number
 	favPage: number

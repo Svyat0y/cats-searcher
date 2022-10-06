@@ -12,9 +12,6 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
-	// axios.get('https://api.thecatapi.com/v1/breeds/search/?q=american').then(data => console.log(data.data))
-
-
 	useEffect(() => {
 		dispatch(setActiveBtn('Dislikes'))
 		setIsLoading(true)
@@ -26,10 +23,10 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 	return (
 		<>
 			{ noItemsBoolean && <div className='noItemFound'><span>No item found.</span></div> }
-			<div className={ s.voting__items }>
+			<div className='items'>
 				{ unlikeData?.map((el: TDataObj) => {
 					return (
-						<div className={ `${ s.voting__itemsImg_wr } ${ s.unHoverClass }` } key={ el?.id }>
+						<div className={ `${ 'itemsImg_wr' } ${ s.unHoverClass }` } key={ el?.id }>
 							<img src={ el?.url } alt='image'/>
 						</div>
 					)

@@ -52,7 +52,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 								</span>
 							</div>
 						}
-						<div className={ s.voting__items }>
+						<div className='items'>
 							{
 								favoritesData?.map((el: TFavouritesData) =>
 									<FavoriteItem

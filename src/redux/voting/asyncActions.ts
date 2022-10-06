@@ -7,13 +7,13 @@ import {
 	setInfoMessage, setPrevFavPage,
 	setToFavoritesData,
 	setToFavourites,
-	setToLike,
+	setToLike, setToSearchData,
 	setToUnlike
 }                           from './slice'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { TDataImgVoted, TDataObj, TFavouritesData, TVotingFavourites } from './types'
-import { setLsMessages }                                               from '../../utils/infoMessageLS'
+import { TDataImgVoted, TDataObj, TFavouritesData, TLikesData, TVotingFavourites } from './types'
+import { setLsMessages }                                                           from '../../utils/infoMessageLS'
 
 
 const getDate = () => {
@@ -165,8 +165,37 @@ export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 		const { userId, likePage } = getState().votingSlice
 
 		try {
-			const { data } = await instance.get(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
+			const { data } = await instance.get<TLikesData[]>(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
 			dispatch(setToLike(data))
+		}
+		catch (e: any) {
+			console.log(e.message)
+		}
+	}
+)
+
+const fetchSearchRightObjects = createAsyncThunk<any, string>(
+	'searchRightObjects',
+	async (reference_image_id) => {
+		const { data } = await instance.get<any>(`images/${ reference_image_id }`)
+		const { id, url } = data
+		const { name } = data.breeds
+
+		return { id, url, name }
+	}
+)
+
+export const fetchSearch = createAsyncThunk<void, string>(
+	'search',
+	async (search, { dispatch }) => {
+		try {
+			const { data } = await instance.get<any>(`breeds/search/?q=${ search }`)
+			const newData = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
+				return dispatch(fetchSearchRightObjects(reference_image_id))
+			}))
+
+			console.log(newData)
+			dispatch(setToSearchData(newData))
 		}
 		catch (e: any) {
 			console.log(e.message)
