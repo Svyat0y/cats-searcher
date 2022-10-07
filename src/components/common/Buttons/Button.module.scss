@@ -13,6 +13,10 @@
   letter-spacing: 2px;
   cursor: pointer;
 
+  &:hover {
+    background: #FBE0DC;
+  }
+
   &:active, &Active {
     background: var(--btn_color);
     color: #FFFFFF;
