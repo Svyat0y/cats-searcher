@@ -1,4 +1,4 @@
-export interface IVoteData {
+export interface IVote {
 	userId: string
 	voteData: TDataObj | null
 	likeData: TLikesData[] | null
@@ -6,7 +6,6 @@ export interface IVoteData {
 	unlikeData: TDataObj[]
 	onFavourites: TDataObj[]
 	infoMessage: TInfoInfoMessage[]
-	searchData: any
 	status: Status
 	likePage: number
 	favPage: number

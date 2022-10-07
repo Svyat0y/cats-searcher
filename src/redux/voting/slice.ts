@@ -1,15 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { fetchVoteImg }               from './asyncActions'
 
-import { TDataObj, IVoteData, Status, TInfoInfoMessage, TFavouritesData, TLikesData } from './types'
-import { isFulfilledAction, isPendingAction, isRejectedAction }                       from './utilsAction'
+import { TDataObj, IVote, Status, TInfoInfoMessage, TFavouritesData, TLikesData } from './types'
+import { isFulfilledAction, isPendingAction, isRejectedAction }                   from './utilsAction'
 
 
-const initialState: IVoteData = {
+const initialState: IVote = {
 	userId: 'user-001',
 	voteData: null,
 	likeData: null,
-	searchData: null,
 	likePage: 0,
 	favoritesData: null,
 	favPage: 0,
@@ -35,9 +34,6 @@ export const votingSlice = createSlice({
 		},
 		setToFavoritesData: (state, action: PayloadAction<TFavouritesData[]>) => {
 			state.favoritesData = action.payload
-		},
-		setToSearchData: (state, action: PayloadAction<any>) => {
-			state.searchData = action.payload
 		},
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {
 			state.onFavourites = state.onFavourites.filter(el => el?.id !== action.payload)
@@ -104,7 +100,6 @@ export const {
 	setNextLikePage,
 	setPrevLikePage,
 	setActiveBtn,
-	setToSearchData,
 } = votingSlice.actions
 
 export default votingSlice.reducer

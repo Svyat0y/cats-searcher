@@ -4,7 +4,7 @@ import s                   from './SearchPanel.module.scss'
 import SearchPanelButtons from './SearchPanelButtons'
 import { Link }           from 'react-router-dom'
 import { useAppDispatch } from '../../redux/store'
-import { fetchSearch }    from '../../redux/voting/asyncActions'
+import { fetchSearch }    from '../../redux/Search/asyncActions'
 
 
 const SearchPanel: React.FC = () => {
@@ -16,14 +16,14 @@ const SearchPanel: React.FC = () => {
 	}
 
 	const onSearchClick = () => {
-		dispatch(fetchSearch(value))
+		if (value) dispatch(fetchSearch(value))
 	}
 
 	return (
 		<div className={ s.search }>
 			<div className={ s.search__input_wr }>
 				<input onChange={ (e) => onChangeValue(e) } type='text' placeholder='SearchPanel for breeds by name'/>
-				<Link onClick={ onSearchClick } to='/search'></Link>
+				<Link onClick={ onSearchClick } to={ value && '/search' }></Link>
 			</div>
 			<SearchPanelButtons/>
 		</div>
