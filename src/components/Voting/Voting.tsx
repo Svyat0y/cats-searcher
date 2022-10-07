@@ -2,7 +2,7 @@ import React, { useEffect }           from 'react'
 import s                              from './Voting.module.scss'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
-import { Search }             from '../Search'
+import { SearchPanel }        from '../Search'
 import { VotingImage }        from './VotingImage'
 import { BackButton, Button } from '../common/Buttons'
 import { Likes }              from './Likes'
@@ -54,7 +54,7 @@ const Voting: React.FC = () => {
 
 	return (
 		<div className={ s.voting }>
-			<Search/>
+			<SearchPanel/>
 			<div className={ s.voting__body }>
 				<div className='breadCrumbs'>
 					<BackButton/>
