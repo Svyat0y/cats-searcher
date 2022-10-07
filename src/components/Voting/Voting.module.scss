@@ -39,7 +39,7 @@
     margin: 25px auto 0px auto;
     @include flex(space-between, center);
 
-    a {
+    /*a {
       &:hover {
         min-width: 90px;
         background: #FBE0DC;
@@ -50,7 +50,7 @@
         background: #FF868E;
       }
 
-    }
+    }*/
 
     .next {
       text-align: right;

@@ -9,7 +9,7 @@ import { selectSearch }   from '../../redux/Search/selectors'
 import { selectVoting }   from '../../redux/voting/selectors'
 import { TSearchData }    from '../../redux/Search/types'
 
-import { Search }             from './index'
+import { SearchPanel }        from './index'
 import { BackButton, Button } from '../common/Buttons'
 import { Spinner }            from '../Spinner'
 
@@ -31,7 +31,7 @@ const SearchComponent: React.FC = () => {
 
 	return (
 		<>
-			<Search/>
+			<SearchPanel/>
 			<div className={ s.search_wr }>
 				<div className='breadCrumbs'>
 					<BackButton/>
