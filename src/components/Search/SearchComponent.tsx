@@ -40,7 +40,7 @@ const SearchComponent: React.FC = () => {
 						name={ activeButton }
 						isActive={ locSearch }/>
 				</div>
-				{ emptyData && status === 'success' && <div className='noItemFound'>Nothing found, please enter another query</div> }
+				{ emptyData && status === 'success' && <div className='noItemFound'>Nothing found, please enter another breed</div> }
 				{
 					status === 'pending'
 						? <Spinner/>

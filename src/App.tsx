@@ -25,8 +25,8 @@ export default App
 
 // new features in development
 /*
-* voting component
+* Search component
 *
-* - implement the searching functionality
+* - implement single image opening
 *
 * */

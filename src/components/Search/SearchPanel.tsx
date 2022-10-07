@@ -24,7 +24,7 @@ const SearchPanel: React.FC = () => {
 	return (
 		<div className={ s.search }>
 			<div className={ s.search__input_wr }>
-				<input onChange={ (e) => onChangeValue(e) } type='text' placeholder='SearchPanel for breeds by name'/>
+				<input onChange={ (e) => onChangeValue(e) } type='text' placeholder='Search for breeds by name'/>
 				<Link onClick={ onSearchClick } to={ value ? '/search' : '#' }></Link>
 			</div>
 			<SearchPanelButtons/>
