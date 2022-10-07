@@ -24,6 +24,12 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		navigate(`/breedInfo?breed_name=${ name }`)
 	}
 
+	useEffect(() => {
+		if (status === 'success' && searchData.length === 0) {
+			navigate('/voting')
+		}
+	}, [])
+
 	return (
 		<div>
 			{ emptyData && status === 'success' && <div className='noItemFound'>Nothing found, please enter another breed</div> }
