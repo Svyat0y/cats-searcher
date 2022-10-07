@@ -144,12 +144,12 @@
         border-radius: unset;
       }
     }
-    
+
     .hoverBtn {
       top: initial;
-      left: 3%;
-      bottom: 3%;
-      width: 94%;
+      left: 10px;
+      bottom: 10px;
+      width: calc(100% - 20px);
       color: var(--btn_color);
       @include flex(center, center);
     }
