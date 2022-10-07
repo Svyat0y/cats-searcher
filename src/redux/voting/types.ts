@@ -1,4 +1,4 @@
-export interface IVoteData {
+export interface IVote {
 	userId: string
 	voteData: TDataObj | null
 	likeData: TLikesData[] | null

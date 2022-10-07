@@ -35,8 +35,6 @@ const Voting: React.FC = () => {
 
 	const locVoting = location.pathname.includes('voting')
 
-	console.log(location)
-
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
 		return () => promise.abort()
@@ -61,6 +59,7 @@ const Voting: React.FC = () => {
 				<div className='breadCrumbs'>
 					<BackButton/>
 					<Button
+						breadCrumbs={ true }
 						name={ activeButton }
 						isActive={ locVoting }/>
 				</div>

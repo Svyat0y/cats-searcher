@@ -38,14 +38,16 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	return (
 		<>
 			{ noItemsBoolean && <div className='noItemFound'><span>No item found.</span></div> }
-			<div className={ s.voting__items }>
-				{ likeData?.map((el: TLikesData) => {
-					return (
-						<div className={ `${ s.voting__itemsImg_wr } ${ s.unHoverClass }` } key={ el.id }>
-							<img src={ el.image.url } alt='image'/>
-						</div>
-					)
-				}) }
+			<div className='items'>
+				{
+					likeData?.map((el: TLikesData) => {
+						return (
+							<div className={ `${ 'itemsImg_wr' } ${ s.unHoverClass }` } key={ el.id }>
+								<img src={ el.image.url } alt='image'/>
+							</div>
+						)
+					})
+				}
 			</div>
 			{
 				likePage === 0 && lastPage

@@ -1,6 +1,7 @@
-import { instance } from '../../api/api'
+import { instance }         from '../../api/api'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { RootState }        from '../store'
+import { RootState } from '../store'
 import {
 	deleteFavouritesItem,
 	deleteFromFavouritesData,
@@ -9,11 +10,10 @@ import {
 	setToFavourites,
 	setToLike,
 	setToUnlike
-}                           from './slice'
-import { createAsyncThunk } from '@reduxjs/toolkit'
+}                    from './slice'
 
-import { TDataImgVoted, TDataObj, TFavouritesData, TVotingFavourites } from './types'
-import { setLsMessages }                                               from '../../utils/infoMessageLS'
+import { TDataImgVoted, TDataObj, TFavouritesData, TLikesData, TVotingFavourites } from './types'
+import { setLsMessages }                                                           from '../../utils/infoMessageLS'
 
 
 const getDate = () => {
@@ -165,7 +165,7 @@ export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 		const { userId, likePage } = getState().votingSlice
 
 		try {
-			const { data } = await instance.get(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
+			const { data } = await instance.get<TLikesData[]>(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
 			dispatch(setToLike(data))
 		}
 		catch (e: any) {

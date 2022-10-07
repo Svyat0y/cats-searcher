@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { fetchVoteImg }               from './asyncActions'
 
-import { TDataObj, IVoteData, Status, TInfoInfoMessage, TFavouritesData, TLikesData } from './types'
-import { isFulfilledAction, isPendingAction, isRejectedAction }                       from './utilsAction'
+import { TDataObj, IVote, Status, TInfoInfoMessage, TFavouritesData, TLikesData } from './types'
+import { isFulfilledAction, isPendingAction, isRejectedAction }                   from './utilsAction'
 
 
-const initialState: IVoteData = {
+const initialState: IVote = {
 	userId: 'user-001',
 	voteData: null,
 	likeData: null,
-	likePage: 1,
+	likePage: 0,
 	favoritesData: null,
 	favPage: 0,
 	unlikeData: [],

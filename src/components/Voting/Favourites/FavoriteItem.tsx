@@ -24,13 +24,14 @@ const FavoriteItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 	}
 
 	return (
-		<div className={ s.voting__itemsImg_wr } key={ el?.id }>
+		<div className='itemsImg_wr' key={ el?.id }>
 			<img src={ el?.image?.url ? el?.image?.url : emptyImage } alt='image'/>
 			<button disabled={ isFetching } onClick={ () => deleteFromFavourites(el) }
-					className={ s.item__hoverIcon }>
-				{ isFetching
-					? <SmallSpinner height={ 20 } width={ 40 } color='#FF868E'/>
-					: <img src={ heartBgRedImg } alt=''/>
+					className='item__hoverIcon'>
+				{
+					isFetching
+						? <SmallSpinner height={ 20 } width={ 40 } color='#FF868E'/>
+						: <img src={ heartBgRedImg } alt=''/>
 				}
 			</button>
 		</div>
