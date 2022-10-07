@@ -42,7 +42,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 				{
 					likeData?.map((el: TLikesData) => {
 						return (
-							<div className={ `${ 'itemsImg_wr' } ${ s.unHoverClass }` } key={ el.id }>
+							<div className='itemsImg_wr unHoverClass' key={ el.id }>
 								<img src={ el.image.url } alt='image'/>
 							</div>
 						)

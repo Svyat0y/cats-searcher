@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import s                              from '../Voting.module.scss'
 import { TFavoriteItem }              from './types'
 
 import { TFavouritesData }    from '../../../redux/voting/types'
