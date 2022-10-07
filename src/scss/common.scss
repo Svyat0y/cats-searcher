@@ -118,13 +118,13 @@
         border-radius: 20px;
       }
 
-      .item__hoverIcon {
+      .item__hoverIcon, .hoverBtn {
         opacity: 1;
         transform: translateY(0)
       }
     }
 
-    .item__hoverIcon {
+    .item__hoverIcon, .hoverBtn {
       position: absolute;
       z-index: 5;
       top: calc(50% - 20px);
@@ -143,6 +143,15 @@
       img {
         border-radius: unset;
       }
+    }
+    
+    .hoverBtn {
+      top: initial;
+      left: 3%;
+      bottom: 3%;
+      width: 94%;
+      color: var(--btn_color);
+      @include flex(center, center);
     }
   }
 }

@@ -49,8 +49,8 @@ const SearchComponent: React.FC = () => {
 								searchData.map((el: TSearchData) => {
 									return (
 										<div className={ `${ 'itemsImg_wr' }` } key={ el.id }>
-											<div>{ el.name }</div>
 											<img src={ el.url } alt='image'/>
+											<button className='hoverBtn'> { el.name }</button>
 										</div>
 									)
 								})

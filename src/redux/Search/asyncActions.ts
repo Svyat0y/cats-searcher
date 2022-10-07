@@ -8,7 +8,7 @@ import { TSearchData }     from './types'
 const fetchSearchRightObjects = async (reference_image_id: string) => {
 	const { data } = await instance.get<any>(`images/${ reference_image_id }`)
 	const { id, url } = data
-	const { name } = data.breeds
+	const { name } = data.breeds[0]
 
 	return { id, url, name }
 }
