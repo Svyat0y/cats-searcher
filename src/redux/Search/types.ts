@@ -1,13 +1,13 @@
 import { Status } from '../voting/types'
 
 
-type ISearchData = {
+export type TSearchData = {
 	id: string
 	name: string
 	url: string
 }
 
 export interface ISearch {
-	searchData: ISearchData[] | null
+	searchData: TSearchData[]
 	status: Status
 }

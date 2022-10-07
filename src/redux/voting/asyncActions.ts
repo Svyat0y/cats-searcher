@@ -1,6 +1,7 @@
-import { instance } from '../../api/api'
+import { instance }         from '../../api/api'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { RootState }        from '../store'
+import { RootState } from '../store'
 import {
 	deleteFavouritesItem,
 	deleteFromFavouritesData,
@@ -9,8 +10,7 @@ import {
 	setToFavourites,
 	setToLike,
 	setToUnlike
-}                           from './slice'
-import { createAsyncThunk } from '@reduxjs/toolkit'
+}                    from './slice'
 
 import { TDataImgVoted, TDataObj, TFavouritesData, TLikesData, TVotingFavourites } from './types'
 import { setLsMessages }                                                           from '../../utils/infoMessageLS'

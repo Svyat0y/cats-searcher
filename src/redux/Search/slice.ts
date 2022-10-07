@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Status }                     from '../voting/types'
 import { fetchSearch }                from './asyncActions'
-import { ISearch }                    from './types'
+
+import { ISearch, TSearchData } from './types'
+import { Status }               from '../voting/types'
 
 
 const initialState: ISearch = {
-	searchData: null,
-	status: Status.PENDING,
+	searchData: [],
+	status: Status.SUCCESS,
 }
 
 
@@ -14,18 +15,18 @@ export const searchingSlice = createSlice({
 	name: 'search',
 	initialState,
 	reducers: {
-		setToSearchData: (state, action: PayloadAction<any>) => {
+		setToSearchData: (state, action: PayloadAction<TSearchData[]>) => {
 			state.searchData = action.payload
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchSearch.pending, (state, action) => {
+		builder.addCase(fetchSearch.pending, (state) => {
 			state.status = Status.PENDING
 		})
-		builder.addCase(fetchSearch.fulfilled, (state, action) => {
+		builder.addCase(fetchSearch.fulfilled, (state) => {
 			state.status = Status.SUCCESS
 		})
-		builder.addCase(fetchSearch.rejected, (state, action) => {
+		builder.addCase(fetchSearch.rejected, (state) => {
 			state.status = Status.ERROR
 		})
 	}
