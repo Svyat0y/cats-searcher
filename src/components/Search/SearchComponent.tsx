@@ -5,13 +5,10 @@ import { useLocation }      from 'react-router-dom'
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
-import { selectSearch }   from '../../redux/Search/selectors'
 import { selectVoting }   from '../../redux/voting/selectors'
-import { TSearchData }    from '../../redux/Search/types'
 
-import { SearchPanel }        from './index'
-import { BackButton, Button } from '../common/Buttons'
-import { Spinner }            from '../Spinner'
+import { SearchPanel, SearchedItems } from './index'
+import { BackButton, Button }         from '../common/Buttons'
 
 
 const SearchComponent: React.FC = () => {
@@ -19,11 +16,7 @@ const SearchComponent: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const locSearch = location.pathname.includes('search')
 
-	const { searchData, status } = useSelector(selectSearch)
 	const { activeButton } = useSelector(selectVoting)
-
-	const emptyData = searchData.length === 0
-
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
@@ -40,23 +33,7 @@ const SearchComponent: React.FC = () => {
 						name={ activeButton }
 						isActive={ locSearch }/>
 				</div>
-				{ emptyData && status === 'success' && <div className='noItemFound'>Nothing found, please enter another breed</div> }
-				{
-					status === 'pending'
-						? <Spinner/>
-						: <div className='items'>
-							{
-								searchData.map((el: TSearchData) => {
-									return (
-										<div className={ `${ 'itemsImg_wr' }` } key={ el.id }>
-											<img src={ el.url } alt='image'/>
-											<button className='hoverBtn'> { el.name }</button>
-										</div>
-									)
-								})
-							}
-						</div>
-				}
+				<SearchedItems dispatch={ dispatch }/>
 			</div>
 		</>
 	)

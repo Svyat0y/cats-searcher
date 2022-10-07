@@ -8,13 +8,13 @@ import { TSearchData }     from './types'
 const fetchSearchRightObjects = async (reference_image_id: string) => {
 	const { data } = await instance.get<any>(`images/${ reference_image_id }`)
 	const { id, url } = data
-	const { name } = data.breeds[0]
+	const { name, id: breedId } = data.breeds[0]
 
-	return { id, url, name }
+	return { id, url, name, breedId }
 }
 
 export const fetchSearch = createAsyncThunk<void, string>(
-	'search',
+	'fetchSearch',
 	async (search, { dispatch }) => {
 		try {
 			const { data } = await instance.get<any>(`breeds/search/?q=${ search }`)
@@ -28,19 +28,16 @@ export const fetchSearch = createAsyncThunk<void, string>(
 		}
 	}
 )
-/*
-export const fetchBreeds = createAsyncThunk<void>(
-	'search',
-	async (_, { dispatch }) => {
+
+export const fetchSingleBreed = createAsyncThunk<void, string>(
+	'search/fetchSingleBreed',
+	async (breedId) => {
 		try {
-			const { data } = await instance.get<any>('breeds')
-			const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
-				return fetchSearchRightObjects(reference_image_id)
-			}))
-			dispatch(setToSearchData(newData))
+			const { data } = await instance.get<any>(`breeds/search?limit=8&size=full&breed_id=${ breedId }`)
+			console.log(data)
 		}
 		catch (e: any) {
-			console.log(e.message)
+			console.log(e.message())
 		}
 	}
-)*/
+)
