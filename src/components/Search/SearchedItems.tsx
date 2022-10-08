@@ -27,7 +27,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 			breed_name: name,
 		})
 		dispatch(fetchSingleBreed(breedId))
-		navigate(`/breedInfo?${ queryString }`)
+		navigate(`/breeds/desc?${ queryString }`)
 	}
 
 	useEffect(() => {
@@ -47,7 +47,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 						{
 							searchData.map((el: TSearchData) => {
 								return (
-									<div className={ `${ 'itemsImg_wr' }` } key={ el.id }>
+									<div className='itemsImg_wr' key={ el.id }>
 										<img src={ el.url } alt='image'/>
 										<button onClick={ () => onClickBreedName(el.breedId, el.name) }
 												className='hoverBtn'> { el.name }</button>

@@ -8,8 +8,6 @@ import { BackButton, Button } from '../common/Buttons'
 
 const BreadCrumbs: React.FC = () => {
 	const { activeButton } = useSelector(selectVoting)
-	const locVoting = location.pathname.includes('voting')
-	const locSearch = location.pathname.includes('search')
 
 	return (
 		<div className='breadCrumbs'>
@@ -17,7 +15,7 @@ const BreadCrumbs: React.FC = () => {
 			<Button
 				breadCrumbs={ true }
 				name={ activeButton }
-				isActive={ locVoting || locSearch }/>
+				isActive={ true }/>
 		</div>
 	)
 }
