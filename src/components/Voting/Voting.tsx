@@ -52,7 +52,7 @@ const Voting: React.FC = () => {
 				<BreadCrumbs/>
 				<Routes>
 					<Route
-						path={ '/*' } element={ <VotingImage
+						path={ '/' } element={ <VotingImage
 						dispatch={ dispatch }
 						voteData={ voteData }
 						onFavourites={ onFavourites }
@@ -63,14 +63,14 @@ const Voting: React.FC = () => {
 						infoMessage={ infoMessage }
 					/> }/>
 					<Route
-						path={ '/likes' }
+						path={ 'likes' }
 						element={ <Likes
 							dispatch={ dispatch }
 							likeData={ likeData }
 							likePage={ likePage }
 							status={ status }/> }/>
 					<Route
-						path={ '/favourites' }
+						path={ 'favourites' }
 						element={ <Favourites
 							dispatch={ dispatch }
 							infoMessage={ infoMessage }
@@ -78,7 +78,7 @@ const Voting: React.FC = () => {
 							favPage={ favPage }
 							status={ status }/> }/>
 					<Route
-						path={ '/dislikes' }
+						path={ 'dislikes' }
 						element={ <Dislikes
 							dispatch={ dispatch }
 							unlikeData={ unlikeData }

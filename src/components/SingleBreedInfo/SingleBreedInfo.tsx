@@ -5,10 +5,10 @@ import qs                   from 'qs'
 import { useAppDispatch }   from '../../redux/store'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
 
-import { SearchPanel }  from '../Search'
 import { useSelector }  from 'react-redux'
 import { selectBreeds } from '../../redux/Breeds/selectors'
 import { BreadCrumbs }  from '../BreadCrumbs'
+import { setActiveBtn } from '../../redux/voting/slice'
 
 
 const SingleBreedInfo: React.FC = () => {
@@ -16,6 +16,7 @@ const SingleBreedInfo: React.FC = () => {
 	const { singleBreed, status } = useSelector(selectBreeds)
 
 	useEffect(() => {
+		dispatch(setActiveBtn('Breeds'))
 		if (window.location.search) {
 			const params: any = qs.parse(window.location.search.slice(1))
 			dispatch(fetchSingleBreed(params.breed_id))
@@ -27,10 +28,11 @@ const SingleBreedInfo: React.FC = () => {
 
 	return (
 		<>
-			<SearchPanel/>
 			<div className={ s.search_wr }>
 				<BreadCrumbs/>
+				single breed
 			</div>
+
 		</>
 	)
 }
