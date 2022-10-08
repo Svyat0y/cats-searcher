@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate }      from 'react-router'
-import qs, { ParsedQs }     from 'qs'
+import qs                   from 'qs'
 
 import { useSelector }      from 'react-redux'
 import { TSearchData }      from '../../redux/Search/types'

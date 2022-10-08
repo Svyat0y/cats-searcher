@@ -1,14 +1,6 @@
-import React, { useEffect }           from 'react'
-import s                              from './Voting.module.scss'
-import { Route, Routes, useLocation } from 'react-router-dom'
-
-import { SearchPanel }        from '../Search'
-import { VotingImage }        from './VotingImage'
-import { BackButton, Button } from '../common/Buttons'
-import { Likes }              from './Likes'
-import { Favourites }         from './Favourites'
-import { Dislikes }           from './Dislikes'
-
+import React, { useEffect } from 'react'
+import s                    from './Voting.module.scss'
+import { Route, Routes }    from 'react-router-dom'
 
 import { useSelector }                                   from 'react-redux'
 import { useAppDispatch }                                from '../../redux/store'
@@ -16,9 +8,14 @@ import { selectVoting }                                  from '../../redux/votin
 import { fetchActionFavourite, fetchVote, fetchVoteImg } from '../../redux/voting/asyncActions'
 import { TDataObj }                                      from '../../redux/voting/types'
 
+import { VotingImage } from './VotingImage'
+import { Likes }       from './Likes'
+import { Favourites }  from './Favourites'
+import { Dislikes }    from './Dislikes'
+import { BreadCrumbs } from '../BreadCrumbs'
+
 
 const Voting: React.FC = () => {
-	const location = useLocation()
 	const dispatch = useAppDispatch()
 	const {
 		voteData,
@@ -30,10 +27,7 @@ const Voting: React.FC = () => {
 		status,
 		likePage,
 		favPage,
-		activeButton
 	} = useSelector(selectVoting)
-
-	const locVoting = location.pathname.includes('voting')
 
 	useEffect(() => {
 		const promise = dispatch(fetchVoteImg())
@@ -54,15 +48,8 @@ const Voting: React.FC = () => {
 
 	return (
 		<div className={ s.voting }>
-			<SearchPanel/>
 			<div className={ s.voting__body }>
-				<div className='breadCrumbs'>
-					<BackButton/>
-					<Button
-						breadCrumbs={ true }
-						name={ activeButton }
-						isActive={ locVoting }/>
-				</div>
+				<BreadCrumbs/>
 				<Routes>
 					<Route
 						path={ '/*' } element={ <VotingImage
