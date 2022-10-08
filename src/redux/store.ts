@@ -4,6 +4,7 @@ import { useDispatch }    from 'react-redux'
 import themeSlice     from './theme/slice'
 import votingSlice    from './voting/slice'
 import searchingSlice from './Search/slice'
+import breedsSlice    from './Breeds/slice'
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
 		themeSlice,
 		votingSlice,
 		searchingSlice,
+		breedsSlice,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
@@ -22,6 +24,3 @@ export type RootState = ReturnType<typeof store.getState>
 
 export type AppDispatch = typeof store.dispatch
 export const useAppDispatch = () => useDispatch<AppDispatch>()
-
-// @ts-ignore
-window.store = store

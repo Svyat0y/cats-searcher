@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { useNavigate }      from 'react-router'
 import qs, { ParsedQs }     from 'qs'
 
-import { useSelector }                   from 'react-redux'
-import { TSearchData }                   from '../../redux/Search/types'
-import { selectSearch }                  from '../../redux/Search/selectors'
-import { fetchSearch, fetchSingleBreed } from '../../redux/Search/asyncActions'
+import { useSelector }      from 'react-redux'
+import { TSearchData }      from '../../redux/Search/types'
+import { selectSearch }     from '../../redux/Search/selectors'
+import { fetchSearch }      from '../../redux/Search/asyncActions'
+import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
 
 import { Spinner }     from '../Spinner'
 import { AppDispatch } from '../../redux/store'
@@ -34,7 +35,6 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 			const params: any = qs.parse(window.location.search.slice(1))
 			dispatch(fetchSearch(params.q))
 		}
-
 	}, [])
 
 	return (
