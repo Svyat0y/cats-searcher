@@ -15,15 +15,15 @@ const SearchPanel: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [ value, setValue ] = useState('')
 
+	const queryString = qs.stringify({
+		q: value
+	})
+
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
 	}
 
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		const queryString = qs.stringify({
-			q: value
-		})
-
 		if (rootValue !== value) {
 			if (e.key === 'Enter') {
 				dispatch(fetchSearch(value))
@@ -34,10 +34,6 @@ const SearchPanel: React.FC = () => {
 	}
 
 	const onSearchClick = () => {
-		const queryString = qs.stringify({
-			q: value
-		})
-
 		if (rootValue !== value) {
 			if (value) {
 				dispatch(fetchSearch(value.trim()))

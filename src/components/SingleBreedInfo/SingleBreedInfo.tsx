@@ -14,10 +14,11 @@ import { setActiveBtn } from '../../redux/voting/slice'
 const SingleBreedInfo: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { singleBreed, status } = useSelector(selectBreeds)
+	const emptyData = singleBreed.length === 0
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-		if (window.location.search) {
+		if (window.location.search && emptyData) {
 			const params: any = qs.parse(window.location.search.slice(1))
 			dispatch(fetchSingleBreed(params.breed_id))
 		}

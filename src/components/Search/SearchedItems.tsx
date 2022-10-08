@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useNavigate }      from 'react-router'
-import qs                   from 'qs'
+import React, { useEffect, useRef } from 'react'
+import { useNavigate }              from 'react-router'
+import qs                           from 'qs'
 
 import { useSelector }      from 'react-redux'
 import { TSearchData }      from '../../redux/Search/types'
@@ -20,6 +20,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const { searchData, status } = useSelector(selectSearch)
 	const navigate = useNavigate()
 	const emptyData = searchData.length === 0
+	console.log('searched')
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({
@@ -31,7 +32,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	}
 
 	useEffect(() => {
-		if (window.location.search) {
+		if (window.location.search && emptyData) {
 			const params: any = qs.parse(window.location.search.slice(1))
 			dispatch(fetchSearch(params.q))
 		}
