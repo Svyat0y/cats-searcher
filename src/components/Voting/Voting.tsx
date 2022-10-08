@@ -8,11 +8,12 @@ import { selectVoting }                                  from '../../redux/votin
 import { fetchActionFavourite, fetchVote, fetchVoteImg } from '../../redux/voting/asyncActions'
 import { TDataObj }                                      from '../../redux/voting/types'
 
-import { VotingImage } from './VotingImage'
-import { Likes }       from './Likes'
-import { Favourites }  from './Favourites'
-import { Dislikes }    from './Dislikes'
-import { BreadCrumbs } from '../BreadCrumbs'
+import { VotingImage }        from './VotingImage'
+import { Likes }              from './Likes'
+import { Favourites }         from './Favourites'
+import { Dislikes }           from './Dislikes'
+import { BreadCrumbs }        from '../BreadCrumbs'
+import { setActiveBreedName } from '../../redux/Breeds/slice'
 
 
 const Voting: React.FC = () => {
@@ -30,6 +31,7 @@ const Voting: React.FC = () => {
 	} = useSelector(selectVoting)
 
 	useEffect(() => {
+		dispatch(setActiveBreedName(''))
 		const promise = dispatch(fetchVoteImg())
 		return () => promise.abort()
 	}, [])

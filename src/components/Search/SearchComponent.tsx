@@ -4,8 +4,9 @@ import s                    from './SearchComponent.module.scss'
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
 
-import { SearchedItems } from './index'
-import { BreadCrumbs }   from '../BreadCrumbs'
+import { SearchedItems }      from './index'
+import { BreadCrumbs }        from '../BreadCrumbs'
+import { setActiveBreedName } from '../../redux/Breeds/slice'
 
 
 const SearchComponent: React.FC = () => {
@@ -13,6 +14,7 @@ const SearchComponent: React.FC = () => {
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
+		dispatch(setActiveBreedName(''))
 	}, [])
 
 	return (

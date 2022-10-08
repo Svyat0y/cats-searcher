@@ -7,7 +7,6 @@ import { fetchSearch }    from '../../redux/Search/asyncActions'
 
 import SearchPanelButtons from './SearchPanelButtons'
 import { useNavigate }    from 'react-router'
-import { useLocation }    from 'react-router-dom'
 
 
 let rootValue: string
@@ -22,7 +21,7 @@ const SearchPanel: React.FC = () => {
 	})
 
 	useEffect(() => {
-		setValue(params.q)
+		params && setValue(params.q)
 		if (!params.q) setValue('')
 	}, [ params.q ])
 

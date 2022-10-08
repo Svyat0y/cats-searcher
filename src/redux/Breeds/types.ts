@@ -2,8 +2,9 @@ import { Status } from '../voting/types'
 
 
 export interface IBreeds {
-	singleBreed: TSingleBreed[],
-	status: Status,
+	singleBreed: TSingleBreed[]
+	status: Status
+	activeBreedName: string
 }
 
 export type TSingleBreed = {

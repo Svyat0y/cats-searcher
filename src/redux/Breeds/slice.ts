@@ -6,6 +6,7 @@ import { IBreeds, TSingleBreed }      from './types'
 
 const initialState: IBreeds = {
 	singleBreed: [],
+	activeBreedName: '',
 	status: Status.SUCCESS,
 }
 
@@ -15,6 +16,9 @@ export const breedsSlice = createSlice({
 	reducers: {
 		setSingleBreed: (state, action: PayloadAction<TSingleBreed[]>) => {
 			state.singleBreed = action.payload
+		},
+		setActiveBreedName: (state, action: PayloadAction<string>) => {
+			state.activeBreedName = action.payload
 		}
 	},
 	extraReducers: (builder) => {
@@ -31,6 +35,6 @@ export const breedsSlice = createSlice({
 
 })
 
-export const { setSingleBreed } = breedsSlice.actions
+export const { setSingleBreed, setActiveBreedName } = breedsSlice.actions
 
 export default breedsSlice.reducer
