@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useNavigate }      from 'react-router'
+import qs, { ParsedQs }     from 'qs'
 
-import { useSelector }      from 'react-redux'
-import { TSearchData }      from '../../redux/Search/types'
-import { selectSearch }     from '../../redux/Search/selectors'
-import { fetchSingleBreed } from '../../redux/Search/asyncActions'
+import { useSelector }                   from 'react-redux'
+import { TSearchData }                   from '../../redux/Search/types'
+import { selectSearch }                  from '../../redux/Search/selectors'
+import { fetchSearch, fetchSingleBreed } from '../../redux/Search/asyncActions'
 
 import { Spinner }     from '../Spinner'
 import { AppDispatch } from '../../redux/store'
@@ -20,14 +21,20 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const emptyData = searchData.length === 0
 
 	const onClickBreedName = (breedId: string, name: string) => {
+		const queryString = qs.stringify({
+			breed_id: breedId,
+			breed_name: name,
+		})
 		dispatch(fetchSingleBreed(breedId))
-		navigate(`/breedInfo?breed_name=${ name }`)
+		navigate(`/breedInfo?${ queryString }`)
 	}
 
 	useEffect(() => {
-		if (status === 'success' && searchData.length === 0) {
-			navigate('/voting')
+		if (window.location.search) {
+			const params: any = qs.parse(window.location.search.slice(1))
+			dispatch(fetchSearch(params.q))
 		}
+
 	}, [])
 
 	return (

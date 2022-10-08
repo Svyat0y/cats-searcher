@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import s                   from './SearchPanel.module.scss'
+import qs                  from 'qs'
 
 import { useAppDispatch } from '../../redux/store'
 import { fetchSearch }    from '../../redux/Search/asyncActions'
@@ -19,20 +20,28 @@ const SearchPanel: React.FC = () => {
 	}
 
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		const queryString = qs.stringify({
+			q: value
+		})
+
 		if (rootValue !== value) {
 			if (e.key === 'Enter') {
 				dispatch(fetchSearch(value))
-				navigate('/search')
+				navigate(`/search?${ queryString }`)
 			}
 		}
 		rootValue = value
 	}
 
 	const onSearchClick = () => {
+		const queryString = qs.stringify({
+			q: value
+		})
+
 		if (rootValue !== value) {
 			if (value) {
 				dispatch(fetchSearch(value.trim()))
-				navigate('/search')
+				navigate(`/search?${ queryString }`)
 			}
 		}
 		rootValue = value

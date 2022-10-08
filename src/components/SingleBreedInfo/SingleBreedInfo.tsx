@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react'
 import s                    from '../Search/SearchComponent.module.scss'
+import qs                   from 'qs'
 
 import { useAppDispatch } from '../../redux/store'
 
 import { SearchPanel }        from '../Search'
 import { BackButton, Button } from '../common/Buttons'
+import { fetchSingleBreed }   from '../../redux/Search/asyncActions'
 
 
 const SingleBreedInfo: React.FC = () => {
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		console.log('rendered')
+		if (window.location.search) {
+			const params: any = qs.parse(window.location.search.slice(1))
+			dispatch(fetchSingleBreed(params.breed_id))
+		}
 	}, [])
 
 	return (
