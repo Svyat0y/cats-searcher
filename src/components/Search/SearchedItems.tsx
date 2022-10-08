@@ -20,7 +20,6 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const { searchData, status } = useSelector(selectSearch)
 	const navigate = useNavigate()
 	const emptyData = searchData.length === 0
-	console.log('searched')
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({
@@ -32,9 +31,11 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	}
 
 	useEffect(() => {
-		if (window.location.search && emptyData) {
-			const params: any = qs.parse(window.location.search.slice(1))
-			dispatch(fetchSearch(params.q))
+		if (emptyData && status === 'success') {
+			if (window.location.search) {
+				const params: any = qs.parse(window.location.search.slice(1))
+				dispatch(fetchSearch(params.q))
+			}
 		}
 	}, [])
 

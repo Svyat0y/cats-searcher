@@ -18,11 +18,12 @@ const SingleBreedInfo: React.FC = () => {
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-		if (window.location.search && emptyData) {
-			const params: any = qs.parse(window.location.search.slice(1))
-			dispatch(fetchSingleBreed(params.breed_id))
+		if (emptyData && status === 'success') {
+			if (window.location.search) {
+				const params: any = qs.parse(window.location.search.slice(1))
+				dispatch(fetchSingleBreed(params.breed_id))
+			}
 		}
-
 	}, [])
 
 	console.log(singleBreed)
