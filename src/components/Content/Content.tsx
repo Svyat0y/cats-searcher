@@ -2,16 +2,17 @@ import React             from 'react'
 import s                 from './Content.module.scss'
 import { Route, Routes } from 'react-router-dom'
 
-import { Preview }         from '../Preview'
-import { Voting }          from '../Voting'
-import { SearchComponent } from '../Search'
-import { SingleBreedInfo } from '../SingleBreedInfo'
+import { Preview }                      from '../Preview'
+import { Voting }                       from '../Voting'
+import { SearchComponent, SearchPanel } from '../Search'
+import { SingleBreedInfo }              from '../SingleBreedInfo'
 
 
 const Content: React.FC = () => {
 	return (
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__container }>
+				<SearchPanel/>
 				<Routes>
 					<Route path={ '/breedInfo/*' } element={ <SingleBreedInfo/> }/>
 					<Route path={ '/search/*' } element={ <SearchComponent/> }/>

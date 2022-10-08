@@ -28,16 +28,3 @@ export const fetchSearch = createAsyncThunk<void, string>(
 		}
 	}
 )
-
-export const fetchSingleBreed = createAsyncThunk<void, string>(
-	'search/fetchSingleBreed',
-	async (breedId) => {
-		try {
-			const { data } = await instance.get<any>(`breeds/search?limit=8&size=full&breed_id=${ breedId }`)
-			console.log(data)
-		}
-		catch (e: any) {
-			console.log(e.message())
-		}
-	}
-)
