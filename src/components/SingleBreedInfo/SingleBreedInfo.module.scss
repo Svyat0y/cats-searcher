@@ -1,0 +1,50 @@
+@import "src/scss/variables";
+
+.breed {
+  padding: 20px;
+  background: var(--bg_white-grey);
+  border-radius: 20px;
+  height: 782px;
+  overflow: hidden;
+  overflow-y: auto;
+
+  &__main_slider {
+    width: 100%;
+    @include flex(center, center);
+
+    :global(.swiper-pagination) {
+      bottom: 30px !important;
+      padding: 5px !important;
+      background: var(--bg_dark_grey__white) !important;
+      border-radius: 20px !important;
+      width: initial !important;
+      right: auto !important;
+      left: auto !important;
+    }
+
+    :global(.swiper-pagination-bullet) {
+      width: 10px !important;
+      height: 10px !important;
+      margin: 0 5px !important;
+      background: var(--bg_input_search) !important;
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+      background: var(--btn_color) !important;
+    }
+  }
+
+  &__img_wr {
+    width: 100px;
+    min-height: 360px;
+    border-radius: 20px;
+    @include flex(center, center);
+    margin-bottom: 52px;
+    position: relative;
+
+    img {
+      max-height: 360px;
+      border-radius: 20px;
+    }
+  }
+}
