@@ -7,6 +7,7 @@ import { TVotingImage } from './types'
 import { VotingMessage } from '../VotingMessages'
 import Spinner           from '../../Spinner/Spinner'
 import { fetchVoteImg }  from '../../../redux/voting/asyncActions'
+import { setActiveBtn }  from '../../../redux/voting/slice'
 
 
 const VotingImage: React.FC<TVotingImage> = (
@@ -15,6 +16,7 @@ const VotingImage: React.FC<TVotingImage> = (
 
 	useEffect(() => {
 		setIsLoading(true)
+		dispatch(setActiveBtn('Voting'))
 
 		let timeoutId: ReturnType<typeof setTimeout>
 		if (status === 'success') timeoutId = setTimeout(() => setIsLoading(false), 1000)
