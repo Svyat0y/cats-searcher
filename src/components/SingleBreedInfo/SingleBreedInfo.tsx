@@ -28,7 +28,7 @@ const SingleBreedInfo: React.FC = () => {
 	SwiperCore.use([ Pagination, EffectCoverflow, Autoplay ])
 
 	useEffect(() => {
-		dispatch(setActiveBreedName(singleBreed[0]?.id))
+		dispatch(setActiveBreedName(singleBreed[0]?.name))
 	}, [ singleBreed, activeBreedName ])
 
 	useEffect(() => {

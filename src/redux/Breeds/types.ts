@@ -9,6 +9,7 @@ export interface IBreeds {
 
 export type TSingleBreed = {
 	desc: string
+	name: string
 	id: string
 	image: string
 	life_span: string

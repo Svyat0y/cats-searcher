@@ -12,6 +12,7 @@ export const fetchSingleBreed = createAsyncThunk<void, string>(
 			const newData: TSingleBreed[] = await Promise.all(data.map((el: any) => {
 				return {
 					id: el.breeds[0].id,
+					name: el.breeds[0].name,
 					desc: el.breeds[0].description,
 					origin: el.breeds[0].origin,
 					weight: el.breeds[0].weight.metric,

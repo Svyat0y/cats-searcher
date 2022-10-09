@@ -4,10 +4,9 @@ import s                              from '../Voting.module.scss'
 import { NavButtons }   from '../NavButtons'
 import { TVotingImage } from './types'
 
-import { VotingMessage }      from '../VotingMessages'
-import Spinner                from '../../Spinner/Spinner'
-import { setActiveBreedName } from '../../../redux/Breeds/slice'
-import { fetchVoteImg }       from '../../../redux/voting/asyncActions'
+import { VotingMessage } from '../VotingMessages'
+import Spinner           from '../../Spinner/Spinner'
+import { fetchVoteImg }  from '../../../redux/voting/asyncActions'
 
 
 const VotingImage: React.FC<TVotingImage> = (
@@ -24,7 +23,6 @@ const VotingImage: React.FC<TVotingImage> = (
 	}, [ voteData ])
 
 	useEffect(() => {
-		dispatch(setActiveBreedName(''))
 		dispatch(fetchVoteImg())
 	}, [])
 

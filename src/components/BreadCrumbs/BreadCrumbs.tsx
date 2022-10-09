@@ -10,7 +10,7 @@ import { useLocation }        from 'react-router-dom'
 
 const BreadCrumbs: React.FC = () => {
 	const { activeButton } = useSelector(selectVoting)
-	const { activeBreedName, singleBreed } = useSelector(selectBreeds)
+	const { activeBreedName, singleBreed, status } = useSelector(selectBreeds)
 	const location = useLocation()
 	const locBreedDesc = location.pathname.includes('desc')
 
@@ -31,7 +31,7 @@ const BreadCrumbs: React.FC = () => {
 				name={ activeButton }
 				isActive={ !locBreedDesc }/>
 			{
-				(isName && locBreedDesc) && <Button
+				(isName && locBreedDesc && status === 'success') && <Button
 					breadCrumbs={ true }
 					name={ activeBreedName }
 					isActive={ true }/>
