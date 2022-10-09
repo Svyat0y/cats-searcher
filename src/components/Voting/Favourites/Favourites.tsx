@@ -19,13 +19,16 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	const lastPage = favoritesData && favoritesData?.length < 15
 
 	useEffect(() => {
-		dispatch(setActiveBtn('Favourites'))
 		setIsLoading(true)
+		dispatch(setActiveBtn('Favourites'))
 		dispatch(fetchGetFavourites())
 	}, [ favPage ])
 
 	useEffect(() => {
-		if (favoritesData && favoritesData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (favoritesData && favoritesData?.length >= 0) timeoutId = setTimeout(() => setIsLoading(false), 1000)
+
+		return () => clearTimeout(timeoutId)
 	}, [ favoritesData ])
 
 	const onClickNext = () => {

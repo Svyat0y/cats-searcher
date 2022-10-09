@@ -8,13 +8,18 @@
   overflow: hidden;
   overflow-y: auto;
 
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
   &__main_slider {
     width: 100%;
     @include flex(center, center);
 
     :global(.swiper-pagination) {
-      bottom: 30px !important;
-      padding: 5px !important;
+      bottom: 36px !important;
+      padding: 2px !important;
       background: var(--bg_dark_grey__white) !important;
       border-radius: 20px !important;
       width: initial !important;
@@ -46,5 +51,49 @@
       max-height: 360px;
       border-radius: 20px;
     }
+  }
+
+  &__feature_wr {
+    border: 2px solid var(--bg_input_search);
+    border-radius: 20px;
+    padding: 26px 60px;
+    position: relative;
+    width: 100%;
+    @include flex(null, null, column);
+  }
+
+  &__title {
+    align-self: center;
+    top: -31px;
+    position: absolute;
+    font-size: 36px;
+    line-height: 52px;
+    padding: 5px 40px;
+    background: var(--bg_dark_grey__white);
+    border-radius: 20px;
+    color: var(--title_color);
+  }
+
+  &__subTitle {
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0 20px;
+  }
+
+  &__desc_wr {
+    width: 100%;
+    @include flex(space-between, flex-start);
+  }
+
+  &__left, &__right {
+    display: inline-block;
+    min-width: 260px;
+    max-width: 260px;
+    padding: 10px;
+  }
+
+  &__desc__span {
+    color: var(--title_color);
+    font-weight: 500;
   }
 }

@@ -17,13 +17,16 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 	const lastPage = likeData && likeData.length < 15
 
 	useEffect(() => {
-		dispatch(setActiveBtn('likes'))
 		setIsLoading(true)
+		dispatch(setActiveBtn('likes'))
 		dispatch(fetchGetLikes())
 	}, [ likePage ])
 
 	useEffect(() => {
-		if (likeData && likeData?.length >= 0) setTimeout(() => setIsLoading(false), 1000)
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (likeData && likeData?.length >= 0) timeoutId = setTimeout(() => setIsLoading(false), 1000)
+
+		return () => clearTimeout(timeoutId)
 	}, [ likeData ])
 
 	const onClickNext = () => {

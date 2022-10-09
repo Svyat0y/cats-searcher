@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react'
-import s                    from './Voting.module.scss'
-import { Route, Routes }    from 'react-router-dom'
+import React             from 'react'
+import s                 from './Voting.module.scss'
+import { Route, Routes } from 'react-router-dom'
 
-import { useSelector }                                   from 'react-redux'
-import { useAppDispatch }                                from '../../redux/store'
-import { selectVoting }                                  from '../../redux/voting/selectors'
-import { fetchActionFavourite, fetchVote, fetchVoteImg } from '../../redux/voting/asyncActions'
-import { TDataObj }                                      from '../../redux/voting/types'
+import { useSelector }                     from 'react-redux'
+import { useAppDispatch }                  from '../../redux/store'
+import { selectVoting }                    from '../../redux/voting/selectors'
+import { fetchActionFavourite, fetchVote } from '../../redux/voting/asyncActions'
+import { TDataObj }                        from '../../redux/voting/types'
 
-import { VotingImage }        from './VotingImage'
-import { Likes }              from './Likes'
-import { Favourites }         from './Favourites'
-import { Dislikes }           from './Dislikes'
-import { BreadCrumbs }        from '../BreadCrumbs'
-import { setActiveBreedName } from '../../redux/Breeds/slice'
+import { VotingImage } from './VotingImage'
+import { Likes }       from './Likes'
+import { Favourites }  from './Favourites'
+import { Dislikes }    from './Dislikes'
+import { BreadCrumbs } from '../BreadCrumbs'
 
 
 const Voting: React.FC = () => {
@@ -29,12 +28,6 @@ const Voting: React.FC = () => {
 		likePage,
 		favPage,
 	} = useSelector(selectVoting)
-
-	useEffect(() => {
-		dispatch(setActiveBreedName(''))
-		const promise = dispatch(fetchVoteImg())
-		return () => promise.abort()
-	}, [])
 
 	const onLike = (imgObj: TDataObj) => {
 		if (status === 'success') dispatch(fetchVote([ imgObj, 1 ]))

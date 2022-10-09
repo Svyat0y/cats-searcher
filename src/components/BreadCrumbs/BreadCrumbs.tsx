@@ -5,16 +5,22 @@ import { selectVoting } from '../../redux/voting/selectors'
 
 import { BackButton, Button } from '../common/Buttons'
 import { selectBreeds }       from '../../redux/Breeds/selectors'
+import { useLocation }        from 'react-router-dom'
 
 
 const BreadCrumbs: React.FC = () => {
 	const { activeButton } = useSelector(selectVoting)
-	const { activeBreedName, singleBreed } = useSelector(selectBreeds)
+	const { activeBreedName, singleBreed, status } = useSelector(selectBreeds)
+	const location = useLocation()
+	const locBreedDesc = location.pathname.includes('desc')
 
 	const [ isName, setIsName ] = useState(false)
 
 	useEffect(() => {
-		if (activeBreedName) setTimeout(() => setIsName(true), 500)
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (activeBreedName) timeoutId = setTimeout(() => setIsName(true), 300)
+
+		return () => clearTimeout(timeoutId)
 	}, [ singleBreed ])
 
 	return (
@@ -23,9 +29,9 @@ const BreadCrumbs: React.FC = () => {
 			<Button
 				breadCrumbs={ true }
 				name={ activeButton }
-				isActive={ activeBreedName === '' }/>
+				isActive={ !locBreedDesc }/>
 			{
-				isName && <Button
+				(isName && locBreedDesc && status === 'success') && <Button
 					breadCrumbs={ true }
 					name={ activeBreedName }
 					isActive={ true }/>
