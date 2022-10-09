@@ -21,7 +21,7 @@ const BreadCrumbs: React.FC = () => {
 		if (activeBreedName) timeoutId = setTimeout(() => setIsName(true), 300)
 
 		return () => clearTimeout(timeoutId)
-	}, [ singleBreed ])
+	}, [ singleBreed, activeBreedName ])
 
 	return (
 		<div className='breadCrumbs'>
