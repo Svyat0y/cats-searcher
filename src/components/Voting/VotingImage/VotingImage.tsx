@@ -4,9 +4,10 @@ import s                              from '../Voting.module.scss'
 import { NavButtons }   from '../NavButtons'
 import { TVotingImage } from './types'
 
-import { VotingMessage } from '../VotingMessages'
-import Spinner           from '../../Spinner/Spinner'
-import { setActiveBtn }  from '../../../redux/voting/slice'
+import { VotingMessage }      from '../VotingMessages'
+import Spinner                from '../../Spinner/Spinner'
+import { setActiveBreedName } from '../../../redux/Breeds/slice'
+import { fetchVoteImg }       from '../../../redux/voting/asyncActions'
 
 
 const VotingImage: React.FC<TVotingImage> = (
@@ -14,10 +15,18 @@ const VotingImage: React.FC<TVotingImage> = (
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
-		dispatch(setActiveBtn('Voting'))
 		setIsLoading(true)
-		if (status === 'success') setTimeout(() => setIsLoading(false), 1000)
+
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (status === 'success') timeoutId = setTimeout(() => setIsLoading(false), 1000)
+
+		return () => clearTimeout(timeoutId)
 	}, [ voteData ])
+
+	useEffect(() => {
+		dispatch(setActiveBreedName(''))
+		dispatch(fetchVoteImg())
+	}, [])
 
 	return (
 		<>
