@@ -51,8 +51,9 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 								return (
 									<div className='itemsImg_wr' key={ el.id }>
 										<img src={ el.url } alt='image'/>
-										<button onClick={ () => onClickBreedName(el.breedId, el.name) }
-												className='hoverBtn'> { el.name }</button>
+										<button className='hoverBtn' onClick={ () => onClickBreedName(el.breedId, el.name) }>
+											{ el.name }
+										</button>
 									</div>
 								)
 							})
