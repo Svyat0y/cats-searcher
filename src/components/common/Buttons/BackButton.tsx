@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React           from 'react'
 import s               from './BackButton.module.scss'
 import { useNavigate } from 'react-router'
 

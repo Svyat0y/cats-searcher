@@ -8,16 +8,15 @@ import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
 
-import { useSelector }      from 'react-redux'
-import { useAppDispatch }   from '../../redux/store'
-import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
-import { selectBreeds }     from '../../redux/Breeds/selectors'
-import { setActiveBtn }     from '../../redux/voting/slice'
-import { TSingleBreed }     from '../../redux/Breeds/types'
-
-import { BreadCrumbs }        from '../BreadCrumbs'
+import { useSelector }        from 'react-redux'
+import { useAppDispatch }     from '../../redux/store'
+import { fetchSingleBreed }   from '../../redux/Breeds/asyncActions'
+import { selectBreeds }       from '../../redux/Breeds/selectors'
+import { setActiveBtn }       from '../../redux/voting/slice'
 import { setActiveBreedName } from '../../redux/Breeds/slice'
-import { Spinner }            from '../Spinner'
+import { TSingleBreed }       from '../../redux/Breeds/types'
+
+import { BreadCrumbs, Spinner } from '../common'
 
 
 const SingleBreedInfo: React.FC = () => {
@@ -83,10 +82,10 @@ const SingleBreedInfo: React.FC = () => {
 												<span className={ s.breed__desc__span }>Origin: </span>{ singleBreed[0].origin }
 											</li>
 											<li className={ s.breed__desc }>
-												<span className={ s.breed__desc__span }>Weight: </span>{ singleBreed[0].weight }
+												<span className={ s.breed__desc__span }>Weight: </span>{ singleBreed[0].weight } kg
 											</li>
 											<li className={ s.breed__desc }>
-												<span className={ s.breed__desc__span }>Life span: </span>{ singleBreed[0].life_span }
+												<span className={ s.breed__desc__span }>Life span: </span>{ singleBreed[0].life_span } years
 											</li>
 										</ul>
 

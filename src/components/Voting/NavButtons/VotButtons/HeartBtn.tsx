@@ -6,7 +6,7 @@ import { THeartBtn } from './types'
 
 import heartTWhiteImg      from '../../../../assets/images/voting/heartWhite.webp'
 import heartTransparentImg from '../../../../assets/images/voting/heartTransparent.webp'
-import { SmallSpinner }    from '../../../Spinner'
+import { SmallSpinner }    from '../../../common'
 
 
 const HeartBtn: React.FC<THeartBtn> = ({ onFavourite, imgObj, status, onFavourites, setBtnName, btnName }) => {

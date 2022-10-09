@@ -4,8 +4,8 @@ import s                    from './SearchComponent.module.scss'
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
 
-import { SearchedItems } from './index'
-import { BreadCrumbs }   from '../BreadCrumbs'
+import { SearchedItems } from '../../components'
+import { BreadCrumbs }   from '../common'
 
 
 const SearchComponent: React.FC = () => {

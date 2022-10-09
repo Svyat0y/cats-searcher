@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
 import { useSelector }  from 'react-redux'
-import { selectVoting } from '../../redux/voting/selectors'
+import { selectVoting } from '../../../redux/voting/selectors'
 
-import { BackButton, Button } from '../common/Buttons'
-import { selectBreeds }       from '../../redux/Breeds/selectors'
+import { selectBreeds }       from '../../../redux/Breeds/selectors'
 import { useLocation }        from 'react-router-dom'
+import { BackButton, Button } from '../index'
 
 
 const BreadCrumbs: React.FC = () => {
+	const [ isName, setIsName ] = useState(false)
 	const { activeButton } = useSelector(selectVoting)
 	const { activeBreedName, singleBreed, status } = useSelector(selectBreeds)
 	const location = useLocation()
 	const locBreedDesc = location.pathname.includes('desc')
 
-	const [ isName, setIsName ] = useState(false)
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>

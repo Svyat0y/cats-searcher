@@ -4,7 +4,7 @@ import { Route, Routes }    from 'react-router-dom'
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
 
-import { SingleBreedInfo } from '../SingleBreedInfo'
+import { SingleBreedInfo } from '../../components'
 
 
 const Breeds = () => {

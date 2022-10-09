@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import s                              from './SearchPanel.module.scss'
 import qs                             from 'qs'
+import { useNavigate }                from 'react-router'
 
 import { useAppDispatch } from '../../redux/store'
 import { fetchSearch }    from '../../redux/Search/asyncActions'
 
 import SearchPanelButtons from './SearchPanelButtons'
-import { useNavigate }    from 'react-router'
 
 
 let rootValue: string

@@ -2,14 +2,13 @@ import React, { useEffect } from 'react'
 import { useNavigate }      from 'react-router'
 import qs                   from 'qs'
 
+import { AppDispatch }      from '../../redux/store'
 import { useSelector }      from 'react-redux'
 import { TSearchData }      from '../../redux/Search/types'
 import { selectSearch }     from '../../redux/Search/selectors'
 import { fetchSearch }      from '../../redux/Search/asyncActions'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
-
-import { Spinner }     from '../Spinner'
-import { AppDispatch } from '../../redux/store'
+import { Spinner }          from '../common'
 
 
 type TSearchedItems = {
