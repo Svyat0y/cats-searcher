@@ -8,13 +8,18 @@
   overflow: hidden;
   overflow-y: auto;
 
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
   &__main_slider {
     width: 100%;
     @include flex(center, center);
 
     :global(.swiper-pagination) {
-      bottom: 30px !important;
-      padding: 5px !important;
+      bottom: 36px !important;
+      padding: 2px !important;
       background: var(--bg_dark_grey__white) !important;
       border-radius: 20px !important;
       width: initial !important;
@@ -84,6 +89,7 @@
     display: inline-block;
     min-width: 260px;
     max-width: 260px;
+    padding: 10px;
   }
 
   &__desc__span {

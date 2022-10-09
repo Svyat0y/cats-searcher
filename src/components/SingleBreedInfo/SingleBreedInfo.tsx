@@ -56,7 +56,7 @@ const SingleBreedInfo: React.FC = () => {
 								coverflowEffect={ { rotate: 100, slideShadows: false } }
 								slidesPerView={ 1 }
 								wrapperTag='ul'
-								autoplay={ { delay: 8000 } }>
+								autoplay={ { delay: 5000, disableOnInteraction: false } }>
 								{
 									singleBreed.map((sliderEl: TSingleBreed) => (
 										<SwiperSlide tag='li' className={ s.breed__img_wr } key={ sliderEl.image }>

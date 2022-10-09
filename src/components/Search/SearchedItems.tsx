@@ -41,7 +41,8 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 
 	return (
 		<div>
-			{ emptyData && status === 'success' && <div className='noItemFound'>Nothing found, please enter another breed</div> }
+			{ emptyData && status === 'success' &&
+				<div className='noItemFound'>Nothing found, please enter another breed. Example: American, Balinese</div> }
 			{
 				status === 'pending'
 					? <Spinner/>
