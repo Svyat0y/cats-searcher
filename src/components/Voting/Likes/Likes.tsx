@@ -6,8 +6,7 @@ import { TLikesData }                                     from '../../../redux/v
 import { setActiveBtn, setNextLikePage, setPrevLikePage } from '../../../redux/voting/slice'
 import { TLikes }                                         from './types'
 
-import { Spinner } from '../../Spinner'
-import { Button }  from '../../common/Buttons'
+import { Button, Spinner } from '../../common'
 
 
 const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {

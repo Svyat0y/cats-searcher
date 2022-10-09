@@ -6,10 +6,9 @@ import { TFavouritesData }                              from '../../../redux/vot
 import { setActiveBtn, setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
 import { TFavourites }                                  from './types'
 
-import { VotingMessage } from '../VotingMessages'
-import FavoriteItem      from './FavoriteItem'
-import { Spinner }       from '../../Spinner'
-import { Button }        from '../../common/Buttons'
+import FavoriteItem        from './FavoriteItem'
+import { Button, Spinner } from '../../common'
+import { VotingMessage }   from '../index'
 
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status, favPage }) => {

@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import s                   from './NavButtons.module.scss'
 import { TNavButtons }     from './types'
 
-import VoteUpBtn   from './VotButtons/VoteUpBtn'
-import HeartBtn    from './VotButtons/HeartBtn'
-import VoteDownBtn from './VotButtons/VoteDownBtn'
+import { HeartBtn, VoteDownBtn, VoteUpBtn } from './VotButtons'
 
 
 const NavButtons: React.FC<TNavButtons> = ({ onLike, onUnlike, imgObj, onFavourite, onFavourites, status }) => {

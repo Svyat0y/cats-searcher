@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { TDataObj }     from '../../../redux/voting/types'
 import { setActiveBtn } from '../../../redux/voting/slice'
 import { TDislikes }    from './types'
-
-import { Spinner } from '../../Spinner'
+import { Spinner }      from '../../common'
 
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {

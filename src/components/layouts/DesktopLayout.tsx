@@ -1,8 +1,7 @@
 import React from 'react'
 import s     from './DesktopLayout.module.scss'
 
-import { MainNavigation } from '../MainNavigation'
-import { Content }        from '../Content'
+import { Content, MainNavigation } from '../../components'
 
 
 const DesktopLayout: React.FC = () => {

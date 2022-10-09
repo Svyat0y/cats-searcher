@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
 
-import { NavButtons }   from '../NavButtons'
 import { TVotingImage } from './types'
 
-import { VotingMessage } from '../VotingMessages'
-import Spinner           from '../../Spinner/Spinner'
-import { fetchVoteImg }  from '../../../redux/voting/asyncActions'
-import { setActiveBtn }  from '../../../redux/voting/slice'
+import Spinner          from '../../common/Spinner/Spinner'
+import { fetchVoteImg } from '../../../redux/voting/asyncActions'
+import { setActiveBtn } from '../../../redux/voting/slice'
+
+import { NavButtons, VotingMessage } from '../index'
 
 
 const VotingImage: React.FC<TVotingImage> = (

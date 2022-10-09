@@ -6,8 +6,8 @@ import { useAppDispatch } from '../../redux/store'
 import { themeFilter }    from '../../redux/theme/selectors'
 import { setLSTheme }     from '../../utils/theme'
 
-import { Header }  from '../Header'
 import { MainNav } from './MainNav'
+import { Header }  from '../../components'
 
 
 const MainNavigation: React.FC = () => {

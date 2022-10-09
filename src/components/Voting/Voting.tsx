@@ -8,11 +8,8 @@ import { selectVoting }                    from '../../redux/voting/selectors'
 import { fetchActionFavourite, fetchVote } from '../../redux/voting/asyncActions'
 import { TDataObj }                        from '../../redux/voting/types'
 
-import { VotingImage } from './VotingImage'
-import { Likes }       from './Likes'
-import { Favourites }  from './Favourites'
-import { Dislikes }    from './Dislikes'
-import { BreadCrumbs } from '../BreadCrumbs'
+import { BreadCrumbs }                              from '../common'
+import { Dislikes, Favourites, Likes, VotingImage } from './index'
 
 
 const Voting: React.FC = () => {
