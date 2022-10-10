@@ -22,11 +22,3 @@ const App: React.FC = () => {
 }
 
 export default App
-
-// new features in development
-/*
-* Search component
-*
-* - implement single image opening
-*
-* */
