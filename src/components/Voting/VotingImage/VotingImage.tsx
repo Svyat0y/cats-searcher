@@ -30,7 +30,7 @@ const VotingImage: React.FC<TVotingImage> = (
 
 	return (
 		<>
-			<div className={ s.voting__img_wr }>
+			<div className={ s.content__img_wr }>
 				{ isLoading ? <Spinner/> : <img src={ voteData?.url } alt=''/> }
 				<NavButtons
 					imgObj={ voteData }
@@ -40,7 +40,7 @@ const VotingImage: React.FC<TVotingImage> = (
 					onFavourite={ onFavourite }
 					status={ status }/>
 			</div>
-			<div className={ s.voting__messages }>
+			<div className={ s.content__messages }>
 				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>

@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
 
 import { SearchedItems } from '../../components'
-import { BreadCrumbs }   from '../common'
+import { ContentHeader } from '../common'
 
 
 const SearchComponent: React.FC = () => {
@@ -18,7 +18,7 @@ const SearchComponent: React.FC = () => {
 	return (
 		<>
 			<div className={ s.search_wr }>
-				<BreadCrumbs/>
+				<ContentHeader/>
 				<SearchedItems dispatch={ dispatch }/>
 			</div>
 		</>

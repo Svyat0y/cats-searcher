@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector }  from 'react-redux'
 import { selectVoting } from '../../../redux/voting/selectors'
 
-import { selectBreeds }       from '../../../redux/Breeds/selectors'
-import { useLocation }        from 'react-router-dom'
-import { BackButton, Button } from '../index'
+import { selectBreeds } from '../../../redux/Breeds/selectors'
+import { useLocation }  from 'react-router-dom'
+import { Button }       from '../index'
 
 
 const BreadCrumbs: React.FC = () => {
@@ -24,8 +24,7 @@ const BreadCrumbs: React.FC = () => {
 	}, [ singleBreed, activeBreedName ])
 
 	return (
-		<div className='breadCrumbs'>
-			<BackButton/>
+		<>
 			<Button
 				breadCrumbs={ true }
 				name={ activeButton }
@@ -36,7 +35,7 @@ const BreadCrumbs: React.FC = () => {
 					name={ activeBreedName }
 					isActive={ true }/>
 			}
-		</div>
+		</>
 	)
 }
 

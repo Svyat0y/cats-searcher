@@ -54,7 +54,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, status, likePage }) => {
 			{
 				likePage === 0 && lastPage
 					? ''
-					: <div className={ s.voting__pagination_wr }>
+					: <div className={ s.content__pagination_wr }>
 						<div className={ s.prev }><Button disabled={ zeroPage } onclick={ onClickPrev } name='<<' linkTo=''/></div>
 						<div className={ s.next }><Button disabled={ lastPage } onclick={ onClickNext } name='>>' linkTo=''/></div>
 					</div>
