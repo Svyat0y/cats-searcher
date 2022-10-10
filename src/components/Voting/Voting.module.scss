@@ -1,24 +1,7 @@
 @import "src/scss/variables";
 
-.voting {
-  width: 100%;
-
-  &__body {
-    user-select: none;
-    padding: 20px;
-    background: var(--bg_white-grey);
-    border-radius: 20px;
-    height: 782px;
-    overflow: hidden;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
-  }
-
+.content {
+  
   &__img_wr {
     width: 100%;
     min-height: 360px;
@@ -39,18 +22,6 @@
     margin: 25px auto 0px auto;
     @include flex(space-between, center);
 
-    /*a {
-      &:hover {
-        min-width: 90px;
-        background: #FBE0DC;
-        transition: all 0.2s ease;
-      }
-
-      &:active {
-        background: #FF868E;
-      }
-
-    }*/
 
     .next {
       text-align: right;
@@ -63,5 +34,9 @@
 
   .pagination__favourites {
     margin-bottom: 25px;
+  }
+
+  &__messages {
+    margin-top: 52px;
   }
 }

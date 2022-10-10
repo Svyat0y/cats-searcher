@@ -6,12 +6,18 @@ export type TFavourites = {
 	dispatch: AppDispatch
 	favoritesData: TFavouritesData[] | null
 	infoMessage: TInfoInfoMessage[]
-	status: string
+	status?: string
 	favPage: number
 }
 export type TFavoriteItem = {
 	el: TFavouritesData
 	status: string
 	dispatch: AppDispatch
+}
+
+export type TFavItems = {
+	dispatch: AppDispatch
+	favoritesData: TFavouritesData[] | null
+	favPage: number
 }
 

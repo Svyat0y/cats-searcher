@@ -9,9 +9,9 @@ import { selectBreeds }       from '../../redux/Breeds/selectors'
 import { setActiveBtn }       from '../../redux/voting/slice'
 import { setActiveBreedName } from '../../redux/Breeds/slice'
 
-import { BreadCrumbs, Spinner } from '../common'
-import Slider                   from './Slider'
-import SliderDesc               from './SliderDesc'
+import { Spinner } from '../common'
+import Slider      from './Slider'
+import SliderDesc  from './SliderDesc'
 
 
 const SingleBreedInfo: React.FC = () => {
@@ -37,7 +37,6 @@ const SingleBreedInfo: React.FC = () => {
 	return (
 		<>
 			<div className={ s.breed }>
-				<BreadCrumbs/>
 				{
 					singleBreed.length > 0 && status === 'success'
 						? <>

@@ -18,14 +18,16 @@ const FavoriteItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 
 	const deleteFromFavourites = (obj: TFavouritesData) => {
 		setIsFetching(true)
-		if (obj) dispatch(fetchDeleteFromFav(obj))
+		obj && dispatch(fetchDeleteFromFav(obj))
 	}
 
 	return (
 		<div className='itemsImg_wr' key={ el?.id }>
 			<img src={ el?.image?.url ? el?.image?.url : emptyImage } alt='image'/>
-			<button disabled={ isFetching } onClick={ () => deleteFromFavourites(el) }
-					className='item__hoverIcon'>
+			<button
+				disabled={ isFetching }
+				onClick={ () => deleteFromFavourites(el) }
+				className='item__hoverIcon'>
 				{
 					isFetching
 						? <SmallSpinner height={ 20 } width={ 40 } color='#FF868E'/>

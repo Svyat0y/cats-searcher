@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
 
-import { fetchGetFavourites }                           from '../../../redux/voting/asyncActions'
-import { TFavouritesData }                              from '../../../redux/voting/types'
-import { setActiveBtn, setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
-import { TFavourites }                                  from './types'
+import { fetchGetFavourites } from '../../../redux/voting/asyncActions'
+import { setActiveBtn }       from '../../../redux/voting/slice'
+import { TFavourites }        from './types'
 
-import FavoriteItem        from './FavoriteItem'
-import { Button, Spinner } from '../../common'
-import { VotingMessage }   from '../index'
+import { Spinner }       from '../../common'
+import { VotingMessage } from '../index'
+import FavItems          from './FavItems'
 
 
-const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, status, favPage }) => {
+const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
-	const noItemsBoolean = (favoritesData?.length === 0)
-	const zeroPage = (favPage - 1) < 0
-	const lastPage = favoritesData && favoritesData?.length < 15
+
+	useEffect(() => {
+		dispatch(setActiveBtn('Favourites'))
+	}, [])
 
 	useEffect(() => {
 		setIsLoading(true)
-		dispatch(setActiveBtn('Favourites'))
 		dispatch(fetchGetFavourites())
 	}, [ favPage ])
 
@@ -30,50 +29,14 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 		return () => clearTimeout(timeoutId)
 	}, [ favoritesData ])
 
-	const onClickNext = () => {
-		if (!lastPage) dispatch(setNextFavPage())
-	}
-
-	const onClickPrev = () => {
-		if (!zeroPage) dispatch(setPrevFavPage())
-	}
-
 	return (
 		<>
 			{
 				isLoading
 					? <Spinner/>
-					: <>
-						{
-							noItemsBoolean &&
-							<div className='noItemFound'>
-								<span>
-									No item found.
-									{ (noItemsBoolean && favPage > 0) && <div>Please return to the previous page.</div> }
-								</span>
-							</div>
-						}
-						<div className='items'>
-							{
-								favoritesData?.map((el: TFavouritesData) =>
-									<FavoriteItem
-										key={ el?.id }
-										el={ el }
-										dispatch={ dispatch }
-										status={ status }/>)
-							}
-						</div>
-						{
-							(favPage === 0 && lastPage)
-								? ''
-								: <div className={ `${ s.voting__pagination_wr } ${ s.pagination__favourites }` }>
-									<div className={ s.prev }><Button disabled={ zeroPage } onclick={ onClickPrev } name='<<' linkTo=''/></div>
-									<div className={ s.next }><Button disabled={ lastPage } onclick={ onClickNext } name='>>' linkTo=''/></div>
-								</div>
-						}
-					</>
+					: <FavItems dispatch={ dispatch } favoritesData={ favoritesData } favPage={ favPage }/>
 			}
-			<div className={ s.voting__messages }>
+			<div className={ s.content__messages }>
 				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>

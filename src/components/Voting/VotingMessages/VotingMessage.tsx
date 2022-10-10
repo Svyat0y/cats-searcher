@@ -1,5 +1,6 @@
-import React               from 'react'
-import s                   from './VotingMessage.module.scss'
+import React from 'react'
+import s     from './VotingMessage.module.scss'
+
 import { TVotingMessages } from './types'
 
 
