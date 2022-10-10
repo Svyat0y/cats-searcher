@@ -14,8 +14,11 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
-		setIsLoading(true)
 		dispatch(setActiveBtn('Favourites'))
+	}, [])
+
+	useEffect(() => {
+		setIsLoading(true)
 		dispatch(fetchGetFavourites())
 	}, [ favPage ])
 

@@ -11,9 +11,11 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
 
 	useEffect(() => {
-		setIsLoading(true)
 		dispatch(setActiveBtn('Dislikes'))
+	}, [])
 
+	useEffect(() => {
+		setIsLoading(true)
 		const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => setIsLoading(false), 1000)
 
 		return () => clearTimeout(timeoutId)

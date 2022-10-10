@@ -13,8 +13,11 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage }) => {
 	const noItemsBoolean = (likeData?.length === 0)
 
 	useEffect(() => {
-		setIsLoading(true)
 		dispatch(setActiveBtn('likes'))
+	}, [])
+
+	useEffect(() => {
+		setIsLoading(true)
 		dispatch(fetchGetLikes())
 	}, [ likePage ])
 

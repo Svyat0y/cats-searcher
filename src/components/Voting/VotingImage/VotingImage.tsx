@@ -15,8 +15,11 @@ const VotingImage: React.FC<TVotingImage> = (
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
-		setIsLoading(true)
 		dispatch(setActiveBtn('Voting'))
+	}, [])
+
+	useEffect(() => {
+		setIsLoading(true)
 
 		let timeoutId: ReturnType<typeof setTimeout>
 		if (status === 'success') timeoutId = setTimeout(() => setIsLoading(false), 1000)
