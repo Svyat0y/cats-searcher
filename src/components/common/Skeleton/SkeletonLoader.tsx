@@ -2,15 +2,25 @@ import React    from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
+import { useSelector }     from 'react-redux'
+import { themeFilter }     from '../../../redux/theme/selectors'
 import { TSkeletonLoader } from './types'
 
 
 const SkeletonLoader: React.FC<TSkeletonLoader> = ({ count }) => {
+	const { theme } = useSelector(themeFilter)
+	const light = theme === 'light'
+
 	return (
 		<div className='items'>
 			{ Array(count).fill('').map((_, i) => (
 				<div key={ i } className='itemsImg_wr unHoverClass'>
-					<Skeleton duration={ 1.4 } borderRadius={ 20 } baseColor='#343434' highlightColor='#404040' className='skeleton'/>
+					<Skeleton
+						duration={ 1.4 }
+						borderRadius={ 20 }
+						baseColor={ light ? '#F8F8F7' : '#343434' }
+						highlightColor={ light ? '#E8E8E7' : '#404040' }
+						className='skeleton'/>
 				</div>
 			)) }
 		</div>
