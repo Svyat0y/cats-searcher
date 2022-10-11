@@ -55,6 +55,7 @@
 .contentHeader {
   @include flex(flex-start, center, center);
   margin-bottom: 20px;
+  position: relative;
 
   button {
     margin-right: 10px;

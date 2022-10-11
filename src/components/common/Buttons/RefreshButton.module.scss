@@ -1,0 +1,23 @@
+@import "src/scss/variables";
+
+.refresh_wr {
+  width: 40px;
+  height: 40px;
+  background: var(--bg_dark_grey__white);
+  @include flex(center, center);
+  border: 2px solid var(--bg_input_search);
+  border-radius: 10px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      rotate: 60deg;
+    }
+  }
+
+  &:active {
+    transform: scale(.95);
+  }
+}
