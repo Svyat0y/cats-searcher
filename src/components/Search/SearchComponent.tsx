@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import s                    from './SearchComponent.module.scss'
 
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
@@ -17,9 +16,11 @@ const SearchComponent: React.FC = () => {
 
 	return (
 		<>
-			<div className={ s.search_wr }>
-				<ContentHeader/>
-				<SearchedItems dispatch={ dispatch }/>
+			<div className='content'>
+				<div className='content__body'>
+					<ContentHeader/>
+					<SearchedItems dispatch={ dispatch }/>
+				</div>
 			</div>
 		</>
 	)

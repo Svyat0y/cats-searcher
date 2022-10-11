@@ -8,6 +8,7 @@ import { Status }               from '../voting/types'
 const initialState: ISearch = {
 	searchData: [],
 	status: Status.SUCCESS,
+	isSearchMounted: false
 }
 
 
@@ -18,6 +19,9 @@ export const searchingSlice = createSlice({
 		setToSearchData: (state, action: PayloadAction<TSearchData[]>) => {
 			state.searchData = action.payload
 		},
+		setIsSearchMounted: (state, action: PayloadAction<boolean>) => {
+			state.isSearchMounted = action.payload
+		}
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchSearch.pending, (state) => {
@@ -32,6 +36,6 @@ export const searchingSlice = createSlice({
 	}
 })
 
-export const { setToSearchData } = searchingSlice.actions
+export const { setToSearchData, setIsSearchMounted } = searchingSlice.actions
 
 export default searchingSlice.reducer

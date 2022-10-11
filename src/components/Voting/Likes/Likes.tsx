@@ -4,8 +4,8 @@ import { fetchGetLikes }                    from '../../../redux/voting/asyncAct
 import { setActiveBtn, setIsLikesMounted, } from '../../../redux/voting/slice'
 import { TLikes }                           from './types'
 
-import { NoItemFound, SkeletonLoader, Spinner } from '../../common'
-import LikeItems                                from './LikeItems'
+import { NoItemFound, SkeletonLoader } from '../../common'
+import LikeItems                       from './LikeItems'
 
 
 const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage, isLikesMounted }) => {
