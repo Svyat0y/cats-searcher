@@ -23,6 +23,9 @@ const Voting: React.FC = () => {
 		status,
 		likePage,
 		favPage,
+		isFavMounted,
+		isLikesMounted,
+		isDislikesMounted,
 	} = useSelector(selectVoting)
 
 	const onLike = (imgObj: TDataObj) => {
@@ -56,7 +59,8 @@ const Voting: React.FC = () => {
 					element={ <Likes
 						dispatch={ dispatch }
 						likeData={ likeData }
-						likePage={ likePage }/> }/>
+						likePage={ likePage }
+						isLikesMounted={ isLikesMounted }/> }/>
 				<Route
 					path='favourites'
 					element={ <Favourites
@@ -64,13 +68,15 @@ const Voting: React.FC = () => {
 						infoMessage={ infoMessage }
 						favoritesData={ favoritesData }
 						favPage={ favPage }
-						status={ status }/> }/>
+						status={ status }
+						isFavMounted={ isFavMounted }/> }/>
 				<Route
 					path='dislikes'
 					element={ <Dislikes
 						dispatch={ dispatch }
 						unlikeData={ unlikeData }
-						status={ status }/> }/>
+						status={ status }
+						isDislikesMounted={ isDislikesMounted }/> }/>
 			</Route>
 		</Routes>
 

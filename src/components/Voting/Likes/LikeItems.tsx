@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TLikesData }                       from '../../../redux/voting/types'
-import { setNextLikePage, setPrevLikePage } from '../../../redux/voting/slice'
-import { TLikeItems }                       from './types'
+import { TLikesData }                                          from '../../../redux/voting/types'
+import { setIsLikesMounted, setNextLikePage, setPrevLikePage } from '../../../redux/voting/slice'
+import { TLikeItems }                                          from './types'
 
 import { Pagination } from '../../common'
 
@@ -12,10 +12,12 @@ const LikeItems: React.FC<TLikeItems> = ({ dispatch, likeData, likePage }) => {
 	const lastPage = likeData && likeData.length < 15
 
 	const onClickNext = () => {
-		if (!lastPage) dispatch(setNextLikePage())
+		dispatch(setNextLikePage())
+		dispatch(setIsLikesMounted(false))
 	}
 	const onClickPrev = () => {
-		if (!zeroPage) dispatch(setPrevLikePage())
+		dispatch(setPrevLikePage())
+		dispatch(setIsLikesMounted(false))
 	}
 
 	const renderData = () => (

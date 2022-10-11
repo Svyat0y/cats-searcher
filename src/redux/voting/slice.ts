@@ -16,6 +16,9 @@ const initialState: IVote = {
 	onFavourites: [],
 	infoMessage: [],
 	activeButton: '',
+	isFavMounted: false,
+	isLikesMounted: false,
+	isDislikesMounted: false,
 	status: Status.PENDING,
 }
 
@@ -64,6 +67,15 @@ export const votingSlice = createSlice({
 		},
 		setActiveBtn: (state, action: PayloadAction<string>) => {
 			state.activeButton = action.payload
+		},
+		setIsFavMounted: (state, action: PayloadAction<boolean>) => {
+			state.isFavMounted = action.payload
+		},
+		setIsLikesMounted: (state, action: PayloadAction<boolean>) => {
+			state.isLikesMounted = action.payload
+		},
+		setIsDislikesMounted: (state, action: PayloadAction<boolean>) => {
+			state.isDislikesMounted = action.payload
 		}
 	},
 	extraReducers: (builder) => {
@@ -100,6 +112,9 @@ export const {
 	setNextLikePage,
 	setPrevLikePage,
 	setActiveBtn,
+	setIsFavMounted,
+	setIsLikesMounted,
+	setIsDislikesMounted,
 } = votingSlice.actions
 
 export default votingSlice.reducer

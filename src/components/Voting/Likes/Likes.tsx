@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
-import { fetchGetLikes } from '../../../redux/voting/asyncActions'
-import { setActiveBtn, } from '../../../redux/voting/slice'
-import { TLikes }        from './types'
+import { fetchGetLikes }                    from '../../../redux/voting/asyncActions'
+import { setActiveBtn, setIsLikesMounted, } from '../../../redux/voting/slice'
+import { TLikes }                           from './types'
 
 import { NoItemFound, Spinner } from '../../common'
 import LikeItems                from './LikeItems'
 
 
-const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage }) => {
-	const [ isLoading, setIsLoading ] = useState(true)
+const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage, isLikesMounted }) => {
+	const [ isLoading, setIsLoading ] = useState(false)
 	const noItemsBoolean = (likeData?.length === 0)
 
 	useEffect(() => {
@@ -17,8 +17,11 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage }) => {
 	}, [])
 
 	useEffect(() => {
-		setIsLoading(true)
-		dispatch(fetchGetLikes())
+		dispatch(setIsLikesMounted(true))
+		if (!isLikesMounted) {
+			setIsLoading(true)
+			dispatch(fetchGetLikes())
+		}
 	}, [ likePage ])
 
 	useEffect(() => {

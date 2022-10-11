@@ -7,6 +7,7 @@ export type TLikes = {
 	likeData: TLikesData[] | null
 	likePage: number
 	status?: string
+	isLikesMounted: boolean
 }
 
 export type TLikeItems = {

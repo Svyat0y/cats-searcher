@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TFavouritesData }                from '../../../redux/voting/types'
-import { setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
-import { TFavItems }                      from './types'
+import { TFavouritesData }                                 from '../../../redux/voting/types'
+import { setIsFavMounted, setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
+import { TFavItems }                                       from './types'
 
 import { NoItemFound, Pagination } from '../../common'
 import FavoriteItem                from './FavoriteItem'
@@ -15,9 +15,11 @@ const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, favPage, statu
 
 	const onClickNext = () => {
 		dispatch(setNextFavPage())
+		dispatch(setIsFavMounted(false))
 	}
 	const onClickPrev = () => {
 		dispatch(setPrevFavPage())
+		dispatch(setIsFavMounted(false))
 	}
 
 	const renderData = () => (
