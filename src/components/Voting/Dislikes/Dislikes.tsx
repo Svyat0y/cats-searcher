@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
 
-import { TDataObj }     from '../../../redux/voting/types'
-import { setActiveBtn } from '../../../redux/voting/slice'
-import { TDislikes }    from './types'
-import { Spinner }      from '../../common'
+import { TDataObj }                           from '../../../redux/voting/types'
+import { setActiveBtn, setIsDislikesMounted } from '../../../redux/voting/slice'
+import { TDislikes }                          from './types'
+import { Spinner }                            from '../../common'
 
 
-const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
-	const [ isLoading, setIsLoading ] = useState(true)
-	const noItemsBoolean = (unlikeData.length === 0 && status === 'success')
+const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch, isDislikesMounted }) => {
+	const [ isLoading, setIsLoading ] = useState(false)
+	const noItemsBoolean = (unlikeData.length === 0)
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Dislikes'))
 	}, [])
 
 	useEffect(() => {
-		setIsLoading(true)
+		dispatch(setIsDislikesMounted(true))
+		if (!isDislikesMounted) {
+			setIsLoading(true)
+		}
 		const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => setIsLoading(false), 1000)
 
 		return () => clearTimeout(timeoutId)
@@ -25,7 +28,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch }) => {
 
 	return (
 		<>
-			{ noItemsBoolean && <div className='noItemFound'><span>No item found.</span></div> }
+			{ noItemsBoolean ? <div className='noItemFound'><span>No item found.</span></div> : '' }
 			<div className='items'>
 				{ unlikeData?.map((el: TDataObj) => {
 					return (

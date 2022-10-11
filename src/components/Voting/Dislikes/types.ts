@@ -6,4 +6,5 @@ export type TDislikes = {
 	dispatch: AppDispatch
 	unlikeData: TDataObj[]
 	status?: string
+	isDislikesMounted: boolean
 }

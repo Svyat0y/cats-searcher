@@ -7,7 +7,7 @@ const NoItemFound: React.FC<TNoItemFound> = ({ noItemsBoolean, favPage }) => {
 		<div className='noItemFound'>
 			<span>
 				No item found.
-				{ favPage && (noItemsBoolean && favPage > 0) && <div>Please return to the previous page.</div> }
+				{ favPage && (noItemsBoolean && favPage > 0) ? <div>Please return to the previous page.</div> : '' }
 			</span>
 		</div>
 	)

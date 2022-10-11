@@ -13,7 +13,7 @@ const FavoriteItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 	const [ isFetching, setIsFetching ] = useState(false)
 
 	useEffect(() => {
-		if (status === 'success') setIsFetching(false)
+		if (status !== 'pending') setIsFetching(false)
 	}, [ status ])
 
 	const deleteFromFavourites = (obj: TFavouritesData) => {
