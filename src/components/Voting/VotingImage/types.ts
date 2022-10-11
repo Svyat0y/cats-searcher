@@ -6,9 +6,6 @@ export type TVotingImage = {
 	dispatch: AppDispatch
 	voteData: TDataObj
 	onFavourites: TDataObj[]
-	onLike: (imgObj: TDataObj) => void
-	onUnlike: (imgObj: TDataObj) => void
-	onFavourite: (imgId: TDataObj) => void
 	infoMessage: TInfoInfoMessage[]
 	status: string
 }
