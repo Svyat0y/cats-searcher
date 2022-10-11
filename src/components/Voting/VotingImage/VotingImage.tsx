@@ -11,7 +11,7 @@ import { NavButtons, VotingMessage } from '../index'
 
 
 const VotingImage: React.FC<TVotingImage> = (
-	{ voteData, onFavourites, onLike, onUnlike, onFavourite, status, infoMessage, dispatch }) => {
+	{ voteData, onFavourites, status, infoMessage, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
@@ -38,9 +38,6 @@ const VotingImage: React.FC<TVotingImage> = (
 				<NavButtons
 					imgObj={ voteData }
 					onFavourites={ onFavourites }
-					onLike={ onLike }
-					onUnlike={ onUnlike }
-					onFavourite={ onFavourite }
 					status={ status }/>
 			</div>
 			<div className={ s.content__messages }>
