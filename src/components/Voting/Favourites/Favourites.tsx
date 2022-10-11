@@ -5,9 +5,9 @@ import { fetchGetFavourites }            from '../../../redux/voting/asyncAction
 import { setActiveBtn, setIsFavMounted } from '../../../redux/voting/slice'
 import { TFavourites }                   from './types'
 
-import { Spinner }       from '../../common'
-import { VotingMessage } from '../index'
-import FavItems          from './FavItems'
+import { SkeletonLoader } from '../../common'
+import { VotingMessage }  from '../index'
+import FavItems           from './FavItems'
 
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage, status, isFavMounted }) => {
@@ -36,7 +36,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 		<>
 			{
 				isLoading
-					? <Spinner/>
+					? <SkeletonLoader count={ 10 }/>
 					: <FavItems status={ status } dispatch={ dispatch } favoritesData={ favoritesData } favPage={ favPage }/>
 			}
 			<div className={ s.content__messages }>
