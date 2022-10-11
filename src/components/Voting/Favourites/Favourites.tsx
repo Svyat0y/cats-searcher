@@ -10,7 +10,7 @@ import { VotingMessage } from '../index'
 import FavItems          from './FavItems'
 
 
-const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage }) => {
+const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage, status }) => {
 	const [ isLoading, setIsLoading ] = useState(true)
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 			{
 				isLoading
 					? <Spinner/>
-					: <FavItems dispatch={ dispatch } favoritesData={ favoritesData } favPage={ favPage }/>
+					: <FavItems status={ status } dispatch={ dispatch } favoritesData={ favoritesData } favPage={ favPage }/>
 			}
 			<div className={ s.content__messages }>
 				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }

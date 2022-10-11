@@ -63,7 +63,8 @@ const Voting: React.FC = () => {
 						dispatch={ dispatch }
 						infoMessage={ infoMessage }
 						favoritesData={ favoritesData }
-						favPage={ favPage }/> }/>
+						favPage={ favPage }
+						status={ status }/> }/>
 				<Route
 					path='dislikes'
 					element={ <Dislikes

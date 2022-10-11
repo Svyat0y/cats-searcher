@@ -8,7 +8,7 @@ import { NoItemFound, Pagination } from '../../common'
 import FavoriteItem                from './FavoriteItem'
 
 
-const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, favPage }) => {
+const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, favPage, status }) => {
 	const noItemsBoolean = (favoritesData?.length === 0)
 	const zeroPage = (favPage - 1) < 0
 	const lastPage = favoritesData && favoritesData?.length < 15
