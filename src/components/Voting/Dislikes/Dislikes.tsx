@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { TDataObj }                           from '../../../redux/voting/types'
 import { setActiveBtn, setIsDislikesMounted } from '../../../redux/voting/slice'
 import { TDislikes }                          from './types'
-import { Spinner }                            from '../../common'
+import { SkeletonLoader }                     from '../../common'
 
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch, isDislikesMounted }) => {
@@ -24,7 +24,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch, isDislike
 		return () => clearTimeout(timeoutId)
 	}, [ status ])
 
-	if (isLoading) return <Spinner/>
+	if (isLoading) return <SkeletonLoader count={ 10 }/>
 
 	return (
 		<>

@@ -6,3 +6,7 @@ export type TButton = {
 	disabled?: boolean | null
 	breadCrumbs?: boolean
 }
+
+export type TRefreshButton = {
+	onclick?: () => void
+}
