@@ -4,3 +4,7 @@ export type TVotingMessages = {
 	message: string
 	time: string
 }
+
+export type TMessageIcons = {
+	message: string
+}

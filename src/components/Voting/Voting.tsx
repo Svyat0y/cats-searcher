@@ -18,7 +18,6 @@ const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesDa
 				<Route path='dislikes' element={ <Dislikes { ...dislikesData }/> }/>
 			</Route>
 		</Routes>
-
 	)
 }
 

@@ -23,7 +23,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 			setIsLoading(true)
 			dispatch(fetchGetFavourites())
 		}
-	}, [ favPage ])
+	}, [ favPage, favoritesData ])
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>
