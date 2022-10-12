@@ -3,7 +3,6 @@ import { BackButton, BreadCrumbs } from '../index'
 
 
 const ContentHeader: React.FC = () => {
-
 	return (
 		<div className='contentHeader'>
 			<BackButton/>
