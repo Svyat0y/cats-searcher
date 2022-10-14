@@ -1,0 +1,78 @@
+@import './src/scss/variables';
+
+.limitSelect {
+
+  &__control {
+    margin-left: 10px;
+    height: 40px !important;
+    margin-right: 10px !important;
+    background: rgba($main_color, .05) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    outline: none;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    transition: initial;
+    padding: 2px;
+
+    &--menu-is-open {
+
+      .limitSelect__dropdown-indicator {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--menu-is-focused {
+      border-color: red !important;
+    }
+  }
+
+  &__indicator {
+
+    transition: initial;
+    color: $main_color !important;
+
+    &:hover {
+      transition: initial;
+      color: #AAAAAA !important;
+    }
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__value-container {
+    padding-right: 0 !important;
+  }
+
+  &__single-value {
+    color: $main_color !important;
+  }
+
+  &__menu {
+    background: transparent !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  &__menu-list {
+    padding: 0 !important;
+    background: rgba($main_color, .05) !important;
+  }
+
+  &__option {
+    cursor: pointer !important;
+
+    &--is-focused {
+      background: rgba($main_color, .1) !important;
+    }
+
+    &--is-selected {
+      background: rgba($main_color, .1) !important;
+      color: inherit !important;
+    }
+  }
+}
