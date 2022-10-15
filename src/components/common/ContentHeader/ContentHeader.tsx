@@ -1,5 +1,6 @@
 import React                       from 'react'
 import { BackButton, BreadCrumbs } from '../index'
+import SortBreeds                  from '../../Breeds/SortBreeds'
 
 
 const ContentHeader: React.FC = () => {
@@ -7,6 +8,7 @@ const ContentHeader: React.FC = () => {
 		<div className='contentHeader'>
 			<BackButton/>
 			<BreadCrumbs/>
+			<SortBreeds/>
 		</div>
 	)
 }

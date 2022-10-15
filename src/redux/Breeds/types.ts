@@ -5,6 +5,12 @@ export interface IBreeds {
 	singleBreed: TSingleBreed[]
 	status: Status
 	activeBreedName: string
+	breedsList: TBreedOption[]
+}
+
+export type TBreedOption = {
+	value: string
+	label: string
 }
 
 export type TSingleBreed = {

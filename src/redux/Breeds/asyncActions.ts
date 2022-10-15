@@ -1,7 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { instance }         from '../../api/api'
-import { setSingleBreed }   from './slice'
-import { TSingleBreed }     from './types'
+import { createAsyncThunk }               from '@reduxjs/toolkit'
+import { instance }                       from '../../api/api'
+import { setSingleBreed, setToBreedList } from './slice'
+import { TBreedOption, TSingleBreed }     from './types'
 
 
 export const fetchSingleBreed = createAsyncThunk<void, string>(
@@ -25,6 +25,23 @@ export const fetchSingleBreed = createAsyncThunk<void, string>(
 		}
 		catch (e: any) {
 			console.log(e.message())
+		}
+	}
+)
+
+export const fetchBreeds = createAsyncThunk(
+	'fetchBreeds',
+	async (_, { dispatch }) => {
+		try {
+			const { data } = await instance.get<any>('breeds')
+			const newData: TBreedOption[] = await Promise.all(data.map((el: any) => {
+				return { value: el.id, label: el.name }
+			}))
+
+			dispatch(setToBreedList(newData))
+		}
+		catch (e: any) {
+			console.log(e.message)
 		}
 	}
 )

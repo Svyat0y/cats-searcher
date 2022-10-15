@@ -1,11 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Status }                     from '../voting/types'
-import { fetchSingleBreed }           from './asyncActions'
-import { IBreeds, TSingleBreed }      from './types'
+import { createSlice, PayloadAction }                           from '@reduxjs/toolkit'
+import { Status }                                               from '../voting/types'
+import { IBreeds, TBreedOption, TSingleBreed }                  from './types'
+import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
 
 const initialState: IBreeds = {
 	singleBreed: [],
+	breedsList: [],
 	activeBreedName: '',
 	status: Status.SUCCESS,
 }
@@ -19,22 +20,25 @@ export const breedsSlice = createSlice({
 		},
 		setActiveBreedName: (state, action: PayloadAction<string>) => {
 			state.activeBreedName = action.payload
+		},
+		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
+			state.breedsList = action.payload
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchSingleBreed.pending, (state) => {
+		builder.addMatcher(isPendingAction, (state) => {
 			state.status = Status.PENDING
 		})
-		builder.addCase(fetchSingleBreed.fulfilled, (state) => {
-			state.status = Status.SUCCESS
-		})
-		builder.addCase(fetchSingleBreed.rejected, (state) => {
-			state.status = Status.ERROR
-		})
+			.addMatcher(isFulfilledAction, (state) => {
+				state.status = Status.SUCCESS
+			})
+			.addMatcher(isRejectedAction, (state) => {
+				state.status = Status.ERROR
+			})
 	}
 
 })
 
-export const { setSingleBreed, setActiveBreedName } = breedsSlice.actions
+export const { setSingleBreed, setActiveBreedName, setToBreedList } = breedsSlice.actions
 
 export default breedsSlice.reducer
