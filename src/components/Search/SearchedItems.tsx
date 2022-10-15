@@ -20,7 +20,7 @@ type TSearchedItems = {
 const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const { searchData, status, isSearchMounted } = useSelector(selectSearch)
 	const navigate = useNavigate()
-	const emptyData = searchData.length === 0
+	const emptyData = searchData?.length === 0
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({
@@ -28,7 +28,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 			breed_name: name,
 		})
 		dispatch(fetchSingleBreed(breedId))
-		navigate(`desc?${ queryString }`)
+		navigate(`description?${ queryString }`)
 	}
 
 	useEffect(() => {
@@ -36,7 +36,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		if (!isSearchMounted) {
 			if (window.location.search) {
 				const params: any = qs.parse(window.location.search.slice(1))
-				dispatch(fetchSearch(params.q))
+				dispatch(fetchSearch({ value: params.q }))
 			}
 		}
 	}, [])
@@ -44,7 +44,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const renderData = () => (
 		<div className='items'>
 			{
-				searchData.map((el: TSearchData) => {
+				searchData?.map((el: TSearchData) => {
 					return (
 						<div className='itemsImg_wr' key={ el.id }>
 							<img src={ el.url } alt='image'/>
@@ -62,7 +62,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		<>
 			{
 				emptyData && status === 'success' &&
-				<div className='noItemFound'>Nothing found, please enter another breed. Example: American, Balinese</div>
+				<div className='noItemFound'>Nothing found.</div>
 			}
 			{
 				status === 'pending'

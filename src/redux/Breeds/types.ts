@@ -6,6 +6,8 @@ export interface IBreeds {
 	status: Status
 	activeBreedName: string
 	breedsList: TBreedOption[]
+	value: string
+	limit: string
 }
 
 export type TBreedOption = {

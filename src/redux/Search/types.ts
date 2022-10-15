@@ -9,7 +9,7 @@ export type TSearchData = {
 }
 
 export interface ISearch {
-	searchData: TSearchData[]
+	searchData: TSearchData[] | null
 	status: Status
 	isSearchMounted: boolean
 }

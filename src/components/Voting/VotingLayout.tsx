@@ -8,7 +8,7 @@ const VotingLayout: React.FC = () => {
 	return (
 		<div className='content'>
 			<div className='content__body'>
-				<ContentHeader isVisibleBreedSelect={ false }/>
+				<ContentHeader/>
 				<Outlet/>
 			</div>
 		</div>

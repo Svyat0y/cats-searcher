@@ -6,7 +6,7 @@ import { Status }               from '../voting/types'
 
 
 const initialState: ISearch = {
-	searchData: [],
+	searchData: null,
 	status: Status.SUCCESS,
 	isSearchMounted: false
 }

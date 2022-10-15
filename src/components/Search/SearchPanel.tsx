@@ -21,8 +21,11 @@ const SearchPanel: React.FC = () => {
 	})
 
 	useEffect(() => {
-		params && setValue(params.q)
 		if (!params.q) setValue('')
+		else{
+			setValue(params.q)
+			dispatch(fetchSearch({ value: params.q, limit: params.limit }))
+		}
 	}, [ params.q ])
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +35,9 @@ const SearchPanel: React.FC = () => {
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (rootValue !== value) {
 			if (e.key === 'Enter') {
-				dispatch(fetchSearch(value))
-				navigate(`/search?${ queryString }`)
+
+				dispatch(fetchSearch({ value }))
+				navigate(`search?${ queryString }`)
 			}
 		}
 		rootValue = value
@@ -42,8 +46,9 @@ const SearchPanel: React.FC = () => {
 	const onSearchClick = () => {
 		if (rootValue !== value) {
 			if (value) {
-				dispatch(fetchSearch(value.trim()))
-				navigate(`/search?${ queryString }`)
+
+				dispatch(fetchSearch({ value }))
+				navigate(`search?${ queryString }`)
 			}
 		}
 		rootValue = value

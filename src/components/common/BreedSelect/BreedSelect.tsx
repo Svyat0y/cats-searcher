@@ -1,12 +1,16 @@
-import React from 'react'
+import React                     from 'react'
+import Select, { OnChangeValue } from 'react-select'
 
-import Select from 'react-select'
+import { TBreedSelect, TOption } from '../../Breeds/types'
+import { setToValue }            from '../../../redux/Breeds/slice'
 
-import { TBreedSelect } from '../../Breeds/types'
 
+const BreedSelect: React.FC<TBreedSelect> = ({ options, status, dispatch }) => {
 
-const BreedSelect: React.FC<TBreedSelect> = ({ options, status }) => {
-
+	const handleChange = (newValue: OnChangeValue<TOption, false>) => {
+		const newObj: TOption = newValue
+		newObj && dispatch(setToValue(newObj.label))
+	}
 
 	return (
 		<div className='selectBreedContainer'>
@@ -15,6 +19,7 @@ const BreedSelect: React.FC<TBreedSelect> = ({ options, status }) => {
 				placeholder='All breeds'
 				options={ options }
 				isLoading={ status === 'pending' }
+				onChange={ handleChange }
 			/>
 		</div>
 	)

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Route, Routes }    from 'react-router-dom'
 
-import { useAppDispatch } from '../../redux/store'
-import { setActiveBtn }   from '../../redux/voting/slice'
-import BreedLayout        from './BreedLayout'
+import { useAppDispatch }                 from '../../redux/store'
+import { setActiveBtn }                   from '../../redux/voting/slice'
+import BreedLayout                        from './BreedLayout'
+import { SearchedItems, SingleBreedInfo } from '../index'
 
 
 const Breeds = () => {
@@ -17,7 +18,8 @@ const Breeds = () => {
 		<>
 			<Routes>
 				<Route path='/*' element={ <BreedLayout/> }>
-
+					<Route index element={ <SearchedItems dispatch={ dispatch }/> }/>
+					<Route path='description' element={ <SingleBreedInfo/> }/>
 				</Route>
 			</Routes>
 		</>

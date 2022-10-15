@@ -8,6 +8,8 @@ const initialState: IBreeds = {
 	singleBreed: [],
 	breedsList: [],
 	activeBreedName: '',
+	value: '',
+	limit: '5',
 	status: Status.SUCCESS,
 }
 
@@ -23,7 +25,13 @@ export const breedsSlice = createSlice({
 		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
 			state.breedsList = action.payload
-		}
+		},
+		setToValue: (state, action: PayloadAction<string>) => {
+			state.value = action.payload
+		},
+		setToLimit: (state, action: PayloadAction<string>) => {
+			state.limit = action.payload
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addMatcher(isPendingAction, (state) => {
@@ -39,6 +47,6 @@ export const breedsSlice = createSlice({
 
 })
 
-export const { setSingleBreed, setActiveBreedName, setToBreedList } = breedsSlice.actions
+export const { setSingleBreed, setActiveBreedName, setToBreedList, setToValue, setToLimit } = breedsSlice.actions
 
 export default breedsSlice.reducer
