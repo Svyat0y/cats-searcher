@@ -45,6 +45,10 @@
     display: none !important;
   }
 
+  &__input-container {
+    color: $main_color !important;
+  }
+
   &__value-container {
     padding-right: 0 !important;
   }

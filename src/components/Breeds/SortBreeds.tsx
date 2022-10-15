@@ -11,7 +11,7 @@ import { fetchBreeds }              from '../../redux/Breeds/asyncActions'
 
 const SortBreeds: React.FC = () => {
 	const dispatch = useAppDispatch()
-	const { breedsList } = useSelector(selectBreeds)
+	const { breedsList, status } = useSelector(selectBreeds)
 
 	useEffect(() => {
 		dispatch(fetchBreeds())
@@ -19,7 +19,7 @@ const SortBreeds: React.FC = () => {
 
 	return (
 		<div className={ s.sortBreeds_wr }>
-			<BreedSelect options={ breedsList }/>
+			<BreedSelect options={ breedsList } status={ status }/>
 			<LimitSelect/>
 			<BreedSortButtons/>
 		</div>
