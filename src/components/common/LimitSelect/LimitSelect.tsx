@@ -1,5 +1,4 @@
 import React  from 'react'
-import './LimitSelect.scss'
 import Select from 'react-select'
 
 
@@ -12,7 +11,13 @@ const LimitSelect: React.FC = () => {
 	]
 
 	return (
-		<Select classNamePrefix='limitSelect' options={ limitOptions } defaultValue={ limitOptions[0] }/>
+		<div className='selectLimitContainer'>
+			<Select
+				classNamePrefix='breedSelect'
+				options={ limitOptions }
+				defaultValue={ limitOptions[0] }
+			/>
+		</div>
 	)
 }
 

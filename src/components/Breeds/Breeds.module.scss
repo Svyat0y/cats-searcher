@@ -12,7 +12,6 @@
     border-radius: 10px;
     cursor: pointer;
     transition: initial;
-    background-color: $main_color;
     position: relative;
 
     &:active {
@@ -20,19 +19,19 @@
     }
 
     &.desk {
-      background: url("../../assets/images/breeds/desk.png") center no-repeat rgba($main_color, 0.05);
+      background: url("../../assets/images/breeds/desk.png") center no-repeat var(--bg_grey-white_white-rgba);
 
       &:hover {
-        background: url("../../assets/images/breeds/deskRed.png") center no-repeat rgba($main_color, 0.05);
+        background: url("../../assets/images/breeds/deskRed.png") center no-repeat var(--bg_grey-white_white-rgba);
         border: 2px solid var(--btn_color);
       }
     }
 
     &.ask {
-      background: url("../../assets/images/breeds/ask.png") center no-repeat rgba($main_color, 0.05);
+      background: url("../../assets/images/breeds/ask.png") center no-repeat var(--bg_grey-white_white-rgba);
 
       &:hover {
-        background: url("../../assets/images/breeds/askRed.png") center no-repeat rgba($main_color, 0.05);
+        background: url("../../assets/images/breeds/askRed.png") center no-repeat var(--bg_grey-white_white-rgba);
         border: 2px solid var(--btn_color);
       }
     }

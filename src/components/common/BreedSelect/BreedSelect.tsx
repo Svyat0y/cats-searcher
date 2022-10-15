@@ -6,7 +6,13 @@ import { TBreedSelect } from '../../Breeds/types'
 const BreedSelect: React.FC<TBreedSelect> = ({ options }) => {
 
 	return (
-		<Select options={ options }/>
+		<div className='selectBreedContainer'>
+			<Select
+				classNamePrefix='breed breedSelect'
+				options={ options }
+				placeholder='All breeds'
+			/>
+		</div>
 	)
 }
 
