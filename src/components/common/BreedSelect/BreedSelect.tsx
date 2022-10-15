@@ -1,16 +1,20 @@
-import React            from 'react'
-import Select           from 'react-select'
+import React from 'react'
+
+import Select from 'react-select'
+
 import { TBreedSelect } from '../../Breeds/types'
 
 
-const BreedSelect: React.FC<TBreedSelect> = ({ options }) => {
+const BreedSelect: React.FC<TBreedSelect> = ({ options, status }) => {
+
 
 	return (
 		<div className='selectBreedContainer'>
 			<Select
 				classNamePrefix='breed breedSelect'
-				options={ options }
 				placeholder='All breeds'
+				options={ options }
+				isLoading={ status === 'pending' }
 			/>
 		</div>
 	)
