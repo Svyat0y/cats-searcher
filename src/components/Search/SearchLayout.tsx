@@ -1,10 +1,10 @@
-import React from 'react'
+import React      from 'react'
+import { Outlet } from 'react-router-dom'
 
-import { Outlet }        from 'react-router-dom'
 import { ContentHeader } from '../common'
 
 
-const VotingLayout: React.FC = () => {
+const SearchLayout = () => {
 	return (
 		<div className='content'>
 			<div className='content__body'>
@@ -15,4 +15,4 @@ const VotingLayout: React.FC = () => {
 	)
 }
 
-export default VotingLayout
+export default SearchLayout

@@ -8,7 +8,7 @@ const BreedLayout = () => {
 	return (
 		<div className='content'>
 			<div className='content__body'>
-				<ContentHeader/>
+				<ContentHeader isVisibleBreedSelect={ true }/>
 				<Outlet/>
 			</div>
 		</div>

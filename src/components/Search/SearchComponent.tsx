@@ -3,8 +3,9 @@ import React, { useEffect } from 'react'
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
 
-import { SearchedItems } from '../../components'
-import { ContentHeader } from '../common'
+import { SearchedItems, SingleBreedInfo } from '../../components'
+import { Route, Routes }                  from 'react-router-dom'
+import SearchLayout                       from './SearchLayout'
 
 
 const SearchComponent: React.FC = () => {
@@ -15,14 +16,12 @@ const SearchComponent: React.FC = () => {
 	}, [])
 
 	return (
-		<>
-			<div className='content'>
-				<div className='content__body'>
-					<ContentHeader/>
-					<SearchedItems dispatch={ dispatch }/>
-				</div>
-			</div>
-		</>
+		<Routes>
+			<Route path='/' element={ <SearchLayout/> }>
+				<Route index element={ <SearchedItems dispatch={ dispatch }/> }/>
+				<Route path='desc' element={ <SingleBreedInfo/> }/>
+			</Route>
+		</Routes>
 	)
 }
 

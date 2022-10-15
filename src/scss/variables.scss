@@ -5,7 +5,7 @@ $main_color: #8C8C8C;
 
 :root, [data-theme="light"] {
   --bg_color: #F8F8F7;
-  --bg_grey-white_white-rgba: rgba(248, 248, 247, 1);
+  --bg_grey-white_white-rgba: #F8F8F7;
   --title_color: #000000;
   --bg_white-grey: #FFFFFF;
   --bg_dark_grey__white: #FFFFFF;
@@ -18,7 +18,7 @@ $main_color: #8C8C8C;
 [data-theme="dark"] {
   --bg_color: #1D1D1D;
   --title_color: #FFFFFF;
-  --bg_grey-white_white-rgba: rgba(255, 255, 255, .05);
+  --bg_grey-white_white-rgba: #343434;
   --bg_white-grey: #292929;
   --bg_dark_grey__white: #282828;
   --bg_input_search: #543C3D;
