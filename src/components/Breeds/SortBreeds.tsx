@@ -10,7 +10,6 @@ import { fetchBreeds }              from '../../redux/Breeds/asyncActions'
 
 
 const SortBreeds: React.FC = () => {
-
 	const dispatch = useAppDispatch()
 	const { breedsList } = useSelector(selectBreeds)
 

@@ -1,14 +1,16 @@
 import React                       from 'react'
 import { BackButton, BreadCrumbs } from '../index'
-import SortBreeds                  from '../../Breeds/SortBreeds'
+import { TContentHeader }          from './types'
+
+import SortBreeds from '../../Breeds/SortBreeds'
 
 
-const ContentHeader: React.FC = () => {
+const ContentHeader: React.FC<TContentHeader> = ({ isVisibleBreedSelect }) => {
 	return (
 		<div className='contentHeader'>
 			<BackButton/>
 			<BreadCrumbs/>
-			<SortBreeds/>
+			{ isVisibleBreedSelect && <SortBreeds/> }
 		</div>
 	)
 }

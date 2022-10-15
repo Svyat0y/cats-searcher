@@ -28,7 +28,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 			breed_name: name,
 		})
 		dispatch(fetchSingleBreed(breedId))
-		navigate(`/breeds/desc?${ queryString }`)
+		navigate(`desc?${ queryString }`)
 	}
 
 	useEffect(() => {

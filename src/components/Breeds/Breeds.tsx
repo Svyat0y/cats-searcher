@@ -3,9 +3,7 @@ import { Route, Routes }    from 'react-router-dom'
 
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
-
-import { SingleBreedInfo } from '../../components'
-import BreedLayout         from './BreedLayout'
+import BreedLayout        from './BreedLayout'
 
 
 const Breeds = () => {
@@ -18,8 +16,8 @@ const Breeds = () => {
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={ <BreedLayout/> }>
-					<Route path='desc' element={ <SingleBreedInfo/> }/>
+				<Route path='/*' element={ <BreedLayout/> }>
+
 				</Route>
 			</Routes>
 		</>
