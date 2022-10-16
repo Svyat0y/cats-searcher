@@ -6,6 +6,7 @@ import { setToValue }            from '../../../redux/Breeds/slice'
 
 
 const BreedSelect: React.FC<TBreedSelect> = ({ options, status, dispatch, value, limit }) => {
+	
 	const handleChange = (newValue: OnChangeValue<TOption, false>) => {
 		const newObj: TOption = newValue
 		if (newObj) {
