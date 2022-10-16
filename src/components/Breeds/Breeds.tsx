@@ -1,14 +1,28 @@
-import React, { useEffect } from 'react'
-import { Route, Routes }    from 'react-router-dom'
+import React, { useEffect }                                                from 'react'
+import { createSearchParams, Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
-import { useAppDispatch }                 from '../../redux/store'
-import { setActiveBtn }                   from '../../redux/voting/slice'
-import BreedLayout                        from './BreedLayout'
+import { useAppDispatch } from '../../redux/store'
+import { setActiveBtn }   from '../../redux/voting/slice'
+import { fetchSearch }    from '../../redux/Search/asyncActions'
+
 import { SearchedItems, SingleBreedInfo } from '../index'
+import BreedLayout                        from './BreedLayout'
 
 
 const Breeds = () => {
 	const dispatch = useAppDispatch()
+	const location = useLocation()
+
+	const [ , setSearchParams ] = useSearchParams()
+
+	useEffect(() => {
+		if (!location.search) {
+			setSearchParams(
+				createSearchParams({ q: 'All breeds', limit: '5' })
+			)
+			dispatch(fetchSearch({ value: 'All breeds', limit: '5' }))
+		}
+	}, [ location.search ])
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))

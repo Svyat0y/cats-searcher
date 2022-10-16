@@ -1,23 +1,33 @@
-import React, { useState } from 'react'
-import s                   from './SearchPanel.module.scss'
-import qs                  from 'qs'
-import { useNavigate }     from 'react-router'
+import React, { useEffect, useState } from 'react'
+import s                              from './SearchPanel.module.scss'
+import qs                             from 'qs'
 
 import { useAppDispatch } from '../../redux/store'
 import { fetchSearch }    from '../../redux/Search/asyncActions'
 
-import SearchPanelButtons from './SearchPanelButtons'
+import SearchPanelButtons  from './SearchPanelButtons'
+import { useNavigate }     from 'react-router'
+import { useSearchParams } from 'react-router-dom'
 
+
+const createParams = (value: string) => {
+	return qs.stringify({
+		q: value
+	})
+}
 
 let rootValue: string
 const SearchPanel: React.FC = () => {
-	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
+	const [ searchParams ] = useSearchParams()
 	const [ value, setValue ] = useState('')
 
-	const queryString = qs.stringify({
-		q: value
-	})
+	useEffect(() => {
+		const value = searchParams.get('q')
+		value && dispatch(fetchSearch({ value }))
+
+	}, [ searchParams ])
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
@@ -26,9 +36,8 @@ const SearchPanel: React.FC = () => {
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (rootValue !== value) {
 			if (e.key === 'Enter') {
-
 				dispatch(fetchSearch({ value }))
-				navigate(`search?${ queryString }`)
+				navigate(`search?${ createParams(value) }`)
 			}
 		}
 		rootValue = value
@@ -37,9 +46,8 @@ const SearchPanel: React.FC = () => {
 	const onSearchClick = () => {
 		if (rootValue !== value) {
 			if (value) {
-
 				dispatch(fetchSearch({ value }))
-				navigate(`search?${ queryString }`)
+				navigate(`search?${ createParams(value) }`, { replace: true })
 			}
 		}
 		rootValue = value

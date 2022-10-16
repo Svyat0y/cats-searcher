@@ -26,13 +26,14 @@ export const breedsSlice = createSlice({
 			state.activeBreedName = action.payload
 		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
-			state.breedsList = [ ...state.breedsList, ...action.payload ]
+			if (action.payload.length === 1) state.breedsList = action.payload
+			else state.breedsList = [ ...state.breedsList, ...action.payload ]
 		},
 		setToValue: (state, action: PayloadAction<string>) => {
-			state.value = action.payload
+			if (action.payload) state.value = action.payload
 		},
 		setToLimit: (state, action: PayloadAction<string>) => {
-			state.limit = action.payload
+			if (action.payload) state.limit = action.payload
 		},
 	},
 	extraReducers: (builder) => {

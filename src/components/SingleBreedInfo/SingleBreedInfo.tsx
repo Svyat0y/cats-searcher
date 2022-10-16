@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import s                    from './SingleBreedInfo.module.scss'
-import qs                   from 'qs'
 
 import { useSelector }        from 'react-redux'
 import { useAppDispatch }     from '../../redux/store'
@@ -9,15 +8,17 @@ import { selectBreeds }       from '../../redux/Breeds/selectors'
 import { setActiveBtn }       from '../../redux/voting/slice'
 import { setActiveBreedName } from '../../redux/Breeds/slice'
 
-import { Spinner } from '../common'
-import Slider      from './Slider'
-import SliderDesc  from './SliderDesc'
+import { Spinner }         from '../common'
+import Slider              from './Slider'
+import SliderDesc          from './SliderDesc'
+import { useSearchParams } from 'react-router-dom'
 
 
 const SingleBreedInfo: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { singleBreed, status, activeBreedName } = useSelector(selectBreeds)
 	const emptyData = singleBreed.length === 0
+	const [ searchParams, setSearchParams ] = useSearchParams()
 
 	useEffect(() => {
 		dispatch(setActiveBreedName(singleBreed[0]?.name))
@@ -27,9 +28,9 @@ const SingleBreedInfo: React.FC = () => {
 		dispatch(setActiveBtn('Breeds'))
 
 		if (emptyData && status === 'success') {
-			if (window.location.search) {
-				const params: any = qs.parse(window.location.search.slice(1))
-				dispatch(fetchSingleBreed(params.breed_id))
+			const params = searchParams.get('breed_id')
+			if (params) {
+				dispatch(fetchSingleBreed(params))
 			}
 		}
 	}, [])
