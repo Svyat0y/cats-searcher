@@ -5,9 +5,12 @@ import qs                             from 'qs'
 import { useAppDispatch } from '../../redux/store'
 import { fetchSearch }    from '../../redux/Search/asyncActions'
 
-import SearchPanelButtons  from './SearchPanelButtons'
-import { useNavigate }     from 'react-router'
-import { useSearchParams } from 'react-router-dom'
+import SearchPanelButtons                  from './SearchPanelButtons'
+import { useNavigate }                     from 'react-router'
+import { useLocation, useSearchParams }    from 'react-router-dom'
+import { useSelector }                     from 'react-redux'
+import { selectSearch }                    from '../../redux/Search/selectors'
+import { setSearchValue, setToSearchData } from '../../redux/Search/slice'
 
 
 const createParams = (value: string) => {
@@ -20,44 +23,51 @@ let rootValue: string
 const SearchPanel: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
+	const location = useLocation()
+	const { searchValue } = useSelector(selectSearch)
 	const [ searchParams ] = useSearchParams()
 	const [ value, setValue ] = useState('')
 
 	useEffect(() => {
 		const value = searchParams.get('q')
-		value && dispatch(fetchSearch({ value }))
+		if (value && location.pathname.includes('search')) {
+			dispatch(fetchSearch({ value }))
+			dispatch(setSearchValue(value))
+		}
 
 	}, [ searchParams ])
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setValue(e.target.value)
+		dispatch(setSearchValue(e.target.value))
 	}
 
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (rootValue !== value) {
+		if (rootValue !== searchValue) {
 			if (e.key === 'Enter') {
-				dispatch(fetchSearch({ value }))
-				navigate(`search?${ createParams(value) }`)
+				dispatch(setToSearchData(null))
+				dispatch(fetchSearch({ value: searchValue, limit: undefined }))
+				navigate(`search?${ createParams(searchValue) }`)
 			}
 		}
-		rootValue = value
+		rootValue = searchValue
 	}
 
 	const onSearchClick = () => {
-		if (rootValue !== value) {
-			if (value) {
-				dispatch(fetchSearch({ value }))
-				navigate(`search?${ createParams(value) }`, { replace: true })
+		if (rootValue !== searchValue) {
+			if (searchValue) {
+				dispatch(setToSearchData(null))
+				dispatch(fetchSearch({ value: searchValue, limit: undefined }))
+				navigate(`search?${ createParams(searchValue) }`, { replace: true })
 			}
 		}
-		rootValue = value
+		rootValue = searchValue
 	}
 
 	return (
 		<div className={ s.search }>
 			<div className={ s.search__input_wr }>
 				<input
-					value={ value }
+					value={ searchValue }
 					onKeyDown={ (e) => handleKey(e) } onChange={ (e) => onChangeValue(e) } type='text'
 					placeholder='Search for breeds by name'/>
 				<button onClick={ () => onSearchClick() }/>

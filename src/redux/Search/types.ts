@@ -12,4 +12,5 @@ export interface ISearch {
 	searchData: TSearchData[] | null
 	status: Status
 	isSearchMounted: boolean
+	searchValue: string
 }

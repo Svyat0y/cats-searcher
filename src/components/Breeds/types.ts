@@ -11,6 +11,6 @@ export type TBreedSelect = {
 }
 
 export type TOption = {
-	value: string | null
-	label: string | null
+	value?: string | null
+	label?: string | null
 } | null

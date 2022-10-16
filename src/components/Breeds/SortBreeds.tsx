@@ -33,6 +33,7 @@ const SortBreeds: React.FC = () => {
 				status={ status }
 			/>
 			<LimitSelect
+				value={ value }
 				dispatch={ dispatch }/>
 			<BreedSortButtons/>
 		</div>

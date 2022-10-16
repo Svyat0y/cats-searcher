@@ -6,9 +6,10 @@ import { TOption }                             from '../../Breeds/types'
 import { TLimitSelect }                        from './types'
 import { createSearchParams, useSearchParams } from 'react-router-dom'
 import { useNavigate }                         from 'react-router'
+import qs                                      from 'qs'
 
 
-const LimitSelect: React.FC<TLimitSelect> = ({ dispatch }) => {
+const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, value }) => {
 	const [ searchParams, setSearchParams ] = useSearchParams()
 	const navigate = useNavigate()
 
@@ -30,17 +31,12 @@ const LimitSelect: React.FC<TLimitSelect> = ({ dispatch }) => {
 	const handleChange = (newValue: OnChangeValue<TOption, false>) => {
 		const newObj: TOption = newValue
 		if (newObj?.value) {
-			if (searchParams) {
-				searchParams.set('limit', newObj?.value)
-				setSearchParams(searchParams, { replace: true })
-				navigate('?' + searchParams)
-			}
-			else{
-				setSearchParams(
-					createSearchParams({ limit: newObj?.value })
-				)
-				navigate('?' + searchParams)
-			}
+			const query = qs.stringify({
+				q: value,
+				limit: newObj?.value
+			})
+
+			navigate(`?${ query }`)
 		}
 	}
 
