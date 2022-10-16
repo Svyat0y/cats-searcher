@@ -4,7 +4,7 @@ import { TVoting }       from './types'
 
 import { Dislikes, Favourites, Likes, VotingImage } from './index'
 import VotingLayout                                 from './VotingLayout'
-import VotingDataContainer                          from './VotingDataContainer'
+import VotingDataContainer                          from '../hoc/VotingDataContainer'
 
 
 const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {

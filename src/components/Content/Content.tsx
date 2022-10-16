@@ -11,9 +11,9 @@ const Content: React.FC = () => {
 		<Routes>
 			<Route path='/' element={ <ContentLayout/> }>
 				<Route index element={ <Preview/> }/>
-				<Route path='search/*' element={ <SearchComponent/> }/>
 				<Route path='voting/*' element={ <Voting/> }/>
 				<Route path='breeds/*' element={ <Breeds/> }/>
+				<Route path='search/*' element={ <SearchComponent/> }/>
 				<Route path='gallery' element={ <div>Gallery! (in development)</div> }/>
 			</Route>
 		</Routes>

@@ -1,16 +1,18 @@
 import React                       from 'react'
 import { BackButton, BreadCrumbs } from '../index'
-import { TContentHeader }          from './types'
 
-import SortBreeds from '../../Breeds/SortBreeds'
+import SortBreeds      from '../../Breeds/SortBreeds'
+import { useLocation } from 'react-router-dom'
 
 
-const ContentHeader: React.FC<TContentHeader> = ({ isVisibleBreedSelect }) => {
+const ContentHeader: React.FC = () => {
+	const location = useLocation()
+
 	return (
 		<div className='contentHeader'>
 			<BackButton/>
 			<BreadCrumbs/>
-			{ isVisibleBreedSelect && <SortBreeds/> }
+			{ (location.pathname.includes('breeds') && !location.pathname.includes('description')) && <SortBreeds/> }
 		</div>
 	)
 }

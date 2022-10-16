@@ -19,7 +19,7 @@ const SearchComponent: React.FC = () => {
 		<Routes>
 			<Route path='/' element={ <SearchLayout/> }>
 				<Route index element={ <SearchedItems dispatch={ dispatch }/> }/>
-				<Route path='desc' element={ <SingleBreedInfo/> }/>
+				<Route path='description' element={ <SingleBreedInfo/> }/>
 			</Route>
 		</Routes>
 	)
