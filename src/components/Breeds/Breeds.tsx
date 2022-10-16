@@ -17,7 +17,7 @@ const Breeds = () => {
 	return (
 		<>
 			<Routes>
-				<Route path='/*' element={ <BreedLayout/> }>
+				<Route path='/' element={ <BreedLayout/> }>
 					<Route index element={ <SearchedItems dispatch={ dispatch }/> }/>
 					<Route path='description' element={ <SingleBreedInfo/> }/>
 				</Route>

@@ -6,6 +6,8 @@ export type TBreedSelect = {
 	options: TBreedOption[]
 	status: string
 	dispatch: AppDispatch
+	value: string
+	limit: string
 }
 
 export type TOption = {

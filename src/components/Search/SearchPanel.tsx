@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './SearchPanel.module.scss'
-import qs                             from 'qs'
-import { useNavigate }                from 'react-router'
+import React, { useState } from 'react'
+import s                   from './SearchPanel.module.scss'
+import qs                  from 'qs'
+import { useNavigate }     from 'react-router'
 
 import { useAppDispatch } from '../../redux/store'
 import { fetchSearch }    from '../../redux/Search/asyncActions'
@@ -14,19 +14,10 @@ const SearchPanel: React.FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [ value, setValue ] = useState('')
-	const params: any = qs.parse(window.location.search.slice(1))
 
 	const queryString = qs.stringify({
 		q: value
 	})
-
-	useEffect(() => {
-		if (!params.q) setValue('')
-		else{
-			setValue(params.q)
-			dispatch(fetchSearch({ value: params.q, limit: params.limit }))
-		}
-	}, [ params.q ])
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)

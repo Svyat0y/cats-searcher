@@ -1,14 +1,16 @@
-import { createSlice, PayloadAction }                           from '@reduxjs/toolkit'
-import { Status }                                               from '../voting/types'
-import { IBreeds, TBreedOption, TSingleBreed }                  from './types'
+import { createSlice, PayloadAction }          from '@reduxjs/toolkit'
+import { IBreeds, TBreedOption, TSingleBreed } from './types'
+import { Status }                              from '../voting/types'
+
 import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
+import { getBreedValue }                                        from './utils'
 
 
 const initialState: IBreeds = {
 	singleBreed: [],
-	breedsList: [],
+	breedsList: [ { value: 'All', label: 'All breeds' } ],
 	activeBreedName: '',
-	value: '',
+	value: getBreedValue() || 'All breeds',
 	limit: '5',
 	status: Status.SUCCESS,
 }
@@ -24,7 +26,7 @@ export const breedsSlice = createSlice({
 			state.activeBreedName = action.payload
 		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
-			state.breedsList = action.payload
+			state.breedsList = [ ...state.breedsList, ...action.payload ]
 		},
 		setToValue: (state, action: PayloadAction<string>) => {
 			state.value = action.payload

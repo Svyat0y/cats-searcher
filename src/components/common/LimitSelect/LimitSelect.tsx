@@ -18,7 +18,9 @@ const LimitSelect: React.FC<TLimitSelect> = ({ dispatch }) => {
 
 	const handleChange = (newValue: OnChangeValue<TOption, false>) => {
 		const newObj: TOption = newValue
-		newObj && dispatch(setToLimit(newObj.value))
+		if (newObj) {
+			dispatch(setToLimit(newObj.value))
+		}
 	}
 
 	return (

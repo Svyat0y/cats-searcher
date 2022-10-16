@@ -58,6 +58,7 @@
   }
 
   &__menu {
+    z-index: 20 !important;
     background: transparent !important;
     border-radius: 10px !important;
     overflow: hidden !important;
