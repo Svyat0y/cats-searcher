@@ -35,7 +35,7 @@ export const breedsSlice = createSlice({
 		setToLimit: (state, action: PayloadAction<string>) => {
 			if (action.payload) state.limit = action.payload
 		},
-		setActiveSortBtn: (state, action: PayloadAction<string>) => {
+		setOrder: (state, action: PayloadAction<string>) => {
 			state.order = action.payload
 		},
 	},
@@ -53,6 +53,6 @@ export const breedsSlice = createSlice({
 
 })
 
-export const { setSingleBreed, setActiveBreedName, setToBreedList, setToValue, setToLimit, setActiveSortBtn } = breedsSlice.actions
+export const { setSingleBreed, setActiveBreedName, setToBreedList, setToValue, setToLimit, setOrder } = breedsSlice.actions
 
 export default breedsSlice.reducer

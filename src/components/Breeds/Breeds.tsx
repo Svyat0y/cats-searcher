@@ -6,14 +6,19 @@ import { setActiveBtn }   from '../../redux/voting/slice'
 
 import { SearchedItems, SingleBreedInfo } from '../index'
 import BreedLayout                        from './BreedLayout'
+import { fetchSearch }                    from '../../redux/Search/asyncActions'
+import { useSelector }                    from 'react-redux'
+import { selectBreeds }                   from '../../redux/Breeds/selectors'
 
 
 const Breeds = () => {
 	const dispatch = useAppDispatch()
+	const { value, limit, order } = useSelector(selectBreeds)
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-	}, [])
+		dispatch(fetchSearch())
+	}, [ value, limit, order ])
 
 	return (
 		<>

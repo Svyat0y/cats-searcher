@@ -34,7 +34,7 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 			}
 			else{
 				const { data } = await instance.get<any>(`breeds/search/?q=${ value }&order=${ order }&${ limit ? `limit=${ Number(limit) }` : '' }`)
-				dispatch(setToValue(data[0].name))
+				// dispatch(setToValue(data[0].name))
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))

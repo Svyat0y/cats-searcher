@@ -1,12 +1,14 @@
-import React           from 'react'
-import { useNavigate } from 'react-router'
-import qs              from 'qs'
+import React, { useEffect } from 'react'
+import { useNavigate }      from 'react-router'
+import qs                   from 'qs'
 
+import { useSearchParams }  from 'react-router-dom'
 import { useSelector }      from 'react-redux'
 import { AppDispatch }      from '../../redux/store'
 import { TSearchData }      from '../../redux/Search/types'
 import { selectSearch }     from '../../redux/Search/selectors'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
+import { setToValue }       from '../../redux/Breeds/slice'
 
 import { SkeletonLoader } from '../common'
 
@@ -17,6 +19,7 @@ type TSearchedItems = {
 
 const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const { searchData, status } = useSelector(selectSearch)
+	const [ searchParams ] = useSearchParams()
 	const navigate = useNavigate()
 	const emptyData = searchData?.length === 0
 
@@ -28,6 +31,11 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		dispatch(fetchSingleBreed(breedId))
 		navigate(`description?${ queryString }`)
 	}
+
+	useEffect(() => {
+		const valueParams = searchParams.get('q')
+		valueParams && dispatch(setToValue(valueParams))
+	}, [ searchParams ])
 
 	const renderData = () => (
 		searchData && searchData[0]

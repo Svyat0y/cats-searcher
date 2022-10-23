@@ -13,7 +13,7 @@ import { BreedSelect, LimitSelect } from '../common'
 
 const SortBreeds: React.FC = () => {
 	const dispatch = useAppDispatch()
-	const { breedsList, status } = useSelector(selectBreeds)
+	const { breedsList, status, order } = useSelector(selectBreeds)
 
 	useEffect(() => {
 		dispatch(fetchBreeds())
@@ -26,11 +26,18 @@ const SortBreeds: React.FC = () => {
 	return (
 		<div className={ s.sortBreeds_wr }>
 			<BreedSelect
+				dispatch={ dispatch }
 				options={ breedsList }
 				status={ status }
 			/>
-			<LimitSelect/>
-			<BreedSortButtons dispatch={ dispatch }/>
+			<LimitSelect
+				dispatch={ dispatch }
+			/>
+			<BreedSortButtons
+				status={ status }
+				order={ order }
+				dispatch={ dispatch }
+			/>
 		</div>
 	)
 }

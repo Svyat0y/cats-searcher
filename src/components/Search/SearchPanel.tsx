@@ -10,6 +10,7 @@ import { useNavigate }                     from 'react-router'
 import { useSelector }                     from 'react-redux'
 import { selectSearch }                    from '../../redux/Search/selectors'
 import { setSearchValue, setToSearchData } from '../../redux/Search/slice'
+import { setToValue }                      from '../../redux/Breeds/slice'
 
 
 const createParams = (value: string) => {
@@ -23,8 +24,6 @@ const SearchPanel: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const { searchValue } = useSelector(selectSearch)
-	/*	const [ searchParams ] = useSearchParams()
-		const [ value, setValue ] = useState('')*/
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setSearchValue(e.target.value))
@@ -34,7 +33,8 @@ const SearchPanel: React.FC = () => {
 		if (rootValue !== searchValue) {
 			if (e.key === 'Enter') {
 				dispatch(setToSearchData(null))
-				dispatch(fetchSearch({ value: searchValue, limit: undefined }))
+				dispatch(setToValue(searchValue))
+				dispatch(fetchSearch())
 				navigate(`search?${ createParams(searchValue) }`)
 			}
 		}
@@ -45,7 +45,8 @@ const SearchPanel: React.FC = () => {
 		if (rootValue !== searchValue) {
 			if (searchValue) {
 				dispatch(setToSearchData(null))
-				dispatch(fetchSearch({ value: searchValue, limit: undefined }))
+				dispatch(setToValue(searchValue))
+				dispatch(fetchSearch())
 				navigate(`search?${ createParams(searchValue) }`, { replace: true })
 			}
 		}
