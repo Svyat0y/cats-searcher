@@ -14,15 +14,20 @@ const limitOptions: TBreedOption[] = [
 	{ value: '20', label: 'Limit: 20' },
 ]
 
-const LimitSelect: React.FC<TLimitSelect> = ({ dispatch }) => {
+const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, limit }) => {
 
 	const onChangeLimit = (e: TOption) => {
 		if (e) dispatch(setToLimit(e.value))
 	}
 
+	const getValue = () => {
+		return limitOptions.find(option => option.value === limit)
+	}
+
 	return (
 		<div className='selectLimitContainer'>
 			<Select
+				value={ getValue() }
 				classNamePrefix='breedSelect'
 				options={ limitOptions }
 				defaultValue={ limitOptions[0] }

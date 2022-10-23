@@ -6,14 +6,26 @@ import { setActiveBtn }   from '../../redux/voting/slice'
 import { SearchedItems, SingleBreedInfo } from '../../components'
 import { Route, Routes }                  from 'react-router-dom'
 import SearchLayout                       from './SearchLayout'
+import { useSelector }                    from 'react-redux'
+import { selectBreeds }                   from '../../redux/Breeds/selectors'
+import { fetchSearch }                    from '../../redux/Search/asyncActions'
+import { setToValue }                     from '../../redux/Breeds/slice'
+import { setSearchValue }                 from '../../redux/Search/slice'
 
 
 const SearchComponent: React.FC = () => {
 	const dispatch = useAppDispatch()
+	const { value } = useSelector(selectBreeds)
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
-	}, [])
+		dispatch(fetchSearch())
+
+		return () => {
+			dispatch(setSearchValue(''))
+			dispatch(setToValue('All breeds'))
+		}
+	}, [ value ])
 
 	return (
 		<Routes>

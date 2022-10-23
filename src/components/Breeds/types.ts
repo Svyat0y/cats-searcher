@@ -6,6 +6,7 @@ export type TBreedSelect = {
 	options: TBreedOption[]
 	status: string
 	dispatch: AppDispatch
+	value: string
 }
 
 export type TBreedSortButtons = {
