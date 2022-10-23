@@ -18,7 +18,7 @@ const SingleBreedInfo: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { singleBreed, status, activeBreedName } = useSelector(selectBreeds)
 	const emptyData = singleBreed.length === 0
-	const [ searchParams, setSearchParams ] = useSearchParams()
+	const [ searchParams ] = useSearchParams()
 
 	useEffect(() => {
 		dispatch(setActiveBreedName(singleBreed[0]?.name))

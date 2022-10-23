@@ -8,6 +8,7 @@ export interface IBreeds {
 	breedsList: TBreedOption[]
 	value: string | null
 	limit: string | null
+	order: string
 }
 
 export type TBreedOption = {

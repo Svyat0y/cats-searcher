@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './SearchPanel.module.scss'
-import qs                             from 'qs'
+import React from 'react'
+import s     from './SearchPanel.module.scss'
+import qs    from 'qs'
 
 import { useAppDispatch } from '../../redux/store'
 import { fetchSearch }    from '../../redux/Search/asyncActions'
 
 import SearchPanelButtons                  from './SearchPanelButtons'
 import { useNavigate }                     from 'react-router'
-import { useLocation, useSearchParams }    from 'react-router-dom'
 import { useSelector }                     from 'react-redux'
 import { selectSearch }                    from '../../redux/Search/selectors'
 import { setSearchValue, setToSearchData } from '../../redux/Search/slice'
@@ -23,19 +22,9 @@ let rootValue: string
 const SearchPanel: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const location = useLocation()
 	const { searchValue } = useSelector(selectSearch)
-	const [ searchParams ] = useSearchParams()
-	const [ value, setValue ] = useState('')
-
-	useEffect(() => {
-		const value = searchParams.get('q')
-		if (value && location.pathname.includes('search')) {
-			dispatch(fetchSearch({ value }))
-			dispatch(setSearchValue(value))
-		}
-
-	}, [ searchParams ])
+	/*	const [ searchParams ] = useSearchParams()
+		const [ value, setValue ] = useState('')*/
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setSearchValue(e.target.value))

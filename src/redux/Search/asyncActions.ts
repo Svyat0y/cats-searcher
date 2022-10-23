@@ -18,23 +18,22 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 	return { id, url, name, breedId }
 }
 
-export const fetchSearch = createAsyncThunk<void, { value?: string | null, limit?: string | null, }, { state: RootState }>(
+export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearch',
-	async (params, { dispatch }) => {
-
-		const { value, limit = 5 } = params
+	async (params, { dispatch, getState }) => {
+		const { value, limit, order } = getState().breedsSlice
 
 		try {
 			if (value === 'All breeds') {
 				dispatch(setToValue('All breeds'))
-				const { data } = await instance.get<any>(`breeds?limit=${ Number(limit) }`)
+				const { data } = await instance.get<any>(`breeds?order=${ order }&limit=${ Number(limit) }`)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))
 				dispatch(setToSearchData(newData))
 			}
 			else{
-				const { data } = await instance.get<any>(`breeds/search/?q=${ value }&${ limit ? `limit=${ Number(limit) }` : '' }`)
+				const { data } = await instance.get<any>(`breeds/search/?q=${ value }&order=${ order }&${ limit ? `limit=${ Number(limit) }` : '' }`)
 				dispatch(setToValue(data[0].name))
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
