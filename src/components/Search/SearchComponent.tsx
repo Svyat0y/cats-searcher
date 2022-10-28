@@ -30,6 +30,7 @@ const SearchComponent: React.FC = () => {
 		if (location.search) {
 			const valueParam: any = searchParams.get('q')
 			dispatch(setToValue(valueParam))
+			dispatch(setSearchValue(valueParam))
 			dispatch(fetchSearch())
 		}
 	}, [ location.search ])
