@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 import s                    from './SingleBreedInfo.module.scss'
+import { useSearchParams }  from 'react-router-dom'
 
 import { useSelector }        from 'react-redux'
 import { useAppDispatch }     from '../../redux/store'
-import { fetchSingleBreed }   from '../../redux/Breeds/asyncActions'
 import { selectBreeds }       from '../../redux/Breeds/selectors'
 import { setActiveBtn }       from '../../redux/voting/slice'
 import { setActiveBreedName } from '../../redux/Breeds/slice'
+import { fetchSingleBreed }   from '../../redux/Breeds/asyncActions'
 
-import { Spinner }         from '../common'
-import Slider              from './Slider'
-import SliderDesc          from './SliderDesc'
-import { useSearchParams } from 'react-router-dom'
+import { Spinner } from '../common'
+import Slider      from './Slider'
+import SliderDesc  from './SliderDesc'
 
 
 const SingleBreedInfo: React.FC = () => {

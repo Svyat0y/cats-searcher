@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom'
 
 const ContentHeader: React.FC = () => {
 	const location = useLocation()
-
 	return (
 		<div className='contentHeader'>
 			<BackButton/>

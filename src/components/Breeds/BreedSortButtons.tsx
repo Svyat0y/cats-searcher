@@ -2,17 +2,9 @@ import React from 'react'
 import s     from './Breeds.module.scss'
 
 import { TBreedSortButtons } from './types'
-import { setOrder }          from '../../redux/Breeds/slice'
 
 
-const BreedSortButtons: React.FC<TBreedSortButtons> = ({ dispatch, order, status }) => {
-
-	const oncClickAsk = () => {
-		dispatch(setOrder('asc'))
-	}
-	const oncClickDesk = () => {
-		dispatch(setOrder('desc'))
-	}
+const BreedSortButtons: React.FC<TBreedSortButtons> = ({ order, status, oncClickAsk, oncClickDesk }) => {
 
 	return (
 		<>

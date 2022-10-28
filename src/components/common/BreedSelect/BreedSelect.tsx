@@ -1,19 +1,11 @@
 import React from 'react'
 
-import Select                    from 'react-select'
-import { TBreedSelect, TOption } from '../../Breeds/types'
-import { setToValue }            from '../../../redux/Breeds/slice'
+import Select           from 'react-select'
+import { TBreedSelect } from '../../Breeds/types'
 
 
-const BreedSelect: React.FC<TBreedSelect> = React.memo(({ options, status, dispatch, value }) => {
-
-	const onChangeOption = (e: TOption) => {
-		if (e) dispatch(setToValue(e.label))
-	}
-
-	const getValue = () => {
-		return options.find(option => option.label === value)
-	}
+const BreedSelect: React.FC<TBreedSelect> = React.memo(({ options, status, value, onChangeOption }) => {
+	const getValue = () => options.find(option => option.label === value)
 
 	return (
 		<div className='selectBreedContainer'>

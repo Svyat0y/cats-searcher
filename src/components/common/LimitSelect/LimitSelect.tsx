@@ -3,8 +3,6 @@ import Select from 'react-select'
 
 import { TBreedOption } from '../../../redux/Breeds/types'
 import { TLimitSelect } from './types'
-import { setToLimit }   from '../../../redux/Breeds/slice'
-import { TOption }      from '../../Breeds/types'
 
 
 const limitOptions: TBreedOption[] = [
@@ -14,17 +12,8 @@ const limitOptions: TBreedOption[] = [
 	{ value: '20', label: 'Limit: 20' },
 ]
 
-const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, limit }) => {
-
-	const onChangeLimit = (e: TOption) => {
-		if (e) {
-			dispatch(setToLimit(e.value))
-		}
-	}
-
-	const getValue = () => {
-		return limitOptions.find(option => option.value === limit)
-	}
+const LimitSelect: React.FC<TLimitSelect> = ({ limit, onChangeLimit }) => {
+	const getValue = () => limitOptions.find(option => option.value === limit)
 
 	return (
 		<div className='selectLimitContainer'>
