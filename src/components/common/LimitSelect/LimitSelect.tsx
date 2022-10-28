@@ -17,7 +17,9 @@ const limitOptions: TBreedOption[] = [
 const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, limit }) => {
 
 	const onChangeLimit = (e: TOption) => {
-		if (e) dispatch(setToLimit(e.value))
+		if (e) {
+			dispatch(setToLimit(e.value))
+		}
 	}
 
 	const getValue = () => {

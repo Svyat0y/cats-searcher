@@ -1,35 +1,46 @@
-import React, { useEffect } from 'react'
-import { Route, Routes }    from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {Route, Routes, useSearchParams} from 'react-router-dom'
 
-import { useAppDispatch } from '../../redux/store'
-import { setActiveBtn }   from '../../redux/voting/slice'
+import {useAppDispatch} from '../../redux/store'
 
-import { SearchedItems, SingleBreedInfo } from '../index'
-import BreedLayout                        from './BreedLayout'
-import { fetchSearch }                    from '../../redux/Search/asyncActions'
-import { useSelector }                    from 'react-redux'
-import { selectBreeds }                   from '../../redux/Breeds/selectors'
+import {SearchedItems, SingleBreedInfo} from '../index'
+import BreedLayout from './BreedLayout'
+import {setActiveBtn} from '../../redux/voting/slice'
+import {setOrder, setToLimit, setToValue} from '../../redux/Breeds/slice'
+import {fetchSearch} from '../../redux/Search/asyncActions'
 
 
 const Breeds = () => {
-	const dispatch = useAppDispatch()
-	const { value, limit, order } = useSelector(selectBreeds)
+    const dispatch = useAppDispatch()
+    const [searchParams, setSearchParams] = useSearchParams()
 
-	useEffect(() => {
-		dispatch(setActiveBtn('Breeds'))
-		dispatch(fetchSearch())
-	}, [ value, limit, order ])
 
-	return (
-		<>
-			<Routes>
-				<Route path='/' element={ <BreedLayout/> }>
-					<Route path='' element={ <SearchedItems dispatch={ dispatch }/> }/>
-					<Route path='description' element={ <SingleBreedInfo/> }/>
-				</Route>
-			</Routes>
-		</>
-	)
+    useEffect(() => {
+        dispatch(setActiveBtn('Breeds'))
+    })
+    useEffect(() => {
+        if (location.search) {
+            const valueParam: any = searchParams.get('q')
+            const limitParam: any = searchParams.get('limit')
+            const orderParam: any = searchParams.get('order')
+            dispatch(setToValue(valueParam))
+            dispatch(setToLimit(limitParam))
+            dispatch(setOrder(orderParam))
+            dispatch(fetchSearch())
+        }
+    }, [location.search])
+
+
+    return (
+        <>
+            <Routes>
+                <Route path='/' element={<BreedLayout/>}>
+                    <Route path='' element={<SearchedItems dispatch={dispatch}/>}/>
+                    <Route path='description' element={<SingleBreedInfo/>}/>
+                </Route>
+            </Routes>
+        </>
+    )
 }
 
 export default Breeds
