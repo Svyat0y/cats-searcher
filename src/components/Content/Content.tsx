@@ -9,7 +9,7 @@ const Content: React.FC = () => {
 
 	return (
 		<Routes>
-			<Route path='/' element={ <ContentLayout/> }>
+			<Route path='/*' element={ <ContentLayout/> }>
 				<Route index element={ <Preview/> }/>
 				<Route path='voting/*' element={ <Voting/> }/>
 				<Route path='breeds/*' element={ <Breeds/> }/>

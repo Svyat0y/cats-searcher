@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useNavigate }      from 'react-router'
-import qs                   from 'qs'
+import React           from 'react'
+import { useNavigate } from 'react-router'
+import qs              from 'qs'
 
 import { useSelector }      from 'react-redux'
 import { AppDispatch }      from '../../redux/store'
@@ -8,9 +8,7 @@ import { TSearchData }      from '../../redux/Search/types'
 import { selectSearch }     from '../../redux/Search/selectors'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
 
-import { SkeletonLoader }  from '../common'
-import { useSearchParams } from 'react-router-dom'
-import { fetchSearch }     from '../../redux/Search/asyncActions'
+import { SkeletonLoader } from '../common'
 
 
 type TSearchedItems = {
@@ -18,20 +16,9 @@ type TSearchedItems = {
 }
 
 const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
-	const { searchData, status, isSearchMounted } = useSelector(selectSearch)
-	const [ searchParams, setSearchParams ] = useSearchParams()
+	const { searchData, status } = useSelector(selectSearch)
 	const navigate = useNavigate()
 	const emptyData = searchData?.length === 0
-
-	useEffect(() => {
-		const value = searchParams.get('q')
-		const limit = searchParams.get('limit')
-
-		if (value || limit) {
-			dispatch(fetchSearch({ value, limit }))
-		}
-
-	}, [ searchParams ])
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({

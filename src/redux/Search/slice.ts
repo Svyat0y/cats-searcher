@@ -8,8 +8,8 @@ import { Status }               from '../voting/types'
 const initialState: ISearch = {
 	searchData: null,
 	searchValue: '',
+	isSearchMounted: false,
 	status: Status.SUCCESS,
-	isSearchMounted: false
 }
 
 

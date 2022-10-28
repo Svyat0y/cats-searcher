@@ -1,37 +1,24 @@
 import React from 'react'
-import qs    from 'qs'
 
-import Select, { OnChangeValue } from 'react-select'
-import { useNavigate }           from 'react-router'
-import { TBreedSelect, TOption } from '../../Breeds/types'
+import Select           from 'react-select'
+import { TBreedSelect } from '../../Breeds/types'
 
 
-const BreedSelect: React.FC<TBreedSelect> = ({ options, status, value, dispatch, limit }) => {
-	const navigate = useNavigate()
-
-	const handleChange = (newValue: OnChangeValue<TOption, false>) => {
-		const newObj: TOption = newValue
-		if (newObj?.label) {
-			const query = qs.stringify({
-				q: newObj?.label,
-				limit: limit
-			})
-			navigate(`?${ query }`)
-		}
-	}
+const BreedSelect: React.FC<TBreedSelect> = React.memo(({ options, status, value, onChangeOption }) => {
+	const getValue = () => options.find(option => option.label === value)
 
 	return (
 		<div className='selectBreedContainer'>
 			<Select
 				classNamePrefix='breed breedSelect'
 				placeholder='Select breed'
+				value={ getValue() }
 				options={ options }
-				defaultValue={ { value: limit, label: value } }
 				isLoading={ status === 'pending' }
-				onChange={ handleChange }
+				onChange={ onChangeOption }
 			/>
 		</div>
 	)
-}
+})
 
 export default BreedSelect
