@@ -1,5 +1,5 @@
-import { changeTheme } from '../redux/theme/slice'
 import { AppDispatch } from '../redux/store'
+import { changeTheme } from '../redux/theme/slice'
 
 
 export const onDarkTheme = () => {

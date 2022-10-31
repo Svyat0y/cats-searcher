@@ -1,19 +1,20 @@
-import { instance }         from '../../api/api'
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { instance }                                                                from '../../api/api'
+import { createAsyncThunk }                                                        from '@reduxjs/toolkit'
+import { TDataImgVoted, TDataObj, TFavouritesData, TLikesData, TVotingFavourites } from './types'
 
 import { RootState } from '../store'
 import {
 	deleteFavouritesItem,
 	deleteFromFavouritesData,
-	setInfoMessage, setPrevFavPage,
+	setInfoMessage,
+	setPrevFavPage,
 	setToFavoritesData,
 	setToFavourites,
 	setToLike,
 	setToUnlike
 }                    from './slice'
 
-import { TDataImgVoted, TDataObj, TFavouritesData, TLikesData, TVotingFavourites } from './types'
-import { setLsMessages }                                                           from '../../utils/infoMessageLS'
+import { setLsMessages } from '../../utils/infoMessageLS'
 
 
 const getDate = () => {

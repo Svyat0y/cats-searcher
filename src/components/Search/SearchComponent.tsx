@@ -2,11 +2,10 @@ import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
-import { useAppDispatch } from '../../redux/store'
-import { setActiveBtn }   from '../../redux/voting/slice'
-import { setSearchValue } from '../../redux/Search/slice'
-import { setToValue }     from '../../redux/Breeds/slice'
-import { fetchSearch }    from '../../redux/Search/asyncActions'
+import { useAppDispatch }             from '../../redux/store'
+import { setActiveBtn }               from '../../redux/voting/slice'
+import { setSearchValue, setToValue } from '../../redux/Search/slice'
+import { fetchSearch }                from '../../redux/Search/asyncActions'
 
 import SearchLayout                       from './SearchLayout'
 import { SearchedItems, SingleBreedInfo } from '../../components'
@@ -15,7 +14,7 @@ import { SearchedItems, SingleBreedInfo } from '../../components'
 const SearchComponent: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const [ searchParams, setSearchParams ] = useSearchParams()
+	const [ searchParams ] = useSearchParams()
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))

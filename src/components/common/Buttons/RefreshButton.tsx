@@ -1,6 +1,5 @@
-import React from 'react'
-import s     from './RefreshButton.module.scss'
-
+import React              from 'react'
+import s                  from './RefreshButton.module.scss'
 import { TRefreshButton } from './types'
 
 import refreshImg from '../../../assets/images/common/refreshImg.webp'

@@ -1,17 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { fetchSearch }                from './asyncActions'
-
-import { ISearch, TSearchData } from './types'
-import { Status }               from '../voting/types'
+import { ISearch, TSearchData }       from './types'
+import { Status }                     from '../voting/types'
+import { TBreedOption }               from '../Breeds/types'
 
 
 const initialState: ISearch = {
 	searchData: null,
 	searchValue: '',
-	isSearchMounted: false,
+	breedsList: [],
+	value: 'All breeds',
+	limit: '5',
+	order: 'asc',
+	page: 0,
 	status: Status.SUCCESS,
 }
-
 
 export const searchingSlice = createSlice({
 	name: 'search',
@@ -20,11 +23,24 @@ export const searchingSlice = createSlice({
 		setToSearchData: (state, action: PayloadAction<TSearchData[] | null>) => {
 			state.searchData = action.payload
 		},
-		setIsSearchMounted: (state, action: PayloadAction<boolean>) => {
-			state.isSearchMounted = action.payload
-		},
 		setSearchValue: (state, action: PayloadAction<string>) => {
 			state.searchValue = action.payload
+		},
+		setToValue: (state, action: PayloadAction<string>) => {
+			if (action.payload) state.value = action.payload
+		},
+		setToLimit: (state, action: PayloadAction<string>) => {
+			if (action.payload) state.limit = action.payload
+		},
+		setOrder: (state, action: PayloadAction<string>) => {
+			state.order = action.payload
+		},
+		setPage: (state, action: PayloadAction<number>) => {
+			state.page += action.payload
+		},
+		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
+			if (action.payload.length === 1) state.breedsList = action.payload
+			else state.breedsList = [ { value: 'All', label: 'All breeds' }, ...action.payload ]
 		},
 	},
 	extraReducers: (builder) => {
@@ -40,6 +56,6 @@ export const searchingSlice = createSlice({
 	}
 })
 
-export const { setToSearchData, setIsSearchMounted, setSearchValue } = searchingSlice.actions
+export const { setToSearchData, setSearchValue, setPage, setOrder, setToLimit, setToValue, setToBreedList } = searchingSlice.actions
 
 export default searchingSlice.reducer

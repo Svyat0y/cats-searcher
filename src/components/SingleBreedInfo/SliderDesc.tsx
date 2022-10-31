@@ -1,6 +1,5 @@
-import React from 'react'
-import s     from './SingleBreedInfo.module.scss'
-
+import React       from 'react'
+import s           from './SingleBreedInfo.module.scss'
 import { TSlider } from './types'
 
 

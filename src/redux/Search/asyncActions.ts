@@ -1,10 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { instance }         from '../../api/api'
+import { TSearchData }      from './types'
 
-import { setToSearchData } from './slice'
-import { TSearchData }     from './types'
-import { RootState }       from '../store'
-import { setToValue }      from '../Breeds/slice'
+import { RootState }                   from '../store'
+import { setToSearchData, setToValue } from './slice'
 
 
 const fetchSearchRightObjects = async (reference_image_id: string) => {
@@ -21,12 +20,12 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearch',
 	async (params, { dispatch, getState }) => {
-		const { value, limit, order } = getState().breedsSlice
+		const { page, value, limit, order } = getState().searchingSlice
 
 		try {
 			if (value === 'All breeds') {
 				dispatch(setToValue('All breeds'))
-				const { data } = await instance.get<any>(`breeds?order=${ order }&limit=${ Number(limit) }`)
+				const { data } = await instance.get<any>(`breeds?order=${ order }&limit=${ Number(limit) }&page=${ page }`)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))
@@ -34,7 +33,6 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 			}
 			else{
 				const { data } = await instance.get<any>(`breeds/search/?q=${ value }&order=${ order }&${ limit ? `limit=${ Number(limit) }` : '' }`)
-				// dispatch(setToValue(data[0].name))
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))

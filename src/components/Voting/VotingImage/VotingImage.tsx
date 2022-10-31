@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
+import { TVotingImage }               from './types'
 
-import { TVotingImage } from './types'
-
-import Spinner          from '../../common/Spinner/Spinner'
 import { fetchVoteImg } from '../../../redux/voting/asyncActions'
 import { setActiveBtn } from '../../../redux/voting/slice'
 
+import Spinner                       from '../../common/Spinner/Spinner'
 import { NavButtons, VotingMessage } from '../index'
 
 

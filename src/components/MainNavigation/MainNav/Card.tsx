@@ -1,8 +1,7 @@
-import React     from 'react'
-import s         from './MainNav.module.scss'
-import { TCard } from './types'
-
+import React                 from 'react'
+import s                     from './MainNav.module.scss'
 import { Link, useLocation } from 'react-router-dom'
+import { TCard }             from './types'
 
 
 const Card: React.FC<TCard> = ({ name, img, color, to }) => {

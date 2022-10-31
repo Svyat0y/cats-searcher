@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import s                   from './NavButtons.module.scss'
 import { TNavButtons }     from './types'
 
-import { HeartBtn, VoteDownBtn, VoteUpBtn }                         from './VotButtons'
+import { useAppDispatch }                                           from '../../../redux/store'
 import { TDataObj }                                                 from '../../../redux/voting/types'
 import { fetchActionFavourite, fetchVote }                          from '../../../redux/voting/asyncActions'
-import { useAppDispatch }                                           from '../../../redux/store'
 import { setIsDislikesMounted, setIsFavMounted, setIsLikesMounted } from '../../../redux/voting/slice'
+
+import { HeartBtn, VoteDownBtn, VoteUpBtn } from './VotButtons'
 
 
 const NavButtons: React.FC<TNavButtons> = ({ imgObj, onFavourites, status }) => {

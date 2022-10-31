@@ -1,8 +1,8 @@
-import React                       from 'react'
-import { BackButton, BreadCrumbs } from '../index'
-
-import SortBreeds      from '../../Breeds/SortBreeds'
+import React           from 'react'
 import { useLocation } from 'react-router-dom'
+
+import SortBreeds                  from '../../Breeds/SortBreeds'
+import { BackButton, BreadCrumbs } from '../index'
 
 
 const ContentHeader: React.FC = () => {

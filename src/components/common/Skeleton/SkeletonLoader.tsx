@@ -1,10 +1,10 @@
-import React    from 'react'
-import Skeleton from 'react-loading-skeleton'
+import React               from 'react'
+import Skeleton            from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-
-import { useSelector }     from 'react-redux'
-import { themeFilter }     from '../../../redux/theme/selectors'
 import { TSkeletonLoader } from './types'
+
+import { useSelector } from 'react-redux'
+import { themeFilter } from '../../../redux/theme/selectors'
 
 
 const SkeletonLoader: React.FC<TSkeletonLoader> = ({ count }) => {

@@ -1,6 +1,5 @@
-import React from 'react'
-import s     from './Breeds.module.scss'
-
+import React                 from 'react'
+import s                     from './Breeds.module.scss'
 import { TBreedSortButtons } from './types'
 
 

@@ -1,8 +1,8 @@
-import React from 'react'
+import React          from 'react'
+import { TLikeItems } from './types'
 
 import { TLikesData }                                          from '../../../redux/voting/types'
 import { setIsLikesMounted, setNextLikePage, setPrevLikePage } from '../../../redux/voting/slice'
-import { TLikeItems }                                          from './types'
 
 import { Pagination } from '../../common'
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation }                from 'react-router-dom'
 
 import { useSelector }  from 'react-redux'
 import { selectVoting } from '../../../redux/voting/selectors'
-
 import { selectBreeds } from '../../../redux/Breeds/selectors'
-import { useLocation }  from 'react-router-dom'
-import { Button }       from '../index'
+
+import { Button } from '../index'
 
 
 const BreadCrumbs: React.FC = () => {

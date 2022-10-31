@@ -1,12 +1,12 @@
-import React from 'react'
-import s     from '../NavButtons.module.scss'
-
-import { TDataObj }  from '../../../../redux/voting/types'
+import React         from 'react'
+import s             from '../NavButtons.module.scss'
 import { THeartBtn } from './types'
+import { TDataObj }  from '../../../../redux/voting/types'
 
 import heartTWhiteImg      from '../../../../assets/images/voting/heartWhite.webp'
 import heartTransparentImg from '../../../../assets/images/voting/heartTransparent.webp'
-import { SmallSpinner }    from '../../../common'
+
+import { SmallSpinner } from '../../../common'
 
 
 const HeartBtn: React.FC<THeartBtn> = ({ onFavourite, imgObj, status, onFavourites, setBtnName, btnName }) => {
