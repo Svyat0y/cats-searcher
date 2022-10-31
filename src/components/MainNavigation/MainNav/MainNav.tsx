@@ -18,8 +18,8 @@ const MainNav: React.FC = () => {
 	return (
 		<div className={ s.content }>
 			<div className={ s.title_wr }>
-				<h1 className='title'>Hi Intern</h1>
-				<p>Welcome to MI 2022 Frontend test</p>
+				<h1 className='title'>Hi ;)</h1>
+				<p>Welcome to the Cat finder</p>
 			</div>
 			<div className={ s.content__cards_wr }>
 				<span className={ s.content__cards_desc }>
