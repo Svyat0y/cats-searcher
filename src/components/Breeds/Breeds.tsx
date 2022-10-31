@@ -1,4 +1,4 @@
-import React, { useEffect }                            from 'react'
+import React, { useCallback, useEffect }               from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                      from 'react-redux'
@@ -18,29 +18,30 @@ const Breeds = () => {
 	const { searchData, status } = useSelector(selectSearch)
 	const [ searchParams, setSearchParams ] = useSearchParams()
 
+	const getParam = useCallback((s: string) => {
+		return searchParams.get(s)
+	}, [])
+	const setAndLoadData = useCallback((value: string, limit: string, order: string) => {
+		dispatch(setToValue(value))
+		dispatch(setToLimit(limit))
+		dispatch(setOrder(order))
+		dispatch(fetchSearch())
+	}, [])
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
 	}, [])
 
 	useEffect(() => {
-		if (!location.search) {
-			dispatch(setToValue('All breeds'))
-			dispatch(setToLimit('5'))
-			dispatch(setOrder('asc'))
-			dispatch(fetchSearch())
-		}
+		if (!location.search) setAndLoadData('All breeds', '5', 'asc')
 	}, [ location.search ])
 
 	useEffect(() => {
 		if (location.search) {
-			const valueParam: any = searchParams.get('q')
-			const limitParam: any = searchParams.get('limit')
-			const orderParam: any = searchParams.get('order')
-			dispatch(setToValue(valueParam))
-			dispatch(setToLimit(limitParam))
-			dispatch(setOrder(orderParam))
-			dispatch(fetchSearch())
+			const valueParam: any = getParam('q')
+			const limitParam: any = getParam('limit')
+			const orderParam: any = getParam('order')
+			setAndLoadData(valueParam, limitParam, orderParam)
 		}
 	}, [ location.search ])
 
