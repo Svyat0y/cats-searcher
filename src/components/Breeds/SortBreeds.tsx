@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react'
 import s                    from './Breeds.module.scss'
+import { useSearchParams }  from 'react-router-dom'
+import qs                   from 'qs'
+import { TOption }          from './types'
 
 import { useSelector }                                      from 'react-redux'
 import { useAppDispatch }                                   from '../../redux/store'
-import { selectBreeds }                                     from '../../redux/Breeds/selectors'
 import { fetchBreeds }                                      from '../../redux/Breeds/asyncActions'
-import { setOrder, setToBreedList, setToLimit, setToValue } from '../../redux/Breeds/slice'
+import { selectSearch }                                     from '../../redux/Search/selectors'
+import { setOrder, setToBreedList, setToLimit, setToValue } from '../../redux/Search/slice'
 
 import BreedSortButtons             from './BreedSortButtons'
 import { BreedSelect, LimitSelect } from '../common'
-import { TOption }                  from './types'
-import qs                           from 'qs'
-import { useSearchParams }          from 'react-router-dom'
 
 
 const SortBreeds: React.FC = () => {
 	const dispatch = useAppDispatch()
-	const [ searchParams, setSearchParams ] = useSearchParams()
-	const { breedsList, status, order, limit, value } = useSelector(selectBreeds)
+	const [ _, setSearchParams ] = useSearchParams()
+	const { order, limit, value, status, breedsList } = useSelector(selectSearch)
 
 	const getParams = (value: string, limit: string, order: string) => {
 		return qs.stringify({

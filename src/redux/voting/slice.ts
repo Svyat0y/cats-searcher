@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchVoteImg }               from './asyncActions'
-
+import { createSlice, PayloadAction }                                             from '@reduxjs/toolkit'
+import { fetchVoteImg }                                                           from './asyncActions'
 import { IVote, Status, TDataObj, TFavouritesData, TInfoInfoMessage, TLikesData } from './types'
-import { isFulfilledAction, isPendingAction, isRejectedAction }                   from '../utilsAction'
+
+import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
 
 const initialState: IVote = {

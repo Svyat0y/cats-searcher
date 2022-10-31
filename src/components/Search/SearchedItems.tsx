@@ -4,11 +4,13 @@ import qs              from 'qs'
 
 import { useSelector }      from 'react-redux'
 import { AppDispatch }      from '../../redux/store'
-import { TSearchData }      from '../../redux/Search/types'
-import { selectSearch }     from '../../redux/Search/selectors'
+import { setPage }          from '../../redux/Search/slice'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
+import { fetchSearch }      from '../../redux/Search/asyncActions'
+import { selectSearch }     from '../../redux/Search/selectors'
+import { TSearchData }      from '../../redux/Search/types'
 
-import { SkeletonLoader } from '../common'
+import { Pagination, SkeletonLoader } from '../common'
 
 
 type TSearchedItems = {
@@ -16,9 +18,11 @@ type TSearchedItems = {
 }
 
 const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
-	const { searchData, status } = useSelector(selectSearch)
 	const navigate = useNavigate()
-	const emptyData = searchData?.length === 0
+	const { searchData, status, page, limit } = useSelector(selectSearch)
+	const emptyData = searchData === null
+	const zeroPage = (page - 1) < 0
+	const lastPage = searchData && searchData.length < Number(limit)
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({
@@ -29,26 +33,45 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		navigate(`description?${ queryString }`)
 	}
 
+	const onClickNext = () => {
+		dispatch(setPage(+1))
+		dispatch(fetchSearch())
+	}
+	const onClickPrev = () => {
+		dispatch(setPage(-1))
+		dispatch(fetchSearch())
+	}
+
 	const renderData = () => (
-		searchData && searchData[0]
-			? <div className='items'>
-				{
-					searchData?.map((el: TSearchData) => {
-						return (
-							el
-								? <div className='itemsImg_wr' key={ el.id }>
-									<img src={ el.url } alt='image'/>
-									<button className='hoverBtn' onClick={ () => onClickBreedName(el.breedId, el.name) }>
-										{ el.name }
-									</button>
-								</div>
-								: ''
-						)
-					})
-				}
-			</div>
-			: <div className='noItemFound'><span>No breed found.</span></div>
+		<>
+			{
+				searchData?.map((el: TSearchData) => {
+					return (
+						el
+							? <div className='itemsImg_wr' key={ el.id }>
+								<img src={ el.url } alt='image'/>
+								<button className='hoverBtn' onClick={ () => onClickBreedName(el.breedId, el.name) }>
+									{ el.name }
+								</button>
+							</div>
+							: ''
+					)
+				})
+			}
+		</>
 	)
+
+	const renderPagination = () => (
+		page === 0 && lastPage
+			? ''
+			: <Pagination
+				zeroPage={ zeroPage }
+				lastPage={ lastPage }
+				onClickNext={ onClickNext }
+				onClickPrev={ onClickPrev }/>
+	)
+
+	if (status === 'pending') return <SkeletonLoader count={ 5 }/>
 
 	return (
 		<>
@@ -56,11 +79,12 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 				emptyData && status === 'success' &&
 				<div className='noItemFound'>Nothing found.</div>
 			}
-			{
-				status === 'pending'
-					? <SkeletonLoader count={ 5 }/>
-					: renderData()
-			}
+			<>
+				<div className='items'>
+					{ renderData() }
+				</div>
+				{ renderPagination() }
+			</>
 		</>
 	)
 }

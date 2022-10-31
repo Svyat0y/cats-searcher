@@ -1,4 +1,5 @@
-import { Status } from '../voting/types'
+import { Status }       from '../voting/types'
+import { TBreedOption } from '../Breeds/types'
 
 
 export type TSearchData = {
@@ -11,6 +12,10 @@ export type TSearchData = {
 export interface ISearch {
 	searchData: TSearchData[] | null
 	status: Status
-	isSearchMounted: boolean
 	searchValue: string
+	value: string
+	limit: string
+	order: string
+	page: number
+	breedsList: TBreedOption[]
 }

@@ -1,10 +1,10 @@
-import React    from 'react'
-import s        from './Header.module.scss'
-import { Link } from 'react-router-dom'
-
-import logoLight       from '../../assets/images/logoLight.webp'
-import logoDark        from '../../assets/images/logoDark.webp'
+import React           from 'react'
+import s               from './Header.module.scss'
+import { Link }        from 'react-router-dom'
 import { THeaderLogo } from './types'
+
+import logoLight from '../../assets/images/logoLight.webp'
+import logoDark  from '../../assets/images/logoDark.webp'
 
 
 const HeaderLogo: React.FC<THeaderLogo> = ({ theme }) => {

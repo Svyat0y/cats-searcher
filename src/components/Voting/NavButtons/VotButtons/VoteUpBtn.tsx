@@ -1,8 +1,8 @@
-import React from 'react'
-import s     from '../NavButtons.module.scss'
+import React          from 'react'
+import s              from '../NavButtons.module.scss'
+import { TVoteUpBtn } from './types'
+import { TDataObj }   from '../../../../redux/voting/types'
 
-import { TVoteUpBtn }   from './types'
-import { TDataObj }     from '../../../../redux/voting/types'
 import { SmallSpinner } from '../../../common'
 
 

@@ -1,10 +1,9 @@
-import React from 'react'
-import s     from './Header.module.scss'
+import React                 from 'react'
+import s                     from './Header.module.scss'
+import { THeaderNavigation } from './types'
 
 import eyeOpen  from '../../assets/images/eyeOpen.webp'
 import eyeClose from '../../assets/images/eyeClose.webp'
-
-import { THeaderNavigation } from './types'
 
 
 const HeaderNavigation: React.FC<THeaderNavigation> = ({ theme, onChangeTheme }) => {

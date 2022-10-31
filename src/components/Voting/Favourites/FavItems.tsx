@@ -1,11 +1,11 @@
-import React from 'react'
+import React         from 'react'
+import { TFavItems } from './types'
 
 import { TFavouritesData }                                 from '../../../redux/voting/types'
 import { setIsFavMounted, setNextFavPage, setPrevFavPage } from '../../../redux/voting/slice'
-import { TFavItems }                                       from './types'
 
-import { NoItemFound, Pagination } from '../../common'
 import FavoriteItem                from './FavoriteItem'
+import { NoItemFound, Pagination } from '../../common'
 
 
 const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, favPage, status }) => {

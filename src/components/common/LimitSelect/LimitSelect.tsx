@@ -1,8 +1,7 @@
-import React  from 'react'
-import Select from 'react-select'
-
-import { TBreedOption } from '../../../redux/Breeds/types'
+import React            from 'react'
+import Select           from 'react-select'
 import { TLimitSelect } from './types'
+import { TBreedOption } from '../../../redux/Breeds/types'
 
 
 const limitOptions: TBreedOption[] = [

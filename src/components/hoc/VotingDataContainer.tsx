@@ -1,8 +1,9 @@
-import React              from 'react'
-import { useAppDispatch } from '../../redux/store'
+import React       from 'react'
+import { TVoting } from '../Voting/types'
+
 import { useSelector }    from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
 import { selectVoting }   from '../../redux/voting/selectors'
-import { TVoting }        from './types'
 
 
 const VotingDataContainer = (Component: React.FC<TVoting>) => () => {

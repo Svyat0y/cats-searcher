@@ -1,8 +1,8 @@
-import React from 'react'
-import s     from '../../Voting/Voting.module.scss'
-
+import React           from 'react'
+import s               from '../../Voting/Voting.module.scss'
 import { TPagination } from './types'
-import { Button }      from '../index'
+
+import { Button } from '../index'
 
 
 const Pagination: React.FC<TPagination> = ({ zeroPage, lastPage, onClickPrev, onClickNext }) => {

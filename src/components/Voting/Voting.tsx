@@ -2,9 +2,9 @@ import React             from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { TVoting }       from './types'
 
-import { Dislikes, Favourites, Likes, VotingImage } from './index'
 import VotingLayout                                 from './VotingLayout'
 import VotingDataContainer                          from '../hoc/VotingDataContainer'
+import { Dislikes, Favourites, Likes, VotingImage } from './index'
 
 
 const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {

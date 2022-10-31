@@ -1,7 +1,7 @@
-import React from 'react'
-
-import Select           from 'react-select'
+import React            from 'react'
 import { TBreedSelect } from '../../Breeds/types'
+
+import Select from 'react-select'
 
 
 const BreedSelect: React.FC<TBreedSelect> = React.memo(({ options, status, value, onChangeOption }) => {

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import s                              from '../Voting.module.scss'
+import { TFavourites }                from './types'
 
 import { fetchGetFavourites }            from '../../../redux/voting/asyncActions'
 import { setActiveBtn, setIsFavMounted } from '../../../redux/voting/slice'
-import { TFavourites }                   from './types'
 
+import FavItems           from './FavItems'
 import { SkeletonLoader } from '../../common'
 import { VotingMessage }  from '../index'
-import FavItems           from './FavItems'
 
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage, status, isFavMounted }) => {

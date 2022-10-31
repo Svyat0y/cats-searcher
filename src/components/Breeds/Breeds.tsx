@@ -3,9 +3,9 @@ import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                      from 'react-redux'
 import { useAppDispatch }                   from '../../redux/store'
-import { setOrder, setToLimit, setToValue } from '../../redux/Breeds/slice'
 import { setActiveBtn }                     from '../../redux/voting/slice'
 import { selectSearch }                     from '../../redux/Search/selectors'
+import { setOrder, setToLimit, setToValue } from '../../redux/Search/slice'
 import { fetchSearch }                      from '../../redux/Search/asyncActions'
 
 import BreedLayout                        from './BreedLayout'
@@ -15,18 +15,18 @@ import { SearchedItems, SingleBreedInfo } from '../index'
 const Breeds = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const { searchData, status } = useSelector(selectSearch)
-	const [ searchParams, setSearchParams ] = useSearchParams()
+	const { order, limit, value } = useSelector(selectSearch)
+	const [ searchParams ] = useSearchParams()
 
 	const getParam = useCallback((s: string) => {
 		return searchParams.get(s)
-	}, [])
+	}, [ value, limit, order ])
 	const setAndLoadData = useCallback((value: string, limit: string, order: string) => {
 		dispatch(setToValue(value))
 		dispatch(setToLimit(limit))
 		dispatch(setOrder(order))
 		dispatch(fetchSearch())
-	}, [])
+	}, [ value, limit, order ])
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
@@ -49,9 +49,7 @@ const Breeds = () => {
 		<>
 			<Routes>
 				<Route path='/' element={ <BreedLayout/> }>
-					<Route path='' element={ !searchData && status === 'success'
-						? <div className='noItemFound'>Select breed please</div>
-						: <SearchedItems dispatch={ dispatch }/> }/>
+					<Route path='' element={ <SearchedItems dispatch={ dispatch }/> }/>
 					<Route path='description' element={ <SingleBreedInfo/> }/>
 				</Route>
 			</Routes>

@@ -1,8 +1,8 @@
-import React from 'react'
-import s     from './VotingMessage.module.scss'
-
+import React               from 'react'
+import s                   from './VotingMessage.module.scss'
 import { TVotingMessages } from './types'
-import MessageIcons        from './MessageIcons'
+
+import MessageIcons from './MessageIcons'
 
 
 const VotingMessage: React.FC<TVotingMessages> = ({ id, message, time }) => {

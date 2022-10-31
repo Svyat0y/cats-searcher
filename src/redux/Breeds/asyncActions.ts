@@ -1,7 +1,9 @@
-import { createAsyncThunk }               from '@reduxjs/toolkit'
-import { instance }                       from '../../api/api'
-import { setSingleBreed, setToBreedList } from './slice'
-import { TBreedOption, TSingleBreed }     from './types'
+import { createAsyncThunk }           from '@reduxjs/toolkit'
+import { instance }                   from '../../api/api'
+import { TBreedOption, TSingleBreed } from './types'
+
+import { setToBreedList } from '../Search/slice'
+import { setSingleBreed } from './slice'
 
 
 export const fetchSingleBreed = createAsyncThunk<void, string>(
