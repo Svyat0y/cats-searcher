@@ -33,6 +33,7 @@ const SingleBreedInfo: React.FC = () => {
 				dispatch(fetchSingleBreed(params))
 			}
 		}
+
 	}, [])
 
 	return (

@@ -1,8 +1,8 @@
 import React             from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { Breeds, Preview, SearchComponent, Voting } from '../../components'
-import ContentLayout                                from './ContentLayout'
+import { Breeds, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../components'
+import ContentLayout                                                 from './ContentLayout'
 
 
 const Content: React.FC = () => {
@@ -14,6 +14,7 @@ const Content: React.FC = () => {
 				<Route path='voting/*' element={ <Voting/> }/>
 				<Route path='breeds/*' element={ <Breeds/> }/>
 				<Route path='search/*' element={ <SearchComponent/> }/>
+				<Route path='description' element={ <SingleBreedInfo/> }/>
 				<Route path='gallery' element={ <div>Gallery! (in development)</div> }/>
 			</Route>
 		</Routes>
