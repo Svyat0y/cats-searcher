@@ -36,7 +36,7 @@ export const searchingSlice = createSlice({
 			state.order = action.payload
 		},
 		setPage: (state, action: PayloadAction<number>) => {
-			state.page += action.payload
+			state.page = action.payload
 		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
 			if (action.payload.length === 1) state.breedsList = action.payload

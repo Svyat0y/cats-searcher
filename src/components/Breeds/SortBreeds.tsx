@@ -17,13 +17,14 @@ import { BreedSelect, LimitSelect } from '../common'
 const SortBreeds: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
-	const { order, limit, value, status, breedsList } = useSelector(selectSearch)
+	const { order, limit, value, page, status, breedsList } = useSelector(selectSearch)
 
-	const getParams = (value: string, limit: string, order: string) => {
+	const createParams = (value: string, limit: string, order: string, page: number) => {
 		return qs.stringify({
 			q: value,
 			limit,
-			order
+			order,
+			page,
 		})
 	}
 
@@ -37,24 +38,24 @@ const SortBreeds: React.FC = () => {
 
 	const onChangeOption = (e: TOption) => {
 		if (e) {
-			setSearchParams(getParams(e.label, limit, order))
+			setSearchParams(createParams(e.label, limit, order, page))
 			dispatch(setToValue(e.label))
 		}
 	}
 
 	const onChangeLimit = (e: TOption) => {
 		if (e) {
-			setSearchParams(getParams(value, e.value, order))
+			setSearchParams(createParams(value, e.value, order, page))
 			dispatch(setToLimit(e.value))
 		}
 	}
 
 	const oncClickAsk = () => {
-		setSearchParams(getParams(value, limit, 'asc'))
+		setSearchParams(createParams(value, limit, 'asc', page))
 		dispatch(setOrder('asc'))
 	}
 	const oncClickDesk = () => {
-		setSearchParams(getParams(value, limit, 'desc'))
+		setSearchParams(createParams(value, limit, 'desc', page))
 		dispatch(setOrder('desc'))
 	}
 

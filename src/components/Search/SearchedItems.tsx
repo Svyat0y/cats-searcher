@@ -6,11 +6,11 @@ import { useSelector }      from 'react-redux'
 import { AppDispatch }      from '../../redux/store'
 import { setPage }          from '../../redux/Search/slice'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
-import { fetchSearch }      from '../../redux/Search/asyncActions'
 import { selectSearch }     from '../../redux/Search/selectors'
 import { TSearchData }      from '../../redux/Search/types'
 
 import { Pagination, SkeletonLoader } from '../common'
+import { useSearchParams }            from 'react-router-dom'
 
 
 type TSearchedItems = {
@@ -19,7 +19,8 @@ type TSearchedItems = {
 
 const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const navigate = useNavigate()
-	const { searchData, status, page, limit } = useSelector(selectSearch)
+	const [ _, setSearchParams ] = useSearchParams()
+	const { searchData, status, value, page, order, limit } = useSelector(selectSearch)
 	const emptyData = searchData === null
 	const zeroPage = (page - 1) < 0
 	const lastPage = searchData && searchData.length < Number(limit)
@@ -33,13 +34,22 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		navigate(`description?${ queryString }`)
 	}
 
+	const createParams = (value: string, limit: string, order: string, page: number) => {
+		return qs.stringify({
+			q: value,
+			limit,
+			order,
+			page,
+		})
+	}
+
 	const onClickNext = () => {
-		dispatch(setPage(+1))
-		dispatch(fetchSearch())
+		setSearchParams(createParams(value, limit, order, page + 1))
+		dispatch(setPage(page + 1))
 	}
 	const onClickPrev = () => {
-		dispatch(setPage(-1))
-		dispatch(fetchSearch())
+		setSearchParams(createParams(value, limit, order, page - 1))
+		dispatch(setPage(page - 1))
 	}
 
 	const renderData = () => (
@@ -83,7 +93,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 				<div className='items'>
 					{ renderData() }
 				</div>
-				{ renderPagination() }
+				{ !(emptyData && status === 'success') && renderPagination() }
 			</>
 		</>
 	)
