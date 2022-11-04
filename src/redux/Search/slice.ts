@@ -15,7 +15,7 @@ const initialState: ISearch = {
 		order: 'asc',
 		page: 0,
 	},
-	status: Status.SUCCESS,
+	status: Status.PENDING,
 }
 
 export const searchingSlice = createSlice({
@@ -42,7 +42,7 @@ export const searchingSlice = createSlice({
 				state.status = Status.PENDING
 			})
 			.addMatcher(isFulfilledAction, (state) => {
-				state.status = Status.SUCCESS
+				if (state.searchData) state.status = Status.SUCCESS
 			})
 			.addMatcher(isRejectedAction, (state) => {
 				state.status = Status.ERROR

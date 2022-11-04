@@ -1,7 +1,7 @@
 @import "src/scss/variables";
 
 .content {
-  
+
   &__img_wr {
     width: 100%;
     min-height: 360px;
@@ -19,7 +19,7 @@
 
   &__pagination_wr {
     width: 300px;
-    margin: 25px auto 0px auto;
+    margin: 20px auto 0px auto;
     @include flex(space-between, center);
 
 

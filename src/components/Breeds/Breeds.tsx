@@ -1,4 +1,4 @@
-import React, { useEffect }                            from 'react'
+import React, { useEffect, useState }                  from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }    from 'react-redux'
@@ -15,34 +15,31 @@ import { SearchedItems, SingleBreedInfo } from '../index'
 const Breeds = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
+	const [ isMounted, setIsMounted ] = useState(false)
 	const { filters } = useSelector(selectSearch)
 	const [ searchParams ] = useSearchParams()
 
 	const getParam = ((s: string) => searchParams.get(s))
 
-	const setAndLoadData = (value: string | null, limit: string | null, order: string | null, page: number | null) => {
-		const newObj = { value, limit, order, page, }
-		dispatch(setFilters(newObj))
-	}
-
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-		if (!location.search) setAndLoadData('All breeds', '5', 'asc', 0)
+		if (!location.search) setFilters({ value: 'All breeds', limit: '5', order: 'asc', page: 0 })
 	}, [])
 
 	useEffect(() => {
 		if (location.search) {
-			const valueParam: string | null = getParam('q')
-			const limitParam: string | null = getParam('limit')
-			const orderParam: string | null = getParam('order')
-			const pageParam: string | null = getParam('page')
-			setAndLoadData(valueParam, limitParam, orderParam, Number(pageParam))
+			const value: string | null = getParam('q')
+			const limit: string | null = getParam('limit')
+			const order: string | null = getParam('order')
+			const page: string | null = getParam('page')
+			dispatch(setFilters({ value, limit, order, page: Number(page) }))
 		}
-	}, [])
+	}, [ location.search ])
 
 	useEffect(() => {
-		dispatch(fetchSearch())
-	}, [ filters.value, filters.limit, filters.order, filters.page ])
+		if (isMounted) dispatch(fetchSearch())
+		setIsMounted(true)
+	}, [ filters.value, filters.limit, filters.order, filters.page, isMounted ])
 
 	return (
 		<>
