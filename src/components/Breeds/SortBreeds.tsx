@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import s                    from './Breeds.module.scss'
-import { useSearchParams }  from 'react-router-dom'
-import qs                   from 'qs'
-import { TOption }          from './types'
+import React, { useEffect, useState } from 'react'
+import s                              from './Breeds.module.scss'
+import { useSearchParams }            from 'react-router-dom'
+import qs                             from 'qs'
+import { TOption }                    from './types'
 
 import { useSelector }                from 'react-redux'
 import { useAppDispatch }             from '../../redux/store'
@@ -17,6 +17,7 @@ import { BreedSelect, LimitSelect } from '../common'
 const SortBreeds: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
+	const [ isMounted, setIsMounted ] = useState(false)
 	const { filters, status, breedsList } = useSelector(selectSearch)
 
 	const createParams = (value: string, limit: string, order: string, page: number) => {
@@ -38,12 +39,13 @@ const SortBreeds: React.FC = () => {
 	}
 
 	useEffect(() => {
-		dispatch(fetchBreeds())
+		if (isMounted) dispatch(fetchBreeds())
+		setIsMounted(true)
 
 		return () => {
 			dispatch(setToBreedList([]))
 		}
-	}, [])
+	}, [ isMounted ])
 
 	const onChangeOption = (e: TOption) => {
 		if (e) {
