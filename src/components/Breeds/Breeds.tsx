@@ -1,15 +1,15 @@
 import React, { useEffect, useState }                  from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
-import { useSelector }    from 'react-redux'
-import { useAppDispatch } from '../../redux/store'
-import { setActiveBtn }   from '../../redux/voting/slice'
-import { selectSearch }   from '../../redux/Search/selectors'
-import { fetchSearch }    from '../../redux/Search/asyncActions'
-import { setFilters }     from '../../redux/Search/slice'
+import { useSelector }                 from 'react-redux'
+import { useAppDispatch }              from '../../redux/store'
+import { setActiveBtn }                from '../../redux/voting/slice'
+import { selectSearch }                from '../../redux/Search/selectors'
+import { fetchSearch }                 from '../../redux/Search/asyncActions'
+import { setFilters, setToSearchData } from '../../redux/Search/slice'
 
-import BreedLayout                        from './BreedLayout'
-import { SearchedItems, SingleBreedInfo } from '../index'
+import BreedLayout       from './BreedLayout'
+import { SearchedItems } from '../index'
 
 
 const Breeds = () => {
@@ -20,10 +20,14 @@ const Breeds = () => {
 	const [ searchParams ] = useSearchParams()
 
 	const getParam = ((s: string) => searchParams.get(s))
-
+	
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
 		if (!location.search) setFilters({ value: 'All breeds', limit: '5', order: 'asc', page: 0 })
+
+		return () => {
+			dispatch(setToSearchData(null))
+		}
 	}, [])
 
 	useEffect(() => {
@@ -46,7 +50,6 @@ const Breeds = () => {
 			<Routes>
 				<Route path='/' element={ <BreedLayout/> }>
 					<Route path='' element={ <SearchedItems dispatch={ dispatch }/> }/>
-					<Route path='description' element={ <SingleBreedInfo/> }/>
 				</Route>
 			</Routes>
 		</>

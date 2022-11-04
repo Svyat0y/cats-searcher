@@ -3,10 +3,10 @@ import { Route, Routes }    from 'react-router-dom'
 import { TVoting }          from './types'
 
 import VotingLayout                                 from './VotingLayout'
-import VotingDataContainer                          from '../hoc/VotingDataContainer'
 import { Dislikes, Favourites, Likes, VotingImage } from './index'
 import { setToSearchData }                          from '../../redux/Search/slice'
 import { useAppDispatch }                           from '../../redux/store'
+import VotingDataContainer                          from '../hoc/VotingDataContainer'
 
 
 const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {
@@ -14,7 +14,7 @@ const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesDa
 
 	useEffect(() => {
 		return () => {
-			dispatch(setToSearchData([]))
+			dispatch(setToSearchData(null))
 		}
 	}, [])
 

@@ -1,4 +1,4 @@
-import React, { useEffect }                            from 'react'
+import React, { useEffect, useState }                  from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
@@ -7,20 +7,21 @@ import { setActiveBtn }                                from '../../redux/voting/
 import { setFilters, setSearchValue, setToSearchData } from '../../redux/Search/slice'
 import { fetchSearchFromPanel }                        from '../../redux/Search/asyncActions'
 
-import SearchLayout                       from './SearchLayout'
-import { SearchedItems, SingleBreedInfo } from '../../components'
+import SearchLayout      from './SearchLayout'
+import { SearchedItems } from '../../components'
 
 
 const SearchComponent: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
+	const [ isMounted, setIsMounted ] = useState(false)
 	const [ searchParams ] = useSearchParams()
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
 
 		return () => {
-			dispatch(setToSearchData([]))
+			dispatch(setToSearchData(null))
 			dispatch(setSearchValue(''))
 			dispatch(setFilters({
 				value: 'All breeds',
@@ -32,24 +33,26 @@ const SearchComponent: React.FC = () => {
 	}, [])
 
 	useEffect(() => {
-		if (location.search) {
-			const valueParam: string | null = searchParams.get('q')
-			dispatch(setFilters({
-				value: valueParam,
-				limit: '5',
-				order: 'asc',
-				page: 0
-			}))
-			dispatch(setSearchValue(valueParam))
-			dispatch(fetchSearchFromPanel())
+		if (isMounted) {
+			if (location.search) {
+				const valueParam: string | null = searchParams.get('q')
+				dispatch(setFilters({
+					value: valueParam,
+					limit: '5',
+					order: 'asc',
+					page: 0
+				}))
+				dispatch(setSearchValue(valueParam))
+				dispatch(fetchSearchFromPanel())
+			}
 		}
-	}, [ location.search ])
+		setIsMounted(true)
+	}, [ location.search, isMounted ])
 
 	return (
 		<Routes>
 			<Route path='/' element={ <SearchLayout/> }>
 				<Route index element={ <SearchedItems dispatch={ dispatch }/> }/>
-				<Route path='description' element={ <SingleBreedInfo/> }/>
 			</Route>
 		</Routes>
 	)

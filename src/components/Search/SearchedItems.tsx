@@ -31,7 +31,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 			breed_name: name,
 		})
 		dispatch(fetchSingleBreed(breedId))
-		navigate(`description?${ queryString }`)
+		navigate(`/description?${ queryString }`)
 	}
 
 	const createParams = (value: string, limit: string, order: string, page: number) => {
@@ -101,7 +101,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 			<div className='items'>
 				{ renderData() }
 			</div>
-			{ (!emptyData && status === 'success') && renderPagination() }
+			{ (emptyData !== null && status === 'success') && renderPagination() }
 		</>
 	)
 }
