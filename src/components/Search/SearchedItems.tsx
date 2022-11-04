@@ -1,16 +1,16 @@
-import React           from 'react'
-import { useNavigate } from 'react-router'
-import qs              from 'qs'
+import React               from 'react'
+import qs                  from 'qs'
+import { useNavigate }     from 'react-router'
+import { useSearchParams } from 'react-router-dom'
 
 import { useSelector }      from 'react-redux'
 import { AppDispatch }      from '../../redux/store'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
 import { selectSearch }     from '../../redux/Search/selectors'
+import { setFilters }       from '../../redux/Search/slice'
 import { TSearchData }      from '../../redux/Search/types'
 
 import { Pagination, SkeletonLoader } from '../common'
-import { useSearchParams }            from 'react-router-dom'
-import { setFilters }                 from '../../redux/Search/slice'
 
 
 type TSearchedItems = {

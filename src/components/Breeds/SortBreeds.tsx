@@ -28,11 +28,11 @@ const SortBreeds: React.FC = () => {
 		})
 	}
 
-	const createNewFilters = (e?: TOption) => {
+	const createNewFilters = (label?: string, limit?: string, order?: string) => {
 		return {
-			value: e?.label,
-			limit: filters.limit,
-			order: filters.order,
+			value: label || filters.value,
+			limit: limit || filters.limit,
+			order: order || filters.order,
 			page: filters.page
 		}
 	}
@@ -47,7 +47,7 @@ const SortBreeds: React.FC = () => {
 
 	const onChangeOption = (e: TOption) => {
 		if (e) {
-			const newObj = createNewFilters(e)
+			const newObj = createNewFilters(e.label, undefined, undefined)
 			setSearchParams(createParams(e.label, filters.limit, filters.order, filters.page))
 			dispatch(setFilters(newObj))
 		}
@@ -55,19 +55,19 @@ const SortBreeds: React.FC = () => {
 
 	const onChangeLimit = (e: TOption) => {
 		if (e) {
-			const newObj = createNewFilters(e)
+			const newObj = createNewFilters(undefined, e.value, undefined)
 			setSearchParams(createParams(filters.value, e.value, filters.order, filters.page))
 			dispatch(setFilters(newObj))
 		}
 	}
 
 	const oncClickAsk = () => {
-		const newObj = createNewFilters()
+		const newObj = createNewFilters(undefined, undefined, 'asc')
 		setSearchParams(createParams(filters.value, filters.limit, 'asc', filters.page))
 		dispatch(setFilters(newObj))
 	}
 	const oncClickDesk = () => {
-		const newObj = createNewFilters()
+		const newObj = createNewFilters(undefined, undefined, 'desc')
 		setSearchParams(createParams(filters.value, filters.limit, 'desc', filters.page))
 		dispatch(setFilters(newObj))
 	}

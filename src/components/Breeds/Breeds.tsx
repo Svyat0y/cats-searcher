@@ -5,11 +5,11 @@ import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
 import { setActiveBtn }   from '../../redux/voting/slice'
 import { selectSearch }   from '../../redux/Search/selectors'
+import { fetchSearch }    from '../../redux/Search/asyncActions'
 import { setFilters }     from '../../redux/Search/slice'
 
 import BreedLayout                        from './BreedLayout'
 import { SearchedItems, SingleBreedInfo } from '../index'
-import { fetchSearch }                    from '../../redux/Search/asyncActions'
 
 
 const Breeds = () => {
@@ -20,7 +20,7 @@ const Breeds = () => {
 
 	const getParam = ((s: string) => searchParams.get(s))
 
-	const setAndLoadData = (value: string, limit: string, order: string, page: number) => {
+	const setAndLoadData = (value: string | null, limit: string | null, order: string | null, page: number | null) => {
 		const newObj = { value, limit, order, page, }
 		dispatch(setFilters(newObj))
 	}
@@ -32,10 +32,10 @@ const Breeds = () => {
 
 	useEffect(() => {
 		if (location.search) {
-			const valueParam: any = getParam('q')
-			const limitParam: any = getParam('limit')
-			const orderParam: any = getParam('order')
-			const pageParam: any = getParam('page')
+			const valueParam: string | null = getParam('q')
+			const limitParam: string | null = getParam('limit')
+			const orderParam: string | null = getParam('order')
+			const pageParam: string | null = getParam('page')
 			setAndLoadData(valueParam, limitParam, orderParam, Number(pageParam))
 		}
 	}, [])

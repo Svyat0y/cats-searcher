@@ -19,7 +19,7 @@ export type TSearchData = {
 export interface ISearch {
 	searchData: TSearchData[] | null
 	status: Status
-	searchValue: string
+	searchValue: string | null
 	breedsList: TBreedOption[]
 	filters: TFilters
 }

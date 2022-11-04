@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchSearch }                from './asyncActions'
-import { ISearch, TSearchData }       from './types'
-import { Status }                     from '../voting/types'
-import { TBreedOption }               from '../Breeds/types'
+import { createSlice, PayloadAction }                           from '@reduxjs/toolkit'
+import { ISearch, TSearchData }                                 from './types'
+import { Status }                                               from '../voting/types'
+import { TBreedOption }                                         from '../Breeds/types'
+import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
 
 const initialState: ISearch = {
@@ -25,7 +25,7 @@ export const searchingSlice = createSlice({
 		setToSearchData: (state, action: PayloadAction<TSearchData[] | null>) => {
 			state.searchData = action.payload
 		},
-		setSearchValue: (state, action: PayloadAction<string>) => {
+		setSearchValue: (state, action: PayloadAction<string | null>) => {
 			state.searchValue = action.payload
 		},
 		setFilters: (state, action) => {
@@ -37,15 +37,16 @@ export const searchingSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchSearch.pending, (state) => {
-			state.status = Status.PENDING
-		})
-		builder.addCase(fetchSearch.fulfilled, (state) => {
-			state.status = Status.SUCCESS
-		})
-		builder.addCase(fetchSearch.rejected, (state) => {
-			state.status = Status.ERROR
-		})
+		builder
+			.addMatcher(isPendingAction, (state) => {
+				state.status = Status.PENDING
+			})
+			.addMatcher(isFulfilledAction, (state) => {
+				state.status = Status.SUCCESS
+			})
+			.addMatcher(isRejectedAction, (state) => {
+				state.status = Status.ERROR
+			})
 	}
 })
 
