@@ -102,7 +102,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 				<div className='items'>
 					{ renderData() }
 				</div>
-				{ !(emptyData && status === 'success') && renderPagination() }
+				{ (!emptyData && status === 'success') && renderPagination() }
 			</>
 		</>
 	)
