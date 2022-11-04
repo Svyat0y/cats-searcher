@@ -45,10 +45,12 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 
 	const onClickNext = () => {
 		setSearchParams(createParams(value, limit, order, page + 1))
+		console.log('1')
 		dispatch(setPage(page + 1))
 	}
 	const onClickPrev = () => {
 		setSearchParams(createParams(value, limit, order, page - 1))
+		console.log('1')
 		dispatch(setPage(page - 1))
 	}
 

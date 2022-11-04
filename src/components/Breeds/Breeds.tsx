@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect }               from 'react'
+import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                               from 'react-redux'
@@ -6,10 +6,10 @@ import { useAppDispatch }                            from '../../redux/store'
 import { setActiveBtn }                              from '../../redux/voting/slice'
 import { selectSearch }                              from '../../redux/Search/selectors'
 import { setOrder, setPage, setToLimit, setToValue } from '../../redux/Search/slice'
-import { fetchSearch }                               from '../../redux/Search/asyncActions'
 
 import BreedLayout                        from './BreedLayout'
 import { SearchedItems, SingleBreedInfo } from '../index'
+import { fetchSearch }                    from '../../redux/Search/asyncActions'
 
 
 const Breeds = () => {
@@ -18,26 +18,21 @@ const Breeds = () => {
 	const { order, limit, value, page } = useSelector(selectSearch)
 	const [ searchParams ] = useSearchParams()
 
-	const getParam = useCallback((s: string) => {
+	const getParam = ((s: string) => {
 		return searchParams.get(s)
-	}, [ value, limit, order, page ])
+	})
 
-	const setAndLoadData = useCallback((value: string, limit: string, order: string, page: number) => {
+	const setAndLoadData = (value: string, limit: string, order: string, page: number) => {
 		dispatch(setToValue(value))
 		dispatch(setToLimit(limit))
 		dispatch(setOrder(order))
 		dispatch(setPage(page))
-		console.log(page)
-		dispatch(fetchSearch())
-	}, [ value, limit, order, page ])
+	}
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-	}, [])
-
-	useEffect(() => {
 		if (!location.search) setAndLoadData('All breeds', '5', 'asc', 0)
-	}, [ location.search ])
+	}, [])
 
 	useEffect(() => {
 		if (location.search) {
@@ -47,7 +42,11 @@ const Breeds = () => {
 			const pageParam: any = getParam('page')
 			setAndLoadData(valueParam, limitParam, orderParam, Number(pageParam))
 		}
-	}, [ location.search ])
+	}, [])
+
+	useEffect(() => {
+		dispatch(fetchSearch())
+	}, [ value, limit, order, page ])
 
 	return (
 		<>
