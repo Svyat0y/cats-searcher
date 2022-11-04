@@ -10,7 +10,7 @@ import { NoItemFound, Pagination } from '../../common'
 
 const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, favPage, status }) => {
 	const noItemsBoolean = (favoritesData?.length === 0)
-	const zeroPage = (favPage - 1) < 0
+	const firstPage = (favPage - 1) < 0
 	const lastPage = favoritesData && favoritesData?.length < 15
 
 	const onClickNext = () => {
@@ -35,7 +35,7 @@ const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, favPage, statu
 		(favPage === 0 && lastPage)
 			? ''
 			: <Pagination
-				zeroPage={ zeroPage }
+				firstPage={ firstPage }
 				lastPage={ lastPage }
 				onClickNext={ onClickNext }
 				onClickPrev={ onClickPrev }/>

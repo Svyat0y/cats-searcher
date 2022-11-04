@@ -5,15 +5,15 @@ import { useNavigate } from 'react-router'
 
 import { useSelector }                from 'react-redux'
 import { useAppDispatch }             from '../../redux/store'
-import { setSearchValue, setToValue } from '../../redux/Search/slice'
+import { setFilters, setSearchValue } from '../../redux/Search/slice'
 import { selectSearch }               from '../../redux/Search/selectors'
 
 import SearchPanelButtons from './SearchPanelButtons'
 
 
-const createParams = (value: string) => qs.stringify({ q: value })
+const createParams = (value: string | null) => qs.stringify({ q: value })
 
-let rootValue: string
+let rootValue: string | null
 const SearchPanel: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
@@ -21,10 +21,19 @@ const SearchPanel: React.FC = () => {
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => dispatch(setSearchValue(e.target.value))
 
+	const createNewFilters = (searchValue: string | null) => {
+		return {
+			value: searchValue,
+			limit: '5',
+			order: 'asc',
+			page: 0
+		}
+	}
+
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (rootValue !== searchValue) {
 			if (e.key === 'Enter') {
-				dispatch(setToValue(searchValue))
+				dispatch(setFilters(createNewFilters(searchValue)))
 				navigate(`search?${ createParams(searchValue) }`)
 			}
 		}
@@ -34,7 +43,7 @@ const SearchPanel: React.FC = () => {
 	const onSearchClick = () => {
 		if (rootValue !== searchValue) {
 			if (searchValue) {
-				dispatch(setToValue(searchValue))
+				dispatch(setFilters(createNewFilters(searchValue)))
 				navigate(`search?${ createParams(searchValue) }`)
 			}
 		}
@@ -45,7 +54,7 @@ const SearchPanel: React.FC = () => {
 		<div className={ s.search }>
 			<div className={ s.search__input_wr }>
 				<input
-					value={ searchValue }
+					value={ searchValue ? searchValue : '' }
 					onKeyDown={ (e) => handleKey(e) } onChange={ (e) => onChangeValue(e) } type='text'
 					placeholder='Search for breeds by name'/>
 				<button onClick={ () => onSearchClick() }/>
