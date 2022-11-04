@@ -1,11 +1,11 @@
 import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
-import { useSelector }                               from 'react-redux'
-import { useAppDispatch }                            from '../../redux/store'
-import { setActiveBtn }                              from '../../redux/voting/slice'
-import { selectSearch }                              from '../../redux/Search/selectors'
-import { setOrder, setPage, setToLimit, setToValue } from '../../redux/Search/slice'
+import { useSelector }    from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import { setActiveBtn }   from '../../redux/voting/slice'
+import { selectSearch }   from '../../redux/Search/selectors'
+import { setFilters }     from '../../redux/Search/slice'
 
 import BreedLayout                        from './BreedLayout'
 import { SearchedItems, SingleBreedInfo } from '../index'
@@ -15,18 +15,14 @@ import { fetchSearch }                    from '../../redux/Search/asyncActions'
 const Breeds = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const { order, limit, value, page } = useSelector(selectSearch)
+	const { filters } = useSelector(selectSearch)
 	const [ searchParams ] = useSearchParams()
 
-	const getParam = ((s: string) => {
-		return searchParams.get(s)
-	})
+	const getParam = ((s: string) => searchParams.get(s))
 
 	const setAndLoadData = (value: string, limit: string, order: string, page: number) => {
-		dispatch(setToValue(value))
-		dispatch(setToLimit(limit))
-		dispatch(setOrder(order))
-		dispatch(setPage(page))
+		const newObj = { value, limit, order, page, }
+		dispatch(setFilters(newObj))
 	}
 
 	useEffect(() => {
@@ -46,7 +42,7 @@ const Breeds = () => {
 
 	useEffect(() => {
 		dispatch(fetchSearch())
-	}, [ value, limit, order, page ])
+	}, [ filters.value, filters.limit, filters.order, filters.page ])
 
 	return (
 		<>

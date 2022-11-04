@@ -3,7 +3,7 @@ import { instance }         from '../../api/api'
 import { TSearchData }      from './types'
 
 import { RootState }                   from '../store'
-import { setToSearchData, setToValue } from './slice'
+import { setFilters, setToSearchData } from './slice'
 
 
 const fetchSearchRightObjects = async (reference_image_id: string) => {
@@ -20,11 +20,16 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearch',
 	async (params, { dispatch, getState }) => {
-		const { page, value, limit, order } = getState().searchingSlice
+		const { filters: { value, limit, order, page } } = getState().searchingSlice
 
 		try {
 			if (value === 'All breeds') {
-				dispatch(setToValue('All breeds'))
+				dispatch(setFilters({
+					value: 'All breeds',
+					limit,
+					order,
+					page
+				}))
 				const { data } = await instance.get<any>(`breeds?order=${ order }&limit=${ Number(limit) }&page=${ page }`)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
@@ -32,7 +37,7 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 				dispatch(setToSearchData(newData))
 			}
 			else{
-				const { data } = await instance.get<any>(`breeds/search/?q=${ value }&order=${ order }&${ limit ? `limit=${ Number(limit) }` : '' }`)
+				const { data } = await instance.get<any>(`breeds/search/?q=${ value }`)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))

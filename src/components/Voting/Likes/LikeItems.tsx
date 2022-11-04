@@ -8,7 +8,7 @@ import { Pagination } from '../../common'
 
 
 const LikeItems: React.FC<TLikeItems> = ({ dispatch, likeData, likePage }) => {
-	const zeroPage = (likePage - 1) < 0
+	const firstPage = (likePage - 1) < 0
 	const lastPage = likeData && likeData.length < 15
 
 	const onClickNext = () => {
@@ -34,7 +34,7 @@ const LikeItems: React.FC<TLikeItems> = ({ dispatch, likeData, likePage }) => {
 		likePage === 0 && lastPage
 			? ''
 			: <Pagination
-				zeroPage={ zeroPage }
+				firstPage={ firstPage }
 				lastPage={ lastPage }
 				onClickNext={ onClickNext }
 				onClickPrev={ onClickPrev }/>

@@ -9,10 +9,12 @@ const initialState: ISearch = {
 	searchData: null,
 	searchValue: '',
 	breedsList: [],
-	value: 'All breeds',
-	limit: '5',
-	order: 'asc',
-	page: 0,
+	filters: {
+		value: 'All breeds',
+		limit: '5',
+		order: 'asc',
+		page: 0,
+	},
 	status: Status.SUCCESS,
 }
 
@@ -26,17 +28,8 @@ export const searchingSlice = createSlice({
 		setSearchValue: (state, action: PayloadAction<string>) => {
 			state.searchValue = action.payload
 		},
-		setToValue: (state, action: PayloadAction<string>) => {
-			if (action.payload) state.value = action.payload
-		},
-		setToLimit: (state, action: PayloadAction<string>) => {
-			if (action.payload) state.limit = action.payload
-		},
-		setOrder: (state, action: PayloadAction<string>) => {
-			state.order = action.payload
-		},
-		setPage: (state, action: PayloadAction<number>) => {
-			state.page = action.payload
+		setFilters: (state, action) => {
+			if (action.payload) state.filters = action.payload
 		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
 			if (action.payload.length === 1) state.breedsList = action.payload
@@ -56,6 +49,11 @@ export const searchingSlice = createSlice({
 	}
 })
 
-export const { setToSearchData, setSearchValue, setPage, setOrder, setToLimit, setToValue, setToBreedList } = searchingSlice.actions
+export const {
+	setToSearchData,
+	setSearchValue,
+	setToBreedList,
+	setFilters
+} = searchingSlice.actions
 
 export default searchingSlice.reducer

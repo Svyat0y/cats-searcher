@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 
 import { useSelector }                from 'react-redux'
 import { useAppDispatch }             from '../../redux/store'
-import { setSearchValue, setToValue } from '../../redux/Search/slice'
+import { setFilters, setSearchValue } from '../../redux/Search/slice'
 import { selectSearch }               from '../../redux/Search/selectors'
 
 import SearchPanelButtons from './SearchPanelButtons'
@@ -21,10 +21,19 @@ const SearchPanel: React.FC = () => {
 
 	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => dispatch(setSearchValue(e.target.value))
 
+	const createNewFilters = (searchValue: string) => {
+		return {
+			value: searchValue,
+			limit: '5',
+			order: 'asc',
+			page: 0
+		}
+	}
+
 	const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (rootValue !== searchValue) {
 			if (e.key === 'Enter') {
-				dispatch(setToValue(searchValue))
+				dispatch(setFilters(createNewFilters(searchValue)))
 				navigate(`search?${ createParams(searchValue) }`)
 			}
 		}
@@ -34,7 +43,7 @@ const SearchPanel: React.FC = () => {
 	const onSearchClick = () => {
 		if (rootValue !== searchValue) {
 			if (searchValue) {
-				dispatch(setToValue(searchValue))
+				dispatch(setFilters(createNewFilters(searchValue)))
 				navigate(`search?${ createParams(searchValue) }`)
 			}
 		}

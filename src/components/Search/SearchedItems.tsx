@@ -4,13 +4,13 @@ import qs              from 'qs'
 
 import { useSelector }      from 'react-redux'
 import { AppDispatch }      from '../../redux/store'
-import { setPage }          from '../../redux/Search/slice'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
 import { selectSearch }     from '../../redux/Search/selectors'
 import { TSearchData }      from '../../redux/Search/types'
 
 import { Pagination, SkeletonLoader } from '../common'
 import { useSearchParams }            from 'react-router-dom'
+import { setFilters }                 from '../../redux/Search/slice'
 
 
 type TSearchedItems = {
@@ -20,10 +20,10 @@ type TSearchedItems = {
 const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	const navigate = useNavigate()
 	const [ _, setSearchParams ] = useSearchParams()
-	const { searchData, status, value, page, order, limit } = useSelector(selectSearch)
+	const { searchData, status, filters } = useSelector(selectSearch)
 	const emptyData = searchData === null
-	const zeroPage = (page - 1) < 0
-	const lastPage = searchData && searchData.length < Number(limit)
+	const firstPage = (filters.page - 1) < 0
+	const lastPage = searchData && searchData.length < Number(filters.limit)
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({
@@ -43,15 +43,22 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 		})
 	}
 
+	const createNewFilters = (page?: number) => {
+		return {
+			value: filters.value,
+			limit: filters.limit,
+			order: filters.order,
+			page
+		}
+	}
+
 	const onClickNext = () => {
-		setSearchParams(createParams(value, limit, order, page + 1))
-		console.log('1')
-		dispatch(setPage(page + 1))
+		setSearchParams(createParams(filters.value, filters.limit, filters.order, filters.page + 1))
+		dispatch(setFilters(createNewFilters(filters.page + 1)))
 	}
 	const onClickPrev = () => {
-		setSearchParams(createParams(value, limit, order, page - 1))
-		console.log('1')
-		dispatch(setPage(page - 1))
+		setSearchParams(createParams(filters.value, filters.limit, filters.order, filters.page - 1))
+		dispatch(setFilters(createNewFilters(filters.page - 1)))
 	}
 
 	const renderData = () => (
@@ -74,10 +81,10 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 	)
 
 	const renderPagination = () => (
-		page === 0 && lastPage
+		filters.page === 0 && lastPage
 			? ''
 			: <Pagination
-				zeroPage={ zeroPage }
+				firstPage={ firstPage }
 				lastPage={ lastPage }
 				onClickNext={ onClickNext }
 				onClickPrev={ onClickPrev }/>
