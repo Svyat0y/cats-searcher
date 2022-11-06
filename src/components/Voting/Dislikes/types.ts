@@ -5,6 +5,4 @@ import { AppDispatch } from '../../../redux/store'
 export type TDislikes = {
 	dispatch: AppDispatch
 	unlikeData: TDataObj[]
-	status?: string
-	isDislikesMounted: boolean
 }

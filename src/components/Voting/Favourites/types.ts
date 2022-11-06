@@ -8,7 +8,6 @@ export type TFavourites = {
 	infoMessage: TInfoInfoMessage[]
 	status?: string
 	favPage: number
-	isFavMounted: boolean
 }
 export type TFavoriteItem = {
 	el: TFavouritesData
@@ -21,5 +20,9 @@ export type TFavItems = {
 	favoritesData: TFavouritesData[] | null
 	favPage: number
 	status?: string
+	firstPage: boolean
+	lastPage: boolean | null
+	onClickNext: () => void
+	onClickPrev: () => void
 }
 

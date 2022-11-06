@@ -5,13 +5,17 @@ import voteImg     from '../../../assets/images/vote-table.webp'
 import petBreedImg from '../../../assets/images/pet-breeds.webp'
 import searchImg   from '../../../assets/images/images-search.webp'
 
-import Card from './Card'
+import Card             from './Card'
+import { useSelector }  from 'react-redux'
+import { selectSearch } from '../../../redux/Search/selectors'
 
 
 const MainNav: React.FC = () => {
+	const { filters: { value, limit, order } } = useSelector(selectSearch)
+
 	const cards = [
 		{ name: 'Voting', img: voteImg, color: 'violet', to: 'voting' },
-		{ name: 'Breeds', img: petBreedImg, color: 'green', to: 'breeds' },
+		{ name: 'Breeds', img: petBreedImg, color: 'green', to: `breeds?q=${ value }&limit=${ limit }&order=${ order }` },
 		{ name: 'Gallery', img: searchImg, color: 'yellow', to: 'gallery' },
 	]
 

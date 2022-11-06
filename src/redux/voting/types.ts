@@ -10,9 +10,6 @@ export interface IVote {
 	likePage: number
 	favPage: number
 	activeButton: string
-	isFavMounted: boolean
-	isLikesMounted: boolean
-	isDislikesMounted: boolean
 }
 
 type TImage = {
