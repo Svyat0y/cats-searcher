@@ -7,11 +7,13 @@ export type TLikes = {
 	likeData: TLikesData[] | null
 	likePage: number
 	status?: string
-	isLikesMounted: boolean
 }
 
 export type TLikeItems = {
-	dispatch: AppDispatch
 	likeData: TLikesData[] | null
 	likePage: number
+	onClickNext: () => void
+	onClickPrev: () => void
+	firstPage: boolean
+	lastPage: boolean | null
 }

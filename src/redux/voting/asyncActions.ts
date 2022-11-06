@@ -6,8 +6,8 @@ import { RootState } from '../store'
 import {
 	deleteFavouritesItem,
 	deleteFromFavouritesData,
+	setFavPage,
 	setInfoMessage,
-	setPrevFavPage,
 	setToFavoritesData,
 	setToFavourites,
 	setToLike,
@@ -121,13 +121,13 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 	'voting/fetchDeleteFromFav',
 	async (imgObj, thunkAPI) => {
 		const dispatch = thunkAPI.dispatch
-		const { favoritesData } = thunkAPI.getState().votingSlice
+		const { favoritesData, favPage } = thunkAPI.getState().votingSlice
 
 		try {
 			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
 				if (favoritesData?.length === 1) {
-					dispatch(setPrevFavPage())
+					dispatch(setFavPage(favPage - 1))
 					dispatch(fetchGetFavourites())
 				}
 				setTimeout(() => {

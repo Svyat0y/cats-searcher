@@ -32,8 +32,8 @@ export const searchingSlice = createSlice({
 			if (action.payload) state.filters = action.payload
 		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
-			if (action.payload.length === 1) state.breedsList = action.payload
-			else state.breedsList = [ { value: 'All', label: 'All breeds' }, ...action.payload ]
+			// if (action.payload.length === 1) state.breedsList = action.payload
+			state.breedsList = [ { value: 'All', label: 'All breeds' }, ...action.payload ]
 		},
 	},
 	extraReducers: (builder) => {

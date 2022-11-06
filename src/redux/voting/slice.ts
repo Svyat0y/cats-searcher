@@ -16,9 +16,6 @@ const initialState: IVote = {
 	onFavourites: [],
 	infoMessage: [],
 	activeButton: '',
-	isFavMounted: false,
-	isLikesMounted: false,
-	isDislikesMounted: false,
 	status: Status.PENDING,
 }
 
@@ -51,32 +48,15 @@ export const votingSlice = createSlice({
 				if (state.infoMessage.length > 4) state.infoMessage.pop()
 			}
 		},
-		setNextFavPage: (state) => {
-			state.favPage = state.favPage + 1
+		setFavPage: (state, action: PayloadAction<number>) => {
+			state.favPage = action.payload
 		},
-		setPrevFavPage: (state) => {
-			if ((state.favPage - 1) < 0) state.favPage = 0
-			else state.favPage = state.favPage - 1
-		},
-		setNextLikePage: (state) => {
-			state.likePage = state.likePage + 1
-		},
-		setPrevLikePage: (state) => {
-			if ((state.likePage - 1) < 0) state.likePage = 0
-			else state.likePage = state.likePage - 1
+		setLikePage: (state, action: PayloadAction<number>) => {
+			state.likePage = action.payload
 		},
 		setActiveBtn: (state, action: PayloadAction<string>) => {
 			state.activeButton = action.payload
 		},
-		setIsFavMounted: (state, action: PayloadAction<boolean>) => {
-			state.isFavMounted = action.payload
-		},
-		setIsLikesMounted: (state, action: PayloadAction<boolean>) => {
-			state.isLikesMounted = action.payload
-		},
-		setIsDislikesMounted: (state, action: PayloadAction<boolean>) => {
-			state.isDislikesMounted = action.payload
-		}
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchVoteImg.pending, (state) => {
@@ -107,14 +87,9 @@ export const {
 	deleteFavouritesItem,
 	setToFavoritesData,
 	deleteFromFavouritesData,
-	setNextFavPage,
-	setPrevFavPage,
-	setNextLikePage,
-	setPrevLikePage,
+	setLikePage,
+	setFavPage,
 	setActiveBtn,
-	setIsFavMounted,
-	setIsLikesMounted,
-	setIsDislikesMounted,
 } = votingSlice.actions
 
 export default votingSlice.reducer

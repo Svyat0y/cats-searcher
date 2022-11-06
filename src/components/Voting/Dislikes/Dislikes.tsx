@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { TDislikes }                  from './types'
 
-import { TDataObj }                           from '../../../redux/voting/types'
-import { setActiveBtn, setIsDislikesMounted } from '../../../redux/voting/slice'
+import { TDataObj }     from '../../../redux/voting/types'
+import { setActiveBtn } from '../../../redux/voting/slice'
 
 import { SkeletonLoader } from '../../common'
 
 
-const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch, isDislikesMounted }) => {
+const Dislikes: React.FC<TDislikes> = ({ unlikeData, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(false)
 	const noItemsBoolean = (unlikeData.length === 0)
 
@@ -16,14 +16,11 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, status, dispatch, isDislike
 	}, [])
 
 	useEffect(() => {
-		dispatch(setIsDislikesMounted(true))
-		if (!isDislikesMounted) {
-			setIsLoading(true)
-		}
-		const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => setIsLoading(false), 1000)
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (unlikeData && unlikeData?.length >= 0) timeoutId = setTimeout(() => setIsLoading(false), 1000)
 
 		return () => clearTimeout(timeoutId)
-	}, [ status ])
+	}, [ unlikeData ])
 
 	if (isLoading) return <SkeletonLoader count={ 10 }/>
 

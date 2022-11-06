@@ -1,13 +1,11 @@
-import React            from 'react'
-import { TNoItemFound } from './types'
+import React from 'react'
 
 
-const NoItemFound: React.FC<TNoItemFound> = ({ noItemsBoolean, favPage }) => {
+const NoItemFound: React.FC = () => {
 	return (
 		<div className='noItemFound'>
 			<span>
 				No item found.
-				{ favPage && noItemsBoolean ? <div>Please return to the previous page.</div> : '' }
 			</span>
 		</div>
 	)
