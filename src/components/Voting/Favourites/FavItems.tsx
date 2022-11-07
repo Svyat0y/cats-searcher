@@ -3,38 +3,23 @@ import { TFavItems } from './types'
 
 import { TFavouritesData } from '../../../redux/voting/types'
 
-import FavoriteItem   from './FavoriteItem'
-import { Pagination } from '../../common'
+import FavoriteItem from './FavoriteItem'
 
 
-const FavItems: React.FC<TFavItems> = (
-	{ dispatch, favoritesData, favPage, status, onClickNext, onClickPrev, firstPage, lastPage }) => {
-
-	const renderData = () => (
-		favoritesData?.map((el: TFavouritesData) =>
-			<FavoriteItem
-				key={ el?.id }
-				el={ el }
-				dispatch={ dispatch }
-				status={ status }/>)
-	)
-
-	const renderPagination = () => (
-		(favPage === 0 && lastPage)
-			? ''
-			: <Pagination
-				firstPage={ firstPage }
-				lastPage={ lastPage }
-				onClickNext={ onClickNext }
-				onClickPrev={ onClickPrev }/>
-	)
+const FavItems: React.FC<TFavItems> = ({ dispatch, favoritesData, status }) => {
 
 	return (
 		<>
 			<div className='items'>
-				{ renderData() }
+				{ favoritesData?.map((el: TFavouritesData) =>
+					<FavoriteItem
+						key={ el?.id }
+						el={ el }
+						dispatch={ dispatch }
+						status={ status }
+					/>
+				) }
 			</div>
-			{ renderPagination() }
 		</>
 	)
 }

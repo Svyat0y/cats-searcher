@@ -3,4 +3,5 @@ export type TCard = {
 	img: string
 	color: string
 	to: string
+	active: string
 }

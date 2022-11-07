@@ -11,12 +11,18 @@ import { selectSearch } from '../../../redux/Search/selectors'
 
 
 const MainNav: React.FC = () => {
-	const { filters: { value, limit, order } } = useSelector(selectSearch)
+	const { filters: { value, limit, order, page } } = useSelector(selectSearch)
 
 	const cards = [
-		{ name: 'Voting', img: voteImg, color: 'violet', to: 'voting' },
-		{ name: 'Breeds', img: petBreedImg, color: 'green', to: `breeds?q=${ value }&limit=${ limit }&order=${ order }` },
-		{ name: 'Gallery', img: searchImg, color: 'yellow', to: 'gallery' },
+		{ name: 'Voting', img: voteImg, color: 'violet', to: 'voting', active: 'voting' },
+		{
+			name: 'Breeds',
+			img: petBreedImg,
+			color: 'green',
+			to: `breeds?q=${ value }&limit=${ limit }&order=${ order }&page=${ page + 1 }`,
+			active: 'breeds'
+		},
+		{ name: 'Gallery', img: searchImg, color: 'yellow', to: 'gallery', active: 'gallery' },
 	]
 
 	return (
@@ -30,15 +36,7 @@ const MainNav: React.FC = () => {
 					Lets start using The Cat API
 				</span>
 				<div className={ s.content__cards }>
-					{ cards.map((card, i) =>
-						<Card
-							key={ i }
-							name={ card.name }
-							img={ card.img }
-							color={ card.color }
-							to={ card.to }
-						/>
-					) }
+					{ cards.map((card) => <Card key={ card.name } { ...card }/>) }
 				</div>
 			</div>
 		</div>

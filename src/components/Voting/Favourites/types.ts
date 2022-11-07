@@ -18,11 +18,6 @@ export type TFavoriteItem = {
 export type TFavItems = {
 	dispatch: AppDispatch
 	favoritesData: TFavouritesData[] | null
-	favPage: number
 	status?: string
-	firstPage: boolean
-	lastPage: boolean | null
-	onClickNext: () => void
-	onClickPrev: () => void
 }
 

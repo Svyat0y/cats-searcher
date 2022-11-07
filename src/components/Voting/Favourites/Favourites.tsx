@@ -6,9 +6,9 @@ import { TFavourites }                  from './types'
 import { fetchGetFavourites }       from '../../../redux/voting/asyncActions'
 import { setActiveBtn, setFavPage } from '../../../redux/voting/slice'
 
-import FavItems                        from './FavItems'
-import { NoItemFound, SkeletonLoader } from '../../common'
-import { VotingMessage }               from '../index'
+import FavItems                                    from './FavItems'
+import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
+import { VotingMessage }                           from '../index'
 
 
 const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage, status }) => {
@@ -24,7 +24,7 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 
 		const pageParam = searchParams.get('page')
 		if (pageParam) {
-			dispatch(setFavPage(Number(pageParam)))
+			dispatch(setFavPage(Number(pageParam) - 1))
 		}
 
 	}, [ location.search ])
@@ -42,13 +42,21 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 	}, [ favoritesData ])
 
 	const onClickNext = () => {
-		dispatch(setFavPage(favPage + 1))
-		setSearchParams({ page: String(favPage + 1) })
+		setSearchParams({ page: String((favPage + 1) + 1) })
 	}
 	const onClickPrev = () => {
-		dispatch(setFavPage(favPage - 1))
-		setSearchParams({ page: String(favPage - 1) })
+		setSearchParams({ page: String((favPage + 1) - 1) })
 	}
+
+	const renderPagination = () => (
+		(favPage === 0 && lastPage)
+			? ''
+			: <Pagination
+				firstPage={ firstPage }
+				lastPage={ lastPage }
+				onClickNext={ onClickNext }
+				onClickPrev={ onClickPrev }/>
+	)
 
 	if (isLoading) return <SkeletonLoader count={ 10 }/>
 
@@ -59,11 +67,8 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 				status={ status }
 				dispatch={ dispatch }
 				favoritesData={ favoritesData }
-				favPage={ favPage }
-				firstPage={ firstPage }
-				lastPage={ lastPage }
-				onClickNext={ onClickNext }
-				onClickPrev={ onClickPrev }/>
+			/>
+			{ renderPagination() }
 
 			<div className={ s.content__messages }>
 				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }

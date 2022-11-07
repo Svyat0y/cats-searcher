@@ -11,9 +11,4 @@ export type TLikes = {
 
 export type TLikeItems = {
 	likeData: TLikesData[] | null
-	likePage: number
-	onClickNext: () => void
-	onClickPrev: () => void
-	firstPage: boolean
-	lastPage: boolean | null
 }
