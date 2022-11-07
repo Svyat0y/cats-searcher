@@ -13,7 +13,7 @@ const BreadCrumbs: React.FC = () => {
 	const { activeButton } = useSelector(selectVoting)
 	const { activeBreedName, singleBreed, status } = useSelector(selectBreeds)
 	const location = useLocation()
-	const locBreedDesc = location.pathname.includes('desc')
+	const locBreedDesc = location.pathname.includes('description')
 
 
 	useEffect(() => {

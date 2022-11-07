@@ -1,4 +1,4 @@
-import React, { useEffect, useState }                  from 'react'
+import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
@@ -14,7 +14,6 @@ import { SearchedItems } from '../../components'
 const SearchComponent: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const [ isMounted, setIsMounted ] = useState(false)
 	const [ searchParams ] = useSearchParams()
 
 	useEffect(() => {
@@ -33,21 +32,18 @@ const SearchComponent: React.FC = () => {
 	}, [])
 
 	useEffect(() => {
-		if (isMounted) {
-			if (location.search) {
-				const valueParam: string | null = searchParams.get('q')
-				dispatch(setFilters({
-					value: valueParam,
-					limit: '5',
-					order: 'asc',
-					page: 0
-				}))
-				dispatch(setSearchValue(valueParam))
-				dispatch(fetchSearchFromPanel())
-			}
+		if (location.search) {
+			const valueParam: string | null = searchParams.get('q')
+			dispatch(setFilters({
+				value: valueParam,
+				limit: '5',
+				order: 'asc',
+				page: 0
+			}))
+			dispatch(setSearchValue(valueParam))
+			dispatch(fetchSearchFromPanel())
 		}
-		setIsMounted(true)
-	}, [ location.search, isMounted ])
+	}, [ location.search ])
 
 	return (
 		<Routes>

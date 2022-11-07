@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { TDislikes }                  from './types'
-
-import { TDataObj }     from '../../../redux/voting/types'
-import { setActiveBtn } from '../../../redux/voting/slice'
+import { setActiveBtn }               from '../../../redux/voting/slice'
 
 import { SkeletonLoader } from '../../common'
+import DislikeItems       from './DislikeItems'
 
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, dispatch }) => {
@@ -27,15 +26,7 @@ const Dislikes: React.FC<TDislikes> = ({ unlikeData, dispatch }) => {
 	return (
 		<>
 			{ noItemsBoolean ? <div className='noItemFound'><span>No item found.</span></div> : '' }
-			<div className='items'>
-				{ unlikeData?.map((el: TDataObj) => {
-					return (
-						<div className='itemsImg_wr unHoverClass' key={ el?.id }>
-							<img src={ el?.url } alt='image'/>
-						</div>
-					)
-				}) }
-			</div>
+			<DislikeItems data={ unlikeData }/>
 		</>
 	)
 }

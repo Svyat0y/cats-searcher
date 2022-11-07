@@ -6,3 +6,7 @@ export type TDislikes = {
 	dispatch: AppDispatch
 	unlikeData: TDataObj[]
 }
+
+export type TDislikeItems = {
+	data: TDataObj[]
+}

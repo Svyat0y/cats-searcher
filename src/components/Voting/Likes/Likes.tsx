@@ -5,8 +5,8 @@ import { TLikes }                       from './types'
 import { fetchGetLikes }             from '../../../redux/voting/asyncActions'
 import { setActiveBtn, setLikePage } from '../../../redux/voting/slice'
 
-import LikeItems                       from './LikeItems'
-import { NoItemFound, SkeletonLoader } from '../../common'
+import LikeItems                                   from './LikeItems'
+import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
 
 
 const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage }) => {
@@ -22,7 +22,7 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage }) => {
 
 		const pageParam = searchParams.get('page')
 		if (pageParam) {
-			dispatch(setLikePage(Number(pageParam)))
+			dispatch(setLikePage(Number(pageParam) - 1))
 		}
 	}, [ location.search ])
 
@@ -39,26 +39,29 @@ const Likes: React.FC<TLikes> = ({ likeData, dispatch, likePage }) => {
 	}, [ likeData ])
 
 	const onClickNext = () => {
-		dispatch(setLikePage(likePage + 1))
-		setSearchParams({ page: String(likePage + 1) })
+		setSearchParams({ page: String((likePage + 1) + 1) })
 	}
 	const onClickPrev = () => {
-		dispatch(setLikePage(likePage - 1))
-		setSearchParams({ page: String(likePage - 1) })
+		setSearchParams({ page: String((likePage + 1) - 1) })
 	}
+
+	const renderPagination = () => (
+		likePage === 0 && lastPage
+			? ''
+			: <Pagination
+				firstPage={ firstPage }
+				lastPage={ lastPage }
+				onClickNext={ onClickNext }
+				onClickPrev={ onClickPrev }/>
+	)
 
 	if (isLoading) return <SkeletonLoader count={ 10 }/>
 
 	return (
 		<>
 			{ noItemsBoolean && <NoItemFound/> }
-			<LikeItems
-				likeData={ likeData }
-				firstPage={ firstPage }
-				lastPage={ lastPage }
-				likePage={ likePage }
-				onClickNext={ onClickNext }
-				onClickPrev={ onClickPrev }/>
+			<LikeItems likeData={ likeData }/>
+			{ renderPagination() }
 		</>
 	)
 }

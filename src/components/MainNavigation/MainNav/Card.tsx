@@ -8,10 +8,10 @@ import { setFilters }     from '../../../redux/Search/slice'
 import { TCard }          from './types'
 
 
-const Card: React.FC<TCard> = React.memo(({ name, img, color, to }) => {
+const Card: React.FC<TCard> = React.memo(({ name, img, color, to, active }) => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const loc = location.pathname.includes(to)
+	const loc = location.pathname.includes(active)
 
 	const onClickCard = useCallback(() => {
 		if (location.pathname.includes('breeds')) {

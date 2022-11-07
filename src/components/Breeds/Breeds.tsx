@@ -20,7 +20,7 @@ const Breeds = () => {
 	const [ searchParams ] = useSearchParams()
 
 	const getParam = ((s: string) => searchParams.get(s))
-	
+
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
 		if (!location.search) setFilters({ value: 'All breeds', limit: '5', order: 'asc', page: 0 })
@@ -36,7 +36,7 @@ const Breeds = () => {
 			const limit: string | null = getParam('limit')
 			const order: string | null = getParam('order')
 			const page: string | null = getParam('page')
-			dispatch(setFilters({ value, limit, order, page: Number(page) }))
+			dispatch(setFilters({ value, limit, order, page: Number(page) - 1 }))
 		}
 	}, [ location.search ])
 
