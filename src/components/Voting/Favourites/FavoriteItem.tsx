@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TFavoriteItem }              from './types'
-import { TFavouritesData }            from '../../../redux/voting/types'
 
+import { TData }              from '../../../redux/voting/types'
 import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
 
 import emptyImage    from '../../../assets/images/voting/empty_img.webp'
@@ -17,9 +17,9 @@ const FavoriteItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 		if (status !== 'pending') setIsFetching(false)
 	}, [ status ])
 
-	const deleteFromFavourites = (obj: TFavouritesData) => {
+	const deleteFromFavourites = (obj: TData) => {
 		setIsFetching(true)
-		obj && dispatch(fetchDeleteFromFav(obj))
+		obj && dispatch && dispatch(fetchDeleteFromFav(obj))
 	}
 
 	return (

@@ -1,55 +1,37 @@
-import React, { useEffect, useState }   from 'react'
-import s                                from '../Voting.module.scss'
-import { useLocation, useSearchParams } from 'react-router-dom'
-import { TFavourites }                  from './types'
+import React, { useEffect } from 'react'
+import s                    from '../Voting.module.scss'
 
-import { fetchGetFavourites }       from '../../../redux/voting/asyncActions'
-import { setActiveBtn, setFavPage } from '../../../redux/voting/slice'
+import { setActiveBtn } from '../../../redux/voting/slice'
+import { TVotingItems } from '../types'
 
-import FavItems                                    from './FavItems'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
+import FavItems                                    from './FavItems'
 import { VotingMessage }                           from '../index'
+import RenderItems                                 from '../../hoc/RenderItems'
 
 
-const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessage, favPage, status }) => {
-	const [ isLoading, setIsLoading ] = useState(false)
-	const [ searchParams, setSearchParams ] = useSearchParams()
-	const location = useLocation()
-	const noItemsBoolean = (favoritesData?.length === 0)
-	const firstPage = (favPage - 1) < 0
-	const lastPage = favoritesData && favoritesData?.length < 15
-
-	useEffect(() => {
-		dispatch(setActiveBtn('Favourites'))
-
-		const pageParam = searchParams.get('page')
-		if (pageParam) {
-			dispatch(setFavPage(Number(pageParam) - 1))
-		}
-
-	}, [ location.search ])
+const Favourites: React.FC<TVotingItems> = (
+	{
+		infoMessage,
+		dispatch,
+		data,
+		page,
+		lastPage,
+		firstPage,
+		onClickNext,
+		onClickPrev,
+		isLoading,
+		noItemsBoolean,
+		status
+	}) => {
 
 	useEffect(() => {
-		setIsLoading(true)
-		dispatch(fetchGetFavourites())
-	}, [ favPage ])
+		dispatch(setActiveBtn('favourites'))
+	}, [])
 
-	useEffect(() => {
-		let timeoutId: ReturnType<typeof setTimeout>
-		if (favoritesData && favoritesData?.length >= 0) timeoutId = setTimeout(() => setIsLoading(false), 1000)
-
-		return () => clearTimeout(timeoutId)
-	}, [ favoritesData ])
-
-	const onClickNext = () => {
-		setSearchParams({ page: String((favPage + 1) + 1) })
-	}
-	const onClickPrev = () => {
-		setSearchParams({ page: String((favPage + 1) - 1) })
-	}
 
 	const renderPagination = () => (
-		(favPage === 0 && lastPage)
+		(page === 0 && lastPage)
 			? ''
 			: <Pagination
 				firstPage={ firstPage }
@@ -66,15 +48,15 @@ const Favourites: React.FC<TFavourites> = ({ dispatch, favoritesData, infoMessag
 			<FavItems
 				status={ status }
 				dispatch={ dispatch }
-				favoritesData={ favoritesData }
+				favoritesData={ data }
 			/>
 			{ renderPagination() }
 
 			<div className={ s.content__messages }>
-				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
+				{ infoMessage?.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>
 	)
 }
 
-export default Favourites
+export default RenderItems(Favourites)

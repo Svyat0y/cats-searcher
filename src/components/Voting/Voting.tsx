@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { Route, Routes }    from 'react-router-dom'
 import { TVoting }          from './types'
 
+import { useAppDispatch }  from '../../redux/store'
+import { setToSearchData } from '../../redux/Search/slice'
+
 import VotingLayout                                 from './VotingLayout'
 import { Dislikes, Favourites, Likes, VotingImage } from './index'
-import { setToSearchData }                          from '../../redux/Search/slice'
-import { useAppDispatch }                           from '../../redux/store'
 import VotingDataContainer                          from '../hoc/VotingDataContainer'
 
 

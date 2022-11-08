@@ -1,23 +1,10 @@
-import { AppDispatch }                       from '../../../redux/store'
-import { TFavouritesData, TInfoInfoMessage } from '../../../redux/voting/types'
+import { AppDispatch } from '../../../redux/store'
+import { TData }       from '../../../redux/voting/types'
 
 
-export type TFavourites = {
-	dispatch: AppDispatch
-	favoritesData: TFavouritesData[] | null
-	infoMessage: TInfoInfoMessage[]
-	status?: string
-	favPage: number
-}
 export type TFavoriteItem = {
-	el: TFavouritesData
+	el: TData
 	status?: string
-	dispatch: AppDispatch
-}
-
-export type TFavItems = {
-	dispatch: AppDispatch
-	favoritesData: TFavouritesData[] | null
-	status?: string
+	dispatch?: AppDispatch
 }
 

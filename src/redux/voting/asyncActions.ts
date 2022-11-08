@@ -1,6 +1,6 @@
-import { instance }                                                                from '../../api/api'
-import { createAsyncThunk }                                                        from '@reduxjs/toolkit'
-import { TDataImgVoted, TDataObj, TFavouritesData, TLikesData, TVotingFavourites } from './types'
+import { instance }                                          from '../../api/api'
+import { createAsyncThunk }                                  from '@reduxjs/toolkit'
+import { TData, TDataImgVoted, TDataObj, TVotingFavourites } from './types'
 
 import { RootState } from '../store'
 import {
@@ -117,7 +117,7 @@ export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: Ro
 	}
 )
 
-export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { state: RootState }>(
+export const fetchDeleteFromFav = createAsyncThunk<void, TData, { state: RootState }>(
 	'voting/fetchDeleteFromFav',
 	async (imgObj, thunkAPI) => {
 		const dispatch = thunkAPI.dispatch
@@ -126,7 +126,7 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TFavouritesData, { stat
 		try {
 			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
-				if (favoritesData?.length === 1) {
+				if (favoritesData?.length === 1 && favPage > 0) {
 					dispatch(setFavPage(favPage - 1))
 					dispatch(fetchGetFavourites())
 				}
@@ -151,7 +151,7 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 	async (_, { dispatch, getState }) => {
 		const { userId, favPage } = getState().votingSlice
 		try {
-			const { data } = await instance.get<TFavouritesData[]>(`favourites?sub_id=${ userId }&page=${ favPage }&limit=15&order=DESC`)
+			const { data } = await instance.get<TData[]>(`favourites?sub_id=${ userId }&page=${ favPage }&limit=15&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {
@@ -166,7 +166,7 @@ export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 		const { userId, likePage } = getState().votingSlice
 
 		try {
-			const { data } = await instance.get<TLikesData[]>(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
+			const { data } = await instance.get<TData[]>(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
 			dispatch(setToLike(data))
 		}
 		catch (e: any) {

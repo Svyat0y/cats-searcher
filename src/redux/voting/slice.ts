@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction }                                             from '@reduxjs/toolkit'
-import { fetchVoteImg }                                                           from './asyncActions'
-import { IVote, Status, TDataObj, TFavouritesData, TInfoInfoMessage, TLikesData } from './types'
+import { createSlice, PayloadAction }                       from '@reduxjs/toolkit'
+import { fetchVoteImg }                                     from './asyncActions'
+import { IVote, Status, TData, TDataObj, TInfoInfoMessage } from './types'
 
 import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
@@ -23,7 +23,7 @@ export const votingSlice = createSlice({
 	name: 'voting',
 	initialState,
 	reducers: {
-		setToLike: (state, action: PayloadAction<TLikesData[]>) => {
+		setToLike: (state, action: PayloadAction<TData[]>) => {
 			state.likeData = action.payload
 		},
 		setToUnlike: (state, action: PayloadAction<TDataObj>) => {
@@ -32,7 +32,7 @@ export const votingSlice = createSlice({
 		setToFavourites: (state, action: PayloadAction<TDataObj>) => {
 			state.onFavourites = [ ...state.onFavourites, action.payload ]
 		},
-		setToFavoritesData: (state, action: PayloadAction<TFavouritesData[]>) => {
+		setToFavoritesData: (state, action: PayloadAction<TData[]>) => {
 			state.favoritesData = action.payload
 		},
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {
