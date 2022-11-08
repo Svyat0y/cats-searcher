@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TDislikes }                  from './types'
-import { setActiveBtn }               from '../../../redux/voting/slice'
+
+import { setActiveBtn } from '../../../redux/voting/slice'
 
 import { SkeletonLoader } from '../../common'
 import DislikeItems       from './DislikeItems'

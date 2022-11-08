@@ -22,8 +22,8 @@ const VotingDataContainer = (Component: React.FC<TVoting>) => () => {
 	} = useSelector(selectVoting)
 
 	const voteImgData = { dispatch, voteData, onFavourites, infoMessage, status }
-	const favData = { dispatch, infoMessage, favoritesData, favPage, status }
-	const likesData = { dispatch, likeData, likePage }
+	const favData = { dispatch, infoMessage, data: favoritesData, page: favPage, status }
+	const likesData = { dispatch, data: likeData, page: likePage }
 	const dislikesData = { dispatch, unlikeData }
 
 	return (

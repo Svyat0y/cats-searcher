@@ -1,8 +1,8 @@
 export interface IVote {
 	userId: string
 	voteData: TDataObj | null
-	likeData: TLikesData[] | null
-	favoritesData: TFavouritesData[] | null
+	likeData: TData[] | null
+	favoritesData: TData[] | null
 	unlikeData: TDataObj[]
 	onFavourites: TDataObj[]
 	infoMessage: TInfoInfoMessage[]
@@ -17,24 +17,16 @@ type TImage = {
 	url: string
 }
 
-export type TFavouritesData = {
-	created_at: string
+export type TData = {
+	country_code?: string
+	created_at?: string
 	id: number
 	image: TImage
 	image_id: string
 	sub_id: string
-	user_id: string
+	user_id?: string
+	value?: number
 } | null
-
-export type TLikesData = {
-	country_code: string
-	created_at: string
-	id: number
-	image: TImage
-	image_id: string
-	sub_id: string
-	value: number
-}
 
 export type TInfoInfoMessage = {
 	id?: string
