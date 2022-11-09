@@ -7,6 +7,7 @@ export type TFilters = {
 	limit: string
 	order: string
 	page: number
+	type: string
 }
 
 export type TSearchData = {

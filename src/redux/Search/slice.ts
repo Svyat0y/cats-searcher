@@ -14,6 +14,7 @@ const initialState: ISearch = {
 		limit: '5',
 		order: 'asc',
 		page: 0,
+		type: 'all',
 	},
 	status: Status.PENDING,
 }

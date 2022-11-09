@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import { Breeds, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../components'
 import ContentLayout                                                 from './ContentLayout'
+import Gallery                                                       from '../Gallery/Gallery'
 
 
 const Content: React.FC = () => {
@@ -15,7 +16,7 @@ const Content: React.FC = () => {
 				<Route path='breeds/*' element={ <Breeds/> }/>
 				<Route path='search/*' element={ <SearchComponent/> }/>
 				<Route path='description' element={ <SingleBreedInfo/> }/>
-				<Route path='gallery' element={ <div>Gallery! (in development)</div> }/>
+				<Route path='gallery' element={ <Gallery/> }/>
 			</Route>
 		</Routes>
 	)

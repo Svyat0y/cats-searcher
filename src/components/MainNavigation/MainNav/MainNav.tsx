@@ -11,7 +11,9 @@ import { selectSearch } from '../../../redux/Search/selectors'
 
 
 const MainNav: React.FC = () => {
-	const { filters: { value, limit, order, page } } = useSelector(selectSearch)
+	const { filters: { value, limit, order, page, type } } = useSelector(selectSearch)
+	let changeOrderFromGallery
+	order === 'random' ? changeOrderFromGallery = 'asc' : changeOrderFromGallery = 'asc'
 
 	const cards = [
 		{ name: 'Voting', img: voteImg, color: 'violet', to: 'voting', active: 'voting' },
@@ -19,10 +21,16 @@ const MainNav: React.FC = () => {
 			name: 'Breeds',
 			img: petBreedImg,
 			color: 'green',
-			to: `breeds?q=${ value }&limit=${ limit }&order=${ order }&page=${ page + 1 }`,
+			to: `breeds?q=${ value }&limit=${ limit }&order=${ changeOrderFromGallery }&page=${ page + 1 }`,
 			active: 'breeds'
 		},
-		{ name: 'Gallery', img: searchImg, color: 'yellow', to: 'gallery', active: 'gallery' },
+		{
+			name: 'Gallery',
+			img: searchImg,
+			color: 'yellow',
+			to: `gallery?q=${ value }&limit=${ limit }&order=${ order }&page=${ page + 1 }&type=${ type }`,
+			active: 'gallery'
+		},
 	]
 
 	return (

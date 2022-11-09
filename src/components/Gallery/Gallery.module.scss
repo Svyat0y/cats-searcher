@@ -1,0 +1,6 @@
+@import 'src/scss/variables';
+
+.sortGallery_wr {
+  width: 100%;
+  @include flex(center, center);
+}
