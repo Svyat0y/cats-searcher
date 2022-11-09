@@ -10,7 +10,7 @@ const OrderOptions: TOrderOption[] = [
 ]
 
 const OrderSelect: React.FC<TOrderSelect> = ({ value, onChangeOrder }) => {
-	const getValue = () => OrderOptions.find(option => option.label === value)
+	const getValue = () => OrderOptions.find(option => option.value === value)
 
 	return (
 		<div className='selectBreedContainer'>

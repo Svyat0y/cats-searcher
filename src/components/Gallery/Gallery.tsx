@@ -59,3 +59,10 @@ const Gallery = () => {
 }
 
 export default Gallery
+
+// gallery
+// 1 - gallery reducer
+// 2 - filter state in gallery reducer
+// 3 - function request to images/search
+// 4 - styles for SortGallery component
+// 5 - refactoring code
