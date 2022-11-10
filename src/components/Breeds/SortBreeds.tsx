@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import s                              from './Breeds.module.scss'
 import { useSearchParams }            from 'react-router-dom'
-import qs                             from 'qs'
-import { TOption }                    from './types'
 
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
@@ -22,15 +20,6 @@ const SortBreeds: React.FC = () => {
 
 	const pageNumberForUI = filters.page + 1
 
-	const createParams = (value: string, limit: string, order: string, page: number) => {
-		return qs.stringify({
-			q: value,
-			limit,
-			order,
-			page,
-		})
-	}
-
 	useEffect(() => {
 		if (isMounted) dispatch(fetchBreeds({ value: 'all breeds', label: 'All breeds' }))
 		setIsMounted(true)
@@ -40,40 +29,27 @@ const SortBreeds: React.FC = () => {
 		}
 	}, [ isMounted ])
 
-	const onChangeOption = (e: TOption) => {
-		e && setSearchParams(createParams(e.label, filters.limit, filters.order, pageNumberForUI))
-	}
-
-	const onChangeLimit = (e: TOption) => {
-		e && setSearchParams(createParams(filters.value, e.value, filters.order, pageNumberForUI))
-	}
-
-	const oncClickAsk = () => {
-		setSearchParams(createParams(filters.value, filters.limit, 'asc', pageNumberForUI))
-	}
-	const oncClickDesk = () => {
-		setSearchParams(createParams(filters.value, filters.limit, 'desc', pageNumberForUI))
-	}
-
 	return (
 		<div className={ s.sortBreeds_wr }>
 			<BreedSelect
-				onChangeOption={ onChangeOption }
-				value={ filters.value }
+				filters={ filters }
+				pageNumberForUI={ pageNumberForUI }
+				setSearchParams={ setSearchParams }
 				dispatch={ dispatch }
 				options={ breedsList }
 				status={ status }
 			/>
 			<LimitSelect
-				onChangeLimit={ onChangeLimit }
-				limit={ filters.limit }
+				filters={ filters }
+				pageNumberForUI={ pageNumberForUI }
+				setSearchParams={ setSearchParams }
 				dispatch={ dispatch }
 			/>
 			<BreedSortButtons
-				oncClickAsk={ oncClickAsk }
-				oncClickDesk={ oncClickDesk }
+				filters={ filters }
+				pageNumberForUI={ pageNumberForUI }
+				setSearchParams={ setSearchParams }
 				status={ status }
-				order={ filters.order }
 				dispatch={ dispatch }
 			/>
 		</div>

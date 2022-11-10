@@ -1,9 +1,10 @@
-import {AppDispatch} from '../../../redux/store'
-import {TOption} from '../../Breeds/types'
+import { AppDispatch } from '../../../redux/store'
+import { TFilters }    from '../../../redux/Search/types'
 
 
 export type TLimitSelect = {
-    dispatch: AppDispatch
-    limit: string
-    onChangeLimit: (e: TOption) => void
+	dispatch: AppDispatch
+	setSearchParams: (obj: string) => void
+	filters: TFilters
+	pageNumberForUI: number
 }

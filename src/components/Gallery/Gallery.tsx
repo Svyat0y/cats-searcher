@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { ContentHeader }                from '../common'
 import { SearchedItems }                from '../index'
@@ -17,7 +17,6 @@ const Gallery = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
-	const [ isMounted, setIsMounted ] = useState(false)
 	const { searchData, status, galleryFilters } = useSelector(selectSearch)
 
 	const firstPage = (galleryFilters.page - 1) < 0
@@ -44,9 +43,8 @@ const Gallery = () => {
 	}, [ location.search ])
 
 	useEffect(() => {
-		if (isMounted) dispatch(fetchGallerySearch())
-		setIsMounted(true)
-	}, [ galleryFilters.value, galleryFilters.limit, galleryFilters.order, galleryFilters.page, galleryFilters.type, isMounted ])
+		dispatch(fetchGallerySearch())
+	}, [ galleryFilters.value, galleryFilters.limit, galleryFilters.order, galleryFilters.page, galleryFilters.type ])
 
 
 	return (

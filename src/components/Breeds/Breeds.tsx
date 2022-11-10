@@ -1,4 +1,4 @@
-import React, { useEffect, useState }                  from 'react'
+import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }    from 'react-redux'
@@ -17,7 +17,6 @@ const Breeds = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
-	const [ isMounted, setIsMounted ] = useState(false)
 	const { searchData, status, filters } = useSelector(selectSearch)
 
 	const firstPage = (filters.page - 1) < 0
@@ -42,9 +41,8 @@ const Breeds = () => {
 	}, [ location.search ])
 
 	useEffect(() => {
-		if (isMounted) dispatch(fetchSearch())
-		setIsMounted(true)
-	}, [ filters.value, filters.limit, filters.order, filters.page, isMounted ])
+		dispatch(fetchSearch())
+	}, [ filters.value, filters.limit, filters.order, filters.page ])
 
 
 	return (

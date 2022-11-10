@@ -1,9 +1,10 @@
-import { TOption } from '../../Breeds/types'
+import { TFilters } from '../../../redux/Search/types'
 
 
 export type TOrderSelect = {
-	value: string
-	onChangeOrder: (e: TOption) => void
+	setSearchParams: (obj: string) => void
+	filters: TFilters
+	pageNumberForUI: number
 }
 
 export type TOrderOption = {
