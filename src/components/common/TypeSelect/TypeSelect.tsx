@@ -13,16 +13,17 @@ const TypesOptions: TTypeOption[] = [
 ]
 
 const TypeSelect: React.FC<TTypeSelect> = ({ setSearchParams, filters, pageNumberForUI }) => {
-	const getValue = () => TypesOptions.find(option => option.value === filters.value)
+	const getValue = () => TypesOptions.find(option => option.value === filters.type)
 
 	const onChangeType = (e: TOption) => {
 		e && setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI, e?.value))
 	}
 
 	return (
-		<div className='selectBreedContainer'>
+		<div className='selectContainer'>
+			<span className='label'>Type</span>
 			<Select
-				classNamePrefix='breed breedSelect'
+				classNamePrefix='select'
 				value={ getValue() }
 				options={ TypesOptions }
 				onChange={ onChangeType }

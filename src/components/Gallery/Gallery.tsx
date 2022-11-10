@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
-
-import { ContentHeader }                from '../common'
-import { SearchedItems }                from '../index'
-import { useAppDispatch }               from '../../redux/store'
-import { setActiveBtn }                 from '../../redux/voting/slice'
-import { setGalleryFilters }            from '../../redux/Search/slice'
-import GallerySort                      from './GallerySort'
-import { fetchGallerySearch }           from '../../redux/Search/asyncActions'
+import React, { useEffect }             from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
-import { useSelector }                  from 'react-redux'
-import { selectSearch }                 from '../../redux/Search/selectors'
+
+import { useSelector }        from 'react-redux'
+import { useAppDispatch }     from '../../redux/store'
+import { setActiveBtn }       from '../../redux/voting/slice'
+import { setGalleryFilters }  from '../../redux/Search/slice'
+import { fetchGallerySearch } from '../../redux/Search/asyncActions'
+import { selectSearch }       from '../../redux/Search/selectors'
+
+import GallerySort       from './GallerySort'
+import { ContentHeader } from '../common'
+import { SearchedItems } from '../index'
 
 
 const Gallery = () => {

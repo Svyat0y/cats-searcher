@@ -13,9 +13,10 @@ const BreedSelect: React.FC<TBreedSelect> = React.memo(({ setSearchParams, optio
 	}
 
 	return (
-		<div className='selectBreedContainer'>
+		<div className='selectContainer'>
+			<span className='label'>Breed</span>
 			<Select
-				classNamePrefix='breed breedSelect'
+				classNamePrefix='select'
 				placeholder='Select breed'
 				value={ getValue() }
 				options={ options }

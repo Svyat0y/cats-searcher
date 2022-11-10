@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import s                              from './Gallery.module.scss'
-import { BreedSelect, LimitSelect }   from '../common'
-import { useAppDispatch }             from '../../redux/store'
 import { useSearchParams }            from 'react-router-dom'
-import { useSelector }                from 'react-redux'
-import { selectSearch }               from '../../redux/Search/selectors'
-import { setToBreedList }             from '../../redux/Search/slice'
-import OrderSelect                    from '../common/OrderSelect/OrderSelect'
-import TypeSelect                     from '../common/TypeSelect/TypeSelect'
-import { fetchBreeds }                from '../../redux/Breeds/asyncActions'
+
+import { useSelector }    from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import { selectSearch }   from '../../redux/Search/selectors'
+import { setToBreedList } from '../../redux/Search/slice'
+import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
+
+import TypeSelect                   from '../common/TypeSelect/TypeSelect'
+import OrderSelect                  from '../common/OrderSelect/OrderSelect'
+import { BreedSelect, LimitSelect } from '../common'
 
 
 const GallerySort = () => {
@@ -30,8 +31,8 @@ const GallerySort = () => {
 
 
 	return (
-		<div className={ s.sortGallery_wr }>
-			<div className={ s.sortGallery_wr__left }>
+		<div className='sortGallery_wr'>
+			<div className='sortGallery_wr__left'>
 				<OrderSelect
 					filters={ galleryFilters }
 					pageNumberForUI={ pageNumberForUI }
@@ -46,7 +47,7 @@ const GallerySort = () => {
 					status={ status }
 				/>
 			</div>
-			<div className={ s.sortGallery_wr__right }>
+			<div className='sortGallery_wr__right'>
 				<TypeSelect
 					filters={ galleryFilters }
 					pageNumberForUI={ pageNumberForUI }

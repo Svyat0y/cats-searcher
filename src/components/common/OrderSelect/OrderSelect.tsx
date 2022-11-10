@@ -13,16 +13,17 @@ const OrderOptions: TOrderOption[] = [
 ]
 
 const OrderSelect: React.FC<TOrderSelect> = ({ setSearchParams, filters, pageNumberForUI }) => {
-	const getValue = () => OrderOptions.find(option => option.value === filters.value)
+	const getValue = () => OrderOptions.find(option => option.value === filters.order)
 
 	const onChangeOrder = (e: TOption) => {
 		e && setSearchParams(createParams(filters.value, filters.limit, e.value, pageNumberForUI, filters.type))
 	}
 
 	return (
-		<div className='selectBreedContainer'>
+		<div className='selectContainer'>
+			<span className='label'>Order</span>
 			<Select
-				classNamePrefix='breed breedSelect'
+				classNamePrefix='select'
 				value={ getValue() }
 				options={ OrderOptions }
 				onChange={ onChangeOrder }

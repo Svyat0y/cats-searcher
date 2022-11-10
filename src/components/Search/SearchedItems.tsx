@@ -44,20 +44,21 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, la
 		navigate(`/description?${ queryString }`)
 	}
 
-	const createParams = (value: string, limit: string, order: string, page: number) => {
+	const createParams = (value: string, limit: string, order: string, page: number, type: string) => {
 		return qs.stringify({
 			q: value,
 			limit,
 			order,
 			page,
+			type
 		})
 	}
 
 	const onClickNext = () => {
-		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI + 1))
+		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI + 1, filters.type))
 	}
 	const onClickPrev = () => {
-		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI - 1))
+		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI - 1, filters.type))
 	}
 
 	const renderPagination = () => (
