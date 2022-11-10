@@ -7,6 +7,7 @@ export type TFilters = {
 	limit: string
 	order: string
 	page: number
+	type: string
 }
 
 export type TSearchData = {
@@ -22,4 +23,5 @@ export interface ISearch {
 	searchValue: string | null
 	breedsList: TBreedOption[]
 	filters: TFilters
+	galleryFilters: TFilters
 }

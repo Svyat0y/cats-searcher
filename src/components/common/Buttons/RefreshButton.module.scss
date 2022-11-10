@@ -7,10 +7,10 @@
   @include flex(center, center);
   border: 2px solid var(--bg_input_search);
   border-radius: 10px;
-  position: absolute;
   right: 0;
   cursor: pointer;
   outline: none;
+  flex-grow: 0;
 
   &:hover {
     img {

@@ -14,6 +14,14 @@ const initialState: ISearch = {
 		limit: '5',
 		order: 'asc',
 		page: 0,
+		type: 'all',
+	},
+	galleryFilters: {
+		value: 'None',
+		limit: '5',
+		order: 'random',
+		page: 0,
+		type: 'all',
 	},
 	status: Status.PENDING,
 }
@@ -25,15 +33,20 @@ export const searchingSlice = createSlice({
 		setToSearchData: (state, action: PayloadAction<TSearchData[] | null>) => {
 			state.searchData = action.payload
 		},
+		setToSearchGallery: (state, action: PayloadAction<TSearchData[] | null>) => {
+			state.searchData = action.payload
+		},
 		setSearchValue: (state, action: PayloadAction<string | null>) => {
 			state.searchValue = action.payload
 		},
 		setFilters: (state, action) => {
 			if (action.payload) state.filters = action.payload
 		},
+		setGalleryFilters: (state, action) => {
+			if (action.payload) state.galleryFilters = action.payload
+		},
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
-			// if (action.payload.length === 1) state.breedsList = action.payload
-			state.breedsList = [ { value: 'All', label: 'All breeds' }, ...action.payload ]
+			state.breedsList = action.payload
 		},
 	},
 	extraReducers: (builder) => {
@@ -54,7 +67,8 @@ export const {
 	setToSearchData,
 	setSearchValue,
 	setToBreedList,
-	setFilters
+	setFilters,
+	setGalleryFilters,
 } = searchingSlice.actions
 
 export default searchingSlice.reducer

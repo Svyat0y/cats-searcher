@@ -1,10 +1,11 @@
 @import 'variables';
 
-.selectBreedContainer {
+.selectContainer {
   flex-grow: 1;
+  position: relative;
 }
 
-.breedSelect {
+.select {
 
   &__control {
     margin-left: 10px;
