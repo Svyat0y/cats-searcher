@@ -4,9 +4,9 @@ import { ContentHeader }                from '../common'
 import { SearchedItems }                from '../index'
 import { useAppDispatch }               from '../../redux/store'
 import { setActiveBtn }                 from '../../redux/voting/slice'
-import { setFilters, setToSearchData }  from '../../redux/Search/slice'
+import { setGalleryFilters }            from '../../redux/Search/slice'
 import GallerySort                      from './GallerySort'
-import { fetchSearch }                  from '../../redux/Search/asyncActions'
+import { fetchGallerySearch }           from '../../redux/Search/asyncActions'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import { useSelector }                  from 'react-redux'
 import { selectSearch }                 from '../../redux/Search/selectors'
@@ -15,9 +15,14 @@ import { selectSearch }                 from '../../redux/Search/selectors'
 const Gallery = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const [ isMounted, setIsMounted ] = useState(false)
-	const { filters } = useSelector(selectSearch)
 	const [ searchParams ] = useSearchParams()
+
+	const [ isMounted, setIsMounted ] = useState(false)
+	const { searchData, status, galleryFilters } = useSelector(selectSearch)
+
+	const firstPage = (galleryFilters.page - 1) < 0
+	const lastPage = searchData && searchData.length < Number(galleryFilters.limit)
+	const pageNumberForUI = galleryFilters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))
 
@@ -25,9 +30,6 @@ const Gallery = () => {
 	useEffect(() => {
 		dispatch(setActiveBtn('Gallery'))
 
-		return () => {
-			dispatch(setToSearchData(null))
-		}
 	}, [])
 
 	useEffect(() => {
@@ -37,14 +39,14 @@ const Gallery = () => {
 			const order: string | null = getParam('order')
 			const page: string | null = getParam('page')
 			const type: string | null = getParam('type')
-			dispatch(setFilters({ value, limit, order, page: Number(page) - 1, type }))
+			dispatch(setGalleryFilters({ value, limit, order, page: Number(page) - 1, type }))
 		}
 	}, [ location.search ])
 
 	useEffect(() => {
-		if (isMounted) dispatch(fetchSearch())
+		if (isMounted) dispatch(fetchGallerySearch())
 		setIsMounted(true)
-	}, [ filters.value, filters.limit, filters.order, filters.page, filters.type, isMounted ])
+	}, [ galleryFilters.value, galleryFilters.limit, galleryFilters.order, galleryFilters.page, galleryFilters.type, isMounted ])
 
 
 	return (
@@ -52,7 +54,15 @@ const Gallery = () => {
 			<div className='content__body'>
 				<ContentHeader/>
 				<GallerySort/>
-				<SearchedItems dispatch={ dispatch }/>
+				<SearchedItems
+					data={ searchData }
+					status={ status }
+					firstPage={ firstPage }
+					lastPage={ lastPage }
+					dispatch={ dispatch }
+					filters={ galleryFilters }
+					pageNumberForUI={ pageNumberForUI }
+				/>
 			</div>
 		</div>
 	)

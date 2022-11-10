@@ -1,29 +1,39 @@
-import React               from 'react'
-import qs                  from 'qs'
-import { useNavigate }     from 'react-router'
-import { useSearchParams } from 'react-router-dom'
-
-import { useSelector }      from 'react-redux'
-import { AppDispatch }      from '../../redux/store'
-import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
-import { selectSearch }     from '../../redux/Search/selectors'
+import React, { useEffect, useState } from 'react'
+import qs                             from 'qs'
+import { useNavigate }                from 'react-router'
+import { useSearchParams }            from 'react-router-dom'
+import { AppDispatch }                from '../../redux/store'
+import { fetchSingleBreed }           from '../../redux/Breeds/asyncActions'
 
 import { Pagination, SkeletonLoader } from '../common'
 import Items                          from './Items'
+import { TFilters, TSearchData }      from '../../redux/Search/types'
+import { setToSearchData }            from '../../redux/Search/slice'
 
 
 type TSearchedItems = {
+	data: TSearchData[] | null
 	dispatch: AppDispatch
+	firstPage: boolean
+	lastPage: boolean | null
+	status: string
+	filters: TFilters
+	pageNumberForUI: number
 }
 
-const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
+const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, lastPage, status, filters, pageNumberForUI }) => {
 	const navigate = useNavigate()
+	const [ loaded, setLoaded ] = useState(false)
 	const [ _, setSearchParams ] = useSearchParams()
-	const { searchData, status, filters } = useSelector(selectSearch)
-	const emptyData = searchData === null
-	const firstPage = (filters.page - 1) < 0
-	const lastPage = searchData && searchData.length < Number(filters.limit)
-	const pageNumberForUI = filters.page + 1
+	const emptyData = data === null
+
+	useEffect(() => {
+		if (status === 'success') setTimeout(() => setLoaded(true), 0)
+
+		return () => {
+			dispatch(setToSearchData(null))
+		}
+	}, [])
 
 	const onClickBreedName = (breedId: string, name: string) => {
 		const queryString = qs.stringify({
@@ -65,8 +75,8 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch }) => {
 
 	return (
 		<>
-			{ emptyData && status === 'success' && <div className='noItemFound'>Nothing found.</div> }
-			<Items data={ searchData } onClickBreedName={ onClickBreedName }/>
+			{ emptyData && loaded && <div className='noItemFound'>Nothing found.</div> }
+			<Items data={ data } onClickBreedName={ onClickBreedName }/>
 			{ (emptyData !== null && status === 'success') && renderPagination() }
 		</>
 	)

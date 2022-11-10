@@ -31,16 +31,16 @@ export const fetchSingleBreed = createAsyncThunk<void, string>(
 	}
 )
 
-export const fetchBreeds = createAsyncThunk(
+export const fetchBreeds = createAsyncThunk<void, { value: string, label: string }>(
 	'fetchBreeds',
-	async (_, { dispatch }) => {
+	async (obj, { dispatch }) => {
 		try {
 			const { data } = await instance.get<any>('breeds')
 			const newData: TBreedOption[] = await Promise.all(data.map((el: any) => {
 				return { value: el.id, label: el.name }
 			}))
 
-			dispatch(setToBreedList(newData))
+			dispatch(setToBreedList([ obj, ...newData ]))
 		}
 		catch (e: any) {
 			console.log(e.message)

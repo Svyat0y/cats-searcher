@@ -1,12 +1,12 @@
 import React, { useEffect, useState }                  from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
-import { useSelector }                 from 'react-redux'
-import { useAppDispatch }              from '../../redux/store'
-import { setActiveBtn }                from '../../redux/voting/slice'
-import { selectSearch }                from '../../redux/Search/selectors'
-import { fetchSearch }                 from '../../redux/Search/asyncActions'
-import { setFilters, setToSearchData } from '../../redux/Search/slice'
+import { useSelector }    from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import { setActiveBtn }   from '../../redux/voting/slice'
+import { selectSearch }   from '../../redux/Search/selectors'
+import { fetchSearch }    from '../../redux/Search/asyncActions'
+import { setFilters }     from '../../redux/Search/slice'
 
 import BreedLayout       from './BreedLayout'
 import { SearchedItems } from '../index'
@@ -15,17 +15,20 @@ import { SearchedItems } from '../index'
 const Breeds = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
-	const [ isMounted, setIsMounted ] = useState(false)
-	const { filters } = useSelector(selectSearch)
 	const [ searchParams ] = useSearchParams()
+
+	const [ isMounted, setIsMounted ] = useState(false)
+	const { searchData, status, filters } = useSelector(selectSearch)
+
+	const firstPage = (filters.page - 1) < 0
+	const lastPage = searchData && searchData.length < Number(filters.limit)
+	const pageNumberForUI = filters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-		return () => {
-			dispatch(setToSearchData(null))
-		}
+
 	}, [])
 
 	useEffect(() => {
@@ -34,7 +37,7 @@ const Breeds = () => {
 			const limit: string | null = getParam('limit')
 			const order: string | null = getParam('order')
 			const page: string | null = getParam('page')
-			dispatch(setFilters({ value, limit, order, page: Number(page) - 1, type: filters.type }))
+			dispatch(setFilters({ value, limit, order, page: Number(page) - 1 }))
 		}
 	}, [ location.search ])
 
@@ -43,11 +46,19 @@ const Breeds = () => {
 		setIsMounted(true)
 	}, [ filters.value, filters.limit, filters.order, filters.page, isMounted ])
 
+
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={ <BreedLayout/> }>
-					<Route path='' element={ <SearchedItems dispatch={ dispatch }/> }/>
+					<Route path='' element={ <SearchedItems
+						data={ searchData }
+						status={ status }
+						firstPage={ firstPage }
+						lastPage={ lastPage }
+						dispatch={ dispatch }
+						filters={ filters }
+						pageNumberForUI={ pageNumberForUI }/> }/>
 				</Route>
 			</Routes>
 		</>

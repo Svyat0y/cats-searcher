@@ -4,11 +4,11 @@ import { useSearchParams }            from 'react-router-dom'
 import qs                             from 'qs'
 import { TOption }                    from './types'
 
-import { useSelector }                from 'react-redux'
-import { useAppDispatch }             from '../../redux/store'
-import { fetchBreeds }                from '../../redux/Breeds/asyncActions'
-import { selectSearch }               from '../../redux/Search/selectors'
-import { setFilters, setToBreedList } from '../../redux/Search/slice'
+import { useSelector }    from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
+import { selectSearch }   from '../../redux/Search/selectors'
+import { setToBreedList } from '../../redux/Search/slice'
 
 import BreedSortButtons             from './BreedSortButtons'
 import { BreedSelect, LimitSelect } from '../common'
@@ -31,17 +31,8 @@ const SortBreeds: React.FC = () => {
 		})
 	}
 
-	const createNewFilters = (label?: string, limit?: string, order?: string) => {
-		return {
-			value: label || filters.value,
-			limit: limit || filters.limit,
-			order: order || filters.order,
-			page: filters.page + 1
-		}
-	}
-
 	useEffect(() => {
-		if (isMounted) dispatch(fetchBreeds())
+		if (isMounted) dispatch(fetchBreeds({ value: 'all breeds', label: 'All breeds' }))
 		setIsMounted(true)
 
 		return () => {
@@ -50,30 +41,18 @@ const SortBreeds: React.FC = () => {
 	}, [ isMounted ])
 
 	const onChangeOption = (e: TOption) => {
-		if (e) {
-			const newObj = createNewFilters(e.label, undefined, undefined)
-			setSearchParams(createParams(e.label, filters.limit, filters.order, pageNumberForUI))
-			dispatch(setFilters(newObj))
-		}
+		e && setSearchParams(createParams(e.label, filters.limit, filters.order, pageNumberForUI))
 	}
 
 	const onChangeLimit = (e: TOption) => {
-		if (e) {
-			const newObj = createNewFilters(undefined, e.value, undefined)
-			setSearchParams(createParams(filters.value, e.value, filters.order, pageNumberForUI))
-			dispatch(setFilters(newObj))
-		}
+		e && setSearchParams(createParams(filters.value, e.value, filters.order, pageNumberForUI))
 	}
 
 	const oncClickAsk = () => {
-		const newObj = createNewFilters(undefined, undefined, 'asc')
 		setSearchParams(createParams(filters.value, filters.limit, 'asc', pageNumberForUI))
-		dispatch(setFilters(newObj))
 	}
 	const oncClickDesk = () => {
-		const newObj = createNewFilters(undefined, undefined, 'desc')
 		setSearchParams(createParams(filters.value, filters.limit, 'desc', pageNumberForUI))
-		dispatch(setFilters(newObj))
 	}
 
 	return (

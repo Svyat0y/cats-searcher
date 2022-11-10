@@ -6,7 +6,7 @@ import { useSearchParams }            from 'react-router-dom'
 import { useSelector }                from 'react-redux'
 import { selectSearch }               from '../../redux/Search/selectors'
 import { TOption }                    from '../Breeds/types'
-import { setFilters, setToBreedList } from '../../redux/Search/slice'
+import { setToBreedList }             from '../../redux/Search/slice'
 import qs                             from 'qs'
 import OrderSelect                    from '../common/OrderSelect/OrderSelect'
 import TypeSelect                     from '../common/TypeSelect/TypeSelect'
@@ -17,12 +17,12 @@ const GallerySort = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)
-	const { filters, status, breedsList } = useSelector(selectSearch)
+	const { galleryFilters: { value, order, limit, page, type }, status, breedsList } = useSelector(selectSearch)
 
-	const pageNumberForUI = filters.page + 1
+	const pageNumberForUI = page + 1
 
 	useEffect(() => {
-		if (isMounted) dispatch(fetchBreeds())
+		if (isMounted) dispatch(fetchBreeds({ value: 'none', label: 'None' }))
 		setIsMounted(true)
 
 		return () => {
@@ -40,58 +40,32 @@ const GallerySort = () => {
 		})
 	}
 
-	const createNewFilters = (label?: string, limit?: string, order?: string, type?: string) => {
-		return {
-			value: label || filters.value,
-			limit: limit || filters.limit,
-			order: order || filters.order,
-			page: filters.page + 1,
-			type: type || filters.type,
-		}
-	}
-
 	const onChangeLimit = (e: TOption) => {
-		if (e) {
-			const newObj = createNewFilters(undefined, e.value, undefined)
-			setSearchParams(createParams(filters.value, e.value, filters.order, pageNumberForUI, filters.type))
-			dispatch(setFilters(newObj))
-		}
+		e && setSearchParams(createParams(value, e.value, order, pageNumberForUI, type))
 	}
 
 	const onChangeOption = (e: TOption) => {
-		if (e) {
-			const newObj = createNewFilters(e.label, undefined, undefined)
-			setSearchParams(createParams(e.label, filters.limit, filters.order, pageNumberForUI, filters.type))
-			dispatch(setFilters(newObj))
-		}
+		e && setSearchParams(createParams(e.label, limit, order, pageNumberForUI, type))
 	}
 
 	const onChangeOrder = (e: TOption) => {
-		if (e) {
-			const newObj = createNewFilters(filters.value, undefined, e.value, filters.type)
-			setSearchParams(createParams(filters.value, filters.limit, e.value, pageNumberForUI, filters.type))
-			dispatch(setFilters(newObj))
-		}
+		e && setSearchParams(createParams(value, limit, e.value, pageNumberForUI, type))
 	}
 
 	const onChangeType = (e: TOption) => {
-		if (e) {
-			const newObj = createNewFilters(filters.value, undefined, undefined, e?.value)
-			setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI, e?.value))
-			dispatch(setFilters(newObj))
-		}
+		e && setSearchParams(createParams(value, limit, order, pageNumberForUI, e?.value))
 	}
 
 	return (
 		<div className={ s.sortGallery_wr }>
 			<div className={ s.sortGallery_wr__left }>
 				<OrderSelect
-					value={ filters.order }
+					value={ order }
 					onChangeOrder={ onChangeOrder }
 				/>
 				<BreedSelect
 					onChangeOption={ onChangeOption }
-					value={ filters.value }
+					value={ value }
 					dispatch={ dispatch }
 					options={ breedsList }
 					status={ status }
@@ -99,11 +73,11 @@ const GallerySort = () => {
 			</div>
 			<div className={ s.sortGallery_wr__right }>
 				<TypeSelect
-					value={ filters.type }
+					value={ type }
 					onChangeType={ onChangeType }/>
 				<LimitSelect
 					onChangeLimit={ onChangeLimit }
-					limit={ filters.limit }
+					limit={ limit }
 					dispatch={ dispatch }
 				/>
 			</div>
