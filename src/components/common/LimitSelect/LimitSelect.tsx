@@ -29,7 +29,7 @@ const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, setSearchParams, filter
 
 	return (
 		<div className='selectContainer withRefreshBtn'>
-			<span className='label'>Limit</span>
+			{ filters.type && <span className='label'>Limit</span> }
 			<Select
 				className='container-select'
 				value={ getValue() }
@@ -38,7 +38,7 @@ const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, setSearchParams, filter
 				defaultValue={ limitOptions[0] }
 				onChange={ onChangeLimit }
 			/>
-			<RefreshButton onclick={ clickOnRefreshBtn }/>
+			{ filters.type && <RefreshButton onclick={ clickOnRefreshBtn }/> }
 		</div>
 	)
 }

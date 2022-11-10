@@ -21,7 +21,7 @@ const OrderSelect: React.FC<TOrderSelect> = ({ setSearchParams, filters, pageNum
 
 	return (
 		<div className='selectContainer'>
-			<span className='label'>Order</span>
+			{ filters.type && <span className='label'>Order</span> }
 			<Select
 				classNamePrefix='select'
 				value={ getValue() }

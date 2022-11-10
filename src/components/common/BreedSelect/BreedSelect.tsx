@@ -14,7 +14,7 @@ const BreedSelect: React.FC<TBreedSelect> = React.memo(({ setSearchParams, optio
 
 	return (
 		<div className='selectContainer'>
-			<span className='label'>Breed</span>
+			{ filters.type && <span className='label'>Breed</span> }
 			<Select
 				classNamePrefix='select'
 				placeholder='Select breed'

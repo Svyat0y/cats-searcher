@@ -21,7 +21,7 @@ const TypeSelect: React.FC<TTypeSelect> = ({ setSearchParams, filters, pageNumbe
 
 	return (
 		<div className='selectContainer'>
-			<span className='label'>Type</span>
+			{ filters.type && <span className='label'>Type</span> }
 			<Select
 				classNamePrefix='select'
 				value={ getValue() }
