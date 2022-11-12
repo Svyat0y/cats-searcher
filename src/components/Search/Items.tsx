@@ -18,7 +18,7 @@ const Items: React.FC<TItems> = ({ data, onClickBreedName }) => {
 				data?.map((el: TSearchData) => {
 					return (
 						el
-							? <div className={ `itemsImg_wr  ${ locGallery ? 'unHoverClass' : '' } ` } key={ el.id }>
+							? <div className='itemsImg_wr' key={ el.id }>
 								<img src={ el.url } alt='image'/>
 								{
 									!locGallery && <button
