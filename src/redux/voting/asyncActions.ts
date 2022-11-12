@@ -122,7 +122,7 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TData, { state: RootSta
 	async (imgObj, thunkAPI) => {
 		const dispatch = thunkAPI.dispatch
 		const { favoritesData, favPage } = thunkAPI.getState().votingSlice
-
+		
 		try {
 			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
