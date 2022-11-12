@@ -60,25 +60,21 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, la
 	const onClickPrev = () => {
 		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI - 1, filters.type))
 	}
-
-	const renderPagination = () => (
-		filters.page === 0 && lastPage
-			? ''
-			: <Pagination
-				firstPage={ firstPage }
-				lastPage={ lastPage }
-				onClickNext={ onClickNext }
-				onClickPrev={ onClickPrev }
-			/>
-	)
-
+	
 	if (status === 'pending') return <SkeletonLoader count={ 5 }/>
 
 	return (
 		<>
 			{ emptyData && loaded && <div className='noItemFound'>Nothing found.</div> }
 			<Items data={ data } onClickBreedName={ onClickBreedName }/>
-			{ (emptyData !== null && status === 'success') && renderPagination() }
+			{
+				!lastPage && <Pagination
+					firstPage={ firstPage }
+					lastPage={ lastPage }
+					onClickNext={ onClickNext }
+					onClickPrev={ onClickPrev }
+				/>
+			}
 		</>
 	)
 }
