@@ -19,7 +19,7 @@ const Breeds = () => {
 
 	const { searchData, status, filters } = useSelector(selectSearch)
 
-	const firstPage = (filters.page - 1) < 0
+	const firstPage = filters.page === 0
 	const lastPage = searchData && searchData.length < Number(filters.limit)
 	const pageNumberForUI = filters.page + 1
 

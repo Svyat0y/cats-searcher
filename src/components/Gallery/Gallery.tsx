@@ -20,8 +20,8 @@ const Gallery = () => {
 
 	const { searchData, status, galleryFilters } = useSelector(selectSearch)
 
-	const firstPage = (galleryFilters.page - 1) < 0
-	const lastPage = searchData && searchData.length < Number(galleryFilters.limit)
+	const firstPage = galleryFilters.page === 0
+	const lastPage = searchData && (searchData.length < Number(galleryFilters.limit))
 	const pageNumberForUI = galleryFilters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))
@@ -45,8 +45,7 @@ const Gallery = () => {
 
 	useEffect(() => {
 		dispatch(fetchGallerySearch())
-	}, [ galleryFilters.value, galleryFilters.limit, galleryFilters.order, galleryFilters.page, galleryFilters.type ])
-
+	}, [ galleryFilters.page ])
 
 	return (
 		<div className='content'>
