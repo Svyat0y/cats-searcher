@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
+import { TVotingItems }     from '../types'
 
-import { TVotingItems } from '../types'
 import { setActiveBtn } from '../../../redux/voting/slice'
 
 import LikeItems                                   from './LikeItems'

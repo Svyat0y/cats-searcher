@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import s                    from '../Voting.module.scss'
+import { TVotingItems }     from '../types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
-import { TVotingItems } from '../types'
 
+import RenderItems                                 from '../../hoc/RenderItems'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
 import { VotingMessage }                           from '../index'
-import RenderItems                                 from '../../hoc/RenderItems'
 import OnFavItem                                   from './OnFavItem'
 
 

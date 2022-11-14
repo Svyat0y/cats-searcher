@@ -3,6 +3,7 @@ import { TMessageIcons } from './types'
 
 
 const MessageIcons: React.FC<TMessageIcons> = ({ message }) => {
+	
 	return (
 		<>
 			{

@@ -4,6 +4,7 @@ import { TDislikeItems } from './types'
 
 
 const DislikeItems: React.FC<TDislikeItems> = ({ data }) => {
+	
 	return (
 		<div className='items'>
 			{ data?.map((el: TDataObj) => {

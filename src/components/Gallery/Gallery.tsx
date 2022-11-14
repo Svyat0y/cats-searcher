@@ -1,16 +1,17 @@
-import React, { useEffect }             from 'react'
+import React, { useEffect, useState }   from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
-import { useSelector }        from 'react-redux'
-import { useAppDispatch }     from '../../redux/store'
-import { setActiveBtn }       from '../../redux/voting/slice'
-import { setGalleryFilters }  from '../../redux/Search/slice'
-import { fetchGallerySearch } from '../../redux/Search/asyncActions'
-import { selectSearch }       from '../../redux/Search/selectors'
+import { useSelector }                         from 'react-redux'
+import { useAppDispatch }                      from '../../redux/store'
+import { setActiveBtn }                        from '../../redux/voting/slice'
+import { setGalleryFilters, setIsLoadingData } from '../../redux/Search/slice'
+import { fetchGallerySearch }                  from '../../redux/Search/asyncActions'
+import { selectSearch }                        from '../../redux/Search/selectors'
 
 import GallerySort       from './GallerySort'
 import { ContentHeader } from '../common'
 import { SearchedItems } from '../index'
+import { selectVoting }  from '../../redux/voting/selectors'
 
 
 const Gallery = () => {
@@ -18,7 +19,8 @@ const Gallery = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
-	const { searchData, status, galleryFilters } = useSelector(selectSearch)
+	const { searchData, status, galleryFilters, isLoadingData } = useSelector(selectSearch)
+	const { onFavourites } = useSelector(selectVoting)
 
 	const firstPage = galleryFilters.page === 0
 	const lastPage = searchData && (searchData.length < Number(galleryFilters.limit))
@@ -26,10 +28,8 @@ const Gallery = () => {
 
 	const getParam = ((s: string) => searchParams.get(s))
 
-
 	useEffect(() => {
 		dispatch(setActiveBtn('Gallery'))
-
 	}, [])
 
 	useEffect(() => {
@@ -45,7 +45,15 @@ const Gallery = () => {
 
 	useEffect(() => {
 		dispatch(fetchGallerySearch())
+		dispatch(setIsLoadingData(true))
 	}, [ galleryFilters.page ])
+
+	useEffect(() => {
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (searchData && searchData?.length >= 0) timeoutId = setTimeout(() => dispatch(setIsLoadingData(false)), 1000)
+
+		return () => clearTimeout(timeoutId)
+	}, [ searchData ])
 
 	return (
 		<div className='content'>
@@ -53,6 +61,8 @@ const Gallery = () => {
 				<ContentHeader/>
 				<GallerySort/>
 				<SearchedItems
+					isLoadingData={ isLoadingData }
+					onFavourites={ onFavourites }
 					data={ searchData }
 					status={ status }
 					firstPage={ firstPage }
@@ -67,10 +77,3 @@ const Gallery = () => {
 }
 
 export default Gallery
-
-// gallery
-// 1 - gallery reducer
-// 2 - filter state in gallery reducer
-// 3 - function request to images/search
-// 4 - styles for SortGallery component
-// 5 - refactoring code

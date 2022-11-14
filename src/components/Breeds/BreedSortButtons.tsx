@@ -6,12 +6,14 @@ import { createParams } from '../../utils/createParams'
 
 
 const BreedSortButtons: React.FC<TBreedSortButtons> = ({ setSearchParams, status, filters, pageNumberForUI }) => {
+	
+	const newParams = (order: string) => createParams(filters.value, filters.limit, order, pageNumberForUI)
 
 	const oncClickAsk = () => {
-		setSearchParams(createParams(filters.value, filters.limit, 'asc', pageNumberForUI))
+		setSearchParams(newParams('asc'))
 	}
 	const oncClickDesk = () => {
-		setSearchParams(createParams(filters.value, filters.limit, 'desc', pageNumberForUI))
+		setSearchParams(newParams('desc'))
 	}
 
 	return (

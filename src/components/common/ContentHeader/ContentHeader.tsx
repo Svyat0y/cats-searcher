@@ -7,6 +7,7 @@ import { BackButton, BreadCrumbs } from '../index'
 
 const ContentHeader: React.FC = () => {
 	const location = useLocation()
+	
 	return (
 		<div className='contentHeader'>
 			<BackButton/>

@@ -6,6 +6,7 @@ import Select                 from 'react-select'
 import { createParams }       from '../../../utils/createParams'
 import { RefreshButton }      from '../index'
 import { fetchGallerySearch } from '../../../redux/Search/asyncActions'
+import { setIsLoadingData }   from '../../../redux/Search/slice'
 
 
 const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options }) => {
@@ -17,6 +18,7 @@ const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, setSearchParams, filter
 
 	const clickOnRefreshBtn = () => {
 		dispatch(fetchGallerySearch())
+		dispatch(setIsLoadingData(true))
 	}
 
 	return (

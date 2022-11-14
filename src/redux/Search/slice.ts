@@ -9,7 +9,6 @@ const initialState: ISearch = {
 	searchData: null,
 	searchValue: '',
 	breedsList: [],
-	optionValue: '',
 	filters: {
 		value: 'All breeds',
 		limit: '5',
@@ -24,6 +23,7 @@ const initialState: ISearch = {
 		page: 0,
 		type: 'all',
 	},
+	isLoadingData: true,
 	status: Status.PENDING,
 }
 
@@ -49,9 +49,9 @@ export const searchingSlice = createSlice({
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
 			state.breedsList = action.payload
 		},
-		setOptionValue: (state, action: PayloadAction<string>) => {
-			state.optionValue = action.payload
-		},
+		setIsLoadingData: (state, action: PayloadAction<boolean>) => {
+			state.isLoadingData = action.payload
+		}
 	},
 	extraReducers: (builder) => {
 		builder
@@ -73,7 +73,7 @@ export const {
 	setToBreedList,
 	setFilters,
 	setGalleryFilters,
-	setOptionValue,
+	setIsLoadingData,
 } = searchingSlice.actions
 
 export default searchingSlice.reducer

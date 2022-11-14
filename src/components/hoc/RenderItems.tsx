@@ -17,15 +17,16 @@ type TRenderItems = {
 }
 
 const RenderItems = (Component: React.FC<TVotingItems>) => ({ dispatch, data, page, status, infoMessage }: TRenderItems) => {
+	const location = useLocation()
 	const [ isLoading, setIsLoading ] = useState(false)
 	const [ isMounted, setIsMounted ] = useState(false)
 	const [ searchParams, setSearchParams ] = useSearchParams()
-	const location = useLocation()
-	const noItemsBoolean = (data?.length === 0)
-	const firstPage = (page - 1) < 0
+
+	const firstPage = page === 0
 	const lastPage = data && data.length < 15
 	const likeLocation = location.pathname.includes('likes')
 	const favLocation = location.pathname.includes('favourites')
+	const noItemsBoolean = (data?.length === 0)
 	const pageParam = searchParams.get('page')
 
 	useEffect(() => {
@@ -34,6 +35,7 @@ const RenderItems = (Component: React.FC<TVotingItems>) => ({ dispatch, data, pa
 				setIsLoading(true)
 				likeLocation && dispatch(fetchGetLikes())
 				favLocation && dispatch(fetchGetFavourites())
+
 				if (page + 1 === (Number(pageParam))) return
 				else setSearchParams({ page: String(page + 1) })
 			}

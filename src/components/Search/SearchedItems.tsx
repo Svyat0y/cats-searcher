@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import qs                             from 'qs'
 import { useSearchParams }            from 'react-router-dom'
-import { useNavigate }                from 'react-router'
-import { setToSearchData }            from '../../redux/Search/slice'
-import { TSearchData }                from '../../redux/Search/types'
-import { fetchSingleBreed }           from '../../redux/Breeds/asyncActions'
+import qs                             from 'qs'
 import { TSearchedItems }             from './types'
 
+import { useNavigate }      from 'react-router'
+import { setToSearchData }  from '../../redux/Search/slice'
+import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
+import { TSearchData }      from '../../redux/Search/types'
+
 import { Pagination, SkeletonLoader } from '../common'
+import Item                           from './Item'
 
-import Item from './Item'
 
-
-const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, lastPage, status, filters, pageNumberForUI }) => {
+const SearchedItems: React.FC<TSearchedItems> = (
+	{
+		dispatch,
+		data,
+		firstPage,
+		lastPage,
+		status,
+		filters,
+		pageNumberForUI,
+		onFavourites,
+		isLoadingData
+	}) => {
 	const navigate = useNavigate()
 	const [ loaded, setLoaded ] = useState(false)
 	const [ _, setSearchParams ] = useSearchParams()
@@ -52,7 +63,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, la
 		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI - 1, filters.type))
 	}
 
-	if (status === 'pending') return <SkeletonLoader count={ 5 }/>
+	if (isLoadingData) return <SkeletonLoader count={ 5 }/>
 
 	return (
 		<>
@@ -62,7 +73,13 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, la
 					data?.map((el: TSearchData) => {
 						return (
 							el
-								? <Item onClickBreedName={ onClickBreedName } el={ el } dispatch={ dispatch }/>
+								? <Item
+									status={ status }
+									key={ el.id }
+									onClickBreedName={ onClickBreedName }
+									el={ el }
+									dispatch={ dispatch }
+									onFavourites={ onFavourites }/>
 								: ''
 						)
 					})

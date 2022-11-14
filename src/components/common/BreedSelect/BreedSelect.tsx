@@ -1,20 +1,10 @@
-import React                     from 'react'
-import { TBreedSelect, TOption } from '../../Breeds/types'
+import React            from 'react'
+import { TBreedSelect } from '../../Breeds/types'
 
-import Select             from 'react-select'
-import { createParams }   from '../../../utils/createParams'
-import { setOptionValue } from '../../../redux/Search/slice'
+import Select from 'react-select'
 
 
-const BreedSelect: React.FC<TBreedSelect> = React.memo(({ setSearchParams, options, status, filters, pageNumberForUI, dispatch }) => {
-	const getValue = () => options.find(option => option.label === filters.value)
-
-	const onChangeOption = (e: TOption) => {
-		if (e) {
-			setSearchParams(createParams(e.label, filters.limit, filters.order, pageNumberForUI, filters.type))
-			dispatch(setOptionValue(e.value))
-		}
-	}
+const BreedSelect: React.FC<TBreedSelect> = React.memo(({ getValue, options, status, filters, onChangeOption }) => {
 
 	return (
 		<div className='selectContainer'>

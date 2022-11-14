@@ -5,8 +5,8 @@ import { TVoting }          from './types'
 import { useAppDispatch }  from '../../redux/store'
 import { setToSearchData } from '../../redux/Search/slice'
 
-import VotingLayout                                 from './VotingLayout'
 import { Dislikes, Favourites, Likes, VotingImage } from './index'
+import VotingLayout                                 from './VotingLayout'
 import VotingDataContainer                          from '../hoc/VotingDataContainer'
 
 

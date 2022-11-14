@@ -5,6 +5,7 @@ import { ContentHeader } from '../common'
 
 
 const VotingLayout: React.FC = () => {
+	
 	return (
 		<div className='content'>
 			<div className='content__body'>

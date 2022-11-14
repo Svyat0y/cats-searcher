@@ -8,6 +8,7 @@ import logoDark  from '../../assets/images/logoDark.webp'
 
 
 const HeaderLogo: React.FC<THeaderLogo> = ({ theme }) => {
+	
 	return (
 		<Link to='/'>
 			<div className={ s.header__logo }>

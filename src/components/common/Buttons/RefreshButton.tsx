@@ -6,6 +6,7 @@ import refreshImg from '../../../assets/images/common/refreshImg.webp'
 
 
 const RefreshButton: React.FC<TRefreshButton> = ({ onclick }) => {
+	
 	return (
 		<button onClick={ onclick } className={ s.refresh_wr }>
 			<img src={ refreshImg } alt=''/>

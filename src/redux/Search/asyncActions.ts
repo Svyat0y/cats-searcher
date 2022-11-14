@@ -26,8 +26,6 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 		try {
 			if (value === 'All breeds') {
 				const { data } = await instance.get<any>(`breeds?${ query }`)
-
-				console.log('first data', data)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))
@@ -65,7 +63,7 @@ const getType = (type: string) => {
 export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchGallerySearch',
 	async (params, { dispatch, getState }) => {
-		const { galleryFilters: { value, limit, order, page, type }, optionValue } = getState().searchingSlice
+		const { galleryFilters: { value, limit, order, page, type } } = getState().searchingSlice
 		const currentType = getType(type)
 		const query = `limit=${ limit }&mime_types=${ currentType }&order=${ order }&size=small&page=${ page }`
 
@@ -75,7 +73,7 @@ export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootStat
 				dispatch(setToSearchData(data))
 			}
 			else{
-				const { data } = await instance.get<any>(`images/search?${ query }&breed_ids=${ optionValue }`)
+				const { data } = await instance.get<any>(`images/search?${ query }&breed_ids=${ value }`)
 				dispatch(setToSearchData(data))
 			}
 		}

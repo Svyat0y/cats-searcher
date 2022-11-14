@@ -15,6 +15,8 @@ export type TSearchData = {
 	breedId: string
 	name: string
 	url: string
+	height: number
+	width: number
 }
 
 export interface ISearch {
@@ -24,5 +26,5 @@ export interface ISearch {
 	breedsList: TBreedOption[]
 	filters: TFilters
 	galleryFilters: TFilters
-	optionValue: string
+	isLoadingData: boolean
 }

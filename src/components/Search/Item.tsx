@@ -1,24 +1,37 @@
-import React, { useState }      from 'react'
-import { SmallSpinner }         from '../common'
-import heartAdded               from '../../assets/images/voting/heartBgRed.webp'
-import heartNoAdded             from '../../assets/images/voting/heartBorderRed.webp'
-import { useLocation }          from 'react-router-dom'
-import { TItem }                from './types'
+import React, { useEffect, useState } from 'react'
+import { useLocation }                from 'react-router-dom'
+import { TItem }                      from './types'
+
 import { fetchActionFavourite } from '../../redux/voting/asyncActions'
+import { TSearchData }          from '../../redux/Search/types'
+
+import { SmallSpinner } from '../common'
+
+import heartNoAdded from '../../assets/images/voting/heartBorderRed.webp'
+import heartAdded   from '../../assets/images/voting/heartBgRed.webp'
 
 
-const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch }) => {
+const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status }) => {
 	const [ isFetching, setIsFetching ] = useState(false)
 	const location = useLocation()
-
-	console.log(el)
-
 	const locGallery = location.pathname.includes('gallery')
 
-	const made = false
+	const imgInFavourites = onFavourites?.find(obj => obj?.id === el.id)
+
+	const onAddToFavourites = (obj: TSearchData) => {
+		if (!imgInFavourites) {
+			setIsFetching(true)
+			dispatch((fetchActionFavourite(obj)))
+		}
+	}
+
+	useEffect(() => {
+		if (status !== 'pending') setIsFetching(false)
+	}, [ status ])
+
 
 	return (
-		<div className='itemsImg_wr' key={ el.id }>
+		<div className='itemsImg_wr'>
 			<img src={ el.url } alt='image'/>
 			{
 				!locGallery &&
@@ -32,12 +45,12 @@ const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch }) => {
 				locGallery &&
 				<button
 					disabled={ false }
-					onClick={ () => dispatch((fetchActionFavourite(el))) }
+					onClick={ () => onAddToFavourites(el) }
 					className='item__hoverIcon'>
 					{
 						isFetching
-							? <SmallSpinner height={ 20 } width={ 40 } color='#FF868E'/>
-							: <img src={ made ? heartAdded : heartNoAdded } alt='icon'/>
+							? <SmallSpinner height={ 17 } width={ 40 } color='#FF868E'/>
+							: <img src={ imgInFavourites ? heartAdded : heartNoAdded } alt='icon'/>
 					}
 				</button>
 			}

@@ -4,6 +4,7 @@ import { TButton } from './types'
 
 
 const Button: React.FC<TButton> = ({ name, isActive, onclick, disabled, breadCrumbs }) => {
+	
 	return (
 		<button
 			onClick={ onclick }

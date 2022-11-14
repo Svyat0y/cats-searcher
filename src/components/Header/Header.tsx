@@ -7,6 +7,7 @@ import HeaderNavigation from './HeaderNavigation'
 
 
 const Header: React.FC<THeader> = ({ theme, onChangeTheme }) => {
+	
 	return (
 		<header className={ s.header }>
 			<HeaderLogo theme={ theme }/>

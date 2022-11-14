@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import s                      from './MainNav.module.scss'
 import { Link, useLocation }  from 'react-router-dom'
+import { TCard }              from './types'
 
 import { useAppDispatch } from '../../../redux/store'
 import { fetchSearch }    from '../../../redux/Search/asyncActions'
 import { setFilters }     from '../../../redux/Search/slice'
-import { TCard }          from './types'
 
 
 const Card: React.FC<TCard> = React.memo(({ name, img, color, to, active }) => {

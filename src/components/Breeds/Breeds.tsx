@@ -1,12 +1,12 @@
-import React, { useEffect }                            from 'react'
+import React, { useEffect, useState }                  from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
-import { useSelector }    from 'react-redux'
-import { useAppDispatch } from '../../redux/store'
-import { setActiveBtn }   from '../../redux/voting/slice'
-import { selectSearch }   from '../../redux/Search/selectors'
-import { fetchSearch }    from '../../redux/Search/asyncActions'
-import { setFilters }     from '../../redux/Search/slice'
+import { useSelector }                  from 'react-redux'
+import { useAppDispatch }               from '../../redux/store'
+import { setActiveBtn }                 from '../../redux/voting/slice'
+import { setFilters, setIsLoadingData } from '../../redux/Search/slice'
+import { selectSearch }                 from '../../redux/Search/selectors'
+import { fetchSearch }                  from '../../redux/Search/asyncActions'
 
 import BreedLayout       from './BreedLayout'
 import { SearchedItems } from '../index'
@@ -17,7 +17,7 @@ const Breeds = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
-	const { searchData, status, filters } = useSelector(selectSearch)
+	const { searchData, status, filters, isLoadingData } = useSelector(selectSearch)
 
 	const firstPage = filters.page === 0
 	const lastPage = searchData && searchData.length < Number(filters.limit)
@@ -27,7 +27,6 @@ const Breeds = () => {
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Breeds'))
-
 	}, [])
 
 	useEffect(() => {
@@ -42,14 +41,22 @@ const Breeds = () => {
 
 	useEffect(() => {
 		dispatch(fetchSearch())
+		dispatch(setIsLoadingData(true))
 	}, [ filters.value, filters.limit, filters.order, filters.page ])
 
+	useEffect(() => {
+		let timeoutId: ReturnType<typeof setTimeout>
+		if (searchData && searchData?.length >= 0) timeoutId = setTimeout(() => dispatch(setIsLoadingData(false)), 1000)
+
+		return () => clearTimeout(timeoutId)
+	}, [ searchData ])
 
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={ <BreedLayout/> }>
 					<Route path='' element={ <SearchedItems
+						isLoadingData={ isLoadingData }
 						data={ searchData }
 						status={ status }
 						firstPage={ firstPage }

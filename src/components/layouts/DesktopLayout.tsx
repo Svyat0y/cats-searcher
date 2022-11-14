@@ -5,6 +5,7 @@ import { Content, MainNavigation } from '../../components'
 
 
 const DesktopLayout: React.FC = () => {
+	
 	return (
 		<div className={ s.wrapper }>
 			<MainNavigation/>
