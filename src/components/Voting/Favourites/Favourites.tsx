@@ -7,7 +7,7 @@ import { TVotingItems } from '../types'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
 import { VotingMessage }                           from '../index'
 import RenderItems                                 from '../../hoc/RenderItems'
-import OnFavItem                                   from '../../common/OnFavItem/OnFavItem'
+import OnFavItem                                   from './OnFavItem'
 
 
 const Favourites: React.FC<TVotingItems> = (

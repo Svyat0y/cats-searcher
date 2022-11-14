@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TFavoriteItem }              from '../../Voting/Favourites/types'
+import { TFavoriteItem }              from './types'
 
 import { TData }              from '../../../redux/voting/types'
 import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
@@ -7,7 +7,7 @@ import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
 import emptyImage    from '../../../assets/images/voting/empty_img.webp'
 import heartBgRedImg from '../../../assets/images/voting/heartBgRed.webp'
 
-import { SmallSpinner } from '../index'
+import { SmallSpinner } from '../../common'
 
 
 const OnFavItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
