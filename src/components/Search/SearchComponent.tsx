@@ -9,6 +9,8 @@ import { fetchSearchFromPanel }                        from '../../redux/Search/
 
 import SearchLayout      from './SearchLayout'
 import { SearchedItems } from '../../components'
+import { useSelector }   from 'react-redux'
+import { selectSearch }  from '../../redux/Search/selectors'
 
 
 const SearchComponent: React.FC = () => {
@@ -16,18 +18,24 @@ const SearchComponent: React.FC = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
+	const { searchData, status, filters } = useSelector(selectSearch)
+
+	const firstPage = filters.page === 0
+	const lastPage = searchData && searchData.length < Number(filters.limit)
+	const pageNumberForUI = filters.page + 1
+
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
 
 		return () => {
-			dispatch(setToSearchData(null))
-			dispatch(setSearchValue(''))
 			dispatch(setFilters({
 				value: 'All breeds',
 				limit: '5',
 				order: 'asc',
 				page: 0
 			}))
+			dispatch(setSearchValue(''))
+			dispatch(setToSearchData(null))
 		}
 	}, [])
 
@@ -48,7 +56,14 @@ const SearchComponent: React.FC = () => {
 	return (
 		<Routes>
 			<Route path='/' element={ <SearchLayout/> }>
-				<Route index element={ <SearchedItems dispatch={ dispatch }/> }/>
+				<Route index element={ <SearchedItems
+					dispatch={ dispatch }
+					firstPage={ firstPage }
+					lastPage={ lastPage }
+					pageNumberForUI={ pageNumberForUI }
+					filters={ filters }
+					status={ status }
+					data={ searchData }/> }/>
 			</Route>
 		</Routes>
 	)

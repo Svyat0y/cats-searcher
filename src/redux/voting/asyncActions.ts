@@ -91,6 +91,8 @@ export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: Ro
 		try {
 			if (!foundObjInFavorite) {
 				const { status, data } = await instance.post<TVotingFavourites>('favourites', body)
+
+				console.log(data)
 				objIdFromRequest = data.id
 				if (status.toString()[0] === '2') {
 					const newDate = getDate()
@@ -122,7 +124,7 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TData, { state: RootSta
 	async (imgObj, thunkAPI) => {
 		const dispatch = thunkAPI.dispatch
 		const { favoritesData, favPage } = thunkAPI.getState().votingSlice
-		
+
 		try {
 			const { status } = await instance.delete<TVotingFavourites>(`favourites/${ imgObj?.id }`)
 			if (status.toString()[0] === '2') {
