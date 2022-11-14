@@ -24,4 +24,5 @@ export interface ISearch {
 	breedsList: TBreedOption[]
 	filters: TFilters
 	galleryFilters: TFilters
+	optionValue: string
 }

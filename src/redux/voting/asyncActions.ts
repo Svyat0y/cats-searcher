@@ -88,6 +88,7 @@ export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: Ro
 			image_id: imgObj?.id,
 			sub_id: userId
 		}
+		
 		try {
 			if (!foundObjInFavorite) {
 				const { status, data } = await instance.post<TVotingFavourites>('favourites', body)

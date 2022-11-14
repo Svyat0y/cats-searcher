@@ -9,6 +9,7 @@ const initialState: ISearch = {
 	searchData: null,
 	searchValue: '',
 	breedsList: [],
+	optionValue: '',
 	filters: {
 		value: 'All breeds',
 		limit: '5',
@@ -48,6 +49,9 @@ export const searchingSlice = createSlice({
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
 			state.breedsList = action.payload
 		},
+		setOptionValue: (state, action: PayloadAction<string>) => {
+			state.optionValue = action.payload
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -69,6 +73,7 @@ export const {
 	setToBreedList,
 	setFilters,
 	setGalleryFilters,
+	setOptionValue,
 } = searchingSlice.actions
 
 export default searchingSlice.reducer

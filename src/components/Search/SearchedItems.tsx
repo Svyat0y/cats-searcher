@@ -62,7 +62,7 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, la
 					data?.map((el: TSearchData) => {
 						return (
 							el
-								? <Item onClickBreedName={ onClickBreedName } el={ el }/>
+								? <Item onClickBreedName={ onClickBreedName } el={ el } dispatch={ dispatch }/>
 								: ''
 						)
 					})

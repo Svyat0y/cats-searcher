@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
-import { SmallSpinner }    from '../common'
-import heartAdded          from '../../assets/images/voting/heartBgRed.webp'
-import heartNoAdded        from '../../assets/images/voting/heartBorderRed.webp'
-import { useLocation }     from 'react-router-dom'
-import { TItem }           from './types'
+import React, { useState }      from 'react'
+import { SmallSpinner }         from '../common'
+import heartAdded               from '../../assets/images/voting/heartBgRed.webp'
+import heartNoAdded             from '../../assets/images/voting/heartBorderRed.webp'
+import { useLocation }          from 'react-router-dom'
+import { TItem }                from './types'
+import { fetchActionFavourite } from '../../redux/voting/asyncActions'
 
 
-const Item: React.FC<TItem> = ({ onClickBreedName, el }) => {
+const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch }) => {
 	const [ isFetching, setIsFetching ] = useState(false)
 	const location = useLocation()
+
+	console.log(el)
 
 	const locGallery = location.pathname.includes('gallery')
 
@@ -29,7 +32,7 @@ const Item: React.FC<TItem> = ({ onClickBreedName, el }) => {
 				locGallery &&
 				<button
 					disabled={ false }
-					onClick={ () => console.log(el) }
+					onClick={ () => dispatch((fetchActionFavourite(el))) }
 					className='item__hoverIcon'>
 					{
 						isFetching

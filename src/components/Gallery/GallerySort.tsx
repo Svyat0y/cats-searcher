@@ -10,7 +10,17 @@ import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
 import TypeSelect                   from '../common/TypeSelect/TypeSelect'
 import OrderSelect                  from '../common/OrderSelect/OrderSelect'
 import { BreedSelect, LimitSelect } from '../common'
+import { TBreedOption }             from '../../redux/Breeds/types'
 
+
+const limitOptionsForGallery: TBreedOption[] = [
+	{ value: '5', label: 'Limit: 5' },
+	{ value: '10', label: 'Limit: 10' },
+	{ value: '15', label: 'Limit: 15' },
+	{ value: '20', label: 'Limit: 20' },
+	{ value: '50', label: 'Limit: 50' },
+	{ value: '100', label: 'Limit: 100' },
+]
 
 const GallerySort = () => {
 	const dispatch = useAppDispatch()
@@ -58,6 +68,7 @@ const GallerySort = () => {
 					pageNumberForUI={ pageNumberForUI }
 					dispatch={ dispatch }
 					setSearchParams={ setSearchParams }
+					options={ limitOptionsForGallery }
 				/>
 			</div>
 

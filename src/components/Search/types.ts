@@ -15,4 +15,5 @@ export type TSearchedItems = {
 export type TItem = {
 	onClickBreedName: (breedId: string, name: string) => void
 	el: TSearchData
+	dispatch: AppDispatch
 }
