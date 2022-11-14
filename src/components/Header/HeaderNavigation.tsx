@@ -7,6 +7,7 @@ import eyeClose from '../../assets/images/eyeClose.webp'
 
 
 const HeaderNavigation: React.FC<THeaderNavigation> = ({ theme, onChangeTheme }) => {
+	
 	return (
 		<div className={ s.header__navigation }>
 			<div className={ s.header__img_wr }>

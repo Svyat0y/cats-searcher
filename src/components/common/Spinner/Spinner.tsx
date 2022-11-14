@@ -4,6 +4,7 @@ import { MutatingDots } from 'react-loader-spinner'
 
 
 const Spinner: React.FC = () => {
+	
 	return (
 		<div className={ s.wrapper }>
 			<MutatingDots

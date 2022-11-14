@@ -1,13 +1,14 @@
 import React from 'react'
 import s     from './MainNav.module.scss'
 
+import { useSelector }  from 'react-redux'
+import { selectSearch } from '../../../redux/Search/selectors'
+
+import Card from './Card'
+
 import voteImg     from '../../../assets/images/vote-table.webp'
 import petBreedImg from '../../../assets/images/pet-breeds.webp'
 import searchImg   from '../../../assets/images/images-search.webp'
-
-import Card             from './Card'
-import { useSelector }  from 'react-redux'
-import { selectSearch } from '../../../redux/Search/selectors'
 
 
 const MainNav: React.FC = () => {

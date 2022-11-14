@@ -1,9 +1,9 @@
 import React             from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { Breeds, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../components'
 import ContentLayout                                                 from './ContentLayout'
 import Gallery                                                       from '../Gallery/Gallery'
+import { Breeds, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../components'
 
 
 const Content: React.FC = () => {

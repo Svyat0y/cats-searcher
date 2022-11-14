@@ -5,6 +5,7 @@ import { ContentHeader } from '../common'
 
 
 const SearchLayout = () => {
+	
 	return (
 		<div className='content'>
 			<div className='content__body'>

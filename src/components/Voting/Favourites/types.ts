@@ -8,7 +8,7 @@ export type TFavoriteItem = {
 	dispatch?: AppDispatch
 }
 export type TFavItems = {
-	favoritesData: TData[]
+	favoritesData: TData[] | null
 	status?: string
 	dispatch?: AppDispatch
 }

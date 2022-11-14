@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import qs                             from 'qs'
-import { useNavigate }                from 'react-router'
 import { useSearchParams }            from 'react-router-dom'
-import { AppDispatch }                from '../../redux/store'
-import { fetchSingleBreed }           from '../../redux/Breeds/asyncActions'
+import qs                             from 'qs'
+import { TSearchedItems }             from './types'
+
+import { useNavigate }      from 'react-router'
+import { setToSearchData }  from '../../redux/Search/slice'
+import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
+import { TSearchData }      from '../../redux/Search/types'
 
 import { Pagination, SkeletonLoader } from '../common'
-import Items                          from './Items'
-import { TFilters, TSearchData }      from '../../redux/Search/types'
-import { setToSearchData }            from '../../redux/Search/slice'
+import Item                           from './Item'
 
 
-type TSearchedItems = {
-	data: TSearchData[] | null
-	dispatch: AppDispatch
-	firstPage: boolean
-	lastPage: boolean | null
-	status: string
-	filters: TFilters
-	pageNumberForUI: number
-}
-
-const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, lastPage, status, filters, pageNumberForUI }) => {
+const SearchedItems: React.FC<TSearchedItems> = (
+	{
+		dispatch,
+		data,
+		firstPage,
+		lastPage,
+		status,
+		filters,
+		pageNumberForUI,
+		onFavourites,
+		isLoadingData
+	}) => {
 	const navigate = useNavigate()
 	const [ loaded, setLoaded ] = useState(false)
 	const [ _, setSearchParams ] = useSearchParams()
@@ -60,13 +62,29 @@ const SearchedItems: React.FC<TSearchedItems> = ({ dispatch, data, firstPage, la
 	const onClickPrev = () => {
 		setSearchParams(createParams(filters.value, filters.limit, filters.order, pageNumberForUI - 1, filters.type))
 	}
-	
-	if (status === 'pending') return <SkeletonLoader count={ 5 }/>
+
+	if (isLoadingData) return <SkeletonLoader count={ 5 }/>
 
 	return (
 		<>
 			{ emptyData && loaded && <div className='noItemFound'>Nothing found.</div> }
-			<Items data={ data } onClickBreedName={ onClickBreedName }/>
+			<div className='items'>
+				{
+					data?.map((el: TSearchData) => {
+						return (
+							el
+								? <Item
+									status={ status }
+									key={ el.id }
+									onClickBreedName={ onClickBreedName }
+									el={ el }
+									dispatch={ dispatch }
+									onFavourites={ onFavourites }/>
+								: ''
+						)
+					})
+				}
+			</div>
 			{
 				!lastPage && <Pagination
 					firstPage={ firstPage }

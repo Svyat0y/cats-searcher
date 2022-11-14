@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import s                    from '../Voting.module.scss'
+import { TVotingItems }     from '../types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
-import { TVotingItems } from '../types'
 
-import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
-import FavItems                                    from './FavItems'
-import { VotingMessage }                           from '../index'
 import RenderItems                                 from '../../hoc/RenderItems'
+import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
+import { VotingMessage }                           from '../index'
+import OnFavItem                                   from './OnFavItem'
 
 
 const Favourites: React.FC<TVotingItems> = (
@@ -45,11 +45,16 @@ const Favourites: React.FC<TVotingItems> = (
 	return (
 		<>
 			{ noItemsBoolean && <NoItemFound/> }
-			<FavItems
-				status={ status }
-				dispatch={ dispatch }
-				favoritesData={ data }
-			/>
+			<div className='items'>
+				{ data?.map((el) =>
+					<OnFavItem
+						key={ el?.id }
+						el={ el }
+						dispatch={ dispatch }
+						status={ status }
+					/>
+				) }
+			</div>
 			{ renderPagination() }
 
 			<div className={ s.content__messages }>

@@ -1,13 +1,14 @@
-import React            from 'react'
-import s                from './SingleBreedInfo.module.scss'
-import { TSlider }      from './types'
-import { TSingleBreed } from '../../redux/Breeds/types'
+import React       from 'react'
+import s           from './SingleBreedInfo.module.scss'
+import { TSlider } from './types'
 
-import { Swiper, SwiperSlide }                               from 'swiper/react'
-import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper'
+import { TSingleBreed }                                      from '../../redux/Breeds/types'
+
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
+import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper'
+import { Swiper, SwiperSlide }                               from 'swiper/react'
 
 
 const Slider: React.FC<TSlider> = ({ singleBreed }) => {

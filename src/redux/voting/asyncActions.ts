@@ -75,40 +75,24 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 		}
 	})
 
-let objIdFromRequest: number
 export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: RootState }>(
 	'voting/fetchActionFavourite',
 	async (imgObj, thunkAPI) => {
-		const { userId, onFavourites } = thunkAPI.getState().votingSlice
+		const { userId } = thunkAPI.getState().votingSlice
 		const dispatch = thunkAPI.dispatch
-		const foundObjInFavorite = onFavourites.find((el: TDataObj) => el?.id === imgObj?.id)
-		const favouritedId = imgObj?.id
 
 		const body = {
 			image_id: imgObj?.id,
 			sub_id: userId
 		}
 		try {
-			if (!foundObjInFavorite) {
-				const { status, data } = await instance.post<TVotingFavourites>('favourites', body)
-				objIdFromRequest = data.id
-				if (status.toString()[0] === '2') {
-					const newDate = getDate()
-					const message = { id: imgObj?.id, message: 'was added to Favourites', time: newDate }
-					dispatch(setToFavourites(imgObj))
-					dispatch(setInfoMessage(message))
-					setLsMessages(message)
-				}
-			}
-			else{
-				const { status } = await instance.delete<TVotingFavourites>(`favourites/${ objIdFromRequest }`,)
-				if (status.toString()[0] === '2') {
-					const newDate = getDate()
-					const message = { id: imgObj?.id, message: 'was deleted from Favourites', time: newDate }
-					dispatch(deleteFavouritesItem(favouritedId))
-					dispatch(setInfoMessage(message))
-					setLsMessages(message)
-				}
+			const { status } = await instance.post<TVotingFavourites>('favourites', body)
+			if (status.toString()[0] === '2') {
+				const newDate = getDate()
+				const message = { id: imgObj?.id, message: 'was added to Favourites', time: newDate }
+				dispatch(setToFavourites(imgObj))
+				dispatch(setInfoMessage(message))
+				setLsMessages(message)
 			}
 		}
 		catch (e: any) {

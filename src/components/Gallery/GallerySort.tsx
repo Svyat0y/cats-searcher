@@ -10,9 +10,21 @@ import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
 import TypeSelect                   from '../common/TypeSelect/TypeSelect'
 import OrderSelect                  from '../common/OrderSelect/OrderSelect'
 import { BreedSelect, LimitSelect } from '../common'
+import { TBreedOption }             from '../../redux/Breeds/types'
+import { TOption }                  from '../Breeds/types'
+import { createParams }             from '../../utils/createParams'
 
 
-const GallerySort = () => {
+const limitOptionsForGallery: TBreedOption[] = [
+	{ value: '5', label: 'Limit: 5' },
+	{ value: '10', label: 'Limit: 10' },
+	{ value: '15', label: 'Limit: 15' },
+	{ value: '20', label: 'Limit: 20' },
+	{ value: '50', label: 'Limit: 50' },
+	{ value: '100', label: 'Limit: 100' },
+]
+
+const GallerySort: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)
@@ -20,8 +32,10 @@ const GallerySort = () => {
 
 	const pageNumberForUI = galleryFilters.page + 1
 
+	const props = { filters: galleryFilters, pageNumberForUI, setSearchParams, dispatch, status }
+
 	useEffect(() => {
-		if (isMounted) dispatch(fetchBreeds({ value: 'none', label: 'None' }))
+		if (isMounted) dispatch(fetchBreeds({ value: 'None', label: 'None' }))
 		setIsMounted(true)
 
 		return () => {
@@ -29,36 +43,28 @@ const GallerySort = () => {
 		}
 	}, [ isMounted ])
 
+	const onChangeOption = (e: TOption) => {
+		if (e) {
+			setSearchParams(createParams(e.value, galleryFilters.limit, galleryFilters.order, pageNumberForUI, galleryFilters.type))
+		}
+	}
+	const getValue = () => breedsList.find(option => option.value === galleryFilters.value)
+
 
 	return (
 		<div className='sortGallery_wr'>
 			<div className='sortGallery_wr__left'>
-				<OrderSelect
-					filters={ galleryFilters }
-					pageNumberForUI={ pageNumberForUI }
-					setSearchParams={ setSearchParams }
-				/>
+				<OrderSelect { ...props }/>
 				<BreedSelect
-					filters={ galleryFilters }
-					pageNumberForUI={ pageNumberForUI }
-					setSearchParams={ setSearchParams }
-					dispatch={ dispatch }
 					options={ breedsList }
-					status={ status }
+					onChangeOption={ onChangeOption }
+					getValue={ getValue }
+					{ ...props }
 				/>
 			</div>
 			<div className='sortGallery_wr__right'>
-				<TypeSelect
-					filters={ galleryFilters }
-					pageNumberForUI={ pageNumberForUI }
-					setSearchParams={ setSearchParams }
-				/>
-				<LimitSelect
-					filters={ galleryFilters }
-					pageNumberForUI={ pageNumberForUI }
-					dispatch={ dispatch }
-					setSearchParams={ setSearchParams }
-				/>
+				<TypeSelect { ...props }/>
+				<LimitSelect options={ limitOptionsForGallery } { ...props }/>
 			</div>
 
 		</div>

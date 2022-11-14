@@ -10,6 +10,8 @@ export type TBreedSelect = {
 	setSearchParams: (obj: string) => void
 	filters: TFilters
 	pageNumberForUI: number
+	onChangeOption: (e: TOption) => void
+	getValue: () => TBreedOption | undefined
 }
 
 export type TBreedSortButtons = {

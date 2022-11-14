@@ -5,6 +5,7 @@ import previewImg from '../../assets/images/preview.webp'
 
 
 const Preview: React.FC = () => {
+	
 	return (
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__img_wr }>

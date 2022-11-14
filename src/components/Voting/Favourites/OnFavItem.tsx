@@ -10,7 +10,7 @@ import heartBgRedImg from '../../../assets/images/voting/heartBgRed.webp'
 import { SmallSpinner } from '../../common'
 
 
-const FavoriteItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
+const OnFavItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 	const [ isFetching, setIsFetching ] = useState(false)
 
 	useEffect(() => {
@@ -39,4 +39,4 @@ const FavoriteItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 	)
 }
 
-export default FavoriteItem
+export default OnFavItem

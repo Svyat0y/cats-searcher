@@ -23,6 +23,7 @@ const initialState: ISearch = {
 		page: 0,
 		type: 'all',
 	},
+	isLoadingData: true,
 	status: Status.PENDING,
 }
 
@@ -48,6 +49,9 @@ export const searchingSlice = createSlice({
 		setToBreedList: (state, action: PayloadAction<TBreedOption[]>) => {
 			state.breedsList = action.payload
 		},
+		setIsLoadingData: (state, action: PayloadAction<boolean>) => {
+			state.isLoadingData = action.payload
+		}
 	},
 	extraReducers: (builder) => {
 		builder
@@ -69,6 +73,7 @@ export const {
 	setToBreedList,
 	setFilters,
 	setGalleryFilters,
+	setIsLoadingData,
 } = searchingSlice.actions
 
 export default searchingSlice.reducer

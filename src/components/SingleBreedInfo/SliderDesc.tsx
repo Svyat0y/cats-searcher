@@ -4,6 +4,7 @@ import { TSlider } from './types'
 
 
 const SliderDesc: React.FC<TSlider> = ({ singleBreed }) => {
+	
 	return (
 		<div className={ s.breed__feature_wr }>
 			<h1 className={ s.breed__title }>{ singleBreed[0].name }</h1>

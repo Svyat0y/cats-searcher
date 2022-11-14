@@ -16,9 +16,9 @@ import SliderDesc                 from './SliderDesc'
 
 const SingleBreedInfo: React.FC = () => {
 	const dispatch = useAppDispatch()
+	const [ searchParams ] = useSearchParams()
 	const { singleBreed, status, activeBreedName } = useSelector(selectBreeds)
 	const emptyData = singleBreed.length === 0
-	const [ searchParams ] = useSearchParams()
 
 	useEffect(() => {
 		dispatch(setActiveBreedName(singleBreed[0]?.name))
