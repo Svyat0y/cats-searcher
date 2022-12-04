@@ -12,6 +12,7 @@
   color: var(--btn_color);
   letter-spacing: 2px;
   cursor: pointer;
+  @include flex(null, center);
 
   &:hover {
     background: #FBE0DC;
@@ -32,5 +33,9 @@
     cursor: default;
     background: rgba(0, 0, 0, 0.1);
     color: rgba(255, 134, 142, 0.5);
+  }
+
+  & .uploadImg {
+    margin-right: 10px;
   }
 }
