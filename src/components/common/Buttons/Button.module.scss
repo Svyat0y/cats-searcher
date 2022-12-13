@@ -15,7 +15,8 @@
   @include flex(null, center);
 
   &:hover {
-    background: #FBE0DC;
+    background: #FF868E;
+    color: #FFFFFF;
   }
 
   &:active, &Active {

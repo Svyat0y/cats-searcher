@@ -6,6 +6,8 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useSelector }         from 'react-redux'
 import { uploadingSlice }      from '../../redux/Upload/selectors'
 
+import UploadModal from '../common/UploadModal/UploadModal'
+
 
 const ContentLayout: React.FC = () => {
 	const location = useLocation()
@@ -16,6 +18,7 @@ const ContentLayout: React.FC = () => {
 			<div className={ s.wrapper__container }>
 				{ location.pathname !== '/' && <SearchPanel/> }
 				<Outlet/>
+				{ showModal && <UploadModal showModal={ showModal }/> }
 			</div>
 		</div>
 	)
