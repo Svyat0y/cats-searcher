@@ -26,7 +26,7 @@ export const fetchSingleBreed = createAsyncThunk<void, string>(
 			dispatch(setSingleBreed(newData))
 		}
 		catch (e: any) {
-			console.log(e.message())
+			console.log(e.message)
 		}
 	}
 )

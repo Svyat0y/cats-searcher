@@ -6,6 +6,8 @@ import { AppDispatch, useAppDispatch } from './redux/store'
 import { getLSTheme }    from './utils/theme'
 import { getLsMessages } from './utils/infoMessageLS'
 
+import Overlay from './components/common/Overlay/Overlay'
+
 
 const App: React.FC = () => {
 	const dispatch: AppDispatch = useAppDispatch()
@@ -16,9 +18,12 @@ const App: React.FC = () => {
 	}, [])
 
 	return (
-		<main className='App'>
-			<DesktopLayout/>
-		</main>
+		<>
+			<main className='App'>
+				<DesktopLayout/>
+			</main>
+			<Overlay/>
+		</>
 	)
 }
 

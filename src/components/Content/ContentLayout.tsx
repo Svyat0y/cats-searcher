@@ -11,14 +11,17 @@ import UploadModal from '../common/UploadModal/UploadModal'
 
 const ContentLayout: React.FC = () => {
 	const location = useLocation()
-	const { showModal } = useSelector(uploadingSlice)
+	const { showModal, message, isLoaded } = useSelector(uploadingSlice)
 
 	return (
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__container }>
 				{ location.pathname !== '/' && <SearchPanel/> }
 				<Outlet/>
-				{ showModal && <UploadModal showModal={ showModal }/> }
+				{ showModal && <UploadModal
+					showModal={ showModal }
+					message={ message }
+					isLoaded={ isLoaded }/> }
 			</div>
 		</div>
 	)

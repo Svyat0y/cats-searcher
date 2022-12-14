@@ -1,7 +1,7 @@
-import React              from 'react'
-import { Button }         from '../index'
-import { setShowModal }   from '../../../redux/Upload/slice'
-import { useAppDispatch } from '../../../redux/store'
+import React                            from 'react'
+import { Button }                       from '../index'
+import { setShowModal, setShowOverlay } from '../../../redux/Upload/slice'
+import { useAppDispatch }               from '../../../redux/store'
 
 
 const UploadBtnWr = () => {
@@ -9,6 +9,7 @@ const UploadBtnWr = () => {
 
 	const onClickShowModal = () => {
 		dispatch(setShowModal(true))
+		dispatch(setShowOverlay(true))
 	}
 
 	return (

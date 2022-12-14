@@ -9,8 +9,8 @@ const Pagination: React.FC<TPagination> = ({ firstPage, lastPage, onClickPrev, o
 
 	return (
 		<div className={ s.content__pagination_wr }>
-			<div className={ s.prev }><Button disabled={ firstPage } onclick={ onClickPrev } name='<<' linkTo=''/></div>
-			<div className={ s.next }><Button disabled={ lastPage } onclick={ onClickNext } name='>>' linkTo=''/></div>
+			<div className={ s.prev }><Button disabled={ firstPage } onclick={ onClickPrev } name='PREV' linkTo=''/></div>
+			<div className={ s.next }><Button disabled={ lastPage } onclick={ onClickNext } name='NEXT' linkTo=''/></div>
 		</div>
 	)
 }
