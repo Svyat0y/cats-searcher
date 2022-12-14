@@ -16,30 +16,28 @@
     border-radius: 20px;
     position: relative;
     overflow: hidden;
-  }
 
-  .uploadBtn {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
-  }
+    .customBtn {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      @include flex(center, flex-end);
 
-  .customBtn {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+      p {
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 20px;
 
-    p {
-      margin-bottom: 10px;
-      font-weight: 500;
-      font-size: 20px;
-
-      .blackWhite {
-        color: var(--title_color);
+        .blackWhite {
+          color: var(--title_color);
+        }
       }
+    }
+
+    .uploadBtn {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
     }
   }
 

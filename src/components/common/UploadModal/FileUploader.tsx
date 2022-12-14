@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import s                   from './FileUploader.module.scss'
 
-import { Button } from '../index'
-import noImg      from '../../../assets/images/noImg.svg'
+import { Button }           from '../index'
+import noImg                from '../../../assets/images/noImg.svg'
+import { fetchUploadImage } from '../../../redux/Upload/asyncActions'
+import { TFileUploader }    from './types'
 
 
-const FileUploader = () => {
-	const [ image, setImage ] = useState<File | null>(null)
+const FileUploader: React.FC<TFileUploader> = ({ dispatch, message, isLoaded }) => {
+	const [ file, setFile ] = useState<File | null>(null)
 	const [ imageUrl, setImageUrl ] = useState<string | ArrayBuffer | null>(null)
 	const fileReader = new FileReader()
 
@@ -23,15 +25,16 @@ const FileUploader = () => {
 		setEventDefault(e)
 		if (e.target.files !== null) {
 			const file = e.target.files[0]
-			setImage(file)
+			setFile(file)
 			fileReader.readAsDataURL(file)
 		}
 	}
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		setEventDefault(e)
+		dispatch(fetchUploadImage(file))
 	}
-	
+
 	const handleDragEmpty = (e: React.DragEvent<HTMLLabelElement>) => {
 		setEventDefault(e)
 	}
@@ -40,7 +43,7 @@ const FileUploader = () => {
 		setEventDefault(e)
 		if (e.dataTransfer.files.length) {
 			const file = e.dataTransfer.files[0]
-			setImage(file)
+			setFile(file)
 			fileReader.readAsDataURL(file)
 		}
 	}
@@ -56,7 +59,7 @@ const FileUploader = () => {
 					onDragOver={ handleDragEmpty }
 				>
 					{
-						!image &&
+						!file &&
 						<p>
 							<span className={ s.blackWhite }>Drag here</span> your file or <span
 							className={ s.blackWhite }>Click here</span> to
@@ -74,7 +77,8 @@ const FileUploader = () => {
 					className={ s.fileLoader_preview }
 				/>
 			</div>
-			<span className={ s.imgInfo }>{ image ? image.name : 'No file selected' }</span>
+			<span className={ s.imgInfo }>{ file ? `Image file name: ${ file.name }` : 'No file selected' }</span>
+			<span>{ message }</span>
 			<Button name='Upload Photo'/>
 		</form>
 	)

@@ -1,0 +1,32 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { instance }         from '../../api/api'
+import { RootState }        from '../store'
+import { setMessage }       from './slice'
+
+
+export const fetchUploadImage = createAsyncThunk<void, File | null, { state: RootState }>(
+	'fetchUploadImage',
+	async (file, { dispatch, getState }) => {
+		const body = {
+			file,
+			sub_id: getState().votingSlice.userId
+		}
+		try {
+			const { data } = await instance.post('images/upload', body, {
+				headers: {
+					'content-type': 'multipart/form-data'
+				}
+			})
+			console.log(data)
+			if (data.approved === 1) {
+				dispatch(setMessage('Thanks for the Upload - Cat found!'))
+			}
+		}
+		catch (e: any) {
+			if (e.response.status === 400) {
+				console.log(e.message)
+				dispatch(setMessage('No Cat found - try a different one'))
+			}
+		}
+	}
+)
