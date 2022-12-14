@@ -1,0 +1,19 @@
+.overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  z-index: -10;
+  transition: all .3s ease;
+  opacity: 0;
+
+  &.showOverlay {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    z-index: 50;
+    height: 100vh;
+    transition: all .3s ease;
+  }
+}

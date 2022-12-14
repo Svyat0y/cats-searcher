@@ -5,6 +5,7 @@ import { IUpload }                    from './type'
 
 const initialState: IUpload = {
 	showModal: false,
+	overlay: false,
 	status: Status.PENDING
 }
 
@@ -14,10 +15,13 @@ export const uploadingSlice = createSlice({
 	reducers: {
 		setShowModal: (state, action: PayloadAction<boolean>) => {
 			state.showModal = action.payload
+		},
+		setShowOverlay: (state, action: PayloadAction<boolean>) => {
+			state.overlay = action.payload
 		}
 	}
 })
 
-export const { setShowModal } = uploadingSlice.actions
+export const { setShowModal, setShowOverlay } = uploadingSlice.actions
 
 export default uploadingSlice.reducer
