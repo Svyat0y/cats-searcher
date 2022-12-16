@@ -3,6 +3,7 @@
 .wrapper {
   width: 100%;
   height: 100%;
+  padding: 20px;
   border-radius: 20px;
   background: var(--bg_modal);
   position: absolute;
@@ -65,8 +66,8 @@
     }
   }
 
-  .content {
-    margin-top: 100px;
+  .header {
+    margin-top: 80px;
     @include flex(null, center, column);
 
     .title {

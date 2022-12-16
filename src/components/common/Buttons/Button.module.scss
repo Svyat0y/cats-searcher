@@ -62,4 +62,9 @@
       transition: all .3s ease;
     }
   }
+
+  .modalUploadSpinner {
+    position: absolute;
+    left: 25px;
+  }
 }
