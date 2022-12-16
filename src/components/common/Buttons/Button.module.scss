@@ -43,6 +43,12 @@
     cursor: default;
     background: rgba(0, 0, 0, 0.1);
     color: rgba(255, 134, 142, 0.5);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
   }
 
   & .uploadImg {

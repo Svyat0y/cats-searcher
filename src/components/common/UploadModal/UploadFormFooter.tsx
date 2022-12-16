@@ -4,7 +4,7 @@ import { TUploadFormFooter } from './types'
 
 import { Button } from '../index'
 
-import loadedImg   from '../../../assets/images/common/loadedNo.webp'
+import loadedImg   from '../../../assets/images/common/loadedOk.webp'
 import NoLoadedImg from '../../../assets/images/common/loadedNo.webp'
 
 
@@ -15,7 +15,13 @@ const UploadFormFooter: React.FC<TUploadFormFooter> = ({ file, message, isLoaded
 			<span className={ s.img_info }>{ file ? `Image file name: ${ file.name }` : 'No file selected' }</span>
 			{
 				(file && !message)
-					? <Button name={ status === 'pending' ? 'Uploading' : 'Upload Photo' } status={ status } isActive modalUpload/>
+					? <Button
+						disabled={ status === 'pending' }
+						name={ status === 'pending' ? 'Uploading' : 'Upload Photo' }
+						status={ status }
+						isActive
+						modalUpload
+					/>
 					: <>
 						{
 							message
