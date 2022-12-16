@@ -6,6 +6,8 @@ export type TButton = {
 	disabled?: boolean | null
 	breadCrumbs?: boolean
 	upload?: boolean
+	modalUpload?: boolean
+	status?: string
 }
 
 export type TRefreshButton = {

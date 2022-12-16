@@ -1,7 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { instance }         from '../../api/api'
-import { RootState }        from '../store'
-import { setMessage }       from './slice'
+import { createAsyncThunk }        from '@reduxjs/toolkit'
+import { instance }                from '../../api/api'
+import { RootState }               from '../store'
+import { setIsLoaded, setMessage } from './slice'
 
 
 export const fetchUploadImage = createAsyncThunk<void, File | null, { state: RootState }>(
@@ -19,12 +19,14 @@ export const fetchUploadImage = createAsyncThunk<void, File | null, { state: Roo
 			})
 			console.log(data)
 			if (data.approved === 1) {
+				dispatch(setIsLoaded(true))
 				dispatch(setMessage('Thanks for the Upload - Cat found!'))
 			}
 		}
 		catch (e: any) {
 			if (e.response.status === 400) {
 				console.log(e.message)
+				dispatch(setIsLoaded(false))
 				dispatch(setMessage('No Cat found - try a different one'))
 			}
 		}
