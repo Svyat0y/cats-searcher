@@ -28,3 +28,6 @@ const App: React.FC = () => {
 }
 
 export default App
+
+// refactoring the whole project structure
+// refactoring the whole project styles
