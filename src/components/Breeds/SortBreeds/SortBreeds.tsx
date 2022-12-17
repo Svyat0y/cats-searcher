@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import s                              from './Breeds.module.scss'
+import s                              from './SortBreeds.module.scss'
 import { useSearchParams }            from 'react-router-dom'
 
 import { useSelector }    from 'react-redux'
-import { useAppDispatch } from '../../redux/store'
-import { setToBreedList } from '../../redux/Search/slice'
-import { selectSearch }   from '../../redux/Search/selectors'
-import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
-import { TBreedOption }   from '../../redux/Breeds/types'
-import { TOption }        from '../../redux/Search/types'
+import { useAppDispatch } from '../../../redux/store'
+import { setToBreedList } from '../../../redux/Search/slice'
+import { selectSearch }   from '../../../redux/Search/selectors'
+import { fetchBreeds }    from '../../../redux/Breeds/asyncActions'
+import { TBreedOption }   from '../../../redux/Breeds/types'
+import { TOption }        from '../../../redux/Search/types'
 
-import SortButtons                  from '../common/Buttons/SortButtons/SortButtons'
-import { BreedSelect, LimitSelect } from '../common'
-import { createParams }             from '../../utils/createParams'
+import SortButtons                  from '../../common/Buttons/SortButtons/SortButtons'
+import { BreedSelect, LimitSelect } from '../../common'
+import { createParams }             from '../../../utils/createParams'
 
 
 const limitOptionsForBreeds: TBreedOption[] = [
