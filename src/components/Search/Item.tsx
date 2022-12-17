@@ -7,8 +7,8 @@ import { TSearchData }          from '../../redux/Search/types'
 
 import { SmallSpinner } from '../common'
 
-import heartNoAdded from '../../assets/images/voting/heartBorderRed.webp'
-import heartAdded   from '../../assets/images/voting/heartBgRed.webp'
+import heartNoAdded from '../../assets/images/common/heartBorderRed.webp'
+import heartAdded   from '../../assets/images/common/heartBgRed.webp'
 
 
 const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status }) => {
