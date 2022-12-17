@@ -5,6 +5,7 @@ export { default as LimitSelect }     from './LimitSelect/LimitSelect'
 export { default as OrderSelect }     from './OrderSelect/OrderSelect'
 export { default as TypeSelect }      from './TypeSelect/TypeSelect'
 export { default as UploadBtnWr }     from './UploadBtn/UploadBtnWr'
+export { default as Overlay }         from './Overlay/Overlay'
 
 export { Button, BackButton, RefreshButton, SortButtons } from './Buttons'
 export { Spinner, SmallSpinner }                          from './Spinner'

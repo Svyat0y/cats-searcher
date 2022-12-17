@@ -6,7 +6,7 @@ import { AppDispatch, useAppDispatch } from './redux/store'
 import { getLSTheme }    from './services/localStorage/theme'
 import { getLsMessages } from './services/localStorage/infoMessageLS'
 
-import Overlay from './components/Overlay/Overlay'
+import { Overlay } from './components/Ui'
 
 
 const App: React.FC = () => {

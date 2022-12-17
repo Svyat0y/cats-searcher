@@ -5,9 +5,10 @@ import { TVoting }          from '../../Voting/types'
 import { useAppDispatch }  from '../../../redux/store'
 import { setToSearchData } from '../../../redux/Search/slice'
 
-import { Dislikes, Favourites, Likes, VotingImage } from '../../Voting'
-import VotingLayout                                 from './VotingLayout'
-import VotingDataContainer                          from '../../hoc/VotingDataContainer'
+import { VotingImage }                 from '../../Voting'
+import VotingLayout                    from './VotingLayout'
+import VotingDataContainer             from '../../hoc/VotingDataContainer'
+import { Dislikes, Favourites, Likes } from '../../index'
 
 
 const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {

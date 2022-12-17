@@ -1,13 +1,14 @@
 import React          from 'react'
 import s              from './MainNavigation.module.scss'
-import { setLSTheme } from '../../services/localStorage/theme'
+import { setLSTheme } from '../../../services/localStorage/theme'
 
 import { useSelector }    from 'react-redux'
-import { useAppDispatch } from '../../redux/store'
-import { themeFilter }    from '../../redux/theme/selectors'
+import { useAppDispatch } from '../../../redux/store'
+import { themeFilter }    from '../../../redux/theme/selectors'
 
-import { MainNav } from './MainNav'
-import { Header }  from '../../components'
+
+import { Header }       from '../../index'
+import { MainNavCards } from '../../MainNavCards'
 
 
 const MainNavigation: React.FC = () => {
@@ -22,7 +23,7 @@ const MainNavigation: React.FC = () => {
 		<div className={ s.wrapper }>
 			<div className={ s.wrapper__container }>
 				<Header theme={ theme } onChangeTheme={ onChangeTheme }/>
-				<MainNav/>
+				<MainNavCards/>
 			</div>
 		</div>
 	)

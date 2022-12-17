@@ -1,6 +1,3 @@
-export { default as Dislikes }      from './Dislikes/Dislikes'
-export { default as Favourites }    from './Favourites/Favourites'
-export { default as Likes }         from './Likes/Likes'
 export { default as NavButtons }    from './NavButtons/NavButtons'
 export { default as VotingImage }   from './VotingImage/VotingImage'
 export { default as VotingMessage } from './VotingMessages/VotingMessage'

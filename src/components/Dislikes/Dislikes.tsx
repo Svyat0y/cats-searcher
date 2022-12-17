@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { TDislikes }                  from './types'
 
-import { setActiveBtn } from '../../../redux/voting/slice'
+import { setActiveBtn } from '../../redux/voting/slice'
 
 import DislikeItems   from './DislikeItems'
-import SkeletonLoader from '../../shared/Skeleton/SkeletonLoader'
+import SkeletonLoader from '../shared/Skeleton/SkeletonLoader'
 
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, dispatch }) => {

@@ -1,7 +1,7 @@
 import { TVotingImage }            from './VotingImage/types'
 import { AppDispatch }             from '../../redux/store'
 import { TData, TInfoInfoMessage } from '../../redux/voting/types'
-import { TDislikes }               from './Dislikes/types'
+import { TDislikes }               from '../Dislikes/types'
 
 
 export type TVoting = {

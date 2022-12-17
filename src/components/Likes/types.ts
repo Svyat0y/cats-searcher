@@ -1,4 +1,4 @@
-import { TData } from '../../../redux/voting/types'
+import { TData } from '../../redux/voting/types'
 
 
 export type TLikeItems = {

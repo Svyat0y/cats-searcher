@@ -1,5 +1,5 @@
-import { AppDispatch } from '../../../redux/store'
-import { TData }       from '../../../redux/voting/types'
+import { AppDispatch } from '../../redux/store'
+import { TData }       from '../../redux/voting/types'
 
 
 export type TFavoriteItem = {
