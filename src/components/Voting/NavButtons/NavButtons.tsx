@@ -6,7 +6,7 @@ import { useAppDispatch }                  from '../../../redux/store'
 import { TDataObj }                        from '../../../redux/voting/types'
 import { fetchActionFavourite, fetchVote } from '../../../redux/voting/asyncActions'
 
-import { HeartBtn, VoteDownBtn, VoteUpBtn } from './VotButtons'
+import { HeartBtn, VoteDownBtn, VoteUpBtn } from './VoteButtons'
 
 
 const NavButtons: React.FC<TNavButtons> = ({ imgObj, onFavourites, status }) => {

@@ -1,4 +1,4 @@
-import { instance }                                          from '../../api/api'
+import { instance }                                          from '../../services/api/api'
 import { createAsyncThunk }                                  from '@reduxjs/toolkit'
 import { TData, TDataImgVoted, TDataObj, TVotingFavourites } from './types'
 
@@ -14,7 +14,7 @@ import {
 	setToUnlike
 }                    from './slice'
 
-import { setLsMessages } from '../../utils/infoMessageLS'
+import { setLsMessages } from '../../services/localStorage/infoMessageLS'
 
 
 const getDate = () => {

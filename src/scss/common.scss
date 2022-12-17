@@ -1,24 +1,5 @@
 @import "variables";
 
-.content {
-  width: 100%;
-
-  &__body {
-    user-select: none;
-    padding: 20px;
-    background: var(--bg_white-grey);
-    border-radius: 20px;
-    height: 782px;
-    overflow: hidden;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
-  }
-}
 
 .title {
   font-weight: 500;
@@ -52,24 +33,6 @@
   }
 }
 
-.contentHeader {
-  @include flex(flex-start, center, center);
-  margin-bottom: 20px;
-  position: relative;
-
-  button {
-    margin-right: 10px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  & .uploadButton_wr {
-    margin-right: 0;
-    margin-left: auto;
-  }
-}
 
 .items {
   display: grid;

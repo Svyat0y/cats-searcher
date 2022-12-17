@@ -1,5 +1,5 @@
 import { createAsyncThunk }           from '@reduxjs/toolkit'
-import { instance }                   from '../../api/api'
+import { instance }                   from '../../services/api/api'
 import { TBreedOption, TSingleBreed } from './types'
 
 import { setToBreedList } from '../Search/slice'

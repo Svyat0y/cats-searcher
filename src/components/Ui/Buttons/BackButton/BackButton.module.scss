@@ -1,0 +1,24 @@
+@import "../../../../scss/variables";
+
+.back_btn {
+  background: var(--bg_input_search);
+  min-width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  svg {
+    fill: #FF868E;
+    transition: .3s ease all;
+  }
+
+  &:hover {
+    background: #FF868E;
+
+    svg {
+      fill: #FFFFFF;
+    }
+  }
+}

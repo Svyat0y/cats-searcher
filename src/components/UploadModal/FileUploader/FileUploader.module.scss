@@ -1,0 +1,25 @@
+@import "../../../scss/variables";
+
+.wrapper {
+  @include flex(center, center, column);
+  width: 100%;
+
+  .img_info {
+    display: block;
+    margin-bottom: 32px;
+    font-size: 20px;
+  }
+
+  .message {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    background: var(--bg_blackWhite);
+    border-radius: 10px;
+    @include flex(null, center);
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}

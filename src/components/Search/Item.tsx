@@ -5,7 +5,7 @@ import { TItem }                      from './types'
 import { fetchActionFavourite } from '../../redux/voting/asyncActions'
 import { TSearchData }          from '../../redux/Search/types'
 
-import { SmallSpinner } from '../common'
+import { SmallSpinner } from '../Ui'
 
 import heartNoAdded from '../../assets/images/common/heartBorderRed.webp'
 import heartAdded   from '../../assets/images/common/heartBgRed.webp'

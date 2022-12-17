@@ -7,7 +7,7 @@ import { setActiveBtn }                                                  from '.
 import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../redux/Search/slice'
 import { fetchSearchFromPanel }                                          from '../../redux/Search/asyncActions'
 
-import SearchLayout      from './SearchLayout'
+import SearchLayout      from '../layouts/Search/SearchLayout'
 import { SearchedItems } from '../../components'
 import { useSelector }   from 'react-redux'
 import { selectSearch }  from '../../redux/Search/selectors'
@@ -18,11 +18,11 @@ const SearchComponent: React.FC = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
-	const { searchData, status, filters, isLoadingData } = useSelector(selectSearch)
+	const { searchData, status, breedFilters, isLoadingData } = useSelector(selectSearch)
 
-	const firstPage = filters.page === 0
-	const lastPage = searchData && searchData.length < Number(filters.limit)
-	const pageNumberForUI = filters.page + 1
+	const firstPage = breedFilters.page === 0
+	const lastPage = searchData && searchData.length < Number(breedFilters.limit)
+	const pageNumberForUI = breedFilters.page + 1
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
@@ -70,7 +70,7 @@ const SearchComponent: React.FC = () => {
 					firstPage={ firstPage }
 					lastPage={ lastPage }
 					pageNumberForUI={ pageNumberForUI }
-					filters={ filters }
+					filters={ breedFilters }
 					status={ status }
 					data={ searchData }/> }/>
 			</Route>

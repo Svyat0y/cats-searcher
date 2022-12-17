@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { instance }         from '../../api/api'
+import { instance }         from '../../services/api/api'
 import { TSearchData }      from './types'
 
 import { RootState }       from '../store'
@@ -10,7 +10,6 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 	if (!reference_image_id) return
 
 	const { data } = await instance.get<any>(`images/${ reference_image_id }`)
-	console.log('second', data)
 	const { id, url } = data
 	const { name, id: breedId } = data.breeds[0]
 
@@ -20,7 +19,7 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearch',
 	async (_, { dispatch, getState }) => {
-		const { filters: { value, limit, order, page } } = getState().searchingSlice
+		const { breedFilters: { value, limit, order, page } } = getState().searchingSlice
 		const query = `order=${ order }&limit=${ limit }&page=${ page }`
 
 		try {
@@ -87,7 +86,7 @@ export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootStat
 export const fetchSearchFromPanel = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearchFromPanel',
 	async (params, { dispatch, getState }) => {
-		const { filters: { value } } = getState().searchingSlice
+		const { breedFilters: { value } } = getState().searchingSlice
 
 		try {
 			const { data } = await instance.get<any>(`breeds/search/?q=${ value }`)

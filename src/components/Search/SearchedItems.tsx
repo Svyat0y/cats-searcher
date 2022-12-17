@@ -8,8 +8,9 @@ import { setToSearchData }  from '../../redux/Search/slice'
 import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
 import { TSearchData }      from '../../redux/Search/types'
 
-import { Pagination, SkeletonLoader } from '../common'
-import Item                           from './Item'
+import Item           from './Item'
+import SkeletonLoader from '../shared/Skeleton/SkeletonLoader'
+import Pagination     from '../shared/Pagination/Pagination'
 
 
 const SearchedItems: React.FC<TSearchedItems> = (

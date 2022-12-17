@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import DesktopLayout        from './components/layouts/DesktopLayout'
+import DesktopLayout        from './components/layouts/Desktop/DesktopLayout'
 
 import { AppDispatch, useAppDispatch } from './redux/store'
 
-import { getLSTheme }    from './utils/theme'
-import { getLsMessages } from './utils/infoMessageLS'
+import { getLSTheme }    from './services/localStorage/theme'
+import { getLsMessages } from './services/localStorage/infoMessageLS'
 
-import Overlay from './components/common/Overlay/Overlay'
+import { Overlay } from './components/Ui'
 
 
 const App: React.FC = () => {
