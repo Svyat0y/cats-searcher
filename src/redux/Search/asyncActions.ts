@@ -10,7 +10,6 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 	if (!reference_image_id) return
 
 	const { data } = await instance.get<any>(`images/${ reference_image_id }`)
-	console.log('second', data)
 	const { id, url } = data
 	const { name, id: breedId } = data.breeds[0]
 

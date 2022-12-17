@@ -12,6 +12,7 @@ import GallerySort       from './GallerySort'
 import { ContentHeader } from '../common'
 import { SearchedItems } from '../index'
 import { selectVoting }  from '../../redux/voting/selectors'
+import ContentBody       from '../layouts/ContentBody'
 
 
 const Gallery = () => {
@@ -56,23 +57,21 @@ const Gallery = () => {
 	}, [ searchData ])
 
 	return (
-		<div className='content'>
-			<div className='content__body'>
-				<ContentHeader/>
-				<GallerySort/>
-				<SearchedItems
-					isLoadingData={ isLoadingData }
-					onFavourites={ onFavourites }
-					data={ searchData }
-					status={ status }
-					firstPage={ firstPage }
-					lastPage={ lastPage }
-					dispatch={ dispatch }
-					filters={ galleryFilters }
-					pageNumberForUI={ pageNumberForUI }
-				/>
-			</div>
-		</div>
+		<ContentBody>
+			<ContentHeader/>
+			<GallerySort/>
+			<SearchedItems
+				isLoadingData={ isLoadingData }
+				onFavourites={ onFavourites }
+				data={ searchData }
+				status={ status }
+				firstPage={ firstPage }
+				lastPage={ lastPage }
+				dispatch={ dispatch }
+				filters={ galleryFilters }
+				pageNumberForUI={ pageNumberForUI }
+			/>
+		</ContentBody>
 	)
 }
 
