@@ -22,7 +22,7 @@ const limitOptionsForGallery: TBreedOption[] = [
 	{ value: '100', label: 'Limit: 100' },
 ]
 
-const GallerySort: React.FC = () => {
+const SortGallery: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)
@@ -69,4 +69,4 @@ const GallerySort: React.FC = () => {
 	)
 }
 
-export default GallerySort
+export default SortGallery

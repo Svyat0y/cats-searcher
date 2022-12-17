@@ -1,18 +1,16 @@
-import React, { useEffect }             from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import React, { useEffect }                            from 'react'
+import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                         from 'react-redux'
-import { useAppDispatch }                      from '../../redux/store'
-import { setActiveBtn }                        from '../../redux/voting/slice'
-import { setGalleryFilters, setIsLoadingData } from '../../redux/Search/slice'
-import { fetchGallerySearch }                  from '../../redux/Search/asyncActions'
-import { selectSearch }                        from '../../redux/Search/selectors'
+import { useAppDispatch }                      from '../../../redux/store'
+import { setActiveBtn }                        from '../../../redux/voting/slice'
+import { setGalleryFilters, setIsLoadingData } from '../../../redux/Search/slice'
+import { fetchGallerySearch }                  from '../../../redux/Search/asyncActions'
+import { selectSearch }                        from '../../../redux/Search/selectors'
 
-import GallerySort       from './GallerySort'
-import { SearchedItems } from '../index'
-import { selectVoting }  from '../../redux/voting/selectors'
-import ContentBody       from '../layouts/ContentBody/ContentBody'
-import ContentHeader     from '../shared/ContentHeader/ContentHeader'
+import { SearchedItems } from '../../index'
+import { selectVoting }  from '../../../redux/voting/selectors'
+import GalleryLayout     from './GalleryLayout'
 
 
 const Gallery = () => {
@@ -57,21 +55,21 @@ const Gallery = () => {
 	}, [ searchData ])
 
 	return (
-		<ContentBody>
-			<ContentHeader/>
-			<GallerySort/>
-			<SearchedItems
-				isLoadingData={ isLoadingData }
-				onFavourites={ onFavourites }
-				data={ searchData }
-				status={ status }
-				firstPage={ firstPage }
-				lastPage={ lastPage }
-				dispatch={ dispatch }
-				filters={ galleryFilters }
-				pageNumberForUI={ pageNumberForUI }
-			/>
-		</ContentBody>
+		<Routes>
+			<Route path='/' element={ <GalleryLayout/> }>
+				<Route path='' element={ <SearchedItems
+					isLoadingData={ isLoadingData }
+					onFavourites={ onFavourites }
+					data={ searchData }
+					status={ status }
+					firstPage={ firstPage }
+					lastPage={ lastPage }
+					dispatch={ dispatch }
+					filters={ galleryFilters }
+					pageNumberForUI={ pageNumberForUI }
+				/> }/>
+			</Route>
+		</Routes>
 	)
 }
 

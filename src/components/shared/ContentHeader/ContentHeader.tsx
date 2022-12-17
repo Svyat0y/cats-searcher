@@ -3,9 +3,8 @@ import s               from './ContentHeader.module.scss'
 import { useLocation } from 'react-router-dom'
 
 
-import UploadBtnWr                 from '../../Ui/UploadBtn/UploadBtnWr'
-import SortBreeds                  from '../../Breeds/SortBreeds/SortBreeds'
-import { BackButton, BreadCrumbs } from '../../Ui'
+import SortBreeds                               from '../../SortBreeds/SortBreeds'
+import { BackButton, BreadCrumbs, UploadBtnWr } from '../../Ui'
 
 
 const ContentHeader: React.FC = () => {

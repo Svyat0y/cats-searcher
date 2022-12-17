@@ -1,4 +1,4 @@
-import { instance }                                          from '../../api/api'
+import { instance }                                          from '../../services/api/api'
 import { createAsyncThunk }                                  from '@reduxjs/toolkit'
 import { TData, TDataImgVoted, TDataObj, TVotingFavourites } from './types'
 

@@ -7,7 +7,7 @@ import { setActiveBtn }                                                  from '.
 import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../redux/Search/slice'
 import { fetchSearchFromPanel }                                          from '../../redux/Search/asyncActions'
 
-import SearchLayout      from '../layouts/SearchLayout/SearchLayout'
+import SearchLayout      from '../layouts/Search/SearchLayout'
 import { SearchedItems } from '../../components'
 import { useSelector }   from 'react-redux'
 import { selectSearch }  from '../../redux/Search/selectors'

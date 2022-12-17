@@ -2,14 +2,14 @@ import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                  from 'react-redux'
-import { useAppDispatch }               from '../../redux/store'
-import { setActiveBtn }                 from '../../redux/voting/slice'
-import { setFilters, setIsLoadingData } from '../../redux/Search/slice'
-import { selectSearch }                 from '../../redux/Search/selectors'
-import { fetchSearch }                  from '../../redux/Search/asyncActions'
+import { useAppDispatch }               from '../../../redux/store'
+import { setActiveBtn }                 from '../../../redux/voting/slice'
+import { setFilters, setIsLoadingData } from '../../../redux/Search/slice'
+import { selectSearch }                 from '../../../redux/Search/selectors'
+import { fetchSearch }                  from '../../../redux/Search/asyncActions'
 
-import BreedsLayout      from '../layouts/BreedsLayout/BreedsLayout'
-import { SearchedItems } from '../index'
+import BreedsLayout      from './BreedsLayout'
+import { SearchedItems } from '../../index'
 
 
 const Breeds = () => {

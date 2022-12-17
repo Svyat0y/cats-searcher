@@ -3,15 +3,15 @@ import s                              from './SortBreeds.module.scss'
 import { useSearchParams }            from 'react-router-dom'
 
 import { useSelector }    from 'react-redux'
-import { useAppDispatch } from '../../../redux/store'
-import { setToBreedList } from '../../../redux/Search/slice'
-import { selectSearch }   from '../../../redux/Search/selectors'
-import { fetchBreeds }    from '../../../redux/Breeds/asyncActions'
-import { TBreedOption }   from '../../../redux/Breeds/types'
-import { TOption }        from '../../../redux/Search/types'
+import { useAppDispatch } from '../../redux/store'
+import { setToBreedList } from '../../redux/Search/slice'
+import { selectSearch }   from '../../redux/Search/selectors'
+import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
+import { TBreedOption }   from '../../redux/Breeds/types'
+import { TOption }        from '../../redux/Search/types'
 
-import { BreedSelect, LimitSelect, SortButtons } from '../../Ui'
-import { createParams }                          from '../../../utils/createParams'
+import { BreedSelect, LimitSelect, SortButtons } from '../Ui'
+import { createParams }                          from '../../utils/createParams'
 
 
 const limitOptionsForBreeds: TBreedOption[] = [

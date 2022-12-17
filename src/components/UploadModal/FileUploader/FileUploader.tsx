@@ -5,8 +5,8 @@ import { TFileUploader }              from '../types'
 import { fetchUploadImage } from '../../../redux/Upload/asyncActions'
 import { setMessage }       from '../../../redux/Upload/slice'
 
-import CustomInputFile  from '../../Ui/CustomInputFile/CustomInputFile'
-import UploadFormFooter from '../UploadFormFooter'
+import UploadFormFooter    from '../UploadFormFooter'
+import { CustomInputFile } from '../../Ui'
 
 
 const setEventDefault = (e: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement> | React.DragEvent<HTMLLabelElement>) => {
