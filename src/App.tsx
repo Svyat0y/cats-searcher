@@ -3,10 +3,10 @@ import DesktopLayout        from './components/layouts/DesktopLayout/DesktopLayo
 
 import { AppDispatch, useAppDispatch } from './redux/store'
 
-import { getLSTheme }    from './utils/theme'
-import { getLsMessages } from './utils/infoMessageLS'
+import { getLSTheme }    from './services/localStorage/theme'
+import { getLsMessages } from './services/localStorage/infoMessageLS'
 
-import Overlay from './components/common/Overlay/Overlay'
+import Overlay from './components/Overlay/Overlay'
 
 
 const App: React.FC = () => {

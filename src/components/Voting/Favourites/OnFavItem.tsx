@@ -7,7 +7,7 @@ import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
 import emptyImage    from '../../../assets/images/common/noImg.svg'
 import heartBgRedImg from '../../../assets/images/common/heartBgRed.webp'
 
-import { SmallSpinner } from '../../common'
+import { SmallSpinner } from '../../Ui'
 
 
 const OnFavItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {

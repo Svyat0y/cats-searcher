@@ -3,8 +3,8 @@ import { TDislikes }                  from './types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
 
-import { SkeletonLoader } from '../../common'
-import DislikeItems       from './DislikeItems'
+import DislikeItems   from './DislikeItems'
+import SkeletonLoader from '../../shared/Skeleton/SkeletonLoader'
 
 
 const Dislikes: React.FC<TDislikes> = ({ unlikeData, dispatch }) => {

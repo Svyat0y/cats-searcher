@@ -9,10 +9,8 @@ import { setToBreedList } from '../../redux/Search/slice'
 import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
 import { TOption }        from '../../redux/Search/types'
 
-import TypeSelect                   from '../common/TypeSelect/TypeSelect'
-import OrderSelect                  from '../common/OrderSelect/OrderSelect'
-import { BreedSelect, LimitSelect } from '../common'
-import { createParams }             from '../../utils/createParams'
+import { BreedSelect, LimitSelect, OrderSelect, TypeSelect } from '../Ui'
+import { createParams }                                      from '../../utils/createParams'
 
 
 const limitOptionsForGallery: TBreedOption[] = [

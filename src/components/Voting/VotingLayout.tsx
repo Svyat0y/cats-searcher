@@ -1,8 +1,8 @@
 import React      from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { ContentHeader } from '../common'
-import ContentBody       from '../layouts/ContentBody/ContentBody'
+import ContentBody   from '../layouts/ContentBody/ContentBody'
+import ContentHeader from '../shared/ContentHeader/ContentHeader'
 
 
 const VotingLayout: React.FC = () => {

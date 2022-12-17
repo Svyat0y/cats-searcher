@@ -14,7 +14,7 @@ import {
 	setToUnlike
 }                    from './slice'
 
-import { setLsMessages } from '../../utils/infoMessageLS'
+import { setLsMessages } from '../../services/localStorage/infoMessageLS'
 
 
 const getDate = () => {

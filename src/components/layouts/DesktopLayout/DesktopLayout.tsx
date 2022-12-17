@@ -1,7 +1,8 @@
 import React from 'react'
 import s     from './DesktopLayout.module.scss'
 
-import { Content, MainNavigation } from '../../index'
+import { MainNavigation } from '../../index'
+import ContentWrapper     from '../ContentWrapper/ContentWrapper'
 
 
 const DesktopLayout: React.FC = () => {
@@ -9,7 +10,7 @@ const DesktopLayout: React.FC = () => {
 	return (
 		<div className={ s.wrapper }>
 			<MainNavigation/>
-			<Content/>
+			<ContentWrapper/>
 		</div>
 	)
 }

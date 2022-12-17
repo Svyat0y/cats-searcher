@@ -1,6 +1,6 @@
 import React          from 'react'
 import s              from './MainNavigation.module.scss'
-import { setLSTheme } from '../../utils/theme'
+import { setLSTheme } from '../../services/localStorage/theme'
 
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'

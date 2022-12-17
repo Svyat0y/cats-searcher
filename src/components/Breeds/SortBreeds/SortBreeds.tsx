@@ -10,9 +10,8 @@ import { fetchBreeds }    from '../../../redux/Breeds/asyncActions'
 import { TBreedOption }   from '../../../redux/Breeds/types'
 import { TOption }        from '../../../redux/Search/types'
 
-import SortButtons                  from '../../common/Buttons/SortButtons/SortButtons'
-import { BreedSelect, LimitSelect } from '../../common'
-import { createParams }             from '../../../utils/createParams'
+import { BreedSelect, LimitSelect, SortButtons } from '../../Ui'
+import { createParams }                          from '../../../utils/createParams'
 
 
 const limitOptionsForBreeds: TBreedOption[] = [

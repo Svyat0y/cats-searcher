@@ -5,7 +5,7 @@ import { TVotingImage }               from './types'
 import { fetchVoteImg } from '../../../redux/voting/asyncActions'
 import { setActiveBtn } from '../../../redux/voting/slice'
 
-import Spinner                       from '../../common/Spinner/Spinner'
+import Spinner                       from '../../Ui/Spinner/Spinner'
 import { NavButtons, VotingMessage } from '../index'
 
 

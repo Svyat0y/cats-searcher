@@ -6,7 +6,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useSelector }         from 'react-redux'
 import { uploadingSlice }      from '../../../redux/Upload/selectors'
 
-import UploadModal from '../../common/UploadModal/UploadModal'
+import UploadModal from '../../UploadModal/UploadModal'
 
 
 const ContentWrapperLayout: React.FC = () => {

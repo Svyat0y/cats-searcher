@@ -1,11 +1,12 @@
 import React      from 'react'
 import { Outlet } from 'react-router-dom'
 
-import ContentBody   from '../ContentBody/ContentBody'
 import ContentHeader from '../../shared/ContentHeader/ContentHeader'
+import ContentBody   from '../ContentBody/ContentBody'
 
 
-const BreedsLayout = () => {
+const SearchLayout = () => {
+
 	return (
 		<ContentBody>
 			<ContentHeader/>
@@ -14,4 +15,4 @@ const BreedsLayout = () => {
 	)
 }
 
-export default BreedsLayout
+export default SearchLayout

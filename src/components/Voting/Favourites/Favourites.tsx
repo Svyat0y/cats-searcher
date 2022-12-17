@@ -4,10 +4,12 @@ import { TVotingItems }     from '../types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
 
-import RenderItems                                 from '../../hoc/RenderItems'
-import { NoItemFound, Pagination, SkeletonLoader } from '../../common'
-import { VotingMessage }                           from '../index'
-import OnFavItem                                   from './OnFavItem'
+import RenderItems       from '../../hoc/RenderItems'
+import { VotingMessage } from '../index'
+import OnFavItem         from './OnFavItem'
+import Pagination        from '../../shared/Pagination/Pagination'
+import SkeletonLoader    from '../../shared/Skeleton/SkeletonLoader'
+import NoItemFound       from '../../shared/NoItemFound/NoItemFound'
 
 
 const Favourites: React.FC<TVotingItems> = (

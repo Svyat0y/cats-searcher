@@ -9,10 +9,10 @@ import { fetchGallerySearch }                  from '../../redux/Search/asyncAct
 import { selectSearch }                        from '../../redux/Search/selectors'
 
 import GallerySort       from './GallerySort'
-import { ContentHeader } from '../common'
 import { SearchedItems } from '../index'
 import { selectVoting }  from '../../redux/voting/selectors'
 import ContentBody       from '../layouts/ContentBody/ContentBody'
+import ContentHeader     from '../shared/ContentHeader/ContentHeader'
 
 
 const Gallery = () => {
