@@ -1,5 +1,5 @@
 export { default as Breeds }          from './Breeds/Breeds'
-export { default as Content }         from './Content/Content'
+export { default as Content }         from './layouts/ContentWrapper/ContentWrapper'
 export { default as Header }          from './Header/Header'
 export { default as MainNavigation }  from './MainNavigation/MainNavigation'
 export { default as Preview }         from './Preview/Preview'

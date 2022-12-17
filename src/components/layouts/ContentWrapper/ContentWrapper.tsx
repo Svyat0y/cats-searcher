@@ -1,16 +1,16 @@
 import React             from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import ContentLayout                                                 from './ContentLayout'
-import Gallery                                                       from '../Gallery/Gallery'
-import { Breeds, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../components'
+import ContentWrapperLayout                                          from './ContentWrapperLayout'
+import Gallery                                                       from '../../Gallery/Gallery'
+import { Breeds, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../index'
 
 
-const Content: React.FC = () => {
+const ContentWrapper: React.FC = () => {
 
 	return (
 		<Routes>
-			<Route path='/*' element={ <ContentLayout/> }>
+			<Route path='/*' element={ <ContentWrapperLayout/> }>
 				<Route index element={ <Preview/> }/>
 				<Route path='voting/*' element={ <Voting/> }/>
 				<Route path='breeds/*' element={ <Breeds/> }/>
@@ -22,4 +22,4 @@ const Content: React.FC = () => {
 	)
 }
 
-export default Content
+export default ContentWrapper
