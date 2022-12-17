@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import s                              from './Breeds.module.scss'
 import { useSearchParams }            from 'react-router-dom'
-import { TOption }                    from './types'
 
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
@@ -9,8 +8,9 @@ import { setToBreedList } from '../../redux/Search/slice'
 import { selectSearch }   from '../../redux/Search/selectors'
 import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
 import { TBreedOption }   from '../../redux/Breeds/types'
+import { TOption }        from '../../redux/Search/types'
 
-import BreedSortButtons             from './BreedSortButtons'
+import SortButtons                  from '../common/Buttons/SortButtons/SortButtons'
 import { BreedSelect, LimitSelect } from '../common'
 import { createParams }             from '../../utils/createParams'
 
@@ -49,10 +49,10 @@ const SortBreeds: React.FC = () => {
 	const getValue = () => breedsList.find(option => option.label === filters.value)
 
 	return (
-		<div className={ s.sortBreeds_wr }>
+		<div className={ s.wrapper }>
 			<BreedSelect options={ breedsList } onChangeOption={ onChangeOption } getValue={ getValue } { ...props }/>
 			<LimitSelect options={ limitOptionsForBreeds } { ...props }/>
-			<BreedSortButtons { ...props }/>
+			<SortButtons { ...props }/>
 		</div>
 	)
 }

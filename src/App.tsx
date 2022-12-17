@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import DesktopLayout        from './components/layouts/DesktopLayout'
+import DesktopLayout        from './components/layouts/DesktopLayout/DesktopLayout'
 
 import { AppDispatch, useAppDispatch } from './redux/store'
 

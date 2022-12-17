@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams }            from 'react-router-dom'
+import { TBreedOption }               from '../../redux/Breeds/types'
 
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
 import { selectSearch }   from '../../redux/Search/selectors'
 import { setToBreedList } from '../../redux/Search/slice'
 import { fetchBreeds }    from '../../redux/Breeds/asyncActions'
+import { TOption }        from '../../redux/Search/types'
 
 import TypeSelect                   from '../common/TypeSelect/TypeSelect'
 import OrderSelect                  from '../common/OrderSelect/OrderSelect'
 import { BreedSelect, LimitSelect } from '../common'
-import { TBreedOption }             from '../../redux/Breeds/types'
-import { TOption }                  from '../Breeds/types'
 import { createParams }             from '../../utils/createParams'
 
 

@@ -12,7 +12,7 @@ import GallerySort       from './GallerySort'
 import { ContentHeader } from '../common'
 import { SearchedItems } from '../index'
 import { selectVoting }  from '../../redux/voting/selectors'
-import ContentBody       from '../layouts/ContentBody'
+import ContentBody       from '../layouts/ContentBody/ContentBody'
 
 
 const Gallery = () => {

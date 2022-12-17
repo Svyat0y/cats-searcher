@@ -2,7 +2,7 @@ import React              from 'react'
 import s                  from './RefreshButton.module.scss'
 import { TRefreshButton } from './types'
 
-import refreshImg from '../../../assets/images/gallery/refreshImg.webp'
+import refreshImg from '../../../../assets/images/gallery/refreshImg.webp'
 
 
 const RefreshButton: React.FC<TRefreshButton> = ({ onclick }) => {

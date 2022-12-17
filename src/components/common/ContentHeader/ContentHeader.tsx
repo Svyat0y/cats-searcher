@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 import SortBreeds                  from '../../Breeds/SortBreeds'
 import { BackButton, BreadCrumbs } from '../index'
-import UploadBtnWr                 from '../Buttons/UploadBtnWr'
+import UploadBtnWr                 from '../Buttons/UploadBtn/UploadBtnWr'
 
 
 const ContentHeader: React.FC = () => {

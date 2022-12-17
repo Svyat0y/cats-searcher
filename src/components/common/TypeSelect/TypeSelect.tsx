@@ -1,9 +1,9 @@
 import React                        from 'react'
 import { TTypeOption, TTypeSelect } from './types'
-import { TOption }                  from '../../Breeds/types'
 
 import Select           from 'react-select'
 import { createParams } from '../../../utils/createParams'
+import { TOption }      from '../../../redux/Search/types'
 
 
 const TypesOptions: TTypeOption[] = [

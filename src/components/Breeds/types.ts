@@ -1,6 +1,6 @@
-import { TBreedOption } from '../../redux/Breeds/types'
-import { AppDispatch }  from '../../redux/store'
-import { TFilters }     from '../../redux/Search/types'
+import { TBreedOption }      from '../../redux/Breeds/types'
+import { TFilters, TOption } from '../../redux/Search/types'
+import { AppDispatch }       from '../../redux/store'
 
 
 export type TBreedSelect = {
@@ -13,16 +13,3 @@ export type TBreedSelect = {
 	onChangeOption: (e: TOption) => void
 	getValue: () => TBreedOption | undefined
 }
-
-export type TBreedSortButtons = {
-	dispatch: AppDispatch
-	status: string
-	filters: TFilters
-	setSearchParams: (obj: string) => void
-	pageNumberForUI: number
-}
-
-export type TOption = {
-	value: string
-	label: string
-} | null

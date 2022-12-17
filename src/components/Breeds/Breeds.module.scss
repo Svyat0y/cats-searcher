@@ -1,39 +1,6 @@
 @import 'src/scss/variables';
 
-.sortBreeds_wr {
+.wrapper {
   width: 100%;
   @include flex(flex-end, center);
-
-  & .sortBreedBtn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: initial;
-    position: relative;
-
-    &:active {
-      transform: scale(.95);
-    }
-
-    &.desk {
-      background: url("../../assets/images/breeds/desk.webp") center no-repeat var(--bg_grey-white_white-rgba);
-
-      &:hover, &.active {
-        background: url("../../assets/images/breeds/deskRed.webp") center no-repeat var(--bg_grey-white_white-rgba);
-        border: 2px solid var(--btn_color);
-      }
-    }
-
-    &.ask {
-      background: url("../../assets/images/breeds/ask.webp") center no-repeat var(--bg_grey-white_white-rgba);
-
-      &:hover, &.active {
-        background: url("../../assets/images/breeds/askRed.webp") center no-repeat var(--bg_grey-white_white-rgba);
-        border: 2px solid var(--btn_color);
-      }
-    }
-  }
 }

@@ -28,3 +28,8 @@ export interface ISearch {
 	galleryFilters: TFilters
 	isLoadingData: boolean
 }
+
+export type TOption = {
+	value: string
+	label: string
+} | null

@@ -1,11 +1,11 @@
 import React from 'react'
 import s     from './DesktopLayout.module.scss'
 
-import { Content, MainNavigation } from '../../components'
+import { Content, MainNavigation } from '../../index'
 
 
 const DesktopLayout: React.FC = () => {
-	
+
 	return (
 		<div className={ s.wrapper }>
 			<MainNavigation/>

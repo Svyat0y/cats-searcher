@@ -9,7 +9,3 @@ export type TButton = {
 	modalUpload?: boolean
 	status?: string
 }
-
-export type TRefreshButton = {
-	onclick?: () => void
-}

@@ -2,8 +2,8 @@ import React                          from 'react'
 import { TOrderOption, TOrderSelect } from './types'
 
 import Select           from 'react-select'
-import { TOption }      from '../../Breeds/types'
 import { createParams } from '../../../utils/createParams'
+import { TOption }      from '../../../redux/Search/types'
 
 
 const OrderOptions: TOrderOption[] = [

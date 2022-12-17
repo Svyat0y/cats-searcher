@@ -1,10 +1,10 @@
 import React from 'react'
 import s     from './UploadBtn.module.scss'
 
-import { setShowModal, setShowOverlay } from '../../../redux/Upload/slice'
-import { useAppDispatch }               from '../../../redux/store'
+import { setShowModal, setShowOverlay } from '../../../../redux/Upload/slice'
+import { useAppDispatch }               from '../../../../redux/store'
 
-import { Button } from '../index'
+import { Button } from '../../index'
 
 
 const UploadBtnWr = () => {

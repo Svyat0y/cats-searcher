@@ -1,4 +1,4 @@
-import React, { useEffect, useState }                  from 'react'
+import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                  from 'react-redux'
@@ -8,7 +8,7 @@ import { setFilters, setIsLoadingData } from '../../redux/Search/slice'
 import { selectSearch }                 from '../../redux/Search/selectors'
 import { fetchSearch }                  from '../../redux/Search/asyncActions'
 
-import BreedLayout       from './BreedLayout'
+import BreedsLayout      from '../layouts/BreedsLayout/BreedsLayout'
 import { SearchedItems } from '../index'
 
 
@@ -54,7 +54,7 @@ const Breeds = () => {
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={ <BreedLayout/> }>
+				<Route path='/' element={ <BreedsLayout/> }>
 					<Route path='' element={ <SearchedItems
 						isLoadingData={ isLoadingData }
 						data={ searchData }
