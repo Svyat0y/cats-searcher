@@ -1,4 +1,5 @@
 import React           from 'react'
+import s               from './ContentHeader.module.scss'
 import { useLocation } from 'react-router-dom'
 
 import SortBreeds                  from '../../Breeds/SortBreeds'
@@ -10,7 +11,7 @@ const ContentHeader: React.FC = () => {
 	const location = useLocation()
 
 	return (
-		<div className='contentHeader'>
+		<div className={ s.wrapper }>
 			<BackButton/>
 			<BreadCrumbs/>
 			{ (location.pathname.includes('breeds') && !location.pathname.includes('description')) && <SortBreeds/> }

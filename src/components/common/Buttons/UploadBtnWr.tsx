@@ -1,7 +1,10 @@
-import React                            from 'react'
-import { Button }                       from '../index'
+import React from 'react'
+import s     from './UploadBtn.module.scss'
+
 import { setShowModal, setShowOverlay } from '../../../redux/Upload/slice'
 import { useAppDispatch }               from '../../../redux/store'
+
+import { Button } from '../index'
 
 
 const UploadBtnWr = () => {
@@ -13,7 +16,7 @@ const UploadBtnWr = () => {
 	}
 
 	return (
-		<div className='uploadButton_wr'><Button onclick={ onClickShowModal } upload={ true } name='Upload'/></div>
+		<div className={ s.wrapper }><Button onclick={ onClickShowModal } upload={ true } name='Upload'/></div>
 	)
 }
 
