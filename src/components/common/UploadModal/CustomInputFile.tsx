@@ -2,7 +2,7 @@ import React                from 'react'
 import s                    from './FileUploader.module.scss'
 import { TCustomInputFile } from './types'
 
-import noImg from '../../../assets/images/noImg.svg'
+import noImg from '../../../assets/images/common/noImg.svg'
 
 
 const CustomInputFile: React.FC<TCustomInputFile> = ({ handleDrop, handleDragEmpty, handleChange, imageUrl, file }) => {

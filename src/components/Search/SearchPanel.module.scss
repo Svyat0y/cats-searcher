@@ -31,14 +31,14 @@
         right: 0;
         width: 40px;
         height: 40px;
-        background: url("../../assets/images/voting/search.webp") center no-repeat;
+        background: url("../../assets/images/common/search.webp") center no-repeat;
       }
 
       &:hover {
         background: #FF868E;
 
         &::after {
-          background: url("../../assets/images/voting/searchWhite.webp") center no-repeat;
+          background: url("../../assets/images/common/searchWhite.webp") center no-repeat;
         }
       }
     }

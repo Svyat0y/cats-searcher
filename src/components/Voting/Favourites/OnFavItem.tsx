@@ -4,8 +4,8 @@ import { TFavoriteItem }              from './types'
 import { TData }              from '../../../redux/voting/types'
 import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
 
-import emptyImage    from '../../../assets/images/voting/empty_img.webp'
-import heartBgRedImg from '../../../assets/images/voting/heartBgRed.webp'
+import emptyImage    from '../../../assets/images/common/noImg.svg'
+import heartBgRedImg from '../../../assets/images/common/heartBgRed.webp'
 
 import { SmallSpinner } from '../../common'
 
