@@ -26,11 +26,11 @@ const SortBreeds: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)
-	const { filters, status, breedsList } = useSelector(selectSearch)
+	const { breedFilters, status, breedsList } = useSelector(selectSearch)
 
-	const pageNumberForUI = filters.page + 1
+	const pageNumberForUI = breedFilters.page + 1
 
-	const props = { filters, pageNumberForUI, setSearchParams, dispatch, status }
+	const props = { filters: breedFilters, pageNumberForUI, setSearchParams, dispatch, status }
 
 	useEffect(() => {
 		if (isMounted) dispatch(fetchBreeds({ value: 'All breeds', label: 'All breeds' }))
@@ -43,10 +43,10 @@ const SortBreeds: React.FC = () => {
 
 	const onChangeOption = (e: TOption) => {
 		if (e) {
-			setSearchParams(createParams(e.label, filters.limit, filters.order, pageNumberForUI, filters.type))
+			setSearchParams(createParams(e.label, breedFilters.limit, breedFilters.order, pageNumberForUI, breedFilters.type))
 		}
 	}
-	const getValue = () => breedsList.find(option => option.label === filters.value)
+	const getValue = () => breedsList.find(option => option.label === breedFilters.value)
 
 	return (
 		<div className={ s.wrapper }>

@@ -9,7 +9,7 @@ const initialState: ISearch = {
 	searchData: null,
 	searchValue: '',
 	breedsList: [],
-	filters: {
+	breedFilters: {
 		value: 'All breeds',
 		limit: '5',
 		order: 'asc',
@@ -41,7 +41,7 @@ export const searchingSlice = createSlice({
 			state.searchValue = action.payload
 		},
 		setFilters: (state, action) => {
-			if (action.payload) state.filters = action.payload
+			if (action.payload) state.breedFilters = action.payload
 		},
 		setGalleryFilters: (state, action) => {
 			if (action.payload) state.galleryFilters = action.payload

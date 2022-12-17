@@ -24,7 +24,7 @@ export interface ISearch {
 	status: Status
 	searchValue: string | null
 	breedsList: TBreedOption[]
-	filters: TFilters
+	breedFilters: TFilters
 	galleryFilters: TFilters
 	isLoadingData: boolean
 }

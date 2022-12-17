@@ -12,7 +12,7 @@ import searchImg   from '../../../assets/images/main/images-search.webp'
 
 
 const MainNav: React.FC = () => {
-	const { filters: { value, limit, order, page }, galleryFilters } = useSelector(selectSearch)
+	const { breedFilters: { value, limit, order, page }, galleryFilters } = useSelector(selectSearch)
 
 	const cards = [
 		{ name: 'Voting', img: voteImg, color: 'violet', to: 'voting', active: 'voting' },

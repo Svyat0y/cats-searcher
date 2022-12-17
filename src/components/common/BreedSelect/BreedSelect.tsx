@@ -1,5 +1,5 @@
 import React            from 'react'
-import { TBreedSelect } from '../../Breeds/types'
+import { TBreedSelect } from './types'
 
 import Select from 'react-select'
 

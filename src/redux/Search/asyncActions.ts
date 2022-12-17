@@ -19,7 +19,7 @@ const fetchSearchRightObjects = async (reference_image_id: string) => {
 export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearch',
 	async (_, { dispatch, getState }) => {
-		const { filters: { value, limit, order, page } } = getState().searchingSlice
+		const { breedFilters: { value, limit, order, page } } = getState().searchingSlice
 		const query = `order=${ order }&limit=${ limit }&page=${ page }`
 
 		try {
@@ -86,7 +86,7 @@ export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootStat
 export const fetchSearchFromPanel = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearchFromPanel',
 	async (params, { dispatch, getState }) => {
-		const { filters: { value } } = getState().searchingSlice
+		const { breedFilters: { value } } = getState().searchingSlice
 
 		try {
 			const { data } = await instance.get<any>(`breeds/search/?q=${ value }`)

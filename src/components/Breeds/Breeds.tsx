@@ -17,11 +17,11 @@ const Breeds = () => {
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
 
-	const { searchData, status, filters, isLoadingData } = useSelector(selectSearch)
+	const { searchData, status, breedFilters, isLoadingData } = useSelector(selectSearch)
 
-	const firstPage = filters.page === 0
-	const lastPage = searchData && searchData.length < Number(filters.limit)
-	const pageNumberForUI = filters.page + 1
+	const firstPage = breedFilters.page === 0
+	const lastPage = searchData && searchData.length < Number(breedFilters.limit)
+	const pageNumberForUI = breedFilters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))
 
@@ -42,7 +42,7 @@ const Breeds = () => {
 	useEffect(() => {
 		dispatch(fetchSearch())
 		dispatch(setIsLoadingData(true))
-	}, [ filters.value, filters.limit, filters.order, filters.page ])
+	}, [ breedFilters.value, breedFilters.limit, breedFilters.order, breedFilters.page ])
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>
@@ -62,7 +62,7 @@ const Breeds = () => {
 						firstPage={ firstPage }
 						lastPage={ lastPage }
 						dispatch={ dispatch }
-						filters={ filters }
+						filters={ breedFilters }
 						pageNumberForUI={ pageNumberForUI }/> }/>
 				</Route>
 			</Routes>
