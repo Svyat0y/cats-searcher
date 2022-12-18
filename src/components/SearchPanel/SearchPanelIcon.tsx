@@ -1,12 +1,15 @@
-import React        from 'react'
-import s            from './SearchPanel.module.scss'
-import { Link }     from 'react-router-dom'
-import { children } from 'dom7'
+import { FC }               from 'react'
+import s                    from './SearchPanel.module.scss'
+import { Link }             from 'react-router-dom'
+import { TSearchPanelIcon } from './types'
 
 
-const SearchPanelIcon = ({ children, page, location }) => {
+const SearchPanelIcon: FC<TSearchPanelIcon> = ({ children, page, location, route }) => {
+
 	return (
-		<Link to={ `voting/likes?page=${ page + 1 }` } className={ `${ s.iconWrapper } ${ location ? s.iconActive : '' }` }>
+		<Link
+			to={ `voting/${ route }?page=${ page + 1 }` }
+			className={ `${ s.iconWrapper } ${ location ? s.iconActive : '' }` }>
 			{ children }
 		</Link>
 	)
