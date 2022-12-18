@@ -14,7 +14,7 @@ const ContentWrapperLayout: FC = () => {
 
 	return (
 		<div className={ s.wrapper }>
-			<div className={ s.wrapper__container }>
+			<div className={ s.container }>
 				{ location.pathname !== '/' && <SearchPanel/> }
 				<Outlet/>
 				{ showModal && <UploadModal

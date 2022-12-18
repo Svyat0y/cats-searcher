@@ -8,7 +8,7 @@ const Preview: FC = () => {
 
 	return (
 		<div className={ s.wrapper }>
-			<div className={ s.wrapper__img_wr }>
+			<div className={ s.imgWrapper }>
 				<img src={ previewImg } alt='preview_img'/>
 			</div>
 		</div>

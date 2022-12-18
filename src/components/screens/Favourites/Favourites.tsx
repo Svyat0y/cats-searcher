@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import s                 from '../../Voting/Voting.module.scss'
+import s                 from './Favourites.module.scss'
 import { TVotingItems }  from '../../Voting/types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
@@ -57,7 +57,7 @@ const Favourites: FC<TVotingItems> = (
 			</div>
 			{ renderPagination() }
 
-			<div className={ s.content__messages }>
+			<div className={ s.messages }>
 				{ infoMessage?.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>

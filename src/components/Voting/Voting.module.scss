@@ -19,7 +19,7 @@
 
   &__pagination_wr {
     width: 300px;
-    margin: 20px auto 0px auto;
+    margin: 20px auto 0 auto;
     @include flex(space-between, center);
 
 
@@ -34,9 +34,5 @@
 
   .pagination__favourites {
     margin-bottom: 25px;
-  }
-
-  &__messages {
-    margin-top: 52px;
   }
 }

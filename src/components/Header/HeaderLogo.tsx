@@ -11,7 +11,7 @@ const HeaderLogo: FC<THeaderLogo> = ({ theme }) => {
 
 	return (
 		<Link to='/'>
-			<div className={ s.header__logo }>
+			<div className={ s.logo }>
 				<img src={ theme === 'light' ? logoLight : logoDark } alt='logo'/>
 			</div>
 		</Link>

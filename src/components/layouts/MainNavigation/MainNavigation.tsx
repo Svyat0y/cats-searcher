@@ -20,7 +20,7 @@ const MainNavigation: FC = () => {
 
 	return (
 		<div className={ s.wrapper }>
-			<div className={ s.wrapper__container }>
+			<div className={ s.container }>
 				<Header theme={ theme } onChangeTheme={ onChangeTheme }/>
 				<MainNavCards/>
 			</div>

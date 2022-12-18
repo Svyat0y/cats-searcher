@@ -1,14 +1,14 @@
 @import '../../scss/variables';
 
-.header {
+.wrapper {
   @include flex(space-between);
 
 
-  &__navigation {
+  .navigation {
     @include flex(space-between, center);
   }
 
-  &__img_wr {
+  .imgWrapper {
     background: var(--bg_white-grey);
     width: 24px;
     height: 24px;
@@ -17,7 +17,7 @@
     transition: all .2s ease;
   }
 
-  &__switcher {
+  .switcher {
     background: rgba(255, 134, 142, 0.2);
     border-radius: 50px;
     width: 44px;

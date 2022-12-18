@@ -33,16 +33,16 @@ const MainNavCards: FC = () => {
 	]
 
 	return (
-		<div className={ s.content }>
-			<div className={ s.title_wr }>
+		<div className={ s.wrapper }>
+			<div className={ s.headerWrapper }>
 				<h1 className='title'>Hi ;)</h1>
 				<p>Welcome to the Cat finder</p>
 			</div>
-			<div className={ s.content__cards_wr }>
-				<span className={ s.content__cards_desc }>
+			<div className={ s.cardsWrapper }>
+				<span className={ s.cardsDesc }>
 					Lets start using The Cat API
 				</span>
-				<div className={ s.content__cards }>
+				<div className={ s.cards }>
 					{ cards.map((card) => <Card key={ card.name } { ...card }/>) }
 				</div>
 			</div>

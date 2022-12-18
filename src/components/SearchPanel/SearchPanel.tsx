@@ -45,8 +45,8 @@ const SearchPanel: FC = () => {
 	}
 
 	return (
-		<div className={ s.search }>
-			<form className={ s.search__input_wr } onSubmit={ onClick }>
+		<div className={ s.wrapper }>
+			<form className={ s.inputWrapper } onSubmit={ onClick }>
 				<input
 					value={ searchValue ? searchValue : '' }
 					onChange={ (e) => onChangeValue(e) } type='text'

@@ -17,9 +17,9 @@ if (rootElem) {
 	root.render(
 		<Provider store={ store }>
 			<BrowserRouter>
-				<StrictMode>
-					<App/>
-				</StrictMode>
+				{/*<StrictMode>*/ }
+				<App/>
+				{/*</StrictMode>*/ }
 			</BrowserRouter>
 		</Provider>
 	)

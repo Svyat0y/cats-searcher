@@ -21,13 +21,13 @@ const Card: FC<TCard> = memo(({ name, img, color, to, active }) => {
 	}, [])
 
 	return (
-		<div className={ s.content__card }>
+		<div className={ s.card }>
 			<Link onClick={ onClickCard } to={ to } className={ `${ s.card } ${ s[color] } ${ loc ? s.active : '' }` }>
-				<div className={ s.card__img_wr }>
+				<div className={ s.imgWrapper }>
 					<img src={ img } alt='card'/>
 				</div>
 			</Link>
-			<div className={ `btn ${ s.card__btn } ${ loc ? s.active : '' }` }>{ name }</div>
+			<div className={ `btn ${ s.cardBtn } ${ loc ? s.active : '' }` }>{ name }</div>
 		</div>
 
 	)
