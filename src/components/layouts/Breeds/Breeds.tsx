@@ -1,4 +1,4 @@
-import React, { useEffect }                            from 'react'
+import { FC, useEffect }                               from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                  from 'react-redux'
@@ -12,7 +12,7 @@ import BreedsLayout      from './BreedsLayout'
 import { SearchedItems } from '../../index'
 
 
-const Breeds = () => {
+const Breeds: FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()

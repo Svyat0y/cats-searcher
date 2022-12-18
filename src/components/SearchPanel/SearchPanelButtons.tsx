@@ -1,12 +1,12 @@
-import React                 from 'react'
+import { FC }                from 'react'
 import s                     from './SearchPanel.module.scss'
 import { Link, useLocation } from 'react-router-dom'
 
 import { useSelector }  from 'react-redux'
-import { selectVoting } from '../../../redux/voting/selectors'
+import { selectVoting } from '../../redux/voting/selectors'
 
 
-const SearchPanelButtons: React.FC = () => {
+const SearchPanelButtons: FC = () => {
 	const location = useLocation()
 	const { likePage, favPage } = useSelector(selectVoting)
 

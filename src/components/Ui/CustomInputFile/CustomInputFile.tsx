@@ -1,11 +1,11 @@
-import React                from 'react'
+import { FC }               from 'react'
 import s                    from './CustomInputFile.module.scss'
 import { TCustomInputFile } from '../../UploadModal/types'
 
 import noImg from '../../../assets/images/common/noImg.svg'
 
 
-const CustomInputFile: React.FC<TCustomInputFile> = ({ handleDrop, handleDragEmpty, handleChange, imageUrl, file }) => {
+const CustomInputFile: FC<TCustomInputFile> = ({ handleDrop, handleDragEmpty, handleChange, imageUrl, file }) => {
 
 	return (
 		<div className={ s.custom_wrapper }>

@@ -1,4 +1,4 @@
-import React       from 'react'
+import { FC }      from 'react'
 import { TVoting } from '../Voting/types'
 
 import { useSelector }    from 'react-redux'
@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../redux/store'
 import { selectVoting }   from '../../redux/voting/selectors'
 
 
-const VotingDataContainer = (Component: React.FC<TVoting>) => () => {
+const VotingDataContainer = (Component: FC<TVoting>) => () => {
 	const dispatch = useAppDispatch()
 
 	const {

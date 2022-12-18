@@ -1,11 +1,11 @@
-import React           from 'react'
+import { FC }          from 'react'
 import s               from '../../Voting/Voting.module.scss'
 import { TPagination } from './types'
 
-import { Button } from '../../Ui'
+import Button from '../../Ui/Buttons/Button'
 
 
-const Pagination: React.FC<TPagination> = ({ firstPage, lastPage, onClickPrev, onClickNext }) => {
+const Pagination: FC<TPagination> = ({ firstPage, lastPage, onClickPrev, onClickNext }) => {
 
 	return (
 		<div className={ s.content__pagination_wr }>

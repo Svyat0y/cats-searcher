@@ -1,13 +1,11 @@
-import React             from 'react'
+import { FC }            from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import ContentWrapperLayout                                  from './ContentWrapperLayout'
-import Gallery                                               from '../Gallery/Gallery'
-import { Breeds, Preview, SearchComponent, SingleBreedInfo } from '../../index'
-import Voting                                                from '../Voting/Voting'
+import ContentWrapperLayout                                                   from './ContentWrapperLayout'
+import { Breeds, Gallery, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../index'
 
 
-const ContentWrapper: React.FC = () => {
+const ContentWrapper: FC = () => {
 
 	return (
 		<Routes>
@@ -17,7 +15,7 @@ const ContentWrapper: React.FC = () => {
 				<Route path='breeds/*' element={ <Breeds/> }/>
 				<Route path='search/*' element={ <SearchComponent/> }/>
 				<Route path='description' element={ <SingleBreedInfo/> }/>
-				<Route path='gallery' element={ <Gallery/> }/>
+				<Route path='gallery/*' element={ <Gallery/> }/>
 			</Route>
 		</Routes>
 	)

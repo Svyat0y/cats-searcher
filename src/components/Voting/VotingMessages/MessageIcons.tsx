@@ -1,9 +1,9 @@
-import React             from 'react'
+import { FC }            from 'react'
 import { TMessageIcons } from './types'
 
 
-const MessageIcons: React.FC<TMessageIcons> = ({ message }) => {
-	
+const MessageIcons: FC<TMessageIcons> = ({ message }) => {
+
 	return (
 		<>
 			{

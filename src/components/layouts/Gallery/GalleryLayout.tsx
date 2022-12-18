@@ -1,12 +1,10 @@
-import React      from 'react'
+import { FC }     from 'react'
 import { Outlet } from 'react-router-dom'
 
-import ContentHeader from '../../shared/ContentHeader/ContentHeader'
-import ContentBody   from '../ContentBody/ContentBody'
-import SortGallery   from '../../SortGallery/SortGallery'
+import { ContentBody, ContentHeader, SortGallery } from '../../index'
 
 
-const GalleryLayout = () => {
+const GalleryLayout: FC = () => {
 	return (
 		<ContentBody>
 			<ContentHeader/>

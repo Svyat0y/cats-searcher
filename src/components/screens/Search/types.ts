@@ -1,6 +1,6 @@
-import { TFilters, TSearchData } from '../../redux/Search/types'
-import { AppDispatch }           from '../../redux/store'
-import { TDataObj }              from '../../redux/voting/types'
+import { TFilters, TSearchData } from '../../../redux/Search/types'
+import { AppDispatch }           from '../../../redux/store'
+import { TDataObj }              from '../../../redux/voting/types'
 
 
 export type TSearchedItems = {

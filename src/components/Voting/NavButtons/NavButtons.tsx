@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import s                   from './NavButtons.module.scss'
-import { TNavButtons }     from './types'
+import { FC, useState } from 'react'
+import s                from './NavButtons.module.scss'
+import { TNavButtons }  from './types'
 
 import { useAppDispatch }                  from '../../../redux/store'
 import { TDataObj }                        from '../../../redux/voting/types'
@@ -9,7 +9,7 @@ import { fetchActionFavourite, fetchVote } from '../../../redux/voting/asyncActi
 import { HeartBtn, VoteDownBtn, VoteUpBtn } from './VoteButtons'
 
 
-const NavButtons: React.FC<TNavButtons> = ({ imgObj, onFavourites, status }) => {
+const NavButtons: FC<TNavButtons> = ({ imgObj, onFavourites, status }) => {
 	const dispatch = useAppDispatch()
 	const [ btnName, setBtnName ] = useState('')
 	const props = { status, imgObj, btnName, setBtnName }

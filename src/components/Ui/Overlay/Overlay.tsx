@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './Overlay.module.scss'
+import { FC, useEffect, useState } from 'react'
+import s                           from './Overlay.module.scss'
 
 import { useSelector }    from 'react-redux'
 import { uploadingSlice } from '../../../redux/Upload/selectors'
 
 
-const Overlay: React.FC = () => {
+const Overlay: FC = () => {
 	const { showModal, overlay } = useSelector(uploadingSlice)
 	const [ animShow, setAnimShow ] = useState(false)
 

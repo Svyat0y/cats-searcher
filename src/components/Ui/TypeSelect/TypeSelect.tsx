@@ -1,4 +1,4 @@
-import React                        from 'react'
+import { FC }                       from 'react'
 import { TTypeOption, TTypeSelect } from './types'
 
 import Select           from 'react-select'
@@ -12,7 +12,7 @@ const TypesOptions: TTypeOption[] = [
 	{ value: 'animated', label: 'Animated' },
 ]
 
-const TypeSelect: React.FC<TTypeSelect> = ({ setSearchParams, filters, pageNumberForUI }) => {
+const TypeSelect: FC<TTypeSelect> = ({ setSearchParams, filters, pageNumberForUI }) => {
 	const getValue = () => TypesOptions.find(option => option.value === filters.type)
 
 	const onChangeType = (e: TOption) => {

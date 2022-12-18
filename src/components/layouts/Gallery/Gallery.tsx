@@ -1,4 +1,4 @@
-import React, { useEffect }                            from 'react'
+import { FC, useEffect }                               from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                         from 'react-redux'
@@ -7,13 +7,13 @@ import { setActiveBtn }                        from '../../../redux/voting/slice
 import { setGalleryFilters, setIsLoadingData } from '../../../redux/Search/slice'
 import { fetchGallerySearch }                  from '../../../redux/Search/asyncActions'
 import { selectSearch }                        from '../../../redux/Search/selectors'
+import { selectVoting }                        from '../../../redux/voting/selectors'
 
 import { SearchedItems } from '../../index'
-import { selectVoting }  from '../../../redux/voting/selectors'
 import GalleryLayout     from './GalleryLayout'
 
 
-const Gallery = () => {
+const Gallery: FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()

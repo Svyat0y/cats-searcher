@@ -1,10 +1,10 @@
-import React            from 'react'
+import { FC, memo }     from 'react'
 import { TBreedSelect } from './types'
 
 import Select from 'react-select'
 
 
-const BreedSelect: React.FC<TBreedSelect> = React.memo(({ getValue, options, status, filters, onChangeOption }) => {
+const BreedSelect: FC<TBreedSelect> = memo(({ getValue, options, status, filters, onChangeOption }) => {
 
 	return (
 		<div className='selectContainer'>

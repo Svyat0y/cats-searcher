@@ -1,9 +1,9 @@
-import React             from 'react'
-import { TDataObj }      from '../../redux/voting/types'
+import { FC }            from 'react'
+import { TDataObj }      from '../../../redux/voting/types'
 import { TDislikeItems } from './types'
 
 
-const DislikeItems: React.FC<TDislikeItems> = ({ data }) => {
+const DislikeItems: FC<TDislikeItems> = ({ data }) => {
 
 	return (
 		<div className='items'>

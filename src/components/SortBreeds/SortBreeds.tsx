@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './SortBreeds.module.scss'
-import { useSearchParams }            from 'react-router-dom'
+import { FC, useEffect, useState } from 'react'
+import s                           from './SortBreeds.module.scss'
+import { useSearchParams }         from 'react-router-dom'
 
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
@@ -21,7 +21,7 @@ const limitOptionsForBreeds: TBreedOption[] = [
 	{ value: '20', label: 'Limit: 20' },
 ]
 
-const SortBreeds: React.FC = () => {
+const SortBreeds: FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)

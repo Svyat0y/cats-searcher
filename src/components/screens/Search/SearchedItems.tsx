@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useSearchParams }            from 'react-router-dom'
-import qs                             from 'qs'
-import { TSearchedItems }             from './types'
+import { FC, useEffect, useState } from 'react'
+import { useSearchParams }         from 'react-router-dom'
+import qs                          from 'qs'
+import { TSearchedItems }          from './types'
 
 import { useNavigate }      from 'react-router'
-import { setToSearchData }  from '../../redux/Search/slice'
-import { fetchSingleBreed } from '../../redux/Breeds/asyncActions'
-import { TSearchData }      from '../../redux/Search/types'
+import { setToSearchData }  from '../../../redux/Search/slice'
+import { fetchSingleBreed } from '../../../redux/Breeds/asyncActions'
+import { TSearchData }      from '../../../redux/Search/types'
 
-import Item           from './Item'
-import SkeletonLoader from '../shared/Skeleton/SkeletonLoader'
-import Pagination     from '../shared/Pagination/Pagination'
+import Item                           from './Item'
+import { Pagination, SkeletonLoader } from '../../index'
 
 
-const SearchedItems: React.FC<TSearchedItems> = (
+const SearchedItems: FC<TSearchedItems> = (
 	{
 		dispatch,
 		data,

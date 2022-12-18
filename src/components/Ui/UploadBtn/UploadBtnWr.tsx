@@ -1,12 +1,13 @@
-import React from 'react'
-import s     from './UploadBtn.module.scss'
+import { FC } from 'react'
+import s      from './UploadBtn.module.scss'
 
 import { setShowModal, setShowOverlay } from '../../../redux/Upload/slice'
 import { useAppDispatch }               from '../../../redux/store'
-import { Button }                       from '../Buttons'
+
+import { Button } from '../index'
 
 
-const UploadBtnWr = () => {
+const UploadBtnWr: FC = () => {
 	const dispatch = useAppDispatch()
 
 	const onClickShowModal = () => {

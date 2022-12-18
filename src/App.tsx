@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
-import DesktopLayout        from './components/layouts/Desktop/DesktopLayout'
+import { FC, useEffect } from 'react'
 
 import { AppDispatch, useAppDispatch } from './redux/store'
 
 import { getLSTheme }    from './services/localStorage/theme'
 import { getLsMessages } from './services/localStorage/infoMessageLS'
 
-import { Overlay } from './components/Ui'
+import { Overlay }       from './components/Ui'
+import { DesktopLayout } from './components'
 
 
-const App: React.FC = () => {
+const App: FC = () => {
 	const dispatch: AppDispatch = useAppDispatch()
 
 	useEffect(() => {

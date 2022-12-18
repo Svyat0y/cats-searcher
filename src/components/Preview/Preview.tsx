@@ -1,10 +1,10 @@
-import React from 'react'
-import s     from './Preview.module.scss'
+import { FC } from 'react'
+import s      from './Preview.module.scss'
 
 import previewImg from '../../assets/images/main/preview.webp'
 
 
-const Preview: React.FC = () => {
+const Preview: FC = () => {
 
 	return (
 		<div className={ s.wrapper }>

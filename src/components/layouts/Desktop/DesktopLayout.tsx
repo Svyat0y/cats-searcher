@@ -1,11 +1,10 @@
-import React from 'react'
-import s     from './DesktopLayout.module.scss'
+import { FC } from 'react'
+import s      from './DesktopLayout.module.scss'
 
-import { MainNavigation } from '../../index'
-import ContentWrapper     from '../ContentWrapper/ContentWrapper'
+import { ContentWrapper, MainNavigation } from '../../index'
 
 
-const DesktopLayout: React.FC = () => {
+const DesktopLayout: FC = () => {
 
 	return (
 		<div className={ s.wrapper }>

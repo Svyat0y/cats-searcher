@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 
 
-const NoItemFound: React.FC = () => {
-	
+const NoItemFound: FC = () => {
+
 	return (
 		<div className='noItemFound'>
 			<span>

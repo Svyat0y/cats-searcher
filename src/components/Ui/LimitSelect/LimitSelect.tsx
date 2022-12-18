@@ -1,4 +1,4 @@
-import React            from 'react'
+import { FC }           from 'react'
 import { TLimitSelect } from './types'
 import { TOption }      from '../../../redux/Search/types'
 
@@ -7,10 +7,10 @@ import { setIsLoadingData }   from '../../../redux/Search/slice'
 import { createParams }       from '../../../utils/createParams'
 import Select                 from 'react-select'
 
-import { RefreshButton } from './../index'
+import { RefreshButton } from '../index'
 
 
-const LimitSelect: React.FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options }) => {
+const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options }) => {
 	const getValue = () => options.find(option => option.value === filters.limit)
 
 	const onChangeLimit = (e: TOption) => {

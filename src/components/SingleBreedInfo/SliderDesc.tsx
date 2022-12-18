@@ -1,10 +1,10 @@
-import React       from 'react'
+import { FC }      from 'react'
 import s           from './SingleBreedInfo.module.scss'
 import { TSlider } from './types'
 
 
-const SliderDesc: React.FC<TSlider> = ({ singleBreed }) => {
-	
+const SliderDesc: FC<TSlider> = ({ singleBreed }) => {
+
 	return (
 		<div className={ s.breed__feature_wr }>
 			<h1 className={ s.breed__title }>{ singleBreed[0].name }</h1>

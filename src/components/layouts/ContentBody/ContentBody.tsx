@@ -1,12 +1,9 @@
-import React from 'react'
-import s     from './ContentBody.module.scss'
+import { FC }           from 'react'
+import s                from './ContentBody.module.scss'
+import { TContentBody } from './types'
 
 
-type TContentBody = {
-	children: React.ReactNode
-}
-
-const ContentBody: React.FC<TContentBody> = ({ children }) => {
+const ContentBody: FC<TContentBody> = ({ children }) => {
 	return (
 		<div className={ s.wrapper }>
 			<div className={ s.body }>

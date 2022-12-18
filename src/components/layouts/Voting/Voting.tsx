@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react'
-import { Route, Routes }    from 'react-router-dom'
-import { TVoting }          from '../../Voting/types'
+import { FC, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { TVoting }       from '../../Voting/types'
 
 import { useAppDispatch }  from '../../../redux/store'
 import { setToSearchData } from '../../../redux/Search/slice'
 
-import { VotingImage }                 from '../../Voting'
-import VotingLayout                    from './VotingLayout'
-import VotingDataContainer             from '../../hoc/VotingDataContainer'
-import { Dislikes, Favourites, Likes } from '../../index'
+import VotingLayout                                 from './VotingLayout'
+import VotingDataContainer                          from '../../hoc/VotingDataContainer'
+import { Dislikes, Favourites, Likes, VotingImage } from '../../index'
 
 
-const Voting: React.FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {
+const Voting: FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {

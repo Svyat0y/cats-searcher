@@ -1,4 +1,4 @@
-import React          from 'react'
+import { FC }         from 'react'
 import s              from './MainNavigation.module.scss'
 import { setLSTheme } from '../../../services/localStorage/theme'
 
@@ -7,11 +7,10 @@ import { useAppDispatch } from '../../../redux/store'
 import { themeFilter }    from '../../../redux/theme/selectors'
 
 
-import { Header }       from '../../index'
-import { MainNavCards } from '../../MainNavCards'
+import { Header, MainNavCards } from '../../index'
 
 
-const MainNavigation: React.FC = () => {
+const MainNavigation: FC = () => {
 	const { theme } = useSelector(themeFilter)
 	const dispatch = useAppDispatch()
 

@@ -1,4 +1,4 @@
-import React                          from 'react'
+import { FC }                         from 'react'
 import { TOrderOption, TOrderSelect } from './types'
 
 import Select           from 'react-select'
@@ -12,7 +12,7 @@ const OrderOptions: TOrderOption[] = [
 	{ value: 'asc', label: 'Asc' },
 ]
 
-const OrderSelect: React.FC<TOrderSelect> = ({ setSearchParams, filters, pageNumberForUI }) => {
+const OrderSelect: FC<TOrderSelect> = ({ setSearchParams, filters, pageNumberForUI }) => {
 	const getValue = () => OrderOptions.find(option => option.value === filters.order)
 
 	const onChangeOrder = (e: TOption) => {

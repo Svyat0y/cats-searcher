@@ -1,11 +1,11 @@
-import React               from 'react'
+import { FC }              from 'react'
 import s                   from './VotingMessage.module.scss'
 import { TVotingMessages } from './types'
 
 import MessageIcons from './MessageIcons'
 
 
-const VotingMessage: React.FC<TVotingMessages> = ({ id, message, time }) => {
+const VotingMessage: FC<TVotingMessages> = ({ id, message, time }) => {
 
 	return (
 		<div className={ s.voting__message_wr }>
