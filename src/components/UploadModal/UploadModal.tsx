@@ -24,7 +24,7 @@ const UploadModal: FC<TUploadModal> = ({ showModal, message, isLoaded, status })
 		setTimeout(() => {
 			dispatch(setMessage(''))
 			dispatch(setShowModal(false))
-		}, 300)
+		}, 200)
 	}
 
 	return (

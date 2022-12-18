@@ -12,7 +12,7 @@ const UploadFormFooter: FC<TUploadFormFooter> = ({ file, message, isLoaded, stat
 
 	return (
 		<>
-			<span className={ s.img_info }>{ file ? `Image file name: ${ file.name }` : 'No file selected' }</span>
+			<span className={ s.imgInfo }>{ file ? `Image file name: ${ file.name }` : 'No file selected' }</span>
 			{
 				(file && !message)
 					? <Button

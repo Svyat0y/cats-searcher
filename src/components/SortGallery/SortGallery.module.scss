@@ -1,6 +1,6 @@
-@import "variables";
+@import "src/scss/variables";
 
-.sortGallery_wr {
+.wrapper {
   width: 100%;
   height: 156px;
   @include flex(space-between, center);
@@ -9,21 +9,17 @@
   padding: 24px 26px 20px 26px;
   margin-bottom: 20px;
 
-  &__left, &__right {
+  .left, .right {
     width: 100%;
     @include flex(flex-start, null, column);
     gap: 24px;
   }
 
-  .select {
+  :global(.select__control) {
+    background: var(--bg_white-grey) !important;
+  }
 
-    &__control {
-      background: var(--bg_white-grey) !important;
-    }
-
-    &__menu-list {
-      background: var(--bg_white-grey) !important;
-    }
-
+  :global(.select__menu-list) {
+    background: var(--bg_white-grey) !important;
   }
 }

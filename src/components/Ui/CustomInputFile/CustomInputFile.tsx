@@ -8,10 +8,10 @@ import noImg from '../../../assets/images/common/noImg.svg'
 const CustomInputFile: FC<TCustomInputFile> = ({ handleDrop, handleDragEmpty, handleChange, imageUrl, file }) => {
 
 	return (
-		<div className={ s.custom_wrapper }>
+		<div className={ s.wrapper }>
 			<label
 				htmlFor='file_loader_btn'
-				className={ s.custom_btn }
+				className={ s.customBtn }
 				onDrop={ handleDrop }
 				onDragEnter={ handleDragEmpty }
 				onDragOver={ handleDragEmpty }>
@@ -27,7 +27,7 @@ const CustomInputFile: FC<TCustomInputFile> = ({ handleDrop, handleDragEmpty, ha
 			<input
 				onChange={ handleChange }
 				type='file' id='file_loader_btn'
-				className={ s.upload_btn }
+				className={ s.uploadBtn }
 			/>
 			<img src={ imageUrl ? imageUrl : noImg } alt='image'/>
 		</div>

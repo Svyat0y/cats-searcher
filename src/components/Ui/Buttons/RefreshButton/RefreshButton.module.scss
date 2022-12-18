@@ -1,6 +1,6 @@
 @import "../../../../scss/variables";
 
-.refresh_wr {
+.refreshBtn {
   width: 40px;
   height: 40px;
   background: var(--bg_dark_grey__white);
@@ -12,8 +12,13 @@
   outline: none;
   flex-grow: 0;
 
+  img {
+    @include transition();
+  }
+
   &:hover {
     img {
+      @include transition();
       rotate: 60deg;
     }
   }

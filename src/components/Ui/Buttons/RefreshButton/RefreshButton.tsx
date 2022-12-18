@@ -8,7 +8,7 @@ import refreshImg from '../../../../assets/images/gallery/refreshImg.webp'
 const RefreshButton: FC<TRefreshButton> = ({ onclick }) => {
 
 	return (
-		<button onClick={ onclick } className={ s.refresh_wr }>
+		<button onClick={ onclick } className={ s.refreshBtn }>
 			<img src={ refreshImg } alt=''/>
 		</button>
 	)

@@ -16,7 +16,7 @@ const Overlay: FC = () => {
 	return (
 		<>
 			{ showModal
-				? <div className={ `${ s.overlay } ${ animShow ? s.showOverlay : '' }` }></div>
+				? <div className={ `${ s.wrapper } ${ animShow ? s.showOverlay : '' }` }></div>
 				: ''
 			}
 		</>

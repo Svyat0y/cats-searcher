@@ -6,6 +6,10 @@
 }
 
 @mixin transition {
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
   transition: all .2s ease;
 }
 
