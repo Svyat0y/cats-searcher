@@ -1,4 +1,4 @@
-import React             from 'react'
+import { StrictMode }    from 'react'
 import { createRoot }    from 'react-dom/client'
 import './scss/index.scss'
 import { BrowserRouter } from 'react-router-dom'
@@ -17,9 +17,9 @@ if (rootElem) {
 	root.render(
 		<Provider store={ store }>
 			<BrowserRouter>
-				{/*<React.StrictMode>*/ }
-				<App/>
-				{/*</React.StrictMode>*/ }
+				<StrictMode>
+					<App/>
+				</StrictMode>
 			</BrowserRouter>
 		</Provider>
 	)

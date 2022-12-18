@@ -1,4 +1,4 @@
-import React               from 'react'
+import { FC }              from 'react'
 import Skeleton            from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { TSkeletonLoader } from './types'
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { themeFilter } from '../../../redux/theme/selectors'
 
 
-const SkeletonLoader: React.FC<TSkeletonLoader> = ({ count }) => {
+const SkeletonLoader: FC<TSkeletonLoader> = ({ count }) => {
 	const { theme } = useSelector(themeFilter)
 	const light = theme === 'light'
 

@@ -1,12 +1,12 @@
-import React             from 'react'
+import { FC }            from 'react'
 import s                 from './Spinner.module.scss'
 import { TSmallSpinner } from './types'
 
 import { Puff } from 'react-loader-spinner'
 
 
-const SmallSpinner: React.FC<TSmallSpinner> = ({ height, width, color }) => {
-	
+const SmallSpinner: FC<TSmallSpinner> = ({ height, width, color }) => {
+
 	return (
 		<div className={ s.wrapper__small }>
 			<Puff

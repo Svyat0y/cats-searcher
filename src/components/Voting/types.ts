@@ -1,7 +1,6 @@
-import { TVotingImage }            from './VotingImage/types'
-import { AppDispatch }             from '../../redux/store'
-import { TData, TInfoInfoMessage } from '../../redux/voting/types'
-import { TDislikes }               from '../screens/Dislikes/types'
+import { AppDispatch }                       from '../../redux/store'
+import { TData, TDataObj, TInfoInfoMessage } from '../../redux/voting/types'
+import { TDislikes }                         from '../screens/Dislikes/types'
 
 
 export type TVoting = {
@@ -39,3 +38,12 @@ export type TVotingItems = {
 	infoMessage?: TInfoInfoMessage[]
 
 }
+
+export type TVotingImage = {
+	dispatch: AppDispatch
+	voteData: TDataObj
+	onFavourites: TDataObj[]
+	infoMessage: TInfoInfoMessage[]
+	status: string
+}
+

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { TDislikes }                  from './types'
+import { FC, useEffect, useState } from 'react'
+import { TDislikes }               from './types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
 
@@ -7,7 +7,7 @@ import DislikeItems       from './DislikeItems'
 import { SkeletonLoader } from '../../index'
 
 
-const Dislikes: React.FC<TDislikes> = ({ unlikeData, dispatch }) => {
+const Dislikes: FC<TDislikes> = ({ unlikeData, dispatch }) => {
 	const [ isLoading, setIsLoading ] = useState(false)
 	const noItemsBoolean = (unlikeData.length === 0)
 

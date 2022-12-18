@@ -1,10 +1,10 @@
-import React            from 'react'
+import { FC }           from 'react'
 import s                from './Spinner.module.scss'
 import { MutatingDots } from 'react-loader-spinner'
 
 
-const Spinner: React.FC = () => {
-	
+const Spinner: FC = () => {
+
 	return (
 		<div className={ s.wrapper }>
 			<MutatingDots

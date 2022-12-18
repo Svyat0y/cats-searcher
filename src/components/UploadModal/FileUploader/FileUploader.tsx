@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './FileUploader.module.scss'
-import { TFileUploader }              from '../types'
+import { FC, useEffect, useState, ChangeEvent, FormEvent, DragEvent } from 'react'
+import s                                                              from './FileUploader.module.scss'
+import { TFileUploader }                                              from '../types'
 
 import { fetchUploadImage } from '../../../redux/Upload/asyncActions'
 import { setMessage }       from '../../../redux/Upload/slice'
@@ -9,12 +9,12 @@ import UploadFormFooter    from './UploadFormFooter'
 import { CustomInputFile } from '../../Ui'
 
 
-const setEventDefault = (e: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement> | React.DragEvent<HTMLLabelElement>) => {
+const setEventDefault = (e: ChangeEvent<HTMLInputElement> | FormEvent<HTMLFormElement> | DragEvent<HTMLLabelElement>) => {
 	e.preventDefault()
 	e.stopPropagation()
 }
 
-const FileUploader: React.FC<TFileUploader> = ({ dispatch, message, isLoaded, status }) => {
+const FileUploader: FC<TFileUploader> = ({ dispatch, message, isLoaded, status }) => {
 	const [ file, setFile ] = useState<File | null>(null)
 	const [ imageUrl, setImageUrl ] = useState<string | ArrayBuffer | null>(null)
 	const fileReader = new FileReader()
@@ -36,7 +36,7 @@ const FileUploader: React.FC<TFileUploader> = ({ dispatch, message, isLoaded, st
 		fileReader.readAsDataURL(file)
 	}
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setEventDefault(e)
 		if (e.target.files !== null) {
 			const file = e.target.files[0]
@@ -44,16 +44,16 @@ const FileUploader: React.FC<TFileUploader> = ({ dispatch, message, isLoaded, st
 		}
 	}
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		setEventDefault(e)
 		file && dispatch(fetchUploadImage(file))
 	}
 
-	const handleDragEmpty = (e: React.DragEvent<HTMLLabelElement>) => {
+	const handleDragEmpty = (e: DragEvent<HTMLLabelElement>) => {
 		setEventDefault(e)
 	}
 
-	const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
+	const handleDrop = (e: DragEvent<HTMLLabelElement>) => {
 		setEventDefault(e)
 		if (e.dataTransfer.files.length) {
 			const file = e.dataTransfer.files[0]

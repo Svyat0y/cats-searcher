@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useSearchParams }            from 'react-router-dom'
-import { TBreedOption }               from '../../redux/Breeds/types'
+import { FC, useEffect, useState } from 'react'
+import { useSearchParams }         from 'react-router-dom'
+import { TBreedOption }            from '../../redux/Breeds/types'
 
 import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
@@ -22,7 +22,7 @@ const limitOptionsForGallery: TBreedOption[] = [
 	{ value: '100', label: 'Limit: 100' },
 ]
 
-const SortGallery: React.FC = () => {
+const SortGallery: FC = () => {
 	const dispatch = useAppDispatch()
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)

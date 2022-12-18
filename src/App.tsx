@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { FC, useEffect } from 'react'
 
 import { AppDispatch, useAppDispatch } from './redux/store'
 
@@ -9,7 +9,7 @@ import { Overlay }       from './components/Ui'
 import { DesktopLayout } from './components'
 
 
-const App: React.FC = () => {
+const App: FC = () => {
 	const dispatch: AppDispatch = useAppDispatch()
 
 	useEffect(() => {

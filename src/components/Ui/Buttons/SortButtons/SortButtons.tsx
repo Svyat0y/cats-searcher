@@ -1,11 +1,11 @@
-import React            from 'react'
+import { FC }           from 'react'
 import s                from './SortButtons.module.scss'
 import { TSortButtons } from './types'
 
 import { createParams } from '../../../../utils/createParams'
 
 
-const SortButtons: React.FC<TSortButtons> = ({ setSearchParams, status, filters, pageNumberForUI }) => {
+const SortButtons: FC<TSortButtons> = ({ setSearchParams, status, filters, pageNumberForUI }) => {
 	const newParams = (order: string) => createParams(filters.value, filters.limit, order, pageNumberForUI)
 
 	const oncClickAsk = () => {

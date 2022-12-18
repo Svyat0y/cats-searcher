@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { TFavoriteItem }              from './types'
+import { FC, useEffect, useState } from 'react'
+import { TFavoriteItem }           from './types'
 
 import { TData }              from '../../../redux/voting/types'
 import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
@@ -10,7 +10,7 @@ import emptyImage    from '../../../assets/images/common/noImg.svg'
 import heartBgRedImg from '../../../assets/images/common/heartBgRed.webp'
 
 
-const OnFavItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {
+const OnFavItem: FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 	const [ isFetching, setIsFetching ] = useState(false)
 
 	useEffect(() => {

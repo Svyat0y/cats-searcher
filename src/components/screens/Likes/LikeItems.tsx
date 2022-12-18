@@ -1,8 +1,8 @@
-import React          from 'react'
+import { FC }         from 'react'
 import { TLikeItems } from './types'
 
 
-const LikeItems: React.FC<TLikeItems> = ({ likeData }) => {
+const LikeItems: FC<TLikeItems> = ({ likeData }) => {
 
 	return (
 		<>

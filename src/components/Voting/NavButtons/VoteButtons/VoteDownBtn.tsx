@@ -1,4 +1,4 @@
-import React            from 'react'
+import { FC }           from 'react'
 import s                from '../NavButtons.module.scss'
 import { TVoteDownBtn } from './types'
 
@@ -7,7 +7,7 @@ import { TDataObj } from '../../../../redux/voting/types'
 import { SmallSpinner } from '../../../index'
 
 
-const VoteDownBtn: React.FC<TVoteDownBtn> = ({ onUnlike, imgObj, status, setBtnName, btnName }) => {
+const VoteDownBtn: FC<TVoteDownBtn> = ({ onUnlike, imgObj, status, setBtnName, btnName }) => {
 
 	const onClickBtn = (imgObj: TDataObj) => {
 		setBtnName('voteUnlike')

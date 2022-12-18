@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import s                              from './SearchPanel.module.scss'
-import qs                             from 'qs'
-import { useNavigate }                from 'react-router'
+import { FC, useEffect, useState, ChangeEvent, FormEvent } from 'react'
+import s                                                   from './SearchPanel.module.scss'
+import qs                                                  from 'qs'
+import { useNavigate }                                     from 'react-router'
 
 import { useSelector }                                  from 'react-redux'
 import { useAppDispatch }                               from '../../redux/store'
@@ -13,12 +13,12 @@ import SearchPanelButtons from './SearchPanelButtons'
 
 const createParams = (value: string | null) => qs.stringify({ q: value })
 
-const SearchPanel: React.FC = () => {
+const SearchPanel: FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const [ localValue, setLocalValue ] = useState<string | null>('')
 	const { searchValue, status } = useSelector(selectSearch)
-	const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => dispatch(setSearchValue(e.target.value))
+	const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => dispatch(setSearchValue(e.target.value))
 
 	useEffect(() => {
 		setLocalValue(searchValue)
@@ -33,7 +33,7 @@ const SearchPanel: React.FC = () => {
 		}
 	}
 
-	const onClick = (e: React.FormEvent<HTMLFormElement>) => {
+	const onClick = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (localValue !== searchValue) {
 			if (searchValue) {

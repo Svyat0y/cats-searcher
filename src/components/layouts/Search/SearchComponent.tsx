@@ -1,19 +1,19 @@
-import React, { useEffect }                            from 'react'
+import { FC, useEffect }                               from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
 import { useAppDispatch }                                                from '../../../redux/store'
+import { useSelector }                                                   from 'react-redux'
 import { setActiveBtn }                                                  from '../../../redux/voting/slice'
 import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../../redux/Search/slice'
 import { fetchSearchFromPanel }                                          from '../../../redux/Search/asyncActions'
+import { selectSearch }                                                  from '../../../redux/Search/selectors'
 
 import SearchLayout      from './SearchLayout'
 import { SearchedItems } from '../../index'
-import { useSelector }   from 'react-redux'
-import { selectSearch }  from '../../../redux/Search/selectors'
 
 
-const SearchComponent: React.FC = () => {
+const SearchComponent: FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()

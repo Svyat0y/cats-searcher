@@ -1,9 +1,9 @@
-import React           from 'react'
+import { FC }          from 'react'
 import s               from './BackButton.module.scss'
 import { useNavigate } from 'react-router'
 
 
-const BackButton: React.FC = () => {
+const BackButton: FC = () => {
 	const navigate = useNavigate()
 
 	return (

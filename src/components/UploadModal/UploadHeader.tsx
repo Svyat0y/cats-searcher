@@ -1,8 +1,8 @@
-import React from 'react'
-import s     from './UploadModal.module.scss'
+import { FC } from 'react'
+import s      from './UploadModal.module.scss'
 
 
-const UploadHeader: React.FC = () => {
+const UploadHeader: FC = () => {
 	return (
 		<div className={ s.header }>
 			<h5 className={ s.title }>

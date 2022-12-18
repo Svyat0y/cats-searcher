@@ -1,5 +1,5 @@
-import React from 'react'
-import s     from './MainNavCards.module.scss'
+import { FC } from 'react'
+import s      from './MainNavCards.module.scss'
 
 import { useSelector }  from 'react-redux'
 import { selectSearch } from '../../redux/Search/selectors'
@@ -11,7 +11,7 @@ import petBreedImg from '../../assets/images/main/pet-breeds.webp'
 import searchImg   from '../../assets/images/main/images-search.webp'
 
 
-const MainNavCards: React.FC = () => {
+const MainNavCards: FC = () => {
 	const { breedFilters: { value, limit, order, page }, galleryFilters } = useSelector(selectSearch)
 
 	const cards = [

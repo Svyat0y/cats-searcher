@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation }                from 'react-router-dom'
-import { TItem }                      from './types'
+import { FC, useEffect, useState } from 'react'
+import { useLocation }             from 'react-router-dom'
+import { TItem }                   from './types'
 
 import { fetchActionFavourite } from '../../../redux/voting/asyncActions'
 import { TSearchData }          from '../../../redux/Search/types'
@@ -11,7 +11,7 @@ import heartNoAdded from '../../../assets/images/common/heartBorderRed.webp'
 import heartAdded   from '../../../assets/images/common/heartBgRed.webp'
 
 
-const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status }) => {
+const Item: FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status }) => {
 	const [ isFetching, setIsFetching ] = useState(false)
 	const location = useLocation()
 	const locGallery = location.pathname.includes('gallery')

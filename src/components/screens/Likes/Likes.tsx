@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { TVotingItems }     from '../../Voting/types'
+import { FC, useEffect } from 'react'
+import { TVotingItems }  from '../../Voting/types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
 
@@ -9,7 +9,7 @@ import RenderItems                                 from '../../hoc/RenderItems'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
 
 
-const Likes: React.FC<TVotingItems> = (
+const Likes: FC<TVotingItems> = (
 	{
 		data,
 		page,

@@ -1,10 +1,10 @@
-import React      from 'react'
+import { FC }     from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { ContentBody, ContentHeader } from '../../index'
 
 
-const SearchLayout = () => {
+const SearchLayout: FC = () => {
 
 	return (
 		<ContentBody>

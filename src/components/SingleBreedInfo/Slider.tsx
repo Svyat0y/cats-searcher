@@ -1,4 +1,4 @@
-import React       from 'react'
+import { FC }      from 'react'
 import s           from './SingleBreedInfo.module.scss'
 import { TSlider } from './types'
 
@@ -11,7 +11,7 @@ import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper'
 import { Swiper, SwiperSlide }                               from 'swiper/react'
 
 
-const Slider: React.FC<TSlider> = ({ singleBreed }) => {
+const Slider: FC<TSlider> = ({ singleBreed }) => {
 	SwiperCore.use([ Pagination, EffectCoverflow, Autoplay ])
 
 	return (

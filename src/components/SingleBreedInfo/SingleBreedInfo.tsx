@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import s                    from './SingleBreedInfo.module.scss'
-import { useSearchParams }  from 'react-router-dom'
+import { FC, useEffect }   from 'react'
+import s                   from './SingleBreedInfo.module.scss'
+import { useSearchParams } from 'react-router-dom'
 
 import { useSelector }        from 'react-redux'
 import { useAppDispatch }     from '../../redux/store'
@@ -14,7 +14,7 @@ import SliderDesc                 from './SliderDesc'
 import { ContentHeader, Spinner } from '../index'
 
 
-const SingleBreedInfo: React.FC = () => {
+const SingleBreedInfo: FC = () => {
 	const dispatch = useAppDispatch()
 	const [ searchParams ] = useSearchParams()
 	const { singleBreed, status, activeBreedName } = useSelector(selectBreeds)
