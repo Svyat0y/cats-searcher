@@ -1,10 +1,8 @@
 import React             from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import ContentWrapperLayout                                  from './ContentWrapperLayout'
-import Gallery                                               from '../Gallery/Gallery'
-import { Breeds, Preview, SearchComponent, SingleBreedInfo } from '../../index'
-import Voting                                                from '../Voting/Voting'
+import ContentWrapperLayout                                                   from './ContentWrapperLayout'
+import { Breeds, Gallery, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../index'
 
 
 const ContentWrapper: React.FC = () => {

@@ -1,12 +1,11 @@
-import React           from 'react'
-import s               from './ContentWrapper.module.scss'
-import { SearchPanel } from '../../index'
+import React from 'react'
+import s     from './ContentWrapper.module.scss'
 
 import { Outlet, useLocation } from 'react-router-dom'
 import { useSelector }         from 'react-redux'
 import { uploadingSlice }      from '../../../redux/Upload/selectors'
 
-import UploadModal from '../../UploadModal/UploadModal'
+import { SearchPanel, UploadModal } from '../../index'
 
 
 const ContentWrapperLayout: React.FC = () => {

@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
-import s                    from '../Voting/Voting.module.scss'
-import { TVotingItems }     from '../Voting/types'
+import s                    from '../../Voting/Voting.module.scss'
+import { TVotingItems }     from '../../Voting/types'
 
-import { setActiveBtn } from '../../redux/voting/slice'
+import { setActiveBtn } from '../../../redux/voting/slice'
 
-import RenderItems       from '../hoc/RenderItems'
-import { VotingMessage } from '../Voting'
-import OnFavItem         from './OnFavItem'
-import Pagination        from '../shared/Pagination/Pagination'
-import SkeletonLoader    from '../shared/Skeleton/SkeletonLoader'
-import NoItemFound       from '../shared/NoItemFound/NoItemFound'
+import RenderItems                                 from '../../hoc/RenderItems'
+import { VotingMessage }                           from '../../Voting'
+import OnFavItem                                   from './OnFavItem'
+import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
 
 
 const Favourites: React.FC<TVotingItems> = (

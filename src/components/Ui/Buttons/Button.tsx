@@ -2,7 +2,7 @@ import React       from 'react'
 import s           from './Button.module.scss'
 import { TButton } from './types'
 
-import { SmallSpinner } from '../Spinner'
+import { SmallSpinner } from '../../index'
 
 
 const Button: React.FC<TButton> = ({ name, isActive, onclick, disabled, breadCrumbs, upload, modalUpload, status }) => {

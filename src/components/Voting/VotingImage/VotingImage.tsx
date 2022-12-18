@@ -5,8 +5,8 @@ import { TVotingImage }               from './types'
 import { fetchVoteImg } from '../../../redux/voting/asyncActions'
 import { setActiveBtn } from '../../../redux/voting/slice'
 
-import Spinner                       from '../../Ui/Spinner/Spinner'
 import { NavButtons, VotingMessage } from '../index'
+import { Spinner }                   from '../../index'
 
 
 const VotingImage: React.FC<TVotingImage> = (

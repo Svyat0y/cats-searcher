@@ -8,4 +8,3 @@ export { default as UploadBtnWr }     from './UploadBtn/UploadBtnWr'
 export { default as Overlay }         from './Overlay/Overlay'
 
 export { Button, BackButton, RefreshButton, SortButtons } from './Buttons'
-export { Spinner, SmallSpinner }                          from './Spinner'

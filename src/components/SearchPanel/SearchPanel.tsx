@@ -4,9 +4,9 @@ import qs                             from 'qs'
 import { useNavigate }                from 'react-router'
 
 import { useSelector }                                  from 'react-redux'
-import { useAppDispatch }                               from '../../../redux/store'
-import { setFilters, setIsLoadingData, setSearchValue } from '../../../redux/Search/slice'
-import { selectSearch }                                 from '../../../redux/Search/selectors'
+import { useAppDispatch }                               from '../../redux/store'
+import { setFilters, setIsLoadingData, setSearchValue } from '../../redux/Search/slice'
+import { selectSearch }                                 from '../../redux/Search/selectors'
 
 import SearchPanelButtons from './SearchPanelButtons'
 

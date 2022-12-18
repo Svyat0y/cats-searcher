@@ -9,10 +9,9 @@ import { setActiveBtn }       from '../../redux/voting/slice'
 import { setActiveBreedName } from '../../redux/Breeds/slice'
 import { fetchSingleBreed }   from '../../redux/Breeds/asyncActions'
 
-import Slider        from './Slider'
-import SliderDesc    from './SliderDesc'
-import ContentHeader from '../shared/ContentHeader/ContentHeader'
-import { Spinner }   from '../Ui'
+import Slider                     from './Slider'
+import SliderDesc                 from './SliderDesc'
+import { ContentHeader, Spinner } from '../index'
 
 
 const SingleBreedInfo: React.FC = () => {

@@ -1,11 +1,11 @@
 import React                 from 'react'
-import s                     from './FileUploader/FileUploader.module.scss'
-import { TUploadFormFooter } from './types'
+import s                     from './FileUploader.module.scss'
+import { TUploadFormFooter } from '../types'
 
-import { Button } from '../Ui'
+import { Button } from '../../Ui'
 
-import loadedImg   from '../../assets/images/common/loadedOk.webp'
-import NoLoadedImg from '../../assets/images/common/loadedNo.webp'
+import loadedImg   from '../../../assets/images/common/loadedOk.webp'
+import NoLoadedImg from '../../../assets/images/common/loadedNo.webp'
 
 
 const UploadFormFooter: React.FC<TUploadFormFooter> = ({ file, message, isLoaded, status }) => {

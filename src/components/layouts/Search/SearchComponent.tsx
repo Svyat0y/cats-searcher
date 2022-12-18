@@ -2,15 +2,15 @@ import React, { useEffect }                            from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
-import { useAppDispatch }                                                from '../../redux/store'
-import { setActiveBtn }                                                  from '../../redux/voting/slice'
-import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../redux/Search/slice'
-import { fetchSearchFromPanel }                                          from '../../redux/Search/asyncActions'
+import { useAppDispatch }                                                from '../../../redux/store'
+import { setActiveBtn }                                                  from '../../../redux/voting/slice'
+import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../../redux/Search/slice'
+import { fetchSearchFromPanel }                                          from '../../../redux/Search/asyncActions'
 
-import SearchLayout      from '../layouts/Search/SearchLayout'
-import { SearchedItems } from '../../components'
+import SearchLayout      from './SearchLayout'
+import { SearchedItems } from '../../index'
 import { useSelector }   from 'react-redux'
-import { selectSearch }  from '../../redux/Search/selectors'
+import { selectSearch }  from '../../../redux/Search/selectors'
 
 
 const SearchComponent: React.FC = () => {

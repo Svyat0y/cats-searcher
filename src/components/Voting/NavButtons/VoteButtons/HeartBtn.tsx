@@ -4,7 +4,7 @@ import { THeartBtn } from './types'
 
 import { TDataObj } from '../../../../redux/voting/types'
 
-import { SmallSpinner } from '../../../Ui'
+import { SmallSpinner } from '../../../index'
 
 import heartTWhiteImg      from '../../../../assets/images/voting/heartWhite.webp'
 import heartTransparentImg from '../../../../assets/images/voting/heartTransparent.webp'

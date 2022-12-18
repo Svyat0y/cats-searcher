@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { TFavoriteItem }              from './types'
 
-import { TData }              from '../../redux/voting/types'
-import { fetchDeleteFromFav } from '../../redux/voting/asyncActions'
+import { TData }              from '../../../redux/voting/types'
+import { fetchDeleteFromFav } from '../../../redux/voting/asyncActions'
 
-import emptyImage    from '../../assets/images/common/noImg.svg'
-import heartBgRedImg from '../../assets/images/common/heartBgRed.webp'
+import { SmallSpinner } from '../../index'
 
-import { SmallSpinner } from '../Ui'
+import emptyImage    from '../../../assets/images/common/noImg.svg'
+import heartBgRedImg from '../../../assets/images/common/heartBgRed.webp'
 
 
 const OnFavItem: React.FC<TFavoriteItem> = ({ el, status, dispatch }) => {

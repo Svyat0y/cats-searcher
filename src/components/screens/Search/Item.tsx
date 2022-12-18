@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useLocation }                from 'react-router-dom'
 import { TItem }                      from './types'
 
-import { fetchActionFavourite } from '../../redux/voting/asyncActions'
-import { TSearchData }          from '../../redux/Search/types'
+import { fetchActionFavourite } from '../../../redux/voting/asyncActions'
+import { TSearchData }          from '../../../redux/Search/types'
 
-import { SmallSpinner } from '../Ui'
+import { SmallSpinner } from '../../index'
 
-import heartNoAdded from '../../assets/images/common/heartBorderRed.webp'
-import heartAdded   from '../../assets/images/common/heartBgRed.webp'
+import heartNoAdded from '../../../assets/images/common/heartBorderRed.webp'
+import heartAdded   from '../../../assets/images/common/heartBgRed.webp'
 
 
 const Item: React.FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status }) => {

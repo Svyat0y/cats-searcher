@@ -1,20 +1,11 @@
 import React, { useEffect, useState }   from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import { TVotingItems }                 from '../Voting/types'
-import { TData, TInfoInfoMessage }      from '../../redux/voting/types'
+import { TRenderItems }                 from './types'
 
-import { AppDispatch }                       from '../../redux/store'
 import { setFavPage, setLikePage }           from '../../redux/voting/slice'
 import { fetchGetFavourites, fetchGetLikes } from '../../redux/voting/asyncActions'
 
-
-type TRenderItems = {
-	dispatch: AppDispatch
-	data: TData[] | null
-	page: number
-	status?: string
-	infoMessage?: TInfoInfoMessage[]
-}
 
 const RenderItems = (Component: React.FC<TVotingItems>) => ({ dispatch, data, page, status, infoMessage }: TRenderItems) => {
 	const location = useLocation()

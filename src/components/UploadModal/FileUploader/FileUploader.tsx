@@ -5,7 +5,7 @@ import { TFileUploader }              from '../types'
 import { fetchUploadImage } from '../../../redux/Upload/asyncActions'
 import { setMessage }       from '../../../redux/Upload/slice'
 
-import UploadFormFooter    from '../UploadFormFooter'
+import UploadFormFooter    from './UploadFormFooter'
 import { CustomInputFile } from '../../Ui'
 
 
