@@ -5,6 +5,8 @@ import Select           from 'react-select'
 import { createParams } from '../../../utils/createParams'
 import { TOption }      from '../../../redux/Search/types'
 
+import SelectContainer from '../SelectContainer/SelectContainer'
+
 
 const OrderOptions: TOrderOption[] = [
 	{ value: 'random', label: 'Random' },
@@ -20,15 +22,14 @@ const OrderSelect: FC<TOrderSelect> = ({ setSearchParams, filters, pageNumberFor
 	}
 
 	return (
-		<div className='selectContainer'>
-			{ filters.type && <span className='label'>Order</span> }
+		<SelectContainer filters={ filters } label={ 'Order' }>
 			<Select
 				classNamePrefix='select'
 				value={ getValue() }
 				options={ OrderOptions }
 				onChange={ onChangeOrder }
 			/>
-		</div>
+		</SelectContainer>
 	)
 }
 

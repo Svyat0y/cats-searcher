@@ -8,6 +8,7 @@ import { createParams }       from '../../../utils/createParams'
 import Select                 from 'react-select'
 
 import { RefreshButton } from '../index'
+import SelectContainer   from '../SelectContainer/SelectContainer'
 
 
 const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options }) => {
@@ -23,8 +24,7 @@ const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pag
 	}
 
 	return (
-		<div className='selectContainer withRefreshBtn'>
-			{ filters.type && <span className='label'>Limit</span> }
+		<SelectContainer filters={ filters } label={ 'Limit' } limit>
 			<Select
 				className='container-select'
 				value={ getValue() }
@@ -34,7 +34,7 @@ const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pag
 				onChange={ onChangeLimit }
 			/>
 			{ filters.type && <RefreshButton onclick={ clickOnRefreshBtn }/> }
-		</div>
+		</SelectContainer>
 	)
 }
 

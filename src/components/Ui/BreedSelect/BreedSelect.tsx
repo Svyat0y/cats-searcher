@@ -3,12 +3,13 @@ import { TBreedSelect } from './types'
 
 import Select from 'react-select'
 
+import SelectContainer from '../SelectContainer/SelectContainer'
+
 
 const BreedSelect: FC<TBreedSelect> = memo(({ getValue, options, status, filters, onChangeOption }) => {
 
 	return (
-		<div className='selectContainer'>
-			{ filters.type && <span className='label'>Breed</span> }
+		<SelectContainer filters={ filters } label={ 'Breed' }>
 			<Select
 				classNamePrefix='select'
 				placeholder='Select breed'
@@ -17,7 +18,7 @@ const BreedSelect: FC<TBreedSelect> = memo(({ getValue, options, status, filters
 				isLoading={ status === 'pending' }
 				onChange={ onChangeOption }
 			/>
-		</div>
+		</SelectContainer>
 	)
 })
 

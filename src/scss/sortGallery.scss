@@ -11,8 +11,8 @@
 
   &__left, &__right {
     width: 100%;
-    height: 92%;
-    @include flex(space-between, null, column);
+    @include flex(flex-start, null, column);
+    gap: 24px;
   }
 
   .select {
@@ -25,25 +25,5 @@
       background: var(--bg_white-grey) !important;
     }
 
-  }
-
-  .label {
-    position: absolute;
-    top: -22px;
-    left: 20px;
-    font-size: 10px;
-    text-transform: uppercase;
-  }
-
-  .selectContainer {
-    flex-grow: 0 !important;
-  }
-}
-
-.withRefreshBtn {
-  @include flex(space-between, center);
-
-  .container-select {
-    flex-grow: 1 !important;
   }
 }
