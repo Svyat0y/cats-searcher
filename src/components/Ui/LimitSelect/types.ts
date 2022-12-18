@@ -9,4 +9,5 @@ export type TLimitSelect = {
 	filters: TFilters
 	pageNumberForUI: number
 	options: TBreedOption[]
+	status?: string
 }

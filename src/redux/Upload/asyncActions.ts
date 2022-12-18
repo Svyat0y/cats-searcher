@@ -17,7 +17,6 @@ export const fetchUploadImage = createAsyncThunk<void, File | null, { state: Roo
 					'content-type': 'multipart/form-data'
 				}
 			})
-			console.log(data)
 			if (data.approved === 1) {
 				dispatch(setIsLoaded(true))
 				dispatch(setMessage('Thanks for the Upload - Cat found!'))

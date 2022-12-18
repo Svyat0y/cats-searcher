@@ -11,7 +11,7 @@ import { RefreshButton } from '../index'
 import SelectContainer   from '../SelectContainer/SelectContainer'
 
 
-const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options }) => {
+const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options, status }) => {
 	const getValue = () => options.find(option => option.value === filters.limit)
 
 	const onChangeLimit = (e: TOption) => {
@@ -33,7 +33,7 @@ const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pag
 				defaultValue={ options[0] }
 				onChange={ onChangeLimit }
 			/>
-			{ filters.type && <RefreshButton onclick={ clickOnRefreshBtn }/> }
+			{ filters.type && <RefreshButton status={ status } onclick={ clickOnRefreshBtn }/> }
 		</SelectContainer>
 	)
 }

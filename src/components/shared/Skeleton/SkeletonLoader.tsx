@@ -1,4 +1,5 @@
 import { FC }              from 'react'
+import s                   from './Skeleton.module.scss'
 import Skeleton            from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { TSkeletonLoader } from './types'
@@ -20,7 +21,7 @@ const SkeletonLoader: FC<TSkeletonLoader> = ({ count }) => {
 						borderRadius={ 20 }
 						baseColor={ light ? '#F8F8F7' : '#343434' }
 						highlightColor={ light ? '#E8E8E7' : '#404040' }
-						className='skeleton'/>
+						className={ s.skeleton }/>
 				</div>
 			)) }
 		</div>

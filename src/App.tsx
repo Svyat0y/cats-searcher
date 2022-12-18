@@ -29,5 +29,5 @@ const App: FC = () => {
 
 export default App
 
-// refactoring the whole project structure
-// refactoring the whole project styles
+// refactoring  code
+// catch errors
