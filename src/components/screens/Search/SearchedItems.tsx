@@ -8,8 +8,8 @@ import { setToSearchData }  from '../../../redux/Search/slice'
 import { fetchSingleBreed } from '../../../redux/Breeds/asyncActions'
 import { TSearchData }      from '../../../redux/Search/types'
 
-import Item                           from './Item'
-import { Pagination, SkeletonLoader } from '../../index'
+import Item                                        from './Item'
+import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
 
 
 const SearchedItems: FC<TSearchedItems> = (
@@ -67,7 +67,7 @@ const SearchedItems: FC<TSearchedItems> = (
 
 	return (
 		<>
-			{ emptyData && loaded && <div className='noItemFound'>Nothing found.</div> }
+			{ emptyData && loaded && <NoItemFound/> }
 			<div className='items'>
 				{
 					data?.map((el: TSearchData) => {

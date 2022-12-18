@@ -3,8 +3,8 @@ import { TDislikes }               from './types'
 
 import { setActiveBtn } from '../../../redux/voting/slice'
 
-import DislikeItems       from './DislikeItems'
-import { SkeletonLoader } from '../../index'
+import DislikeItems                    from './DislikeItems'
+import { NoItemFound, SkeletonLoader } from '../../index'
 
 
 const Dislikes: FC<TDislikes> = ({ unlikeData, dispatch }) => {
@@ -26,7 +26,7 @@ const Dislikes: FC<TDislikes> = ({ unlikeData, dispatch }) => {
 
 	return (
 		<>
-			{ noItemsBoolean ? <div className='noItemFound'><span>No item found.</span></div> : '' }
+			{ noItemsBoolean ? <NoItemFound/> : '' }
 			<DislikeItems data={ unlikeData }/>
 		</>
 	)

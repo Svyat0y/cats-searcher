@@ -6,7 +6,7 @@ import { MutatingDots } from 'react-loader-spinner'
 const Spinner: FC = () => {
 
 	return (
-		<div className={ s.wrapper }>
+		<div className={ s.large }>
 			<MutatingDots
 				height='100'
 				width='100'

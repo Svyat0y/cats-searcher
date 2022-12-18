@@ -1,0 +1,16 @@
+@import "src/scss/variables";
+
+.wrapper {
+  width: 300px;
+  margin: 20px auto 0 auto;
+  @include flex(space-between, center);
+
+
+  .next {
+    text-align: right;
+  }
+
+  .prev {
+    text-align: left;
+  }
+}

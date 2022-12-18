@@ -1,0 +1,15 @@
+@import "src/scss/variables";
+
+.wrapper {
+  width: 100%;
+  height: auto;
+  background: var(--bg_color);
+  color: $main_color;
+  padding: 18px 20px;
+  border-radius: 10px;
+  margin-bottom: -20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
