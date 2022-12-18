@@ -5,10 +5,10 @@ import { TRefreshButton } from './types'
 import refreshImg from '../../../../assets/images/gallery/refreshImg.webp'
 
 
-const RefreshButton: FC<TRefreshButton> = ({ onclick }) => {
+const RefreshButton: FC<TRefreshButton> = ({ onclick, status }) => {
 
 	return (
-		<button onClick={ onclick } className={ s.refreshBtn }>
+		<button disabled={ status === 'pending' } onClick={ onclick } className={ s.refreshBtn }>
 			<img src={ refreshImg } alt=''/>
 		</button>
 	)
