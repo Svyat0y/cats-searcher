@@ -1,0 +1,25 @@
+@import "src/scss/variables";
+
+.wrapper {
+  width: 100%;
+  height: 156px;
+  @include flex(space-between, center);
+  background: var(--bg_grey-white_white-rgba);
+  border-radius: 20px;
+  padding: 24px 26px 20px 26px;
+  margin-bottom: 20px;
+
+  .left, .right {
+    width: 100%;
+    @include flex(flex-start, null, column);
+    gap: 24px;
+  }
+
+  :global(.select__control) {
+    background: var(--bg_white-grey) !important;
+  }
+
+  :global(.select__menu-list) {
+    background: var(--bg_white-grey) !important;
+  }
+}

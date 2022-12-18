@@ -38,7 +38,7 @@ const SingleBreedInfo: FC = () => {
 
 	return (
 		<>
-			<div className={ s.breed }>
+			<div className={ s.wrapper }>
 				<ContentHeader/>
 				{
 					singleBreed.length > 0 && status === 'success'

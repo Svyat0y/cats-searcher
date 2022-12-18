@@ -14,7 +14,7 @@
     height: 24px;
     border-radius: 50px;
     @include flex(center, center);
-    transition: all .2s ease;
+    @include transition();
   }
 
   .switcher {
@@ -44,14 +44,14 @@
       right: 0;
       top: 4px;
       transform: translateX(-5px);
-      transition: all .2s ease;
+      @include transition();
       cursor: pointer;
       z-index: 5;
     }
 
     input:checked + label::after {
       transform: translateX(-24px);
-      transition: all .2s ease;
+      @include transition();
     }
   }
 }

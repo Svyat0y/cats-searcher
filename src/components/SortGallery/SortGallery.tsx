@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react'
+import s                           from './SortGallery.module.scss'
 import { useSearchParams }         from 'react-router-dom'
 import { TBreedOption }            from '../../redux/Breeds/types'
 
@@ -50,8 +51,8 @@ const SortGallery: FC = () => {
 
 
 	return (
-		<div className='sortGallery_wr'>
-			<div className='sortGallery_wr__left'>
+		<div className={ s.wrapper }>
+			<div className={ s.left }>
 				<OrderSelect { ...props }/>
 				<BreedSelect
 					options={ breedsList }
@@ -60,7 +61,7 @@ const SortGallery: FC = () => {
 					{ ...props }
 				/>
 			</div>
-			<div className='sortGallery_wr__right'>
+			<div className={ s.right }>
 				<TypeSelect { ...props }/>
 				<LimitSelect options={ limitOptionsForGallery } { ...props }/>
 			</div>

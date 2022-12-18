@@ -12,13 +12,13 @@
   z-index: -10;
   @include flex(null, center, column);
   opacity: 0;
-  transition: all .3s ease;
+  @include transition();
   transform: translateY(-100px);
 
   &.aminShow {
     z-index: 100;
     opacity: 1;
-    transition: all .3s ease;
+    @include transition();
     transform: translateX(0);
   }
 

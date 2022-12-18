@@ -8,7 +8,7 @@ import { Puff } from 'react-loader-spinner'
 const SmallSpinner: FC<TSmallSpinner> = ({ height, width, color }) => {
 
 	return (
-		<div className={ s.wrapper__small }>
+		<div className={ s.small }>
 			<Puff
 				height={ height }
 				width={ width }

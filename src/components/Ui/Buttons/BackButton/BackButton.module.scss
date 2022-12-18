@@ -1,17 +1,17 @@
 @import "../../../../scss/variables";
 
-.back_btn {
+.backBtn {
   background: var(--bg_input_search);
   min-width: 40px;
   height: 40px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: all .3s ease;
+  @include transition();
 
   svg {
     fill: #FF868E;
-    transition: .3s ease all;
+    @include transition();
   }
 
   &:hover {

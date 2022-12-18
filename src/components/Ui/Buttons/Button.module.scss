@@ -13,7 +13,7 @@
   letter-spacing: 2px;
   cursor: pointer;
   @include flex(null, center);
-  transition: all .3s ease;
+  @include transition();
 
   &:hover {
     background: #FF868E;
@@ -65,7 +65,7 @@
       top: 0;
       right: 0;
       background: url("../../../assets/images/gallery/upload.svg");
-      transition: all .3s ease;
+      @include transition();
     }
   }
 

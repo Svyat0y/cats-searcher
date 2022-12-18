@@ -16,7 +16,7 @@ const Slider: FC<TSlider> = ({ singleBreed }) => {
 
 	return (
 		<Swiper
-			className={ s.breed__main_slider }
+			className={ s.mainSlider }
 			pagination={ { clickable: true } }
 			effect='coverflow'
 			coverflowEffect={ { rotate: 100, slideShadows: false } }
@@ -25,7 +25,7 @@ const Slider: FC<TSlider> = ({ singleBreed }) => {
 			autoplay={ { delay: 5000, disableOnInteraction: false } }>
 			{
 				singleBreed.map((sliderEl: TSingleBreed) => (
-					<SwiperSlide tag='li' className={ s.breed__img_wr } key={ sliderEl.image }>
+					<SwiperSlide tag='li' className={ s.imgWrapper } key={ sliderEl.image }>
 						<img src={ sliderEl.image } alt=''/>
 					</SwiperSlide>
 				))

@@ -1,6 +1,6 @@
 @import "src/scss/variables";
 
-.breed {
+.wrapper {
   padding: 20px;
   background: var(--bg_white-grey);
   border-radius: 20px;
@@ -13,7 +13,7 @@
     height: 0;
   }
 
-  &__main_slider {
+  .mainSlider {
     width: 100%;
     @include flex(center, center);
 
@@ -39,7 +39,7 @@
     }
   }
 
-  &__img_wr {
+  .imgWrapper {
     width: 100px;
     min-height: 360px;
     border-radius: 20px;
@@ -53,7 +53,7 @@
     }
   }
 
-  &__feature_wr {
+  .featureWrapper {
     border: 2px solid var(--bg_input_search);
     border-radius: 20px;
     padding: 26px 60px;
@@ -62,7 +62,7 @@
     @include flex(null, null, column);
   }
 
-  &__title {
+  .title {
     align-self: center;
     top: -31px;
     position: absolute;
@@ -74,25 +74,25 @@
     color: var(--title_color);
   }
 
-  &__subTitle {
+  .subTitle {
     font-weight: 400;
     text-align: center;
     margin: 10px 0 20px;
   }
 
-  &__desc_wr {
+  .descWrapper {
     width: 100%;
     @include flex(space-between, flex-start);
   }
 
-  &__left, &__right {
+  .left, .right {
     display: inline-block;
     min-width: 260px;
     max-width: 260px;
     padding: 10px;
   }
 
-  &__desc__span {
+  .descHighlight {
     color: var(--title_color);
     font-weight: 500;
   }

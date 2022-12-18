@@ -5,6 +5,8 @@ import Select           from 'react-select'
 import { createParams } from '../../../utils/createParams'
 import { TOption }      from '../../../redux/Search/types'
 
+import SelectContainer from '../SelectContainer/SelectContainer'
+
 
 const TypesOptions: TTypeOption[] = [
 	{ value: 'all', label: 'All' },
@@ -20,15 +22,14 @@ const TypeSelect: FC<TTypeSelect> = ({ setSearchParams, filters, pageNumberForUI
 	}
 
 	return (
-		<div className='selectContainer'>
-			{ filters.type && <span className='label'>Type</span> }
+		<SelectContainer filters={ filters } label={ 'Type' }>
 			<Select
 				classNamePrefix='select'
 				value={ getValue() }
 				options={ TypesOptions }
 				onChange={ onChangeType }
 			/>
-		</div>
+		</SelectContainer>
 	)
 }
 

@@ -1,0 +1,22 @@
+@import "src/scss/variables";
+
+.wrapper {
+  flex-grow: 1 !important;
+  position: relative;
+
+  .label {
+    position: absolute;
+    top: -22px;
+    left: 20px;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+}
+
+.withRefreshBtn {
+  @include flex(space-between, flex-start);
+
+  :global(.container-select) {
+    flex-grow: 1 !important;
+  }
+}
