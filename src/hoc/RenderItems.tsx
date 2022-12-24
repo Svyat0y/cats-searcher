@@ -1,15 +1,16 @@
 import { FC, useEffect, useState }      from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
-import { TVotingItems }                 from '../Voting/types'
+import { TVotingItems }                 from '../components/Voting/types'
 import { TRenderItems }                 from './types'
 
-import { setFavPage, setLikePage }           from '../../redux/voting/slice'
-import { fetchGetFavourites, fetchGetLikes } from '../../redux/voting/asyncActions'
+import { setFavPage, setLikePage }           from '../redux/voting/slice'
+import { fetchGetFavourites, fetchGetLikes } from '../redux/voting/asyncActions'
 
 
-const RenderItems = (Component: FC<TVotingItems>) => ({ dispatch, data, page, status, infoMessage }: TRenderItems) => {
+const RenderItems = (Component: FC<TVotingItems>) => (
+	{ dispatch, data, page, status, infoMessage }: TRenderItems) => {
 	const location = useLocation()
-	const [ isLoading, setIsLoading ] = useState(false)
+	const [ isLoading, setIsLoading ] = useState(true)
 	const [ isMounted, setIsMounted ] = useState(false)
 	const [ searchParams, setSearchParams ] = useSearchParams()
 

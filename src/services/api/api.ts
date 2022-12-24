@@ -10,3 +10,15 @@ export const instance = axios.create({
 		'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
 	}
 })
+
+instance.interceptors.response.use(response => {
+	return response
+}, error => {
+	if (error.response.status.toString()[0] === '4' || error.response.status.toString()[0] === '5') {
+		console.log('ОШИБКА ВЫЛЕТЕЛА', error)
+		return Promise.reject(error)
+	}
+	else{
+		throw error
+	}
+})

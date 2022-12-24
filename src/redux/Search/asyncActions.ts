@@ -61,7 +61,7 @@ const getType = (type: string) => {
 
 export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchGallerySearch',
-	async (params, { dispatch, getState }) => {
+	async (_, { dispatch, getState }) => {
 		const { galleryFilters: { value, limit, order, page, type } } = getState().searchingSlice
 		const currentType = getType(type)
 		const query = `limit=${ limit }&mime_types=${ currentType }&order=${ order }&size=small&page=${ page }`
@@ -85,7 +85,7 @@ export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootStat
 
 export const fetchSearchFromPanel = createAsyncThunk<void, void, { state: RootState }>(
 	'fetchSearchFromPanel',
-	async (params, { dispatch, getState }) => {
+	async (_, { dispatch, getState }) => {
 		const { breedFilters: { value } } = getState().searchingSlice
 
 		try {

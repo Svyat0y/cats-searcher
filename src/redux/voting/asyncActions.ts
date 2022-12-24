@@ -146,7 +146,7 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 
 export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetLikes',
-	async (page, { dispatch, getState }) => {
+	async (_, { dispatch, getState }) => {
 		const { userId, likePage } = getState().votingSlice
 
 		try {

@@ -2,12 +2,12 @@ import { FC, useEffect }   from 'react'
 import s                   from './SingleBreedInfo.module.scss'
 import { useSearchParams } from 'react-router-dom'
 
-import { useSelector }        from 'react-redux'
-import { useAppDispatch }     from '../../redux/store'
-import { selectBreeds }       from '../../redux/Breeds/selectors'
-import { setActiveBtn }       from '../../redux/voting/slice'
-import { setActiveBreedName } from '../../redux/Breeds/slice'
-import { fetchSingleBreed }   from '../../redux/Breeds/asyncActions'
+import { useSelector }                        from 'react-redux'
+import { useAppDispatch }                     from '../../redux/store'
+import { selectBreeds }                       from '../../redux/Breeds/selectors'
+import { setActiveBtn }                       from '../../redux/voting/slice'
+import { setActiveBreedName, setSingleBreed } from '../../redux/Breeds/slice'
+import { fetchSingleBreed }                   from '../../redux/Breeds/asyncActions'
 
 import Slider                     from './Slider'
 import SliderDesc                 from './SliderDesc'
@@ -34,6 +34,9 @@ const SingleBreedInfo: FC = () => {
 			}
 		}
 
+		return () => {
+			dispatch(setSingleBreed([]))
+		}
 	}, [])
 
 	return (

@@ -32,14 +32,14 @@ const VotingImage: FC<TVotingImage> = (
 
 	return (
 		<>
-			<div className={ s.content__img_wr }>
+			<div className={ s.imgWrapper }>
 				{ isLoading ? <Spinner/> : <img src={ voteData?.url } alt=''/> }
 				<NavButtons
 					imgObj={ voteData }
 					onFavourites={ onFavourites }
 					status={ status }/>
 			</div>
-			<div className={ s.content__messages }>
+			<div className={ s.messages }>
 				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
 			</div>
 		</>

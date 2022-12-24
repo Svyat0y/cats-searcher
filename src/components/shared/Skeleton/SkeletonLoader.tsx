@@ -15,7 +15,7 @@ const SkeletonLoader: FC<TSkeletonLoader> = ({ count }) => {
 	return (
 		<div className='items'>
 			{ Array(count).fill('').map((_, i) => (
-				<div key={ i } className='itemsImg_wr unHoverClass'>
+				<div key={ i } className='items__imgWrapper unHoverClass'>
 					<Skeleton
 						duration={ 1.4 }
 						borderRadius={ 20 }

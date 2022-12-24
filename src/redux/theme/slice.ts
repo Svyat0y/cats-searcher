@@ -3,7 +3,7 @@ import { ITheme, IThemeSlice }        from './types'
 
 
 const initialState: IThemeSlice = {
-	theme: 'light'
+	theme: 'dark'
 }
 
 export const themeSlice = createSlice({

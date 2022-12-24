@@ -27,7 +27,7 @@ const NavButtons: FC<TNavButtons> = ({ imgObj, onFavourites, status }) => {
 	}
 
 	return (
-		<div className={ s.voting__nav_buttons }>
+		<div className={ s.navButtons }>
 			<VoteUpBtn onLike={ onLike } { ...props }/>
 			<HeartBtn onFavourite={ onFavourite } onFavourites={ onFavourites } { ...props }/>
 			<VoteDownBtn onUnlike={ onUnlike } { ...props }/>

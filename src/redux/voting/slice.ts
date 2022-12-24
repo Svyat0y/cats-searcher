@@ -23,16 +23,16 @@ export const votingSlice = createSlice({
 	name: 'voting',
 	initialState,
 	reducers: {
-		setToLike: (state, action: PayloadAction<TData[]>) => {
+		setToLike: (state, action: PayloadAction<TData[] | null>) => {
 			state.likeData = action.payload
 		},
-		setToUnlike: (state, action: PayloadAction<TDataObj>) => {
+		setToUnlike: (state, action: PayloadAction<TDataObj | null>) => {
 			state.unlikeData = [ ...state.unlikeData, action.payload ]
 		},
 		setToFavourites: (state, action: PayloadAction<TDataObj>) => {
 			state.onFavourites = [ ...state.onFavourites, action.payload ]
 		},
-		setToFavoritesData: (state, action: PayloadAction<TData[]>) => {
+		setToFavoritesData: (state, action: PayloadAction<TData[] | null>) => {
 			state.favoritesData = action.payload
 		},
 		deleteFavouritesItem: (state, action: PayloadAction<string | undefined>) => {

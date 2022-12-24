@@ -1,6 +1,6 @@
 @import "src/scss/variables";
 
-.voting__nav_buttons {
+.navButtons {
   position: absolute;
   @include flex(flex-start, center);
   bottom: -40px;
@@ -11,7 +11,7 @@
   border: 4px solid var(--bg_white-grey);
   background: white;
 
-  .nav_button_wr {
+  .navButtonWrapper {
     @include flex(center, center);
     width: 100%;
     height: 100%;
@@ -36,11 +36,11 @@
       fill: white;
     }
 
-    &.like_bg {
+    &.likeBg {
       background: #97EAB9;
     }
 
-    &.heart_bg {
+    &.heartBg {
       background: #FF868E;
 
       img {
@@ -54,7 +54,7 @@
       }
     }
 
-    &.unlike_bg {
+    &.unlikeBg {
       background: #FFD280;
     }
   }

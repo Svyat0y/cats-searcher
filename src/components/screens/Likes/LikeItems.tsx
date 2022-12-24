@@ -9,7 +9,7 @@ const LikeItems: FC<TLikeItems> = ({ likeData }) => {
 			<div className='items'>
 				{ likeData?.map((el) => {
 					return (
-						<div className='itemsImg_wr unHoverClass' key={ el?.id }>
+						<div className='items__imgWrapper unHoverClass' key={ el?.id }>
 							<img src={ el?.image.url } alt='image'/>
 						</div>
 					)

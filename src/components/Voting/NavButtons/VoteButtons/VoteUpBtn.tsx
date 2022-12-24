@@ -17,7 +17,7 @@ const VoteUpBtn: FC<TVoteUpBtn> = ({ onLike, imgObj, status, setBtnName, btnName
 		<button
 			disabled={ status === 'pending' }
 			onClick={ () => onClickBtn(imgObj) }
-			className={ `${ s.nav_button_wr } ${ s.like_bg }` }>
+			className={ `${ s.navButtonWrapper } ${ s.likeBg }` }>
 			{
 				status === 'pending' && btnName === 'voteUp'
 					? <SmallSpinner height={ 20 } width={ 20 } color='#FFFFFF'/>

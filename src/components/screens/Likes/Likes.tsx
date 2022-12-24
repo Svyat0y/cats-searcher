@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react'
 import { TVotingItems }  from '../../Voting/types'
 
-import { setActiveBtn } from '../../../redux/voting/slice'
+import { setActiveBtn, setToLike } from '../../../redux/voting/slice'
 
 import LikeItems from './LikeItems'
 
-import RenderItems                                 from '../../hoc/RenderItems'
+import RenderItems                                 from '../../../hoc/RenderItems'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
 
 
@@ -19,11 +19,15 @@ const Likes: FC<TVotingItems> = (
 		onClickPrev,
 		isLoading,
 		noItemsBoolean,
-		dispatch
+		dispatch,
 	}) => {
 
 	useEffect(() => {
 		dispatch(setActiveBtn('likes'))
+
+		return () => {
+			dispatch(setToLike(null))
+		}
 	}, [])
 
 	const renderPagination = () => (

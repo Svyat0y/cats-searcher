@@ -24,7 +24,7 @@ const HeartBtn: FC<THeartBtn> = ({ onFavourite, imgObj, status, onFavourites, se
 		<button
 			disabled={ status === 'pending' }
 			onClick={ () => onClickBtn(imgObj) }
-			className={ `${ s.nav_button_wr } ${ s.heart_bg }` }>
+			className={ `${ s.navButtonWrapper } ${ s.heartBg }` }>
 			{
 				status === 'pending' && btnName === 'voteFavourite'
 					? <SmallSpinner height={ 20 } width={ 20 } color='#FFFFFF'/>

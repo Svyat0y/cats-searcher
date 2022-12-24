@@ -75,8 +75,7 @@
   }
 
   .icons {
-    display: flex;
-    justify-content: flex-end;
+    @include flex(null, flex-end);
 
     .iconWrapper {
       width: 60px;
