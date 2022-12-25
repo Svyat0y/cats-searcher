@@ -1,6 +1,4 @@
-import axios                from 'axios'
-import { setIsErrorBreeds } from '../../redux/Breeds/slice'
-import { useAppDispatch }   from '../../redux/store'
+import axios from 'axios'
 
 
 export const instance = axios.create({
@@ -12,18 +10,3 @@ export const instance = axios.create({
 		'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
 	}
 })
-
-
-/*
-instance.interceptors.response.use(response => {
-	return response
-}, error => {
-	if (error.response.status.toString()[0] === '4' || error.response.status.toString()[0] === '5') {
-		useAppDispatch()(setIsErrorBreeds(true))
-		return Promise.reject(error)
-	}
-	else{
-		throw error
-	}
-})
-*/
