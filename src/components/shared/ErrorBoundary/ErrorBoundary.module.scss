@@ -1,0 +1,28 @@
+@import "src/scss/variables";
+
+.wrapper {
+  width: 100%;
+  @include flex(center, center, column);
+
+  .imgWrapper {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin: 20px 0 30px 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+
+  .title, .subTitle {
+    font-weight: 700;
+  }
+
+  .subTitle {
+    margin-bottom: 40px;
+  }
+}

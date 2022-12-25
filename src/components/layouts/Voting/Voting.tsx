@@ -6,8 +6,9 @@ import { useAppDispatch }  from '../../../redux/store'
 import { setToSearchData } from '../../../redux/Search/slice'
 
 import VotingLayout                                 from './VotingLayout'
-import VotingDataContainer                          from '../../hoc/VotingDataContainer'
+import VotingDataContainer                          from '../../../hoc/VotingDataContainer'
 import { Dislikes, Favourites, Likes, VotingImage } from '../../index'
+import ErrorBoundary                                from '../../shared/ErrorBoundary/ErrorBoundary'
 
 
 const Voting: FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) => {
@@ -22,10 +23,26 @@ const Voting: FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) 
 	return (
 		<Routes>
 			<Route path='/' element={ <VotingLayout/> }>
-				<Route index element={ <VotingImage { ...voteImgData }/> }/>
-				<Route path='likes' element={ <Likes { ...likesData }/> }/>
-				<Route path='favourites' element={ <Favourites { ...favData }/> }/>
-				<Route path='dislikes' element={ <Dislikes { ...dislikesData }/> }/>
+				<Route index element={
+					<ErrorBoundary>
+						<VotingImage { ...voteImgData }/>
+					</ErrorBoundary>
+				}/>
+				<Route path='likes' element={
+					<ErrorBoundary>
+						<Likes { ...likesData }/>
+					</ErrorBoundary>
+				}/>
+				<Route path='favourites' element={
+					<ErrorBoundary>
+						<Favourites { ...favData }/>
+					</ErrorBoundary>
+				}/>
+				<Route path='dislikes' element={
+					<ErrorBoundary>
+						<Dislikes { ...dislikesData }/>
+					</ErrorBoundary>
+				}/>
 			</Route>
 		</Routes>
 	)

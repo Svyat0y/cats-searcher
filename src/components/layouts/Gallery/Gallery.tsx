@@ -1,4 +1,4 @@
-import { FC, useEffect }                               from 'react'
+import { FC, useEffect, useState }                     from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                         from 'react-redux'
@@ -17,6 +17,8 @@ const Gallery: FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
+	const [ isMounted, setIsMounted ] = useState(false)
+
 
 	const { searchData, status, galleryFilters, isLoadingData } = useSelector(selectSearch)
 	const { onFavourites } = useSelector(selectVoting)
@@ -26,10 +28,6 @@ const Gallery: FC = () => {
 	const pageNumberForUI = galleryFilters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))
-
-	useEffect(() => {
-		dispatch(setActiveBtn('Gallery'))
-	}, [])
 
 	useEffect(() => {
 		if (location.search) {
@@ -43,9 +41,16 @@ const Gallery: FC = () => {
 	}, [ location.search ])
 
 	useEffect(() => {
-		dispatch(fetchGallerySearch())
-		dispatch(setIsLoadingData(true))
-	}, [ galleryFilters.page ])
+		if (isMounted) {
+			dispatch(fetchGallerySearch())
+			dispatch(setIsLoadingData(true))
+		}
+	}, [ galleryFilters.page, isMounted ])
+
+	useEffect(() => {
+		dispatch(setActiveBtn('Gallery'))
+		setIsMounted(true)
+	}, [])
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>
@@ -54,20 +59,23 @@ const Gallery: FC = () => {
 		return () => clearTimeout(timeoutId)
 	}, [ searchData ])
 
+
 	return (
 		<Routes>
 			<Route path='/' element={ <GalleryLayout/> }>
-				<Route path='' element={ <SearchedItems
-					isLoadingData={ isLoadingData }
-					onFavourites={ onFavourites }
-					data={ searchData }
-					status={ status }
-					firstPage={ firstPage }
-					lastPage={ lastPage }
-					dispatch={ dispatch }
-					filters={ galleryFilters }
-					pageNumberForUI={ pageNumberForUI }
-				/> }/>
+				<Route path='' element={
+					<SearchedItems
+						isLoadingData={ isLoadingData }
+						onFavourites={ onFavourites }
+						data={ searchData }
+						status={ status }
+						firstPage={ firstPage }
+						lastPage={ lastPage }
+						dispatch={ dispatch }
+						filters={ galleryFilters }
+						pageNumberForUI={ pageNumberForUI }
+					/>
+				}/>
 			</Route>
 		</Routes>
 	)

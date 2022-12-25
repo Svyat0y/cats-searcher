@@ -2,14 +2,15 @@ import { createAsyncThunk }           from '@reduxjs/toolkit'
 import { instance }                   from '../../services/api/api'
 import { TBreedOption, TSingleBreed } from './types'
 
-import { setToBreedList } from '../Search/slice'
-import { setSingleBreed } from './slice'
+import { setIsError, setToBreedList } from '../Search/slice'
+import { setSingleBreed }             from './slice'
 
 
 export const fetchSingleBreed = createAsyncThunk<void, string>(
 	'fetchSingleBreed',
 	async (breedId, { dispatch }) => {
 		try {
+			dispatch(setIsError(false))
 			const { data } = await instance.get<any>(`images/search/?&limit=8&size=full&breed_ids=${ breedId }`)
 			const newData: TSingleBreed[] = await Promise.all(data.map((el: any) => {
 				return {
@@ -24,9 +25,13 @@ export const fetchSingleBreed = createAsyncThunk<void, string>(
 				}
 			}))
 			dispatch(setSingleBreed(newData))
+			console.log(data)
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 	}
 )

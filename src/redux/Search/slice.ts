@@ -7,6 +7,7 @@ import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAc
 
 const initialState: ISearch = {
 	searchData: null,
+	isError: false,
 	searchValue: '',
 	breedsList: [],
 	breedFilters: {
@@ -51,7 +52,10 @@ export const searchingSlice = createSlice({
 		},
 		setIsLoadingData: (state, action: PayloadAction<boolean>) => {
 			state.isLoadingData = action.payload
-		}
+		},
+		setIsError: (state, action: PayloadAction<boolean>) => {
+			state.isError = action.payload
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -74,6 +78,7 @@ export const {
 	setFilters,
 	setGalleryFilters,
 	setIsLoadingData,
+	setIsError,
 } = searchingSlice.actions
 
 export default searchingSlice.reducer

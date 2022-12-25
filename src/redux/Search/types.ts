@@ -27,6 +27,7 @@ export interface ISearch {
 	breedFilters: TFilters
 	galleryFilters: TFilters
 	isLoadingData: boolean
+	isError: boolean
 }
 
 export type TOption = {

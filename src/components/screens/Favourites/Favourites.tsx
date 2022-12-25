@@ -2,9 +2,9 @@ import { FC, useEffect } from 'react'
 import s                 from './Favourites.module.scss'
 import { TVotingItems }  from '../../Voting/types'
 
-import { setActiveBtn } from '../../../redux/voting/slice'
+import { setActiveBtn, setToFavoritesData } from '../../../redux/voting/slice'
 
-import RenderItems                                 from '../../hoc/RenderItems'
+import RenderItems                                 from '../../../hoc/RenderItems'
 import { VotingMessage }                           from '../../Voting'
 import OnFavItem                                   from './OnFavItem'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
@@ -27,8 +27,11 @@ const Favourites: FC<TVotingItems> = (
 
 	useEffect(() => {
 		dispatch(setActiveBtn('favourites'))
-	}, [])
 
+		return () => {
+			dispatch(setToFavoritesData(null))
+		}
+	}, [])
 
 	const renderPagination = () => (
 		(page === 0 && lastPage)

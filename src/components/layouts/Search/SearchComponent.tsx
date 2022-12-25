@@ -1,9 +1,9 @@
-import { FC, useEffect }                               from 'react'
+import { FC, useEffect, useState }                     from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
-import { useAppDispatch }                                                from '../../../redux/store'
 import { useSelector }                                                   from 'react-redux'
+import { useAppDispatch }                                                from '../../../redux/store'
 import { setActiveBtn }                                                  from '../../../redux/voting/slice'
 import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../../redux/Search/slice'
 import { fetchSearchFromPanel }                                          from '../../../redux/Search/asyncActions'
@@ -16,6 +16,7 @@ import { SearchedItems } from '../../index'
 const SearchComponent: FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
+	const [ isMounted, setIsMounted ] = useState(false)
 	const [ searchParams ] = useSearchParams()
 
 	const { searchData, status, breedFilters, isLoadingData } = useSelector(selectSearch)
@@ -26,6 +27,7 @@ const SearchComponent: FC = () => {
 
 	useEffect(() => {
 		dispatch(setActiveBtn('Search'))
+		setIsMounted(true)
 
 		return () => {
 			dispatch(setFilters({
@@ -37,22 +39,25 @@ const SearchComponent: FC = () => {
 			dispatch(setSearchValue(''))
 			dispatch(setToSearchData(null))
 		}
+
 	}, [])
 
 	useEffect(() => {
-		if (location.search) {
-			const valueParam: string | null = searchParams.get('q')
-			dispatch(setFilters({
-				value: valueParam,
-				limit: '5',
-				order: 'asc',
-				page: 0
-			}))
-			dispatch(setIsLoadingData(true))
-			dispatch(setSearchValue(valueParam))
-			dispatch(fetchSearchFromPanel())
+		if (isMounted) {
+			if (location.search) {
+				const valueParam: string | null = searchParams.get('q')
+				dispatch(setFilters({
+					value: valueParam,
+					limit: '5',
+					order: 'asc',
+					page: 0
+				}))
+				dispatch(setIsLoadingData(true))
+				dispatch(setSearchValue(valueParam))
+				dispatch(fetchSearchFromPanel())
+			}
 		}
-	}, [ location.search ])
+	}, [ location.search, isMounted ])
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>
@@ -64,15 +69,17 @@ const SearchComponent: FC = () => {
 	return (
 		<Routes>
 			<Route path='/' element={ <SearchLayout/> }>
-				<Route index element={ <SearchedItems
-					isLoadingData={ isLoadingData }
-					dispatch={ dispatch }
-					firstPage={ firstPage }
-					lastPage={ lastPage }
-					pageNumberForUI={ pageNumberForUI }
-					filters={ breedFilters }
-					status={ status }
-					data={ searchData }/> }/>
+				<Route index element={
+					<SearchedItems
+						isLoadingData={ isLoadingData }
+						dispatch={ dispatch }
+						firstPage={ firstPage }
+						lastPage={ lastPage }
+						pageNumberForUI={ pageNumberForUI }
+						filters={ breedFilters }
+						status={ status }
+						data={ searchData }/>
+				}/>
 			</Route>
 		</Routes>
 	)

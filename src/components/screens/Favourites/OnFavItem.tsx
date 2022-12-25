@@ -23,12 +23,12 @@ const OnFavItem: FC<TFavoriteItem> = ({ el, status, dispatch }) => {
 	}
 
 	return (
-		<div className='itemsImg_wr' key={ el?.id }>
+		<div className='items__imgWrapper' key={ el?.id }>
 			<img src={ el?.image?.url ? el?.image?.url : emptyImage } alt='image'/>
 			<button
 				disabled={ isFetching }
 				onClick={ () => deleteFromFavourites(el) }
-				className='item__hoverIcon'>
+				className='items__hoverIcon'>
 				{
 					isFetching
 						? <SmallSpinner height={ 20 } width={ 40 } color='#FF868E'/>

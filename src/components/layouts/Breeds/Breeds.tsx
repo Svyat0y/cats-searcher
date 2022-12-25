@@ -1,4 +1,4 @@
-import { FC, useEffect }                               from 'react'
+import { FC, useEffect, useState }                     from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useSelector }                  from 'react-redux'
@@ -16,6 +16,7 @@ const Breeds: FC = () => {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 	const [ searchParams ] = useSearchParams()
+	const [ isMounted, setIsMounted ] = useState(false)
 
 	const { searchData, status, breedFilters, isLoadingData } = useSelector(selectSearch)
 
@@ -24,10 +25,6 @@ const Breeds: FC = () => {
 	const pageNumberForUI = breedFilters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))
-
-	useEffect(() => {
-		dispatch(setActiveBtn('Breeds'))
-	}, [])
 
 	useEffect(() => {
 		if (location.search) {
@@ -40,9 +37,16 @@ const Breeds: FC = () => {
 	}, [ location.search ])
 
 	useEffect(() => {
-		dispatch(fetchSearch())
-		dispatch(setIsLoadingData(true))
-	}, [ breedFilters.value, breedFilters.limit, breedFilters.order, breedFilters.page ])
+		if (isMounted) {
+			dispatch(fetchSearch())
+			dispatch(setIsLoadingData(true))
+		}
+	}, [ breedFilters.value, breedFilters.limit, breedFilters.order, breedFilters.page, isMounted ])
+
+	useEffect(() => {
+		dispatch(setActiveBtn('Breeds'))
+		setIsMounted(true)
+	}, [])
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>

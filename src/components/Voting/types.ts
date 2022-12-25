@@ -36,7 +36,6 @@ export type TVotingItems = {
 	isLoading: boolean
 	noItemsBoolean: boolean
 	infoMessage?: TInfoInfoMessage[]
-
 }
 
 export type TVotingImage = {

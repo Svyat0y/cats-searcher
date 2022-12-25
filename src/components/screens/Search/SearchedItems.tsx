@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from 'react'
-import { useSearchParams }         from 'react-router-dom'
-import qs                          from 'qs'
-import { TSearchedItems }          from './types'
+import { FC, memo, useEffect, useState } from 'react'
+import { useSearchParams }               from 'react-router-dom'
+import qs                                from 'qs'
+import { TSearchedItems }                from './types'
 
 import { useNavigate }      from 'react-router'
 import { setToSearchData }  from '../../../redux/Search/slice'
@@ -12,7 +12,7 @@ import Item                                        from './Item'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
 
 
-const SearchedItems: FC<TSearchedItems> = (
+const SearchedItems: FC<TSearchedItems> = memo((
 	{
 		dispatch,
 		data,
@@ -95,6 +95,6 @@ const SearchedItems: FC<TSearchedItems> = (
 			}
 		</>
 	)
-}
+})
 
 export default SearchedItems

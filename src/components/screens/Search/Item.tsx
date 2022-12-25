@@ -31,7 +31,7 @@ const Item: FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status 
 
 
 	return (
-		<div className='itemsImg_wr'>
+		<div className='items__imgWrapper'>
 			<img src={ el.url } alt='image'/>
 			{
 				!locGallery &&
@@ -46,7 +46,7 @@ const Item: FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status 
 				<button
 					disabled={ false }
 					onClick={ () => onAddToFavourites(el) }
-					className='item__hoverIcon'>
+					className='items__hoverIcon'>
 					{
 						isFetching
 							? <SmallSpinner height={ 17 } width={ 40 } color='#FF868E'/>

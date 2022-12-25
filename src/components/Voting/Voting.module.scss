@@ -1,22 +1,20 @@
 @import "src/scss/variables";
 
-.content {
+.imgWrapper {
+  width: 100%;
+  min-height: 360px;
+  border-radius: 20px;
+  @include flex(center, center);
+  margin-bottom: 52px;
+  position: relative;
 
-  &__img_wr {
-    width: 100%;
-    min-height: 360px;
+  img {
+    max-height: 360px;
     border-radius: 20px;
-    @include flex(center, center);
-    margin-bottom: 52px;
-    position: relative;
-
-    img {
-      max-height: 360px;
-      border-radius: 20px;
-    }
-  }
-
-  .pagination__favourites {
-    margin-bottom: 25px;
   }
 }
+
+.messages {
+  margin-top: 52px;
+}
+
