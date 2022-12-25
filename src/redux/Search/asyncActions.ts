@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { instance }         from '../../services/api/api'
 import { TSearchData }      from './types'
 
-import { RootState }       from '../store'
-import { setToSearchData } from './slice'
+import { RootState }                   from '../store'
+import { setIsError, setToSearchData } from './slice'
 
 
 const fetchSearchRightObjects = async (reference_image_id: string) => {
@@ -23,8 +23,10 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 		const query = `order=${ order }&limit=${ limit }&page=${ page }`
 
 		try {
+			dispatch(setIsError(false))
 			if (value === 'All breeds') {
 				const { data } = await instance.get<any>(`breeds?${ query }`)
+				console.log(data)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 					return fetchSearchRightObjects(reference_image_id)
 				}))
@@ -40,6 +42,9 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 
 	}
@@ -67,6 +72,8 @@ export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootStat
 		const query = `limit=${ limit }&mime_types=${ currentType }&order=${ order }&size=small&page=${ page }`
 
 		try {
+			dispatch(setIsError(false))
+
 			if (value === 'None') {
 				const { data } = await instance.get<any>(`images/search?${ query }`)
 				dispatch(setToSearchData(data))
@@ -78,6 +85,9 @@ export const fetchGallerySearch = createAsyncThunk<void, void, { state: RootStat
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 
 	}
@@ -89,6 +99,7 @@ export const fetchSearchFromPanel = createAsyncThunk<void, void, { state: RootSt
 		const { breedFilters: { value } } = getState().searchingSlice
 
 		try {
+			dispatch(setIsError(false))
 			const { data } = await instance.get<any>(`breeds/search/?q=${ value }`)
 			const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
 				return fetchSearchRightObjects(reference_image_id)
@@ -97,6 +108,9 @@ export const fetchSearchFromPanel = createAsyncThunk<void, void, { state: RootSt
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 
 	}

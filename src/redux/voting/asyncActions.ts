@@ -15,6 +15,7 @@ import {
 }                    from './slice'
 
 import { setLsMessages } from '../../services/localStorage/infoMessageLS'
+import { setIsError }    from '../Search/slice'
 
 
 const getDate = () => {
@@ -29,13 +30,17 @@ const getDate = () => {
 
 export const fetchVoteImg = createAsyncThunk<TDataObj | undefined>(
 	'votingSlice/fetchVoteImg',
-	async () => {
+	async (_, { dispatch }) => {
 		try {
+			dispatch(setIsError(false))
 			const { data } = await instance.get<TDataObj[]>('images/search?limit=1&size=full&mime_types=gif,jpg,png')
 			return data[0]
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 	})
 
@@ -135,11 +140,15 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 	async (_, { dispatch, getState }) => {
 		const { userId, favPage } = getState().votingSlice
 		try {
+			dispatch(setIsError(false))
 			const { data } = await instance.get<TData[]>(`favourites?sub_id=${ userId }&page=${ favPage }&limit=15&order=DESC`)
 			dispatch(setToFavoritesData(data))
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 	}
 )
@@ -150,11 +159,15 @@ export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 		const { userId, likePage } = getState().votingSlice
 
 		try {
+			dispatch(setIsError(false))
 			const { data } = await instance.get<TData[]>(`votes?sub_id=${ userId }&page=${ likePage }&limit=15&order=DESC`,)
 			dispatch(setToLike(data))
 		}
 		catch (e: any) {
 			console.log(e.message)
+			if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+				dispatch(setIsError(true))
+			}
 		}
 	}
 )

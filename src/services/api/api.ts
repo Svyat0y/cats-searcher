@@ -1,4 +1,6 @@
-import axios from 'axios'
+import axios                from 'axios'
+import { setIsErrorBreeds } from '../../redux/Breeds/slice'
+import { useAppDispatch }   from '../../redux/store'
 
 
 export const instance = axios.create({
@@ -11,14 +13,17 @@ export const instance = axios.create({
 	}
 })
 
+
+/*
 instance.interceptors.response.use(response => {
 	return response
 }, error => {
 	if (error.response.status.toString()[0] === '4' || error.response.status.toString()[0] === '5') {
-		console.log('ОШИБКА ВЫЛЕТЕЛА', error)
+		useAppDispatch()(setIsErrorBreeds(true))
 		return Promise.reject(error)
 	}
 	else{
 		throw error
 	}
 })
+*/

@@ -2,8 +2,8 @@ import { FC, useEffect, useState }                     from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
 
-import { useAppDispatch }                                                from '../../../redux/store'
 import { useSelector }                                                   from 'react-redux'
+import { useAppDispatch }                                                from '../../../redux/store'
 import { setActiveBtn }                                                  from '../../../redux/voting/slice'
 import { setFilters, setIsLoadingData, setSearchValue, setToSearchData } from '../../../redux/Search/slice'
 import { fetchSearchFromPanel }                                          from '../../../redux/Search/asyncActions'
@@ -58,10 +58,6 @@ const SearchComponent: FC = () => {
 			}
 		}
 	}, [ location.search, isMounted ])
-
-	/*useEffect(() => {
-
-	},[])*/
 
 	useEffect(() => {
 		let timeoutId: ReturnType<typeof setTimeout>
