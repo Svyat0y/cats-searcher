@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction }                           from '@reduxjs/toolkit'
-import { ISearch, TSearchData }                                 from './types'
-import { Status }                                               from '../voting/types'
-import { TBreedOption }                                         from '../Breeds/types'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ISearch, TSearchData }       from './types'
+import { Status }                     from '../voting/types'
+import { TBreedOption }               from '../Breeds/types'
+
 import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
 

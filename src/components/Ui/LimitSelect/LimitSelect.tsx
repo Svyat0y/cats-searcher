@@ -2,10 +2,11 @@ import { FC }           from 'react'
 import { TLimitSelect } from './types'
 import { TOption }      from '../../../redux/Search/types'
 
+import Select from 'react-select'
+
 import { fetchGallerySearch } from '../../../redux/Search/asyncActions'
 import { setIsLoadingData }   from '../../../redux/Search/slice'
 import { createParams }       from '../../../utils/createParams'
-import Select                 from 'react-select'
 
 import { RefreshButton } from '../index'
 import SelectContainer   from '../SelectContainer/SelectContainer'

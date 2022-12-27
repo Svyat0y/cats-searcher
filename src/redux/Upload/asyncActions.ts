@@ -1,5 +1,6 @@
-import { createAsyncThunk }        from '@reduxjs/toolkit'
-import { instance }                from '../../services/api/api'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { instance }         from '../../services/api/api'
+
 import { RootState }               from '../store'
 import { setIsLoaded, setMessage } from './slice'
 

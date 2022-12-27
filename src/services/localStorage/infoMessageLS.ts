@@ -1,6 +1,7 @@
 import { TInfoInfoMessage } from '../../redux/voting/types'
-import { AppDispatch }      from '../../redux/store'
-import { setInfoMessage }   from '../../redux/voting/slice'
+
+import { AppDispatch }    from '../../redux/store'
+import { setInfoMessage } from '../../redux/voting/slice'
 
 
 const getData = () => {

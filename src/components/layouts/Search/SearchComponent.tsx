@@ -1,7 +1,6 @@
 import { FC, useEffect, useState }                     from 'react'
 import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 
-
 import { useSelector }                                                   from 'react-redux'
 import { useAppDispatch }                                                from '../../../redux/store'
 import { setActiveBtn }                                                  from '../../../redux/voting/slice'
