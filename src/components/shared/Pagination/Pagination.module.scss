@@ -1,7 +1,7 @@
 @import "../../../scss/variables";
 
 .wrapper {
-  width: 300px;
+  max-width: 400px;
   margin: 20px auto 0 auto;
   @include flex(space-between, center);
 
@@ -12,5 +12,15 @@
 
   .prev {
     text-align: left;
+  }
+
+  .page {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--bg_input_search);
+    @include flex(center, center);
+    font-weight: 600;
+    color: var(--btn_color);
   }
 }

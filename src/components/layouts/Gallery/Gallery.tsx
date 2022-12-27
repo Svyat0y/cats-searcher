@@ -43,7 +43,6 @@ const Gallery: FC = () => {
 	useEffect(() => {
 		if (isMounted) {
 			dispatch(fetchGallerySearch())
-			dispatch(setIsLoadingData(true))
 		}
 	}, [ galleryFilters.page, isMounted ])
 

@@ -19,8 +19,8 @@ const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pag
 	}
 
 	const clickOnRefreshBtn = () => {
-		dispatch(fetchGallerySearch())
 		dispatch(setIsLoadingData(true))
+		dispatch(fetchGallerySearch())
 	}
 
 	return (
