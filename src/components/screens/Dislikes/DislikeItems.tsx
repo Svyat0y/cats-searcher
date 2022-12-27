@@ -1,6 +1,7 @@
 import { FC }            from 'react'
-import { TDataObj }      from '../../../redux/voting/types'
 import { TDislikeItems } from './types'
+
+import { TDataObj } from '../../../redux/voting/types'
 
 
 const DislikeItems: FC<TDislikeItems> = ({ data }) => {

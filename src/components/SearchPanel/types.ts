@@ -1,8 +1,8 @@
-import React from 'react'
+import { ReactNode } from 'react'
 
 
 export type TSearchPanelIcon = {
-	children: React.ReactNode
+	children: ReactNode
 	page: number
 	location: boolean
 	route: string

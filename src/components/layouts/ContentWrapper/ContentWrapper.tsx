@@ -1,8 +1,8 @@
 import { FC }            from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import ContentWrapperLayout                                                   from './ContentWrapperLayout'
 import { Breeds, Gallery, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../index'
+import ContentWrapperLayout                                                   from './ContentWrapperLayout'
 import ErrorBoundary                                                          from '../../shared/ErrorBoundary/ErrorBoundary'
 
 

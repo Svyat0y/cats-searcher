@@ -1,8 +1,7 @@
 import { FC }           from 'react'
 import s                from '../NavButtons.module.scss'
 import { TVoteDownBtn } from './types'
-
-import { TDataObj } from '../../../../redux/voting/types'
+import { TDataObj }     from '../../../../redux/voting/types'
 
 import { SmallSpinner } from '../../../index'
 

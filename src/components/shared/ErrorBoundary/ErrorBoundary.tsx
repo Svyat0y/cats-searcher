@@ -1,13 +1,14 @@
 import { FC, useEffect, useState } from 'react'
-import { TErrorBoundary }          from './types'
 import { useLocation }             from 'react-router-dom'
+import { TErrorBoundary }          from './types'
 
-import ErrorBoundaryInner   from './ErrorBoundaryInner'
-import ErrorFallBack        from './ErrorFallBack'
 import { useSelector }      from 'react-redux'
+import { useAppDispatch }   from '../../../redux/store'
 import { selectSearch }     from '../../../redux/Search/selectors'
 import { setIsLoadingData } from '../../../redux/Search/slice'
-import { useAppDispatch }   from '../../../redux/store'
+
+import ErrorBoundaryInner from './ErrorBoundaryInner'
+import ErrorFallBack      from './ErrorFallBack'
 
 
 const ErrorBoundary: FC<TErrorBoundary> = ({ children }) => {

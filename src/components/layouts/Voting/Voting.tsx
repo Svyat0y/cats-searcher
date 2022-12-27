@@ -5,9 +5,9 @@ import { TVoting }       from '../../Voting/types'
 import { useAppDispatch }  from '../../../redux/store'
 import { setToSearchData } from '../../../redux/Search/slice'
 
+import { Dislikes, Favourites, Likes, VotingImage } from '../../index'
 import VotingLayout                                 from './VotingLayout'
 import VotingDataContainer                          from '../../../hoc/VotingDataContainer'
-import { Dislikes, Favourites, Likes, VotingImage } from '../../index'
 import ErrorBoundary                                from '../../shared/ErrorBoundary/ErrorBoundary'
 
 

@@ -6,7 +6,6 @@ import { useSelector }    from 'react-redux'
 import { useAppDispatch } from '../../../redux/store'
 import { themeFilter }    from '../../../redux/theme/selectors'
 
-
 import { Header, MainNavCards } from '../../index'
 
 

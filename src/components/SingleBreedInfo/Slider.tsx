@@ -1,7 +1,6 @@
-import { FC }      from 'react'
-import s           from './SingleBreedInfo.module.scss'
-import { TSlider } from './types'
-
+import { FC }                                                from 'react'
+import s                                                     from './SingleBreedInfo.module.scss'
+import { TSlider }                                           from './types'
 import { TSingleBreed }                                      from '../../redux/Breeds/types'
 
 import 'swiper/scss'

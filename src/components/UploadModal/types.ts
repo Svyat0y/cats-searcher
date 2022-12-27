@@ -1,5 +1,5 @@
-import { AppDispatch } from '../../redux/store'
-import React           from 'react'
+import { DragEvent, ChangeEvent } from 'react'
+import { AppDispatch }            from '../../redux/store'
 
 
 type Message = string
@@ -28,9 +28,9 @@ export type TFileUploader = {
 }
 
 export type TCustomInputFile = {
-	handleDrop: (e: React.DragEvent<HTMLLabelElement>) => void
-	handleDragEmpty: (e: React.DragEvent<HTMLLabelElement>) => void
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	handleDrop: (e: DragEvent<HTMLLabelElement>) => void
+	handleDragEmpty: (e: DragEvent<HTMLLabelElement>) => void
+	handleChange: (e: ChangeEvent<HTMLInputElement>) => void
 	imageUrl: string | ArrayBuffer | null
 	file: File | null
 }

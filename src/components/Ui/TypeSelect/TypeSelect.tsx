@@ -1,9 +1,9 @@
 import { FC }                       from 'react'
 import { TTypeOption, TTypeSelect } from './types'
+import { TOption }                  from '../../../redux/Search/types'
 
 import Select           from 'react-select'
 import { createParams } from '../../../utils/createParams'
-import { TOption }      from '../../../redux/Search/types'
 
 import SelectContainer from '../SelectContainer/SelectContainer'
 

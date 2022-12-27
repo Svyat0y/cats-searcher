@@ -1,6 +1,6 @@
-import React from 'react'
+import { ReactNode } from 'react'
 
 
 export type TContentBody = {
-	children: React.ReactNode
+	children: ReactNode
 }

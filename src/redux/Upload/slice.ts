@@ -1,6 +1,7 @@
-import { Status }                                               from '../voting/types'
-import { createSlice, PayloadAction }                           from '@reduxjs/toolkit'
-import { IUpload }                                              from './type'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Status }                     from '../voting/types'
+import { IUpload }                    from './type'
+
 import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
 

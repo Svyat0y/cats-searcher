@@ -1,8 +1,8 @@
 import { FC }              from 'react'
 import s                   from './Skeleton.module.scss'
+import { TSkeletonLoader } from './types'
 import Skeleton            from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { TSkeletonLoader } from './types'
 
 import { useSelector } from 'react-redux'
 import { themeFilter } from '../../../redux/theme/selectors'

@@ -1,13 +1,12 @@
-import { FC, memo }          from 'react'
+import { FC }                from 'react'
 import s                     from './MainNavCards.module.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { TCard }             from './types'
 
 
-const Card: FC<TCard> = memo(({ name, img, color, to, active }) => {
+const Card: FC<TCard> = ({ name, img, color, to, active }) => {
 	const location = useLocation()
 	const loc = location.pathname.includes(active)
-
 
 	return (
 		<div className={ s.card }>
@@ -20,6 +19,6 @@ const Card: FC<TCard> = memo(({ name, img, color, to, active }) => {
 		</div>
 
 	)
-})
+}
 
 export default Card
