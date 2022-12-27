@@ -1,19 +1,27 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { instance }         from '../../services/api/api'
-import { TSearchData }      from './types'
+import { createAsyncThunk, Dispatch } from '@reduxjs/toolkit'
+import { instance }                   from '../../services/api/api'
+import { TSearchData }                from './types'
 
 import { RootState }                   from '../store'
 import { setIsError, setToSearchData } from './slice'
 
 
-const fetchSearchRightObjects = async (reference_image_id: string) => {
+const fetchSearchRightObjects = async (reference_image_id: string, dispatch: Dispatch) => {
 	if (!reference_image_id) return
 
-	const { data } = await instance.get<any>(`images/${ reference_image_id }`)
-	const { id, url } = data
-	const { name, id: breedId } = data.breeds[0]
+	try {
+		const { data } = await instance.get<any>(`images/${ reference_image_id }`)
+		const { id, url } = data
+		const { name, id: breedId } = data.breeds[0]
 
-	return { id, url, name, breedId }
+		return { id, url, name, breedId }
+	}
+	catch (e: any) {
+		console.log(e.message)
+		if (e.response.status.toString()[0] === '4' || e.response.status.toString()[0] === '5') {
+			dispatch(setIsError(true))
+		}
+	}
 }
 
 export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
@@ -28,14 +36,14 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 				const { data } = await instance.get<any>(`breeds?${ query }`)
 				console.log(data)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
-					return fetchSearchRightObjects(reference_image_id)
+					return fetchSearchRightObjects(reference_image_id, dispatch)
 				}))
 				dispatch(setToSearchData(newData))
 			}
 			else{
 				const { data } = await instance.get<any>(`breeds/search/?q=${ value }&${ query }`)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
-					return fetchSearchRightObjects(reference_image_id)
+					return fetchSearchRightObjects(reference_image_id, dispatch)
 				}))
 				dispatch(setToSearchData(newData))
 			}
@@ -102,7 +110,7 @@ export const fetchSearchFromPanel = createAsyncThunk<void, void, { state: RootSt
 			dispatch(setIsError(false))
 			const { data } = await instance.get<any>(`breeds/search/?q=${ value }`)
 			const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
-				return fetchSearchRightObjects(reference_image_id)
+				return fetchSearchRightObjects(reference_image_id, dispatch)
 			}))
 			dispatch(setToSearchData(newData))
 		}

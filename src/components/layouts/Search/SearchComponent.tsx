@@ -52,7 +52,6 @@ const SearchComponent: FC = () => {
 					order: 'asc',
 					page: 0
 				}))
-				dispatch(setIsLoadingData(true))
 				dispatch(setSearchValue(valueParam))
 				dispatch(fetchSearchFromPanel())
 			}

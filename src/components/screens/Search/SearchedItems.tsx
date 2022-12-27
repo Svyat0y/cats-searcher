@@ -1,12 +1,12 @@
-import { FC, memo, useEffect, useState } from 'react'
-import { useSearchParams }               from 'react-router-dom'
-import qs                                from 'qs'
-import { TSearchedItems }                from './types'
+import { FC, memo, useEffect, useLayoutEffect, useState } from 'react'
+import { useSearchParams }                                from 'react-router-dom'
+import qs                                                 from 'qs'
+import { TSearchedItems }                                 from './types'
 
-import { useNavigate }      from 'react-router'
-import { setToSearchData }  from '../../../redux/Search/slice'
-import { fetchSingleBreed } from '../../../redux/Breeds/asyncActions'
-import { TSearchData }      from '../../../redux/Search/types'
+import { useNavigate }                       from 'react-router'
+import { setIsLoadingData, setToSearchData } from '../../../redux/Search/slice'
+import { fetchSingleBreed }                  from '../../../redux/Breeds/asyncActions'
+import { TSearchData }                       from '../../../redux/Search/types'
 
 import Item                                        from './Item'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
@@ -28,6 +28,10 @@ const SearchedItems: FC<TSearchedItems> = memo((
 	const [ loaded, setLoaded ] = useState(false)
 	const [ _, setSearchParams ] = useSearchParams()
 	const emptyData = data === null
+
+	useLayoutEffect(() => {
+		dispatch(setIsLoadingData(true))
+	}, [ filters.page ])
 
 	useEffect(() => {
 		if (status === 'success') setTimeout(() => setLoaded(true), 0)
@@ -87,6 +91,7 @@ const SearchedItems: FC<TSearchedItems> = memo((
 			</div>
 			{
 				!lastPage && <Pagination
+					page={ pageNumberForUI }
 					firstPage={ firstPage }
 					lastPage={ lastPage }
 					onClickNext={ onClickNext }

@@ -39,7 +39,6 @@ const Breeds: FC = () => {
 	useEffect(() => {
 		if (isMounted) {
 			dispatch(fetchSearch())
-			dispatch(setIsLoadingData(true))
 		}
 	}, [ breedFilters.value, breedFilters.limit, breedFilters.order, breedFilters.page, isMounted ])
 

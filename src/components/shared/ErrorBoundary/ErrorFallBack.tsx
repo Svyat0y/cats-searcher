@@ -1,18 +1,13 @@
 import { FC }             from 'react'
 import s                  from './ErrorBoundary.module.scss'
 import { TErrorFallBack } from './types'
-import { useNavigate }    from 'react-router'
 
 import { Button } from '../../Ui'
 
-import sleepImg           from '../../../assets/images/common/sleep2.jpg'
-import { useAppDispatch } from '../../../redux/store'
+import sleepImg from '../../../assets/images/common/sleep2.jpg'
 
 
 const ErrorFallBack: FC<TErrorFallBack> = ({ setHasError }) => {
-	const navigate = useNavigate()
-	const dispatch = useAppDispatch()
-
 	const onClickBtn = () => {
 		setHasError(false)
 	}
