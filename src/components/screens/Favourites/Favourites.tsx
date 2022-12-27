@@ -37,6 +37,7 @@ const Favourites: FC<TVotingItems> = (
 		(page === 0 && lastPage)
 			? ''
 			: <Pagination
+				page={ page }
 				firstPage={ firstPage }
 				lastPage={ lastPage }
 				onClickNext={ onClickNext }
