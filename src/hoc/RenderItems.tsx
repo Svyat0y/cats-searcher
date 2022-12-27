@@ -20,6 +20,7 @@ const RenderItems = (Component: FC<TVotingItems>) => (
 	const favLocation = location.pathname.includes('favourites')
 	const noItemsBoolean = (data?.length === 0)
 	const pageParam = searchParams.get('page')
+	const pageFOrUi = page + 1
 
 	useEffect(() => {
 		if (isMounted) {
@@ -28,8 +29,8 @@ const RenderItems = (Component: FC<TVotingItems>) => (
 				likeLocation && dispatch(fetchGetLikes())
 				favLocation && dispatch(fetchGetFavourites())
 
-				if (page + 1 === (Number(pageParam))) return
-				else setSearchParams({ page: String(page + 1) })
+				if (pageFOrUi === (Number(pageParam))) return
+				else setSearchParams({ page: String(pageFOrUi) })
 			}
 		}
 	}, [ isMounted, page ])
@@ -59,7 +60,7 @@ const RenderItems = (Component: FC<TVotingItems>) => (
 	return (
 		<Component
 			data={ data }
-			page={ page }
+			page={ pageFOrUi }
 			firstPage={ firstPage }
 			lastPage={ lastPage }
 			onClickNext={ onClickNext }
