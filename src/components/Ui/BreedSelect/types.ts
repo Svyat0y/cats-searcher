@@ -1,6 +1,6 @@
-import { TBreedOption }      from '../../redux/Breeds/types'
-import { TFilters, TOption } from '../../redux/Search/types'
-import { AppDispatch }       from '../../redux/store'
+import { TFilters, TOption } from '../../../redux/Search/types'
+import { TBreedOption }      from '../../../redux/Breeds/types'
+import { AppDispatch }       from '../../../redux/store'
 
 
 export type TBreedSelect = {
