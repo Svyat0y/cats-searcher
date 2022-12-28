@@ -5,8 +5,8 @@ import { TVotingImage }            from './types'
 import { fetchVoteImg } from '../../redux/voting/asyncActions'
 import { setActiveBtn } from '../../redux/voting/slice'
 
-import { NavButtons, VotingMessage } from './index'
-import { Spinner }                   from '../index'
+import { NavButtons }              from './index'
+import { ActionMessages, Spinner } from '../index'
 
 
 const VotingImage: FC<TVotingImage> = (
@@ -40,7 +40,7 @@ const VotingImage: FC<TVotingImage> = (
 					status={ status }/>
 			</div>
 			<div className={ s.messages }>
-				{ infoMessage.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
+				{ infoMessage.map((el, i) => <ActionMessages key={ i } { ...el }/>) }
 			</div>
 		</>
 	)
