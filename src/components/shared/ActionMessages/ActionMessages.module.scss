@@ -1,6 +1,6 @@
 @import "../../../scss/variables";
 
-.voting__message_wr {
+.wrapper {
   background: var(--bg_color);
   border-radius: 10px;
   @include flex(flex-start, center);
@@ -14,11 +14,11 @@
   }
 }
 
-.voting__time, .voting__desc {
+.time, .description {
   display: inline-block;
 }
 
-.voting__time {
+.time {
   background: var(--bg_blackWhite);
   padding: 3px 10px;
   margin-right: 20px;
@@ -26,11 +26,11 @@
   color: var(--title_color);
 }
 
-.id_desc {
+.descId {
   color: var(--title_color);
 }
 
-.info__icon_wr {
+.iconWrapper {
   content: '';
   position: absolute;
   width: 20px;

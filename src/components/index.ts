@@ -9,6 +9,7 @@ export { default as ContentWrapper }  from './layouts/ContentWrapper/ContentWrap
 export { default as DesktopLayout }   from './layouts/Desktop/DesktopLayout'
 export { default as MainNavCards }    from './MainNavCards/MainNavCards'
 export { default as SearchPanel }     from './SearchPanel/SearchPanel'
+export { default as ActionMessages }  from './shared/ActionMessages/ActionMessages'
 export { default as ContentHeader }   from './shared/ContentHeader/ContentHeader'
 export { default as NoItemFound }     from './shared/NoItemFound/NoItemFound'
 export { default as Pagination }      from './shared/Pagination/Pagination'

@@ -4,10 +4,9 @@ import { TVotingItems }  from '../../Voting/types'
 
 import { setActiveBtn, setToFavoritesData } from '../../../redux/voting/slice'
 
-import RenderItems                                 from '../../../hoc/RenderItems'
-import { VotingMessage }                           from '../../Voting'
-import OnFavItem                                   from './OnFavItem'
-import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
+import RenderItems                                                 from '../../../hoc/RenderItems'
+import OnFavItem                                                   from './OnFavItem'
+import { ActionMessages, NoItemFound, Pagination, SkeletonLoader } from '../../index'
 
 
 const Favourites: FC<TVotingItems> = (
@@ -62,7 +61,7 @@ const Favourites: FC<TVotingItems> = (
 			{ renderPagination() }
 
 			<div className={ s.messages }>
-				{ infoMessage?.map((el, i) => <VotingMessage key={ i } { ...el }/>) }
+				{ infoMessage?.map((el, i) => <ActionMessages key={ i } { ...el }/>) }
 			</div>
 		</>
 	)
