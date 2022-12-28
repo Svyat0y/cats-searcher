@@ -10,10 +10,19 @@
     overflow: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 1s ease;
 
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
     }
+  }
+
+  .fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s ease;
   }
 }

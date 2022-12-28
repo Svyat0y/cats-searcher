@@ -4,6 +4,9 @@
   @include flex(space-between, center);
   height: 60px;
   margin-bottom: 10px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 1s ease;
 
   .inputWrapper {
     position: relative;
@@ -118,4 +121,10 @@
       }
     }
   }
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 1s ease;
 }
