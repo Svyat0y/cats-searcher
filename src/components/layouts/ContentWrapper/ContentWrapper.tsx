@@ -13,26 +13,10 @@ const ContentWrapper: FC = () => {
 			<Route path='/*' element={ <ContentWrapperLayout/> }>
 				<Route index element={ <Preview/> }/>
 				<Route path='voting/*' element={ <Voting/> }/>
-				<Route path='breeds/*' element={
-					<ErrorBoundary>
-						<Breeds/>
-					</ErrorBoundary>
-				}/>
-				<Route path='search/*' element={
-					<ErrorBoundary>
-						<SearchComponent/>
-					</ErrorBoundary>
-				}/>
-				<Route path='description' element={
-					<ErrorBoundary>
-						<SingleBreedInfo/>
-					</ErrorBoundary>
-				}/>
-				<Route path='gallery/*' element={
-					<ErrorBoundary>
-						<Gallery/>
-					</ErrorBoundary>
-				}/>
+				<Route path='breeds/*' element={ <ErrorBoundary> <Breeds/></ErrorBoundary> }/>
+				<Route path='search/*' element={ <ErrorBoundary> <SearchComponent/> </ErrorBoundary> }/>
+				<Route path='description' element={ <ErrorBoundary> <SingleBreedInfo/> </ErrorBoundary> }/>
+				<Route path='gallery/*' element={ <ErrorBoundary> <Gallery/></ErrorBoundary> }/>
 			</Route>
 		</Routes>
 	)

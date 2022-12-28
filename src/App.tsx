@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { AppDispatch, useAppDispatch } from './redux/store'
 
@@ -11,15 +11,22 @@ import { DesktopLayout } from './components'
 
 const App: FC = () => {
 	const dispatch: AppDispatch = useAppDispatch()
+	const [ fadeIn, setFadeIn ] = useState(false)
 
 	useEffect(() => {
 		getLSTheme(dispatch)
 		getLsMessages(dispatch)
 	}, [])
 
+	useEffect(() => {
+		setTimeout(() => {
+			setFadeIn(true)
+		}, 1500)
+	}, [])
+
 	return (
 		<>
-			<main className='App'>
+			<main className={ `App ${ fadeIn ? 'fadeIn' : '' }` }>
 				<DesktopLayout/>
 			</main>
 			<Overlay/>

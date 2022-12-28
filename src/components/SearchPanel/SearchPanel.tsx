@@ -16,9 +16,14 @@ const createParams = (value: string | null) => qs.stringify({ q: value })
 const SearchPanel: FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
+	const [ fadeIn, setFadeIn ] = useState(false)
 	const [ localValue, setLocalValue ] = useState<string | null>('')
 	const { searchValue, status } = useSelector(selectSearch)
 	const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => dispatch(setSearchValue(e.target.value))
+
+	useEffect(() => {
+		setFadeIn(true)
+	}, [])
 
 	useEffect(() => {
 		setLocalValue(searchValue)
@@ -45,7 +50,7 @@ const SearchPanel: FC = () => {
 	}
 
 	return (
-		<div className={ s.wrapper }>
+		<div className={ `${ s.wrapper } ${ fadeIn ? s.fadeIn : '' }` }>
 			<form className={ s.inputWrapper } onSubmit={ onClick }>
 				<input
 					value={ searchValue ? searchValue : '' }

@@ -1,5 +1,15 @@
 @import "variables";
 
+.App {
+  opacity: 0;
+  transition: all 2s ease;
+}
+
+.fadeIn {
+  opacity: 1;
+}
+
+
 .title {
   font-weight: 500;
   font-size: 44px;

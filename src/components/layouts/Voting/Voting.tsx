@@ -23,26 +23,10 @@ const Voting: FC<TVoting> = ({ voteImgData, favData, likesData, dislikesData }) 
 	return (
 		<Routes>
 			<Route path='/' element={ <VotingLayout/> }>
-				<Route index element={
-					<ErrorBoundary>
-						<VotingImage { ...voteImgData }/>
-					</ErrorBoundary>
-				}/>
-				<Route path='likes' element={
-					<ErrorBoundary>
-						<Likes { ...likesData }/>
-					</ErrorBoundary>
-				}/>
-				<Route path='favourites' element={
-					<ErrorBoundary>
-						<Favourites { ...favData }/>
-					</ErrorBoundary>
-				}/>
-				<Route path='dislikes' element={
-					<ErrorBoundary>
-						<Dislikes { ...dislikesData }/>
-					</ErrorBoundary>
-				}/>
+				<Route index element={ <ErrorBoundary> <VotingImage { ...voteImgData }/> </ErrorBoundary> }/>
+				<Route path='likes' element={ <ErrorBoundary> <Likes { ...likesData }/> </ErrorBoundary> }/>
+				<Route path='favourites' element={ <ErrorBoundary> <Favourites { ...favData }/> </ErrorBoundary> }/>
+				<Route path='dislikes' element={ <ErrorBoundary> <Dislikes { ...dislikesData }/> </ErrorBoundary> }/>
 			</Route>
 		</Routes>
 	)
