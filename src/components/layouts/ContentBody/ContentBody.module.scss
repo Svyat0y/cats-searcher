@@ -12,7 +12,7 @@
     -ms-overflow-style: none;
     transform: translateY(-50%);
     opacity: 0;
-    transition: all 1s ease;
+    transition: transform 1s ease;
 
     &::-webkit-scrollbar {
       width: 0;
@@ -23,6 +23,6 @@
   .fadeIn {
     opacity: 1;
     transform: translateY(0);
-    transition: all 1s ease;
+    transition: transform 1s ease;
   }
 }
