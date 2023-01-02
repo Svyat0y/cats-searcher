@@ -7,7 +7,6 @@ import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAc
 
 const initialState: IUpload = {
 	showModal: false,
-	overlay: false,
 	isLoaded: false,
 	message: '',
 	status: Status.PENDING
@@ -19,9 +18,6 @@ export const uploadingSlice = createSlice({
 	reducers: {
 		setShowModal: (state, action: PayloadAction<boolean>) => {
 			state.showModal = action.payload
-		},
-		setShowOverlay: (state, action: PayloadAction<boolean>) => {
-			state.overlay = action.payload
 		},
 		setMessage: (state, action: PayloadAction<string>) => {
 			state.message = action.payload
@@ -44,6 +40,6 @@ export const uploadingSlice = createSlice({
 	}
 })
 
-export const { setShowModal, setShowOverlay, setMessage, setIsLoaded } = uploadingSlice.actions
+export const { setShowModal, setMessage, setIsLoaded } = uploadingSlice.actions
 
 export default uploadingSlice.reducer
