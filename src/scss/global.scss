@@ -48,3 +48,9 @@
   @include transition();
   user-select: none;
 }
+
+button, label {
+  &:focus-within {
+    outline: 1px solid $main_color;
+  }
+}

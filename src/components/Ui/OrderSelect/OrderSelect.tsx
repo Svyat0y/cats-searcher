@@ -24,6 +24,7 @@ const OrderSelect: FC<TOrderSelect> = ({ setSearchParams, filters, pageNumberFor
 	return (
 		<SelectContainer filters={ filters } label={ 'Order' }>
 			<Select
+
 				classNamePrefix='select'
 				value={ getValue() }
 				options={ OrderOptions }
