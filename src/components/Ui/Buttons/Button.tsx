@@ -11,6 +11,7 @@ const Button: FC<TButton> =
 		return (
 			<button
 				onClick={ onclick }
+				disabled={ disabled }
 				className={ `${ s.btn } ${ isActive && s.btnActive } ${ disabled ? s.btnNoActive : '' } ${ breadCrumbs ? s.breadCrumbs : '' }` }>
 				{ upload && <div className={ s.uploadImg }/> }
 				{ (modalUpload && status === 'pending') &&

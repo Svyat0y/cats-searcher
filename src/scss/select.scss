@@ -20,6 +20,11 @@
     transition: initial;
     padding: 2px;
 
+    &:focus-within {
+      outline: 1px solid $main_color !important;
+    }
+
+
     &--menu-is-open {
       .breedSelect__dropdown-indicator {
         transform: rotate(180deg);
