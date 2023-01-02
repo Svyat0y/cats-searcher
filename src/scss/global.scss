@@ -50,7 +50,7 @@
 }
 
 button, label {
-  &:focus-within {
+  &:focus-visible {
     outline: 1px solid $main_color;
   }
 }

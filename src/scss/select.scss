@@ -14,30 +14,23 @@
     background: var(--bg_grey-white_white-rgba) !important;
     border: none !important;
     border-radius: 10px !important;
-    outline: none;
     box-shadow: none !important;
     cursor: pointer !important;
     transition: initial;
     padding: 2px;
 
-    &:focus-within {
-      outline: 1px solid $main_color !important;
+    &:focus-visible {
+      outline: 2px solid $main_color !important;
     }
-
-
+    
     &--menu-is-open {
       .breedSelect__dropdown-indicator {
         transform: rotate(180deg);
       }
     }
-
-    &--menu-is-focused {
-      border-color: red !important;
-    }
   }
 
   &__indicator {
-
     transition: initial;
     color: $main_color !important;
 
