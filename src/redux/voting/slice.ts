@@ -6,7 +6,6 @@ import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAc
 
 
 const initialState: IVote = {
-	userId: 'user-001',
 	voteData: null,
 	likeData: null,
 	likePage: 0,
@@ -57,9 +56,6 @@ export const votingSlice = createSlice({
 		setActiveBtn: (state, action: PayloadAction<string>) => {
 			state.activeButton = action.payload
 		},
-		setUserId: (state, action: PayloadAction<string>) => {
-			state.userId = action.payload
-		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchVoteImg.pending, (state) => {
@@ -93,7 +89,6 @@ export const {
 	setLikePage,
 	setFavPage,
 	setActiveBtn,
-	setUserId,
 } = votingSlice.actions
 
 export default votingSlice.reducer

@@ -6,6 +6,7 @@ import votingSlice    from './voting/slice'
 import searchingSlice from './Search/slice'
 import breedsSlice    from './Breeds/slice'
 import uploadSlice    from './Upload/slice'
+import loginSlice     from './Login/slice'
 
 
 export const store = configureStore({
@@ -14,7 +15,8 @@ export const store = configureStore({
 		votingSlice,
 		searchingSlice,
 		breedsSlice,
-		uploadSlice
+		uploadSlice,
+		loginSlice,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({

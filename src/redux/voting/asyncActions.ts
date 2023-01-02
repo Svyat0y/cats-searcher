@@ -49,7 +49,7 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 	async (params, thunkAPI) => {
 		const [ imgObj, value ] = params
 		const dispatch = thunkAPI.dispatch
-		const { userId } = thunkAPI.getState().votingSlice
+		const { userId } = thunkAPI.getState().loginSlice
 		const body = {
 			image_id: imgObj?.id,
 			sub_id: userId,
@@ -83,7 +83,7 @@ export const fetchVote = createAsyncThunk<void, [ imgObj: TDataObj, value: numbe
 export const fetchActionFavourite = createAsyncThunk<void, TDataObj, { state: RootState }>(
 	'voting/fetchActionFavourite',
 	async (imgObj, thunkAPI) => {
-		const { userId } = thunkAPI.getState().votingSlice
+		const { userId } = thunkAPI.getState().loginSlice
 		const dispatch = thunkAPI.dispatch
 
 		const body = {
@@ -138,7 +138,8 @@ export const fetchDeleteFromFav = createAsyncThunk<void, TData, { state: RootSta
 export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetFavourites',
 	async (_, { dispatch, getState }) => {
-		const { userId, favPage } = getState().votingSlice
+		const { favPage } = getState().votingSlice
+		const { userId } = getState().loginSlice
 		try {
 			dispatch(setIsError(false))
 			const { data } = await instance.get<TData[]>(`favourites?sub_id=${ userId }&page=${ favPage }&limit=15&order=DESC`)
@@ -156,7 +157,8 @@ export const fetchGetFavourites = createAsyncThunk<void, void, { state: RootStat
 export const fetchGetLikes = createAsyncThunk<void, void, { state: RootState }>(
 	'voting/fetchGetLikes',
 	async (_, { dispatch, getState }) => {
-		const { userId, likePage } = getState().votingSlice
+		const { likePage } = getState().votingSlice
+		const { userId } = getState().loginSlice
 
 		try {
 			dispatch(setIsError(false))

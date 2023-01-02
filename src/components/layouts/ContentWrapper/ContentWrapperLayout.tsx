@@ -10,15 +10,15 @@ import { SearchPanel, UploadModal } from '../../index'
 
 const ContentWrapperLayout: FC = () => {
 	const location = useLocation()
-	const { showModal, message, isLoaded, status } = useSelector(uploadingSlice)
+	const { showModalUpload, message, isLoaded, status } = useSelector(uploadingSlice)
 
 	return (
 		<div className={ s.wrapper }>
 			<div className={ s.container }>
 				{ location.pathname !== '/' && <SearchPanel/> }
 				<Outlet/>
-				{ showModal && <UploadModal
-					showModal={ showModal }
+				{ showModalUpload && <UploadModal
+					showModalUpload={ showModalUpload }
 					message={ message }
 					isLoaded={ isLoaded }
 					status={ status }/> }

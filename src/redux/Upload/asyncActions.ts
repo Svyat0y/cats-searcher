@@ -10,7 +10,7 @@ export const fetchUploadImage = createAsyncThunk<void, File | null, { state: Roo
 	async (file, { dispatch, getState }) => {
 		const body = {
 			file,
-			sub_id: getState().votingSlice.userId
+			sub_id: getState().loginSlice.userId
 		}
 		try {
 			const { data } = await instance.post('images/upload', body, {

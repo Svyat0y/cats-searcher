@@ -1,20 +1,25 @@
 import { FC, useEffect, useState } from 'react'
 
 import { AppDispatch, useAppDispatch } from './redux/store'
+import { useSelector }                 from 'react-redux'
+import { uploadingSlice }              from './redux/Upload/selectors'
+import { selectLogin }                 from './redux/Login/selectors'
 
 import { getLSTheme }    from './services/localStorage/theme'
 import { getLsMessages } from './services/localStorage/infoMessageLS'
+import { getNickNameLS } from './services/localStorage/nickNameLs'
 
-import { DesktopLayout }  from './components'
-import { getNickNameLS }  from './services/localStorage/nickNameLs'
-import { useSelector }    from 'react-redux'
-import { uploadingSlice } from './redux/Upload/selectors'
+import { DesktopLayout } from './components'
+import LoginModal        from './components/shared/Modal/LoginModal'
 
 
 const App: FC = () => {
 	const dispatch: AppDispatch = useAppDispatch()
-	const { showModal } = useSelector(uploadingSlice)
+	const { showModalUpload } = useSelector(uploadingSlice)
+	const { showModalLogin } = useSelector(selectLogin)
 	const [ fadeIn, setFadeIn ] = useState(false)
+
+	const isModal = showModalLogin || showModalUpload
 
 	useEffect(() => {
 		getLSTheme(dispatch)
@@ -30,8 +35,9 @@ const App: FC = () => {
 
 	return (
 		<>
-			<main className={ `App ${ fadeIn ? 'fadeIn' : '' } ${ showModal ? 'overlay' : '' }` }>
+			<main className={ `App ${ fadeIn ? 'fadeIn' : '' } ${ isModal ? 'overlay' : '' }` }>
 				<DesktopLayout/>
+				{ showModalLogin && <LoginModal dispatch={ dispatch }/> }
 			</main>
 		</>
 	)
