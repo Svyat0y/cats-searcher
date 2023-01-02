@@ -21,6 +21,12 @@
     position: relative;
     outline: none;
     border: none;
+    outline-offset: -7px;
+
+
+    &:focus-visible {
+      outline: 2px solid $main_color;
+    }
 
     &:active {
       svg {

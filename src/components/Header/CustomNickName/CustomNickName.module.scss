@@ -35,6 +35,11 @@
     opacity: 0;
     transform: translateY(-50px);
     z-index: -10;
+
+    button {
+      font-size: 14px;
+      padding: 5px 20px;
+    }
   }
 
   input {
