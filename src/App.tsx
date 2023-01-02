@@ -7,6 +7,7 @@ import { getLsMessages } from './services/localStorage/infoMessageLS'
 
 import { Overlay }       from './components/Ui'
 import { DesktopLayout } from './components'
+import { getNickNameLS } from './services/localStorage/nickNameLs'
 
 
 const App: FC = () => {
@@ -16,6 +17,7 @@ const App: FC = () => {
 	useEffect(() => {
 		getLSTheme(dispatch)
 		getLsMessages(dispatch)
+		getNickNameLS(dispatch)
 	}, [])
 
 	useEffect(() => {

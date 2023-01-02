@@ -10,10 +10,8 @@ import logoDark  from '../../assets/images/main/logoDark.webp'
 const HeaderLogo: FC<THeaderLogo> = ({ theme }) => {
 
 	return (
-		<Link to='/'>
-			<div className={ s.logo }>
-				<img src={ theme === 'light' ? logoLight : logoDark } alt='logo'/>
-			</div>
+		<Link className={ s.logo } to='/'>
+			<img src={ theme === 'light' ? logoLight : logoDark } alt='logo'/>
 		</Link>
 	)
 }

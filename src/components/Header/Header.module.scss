@@ -2,7 +2,11 @@
 
 .wrapper {
   @include flex(space-between);
+  gap: 0 15px;
 
+  .logo {
+    flex-grow: 1;
+  }
 
   .navigation {
     @include flex(space-between, center);
