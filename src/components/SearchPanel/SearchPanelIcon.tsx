@@ -8,6 +8,7 @@ const SearchPanelIcon: FC<TSearchPanelIcon> = ({ children, page, location, route
 
 	return (
 		<Link
+			role='button'
 			to={ `voting/${ route }?page=${ page + 1 }` }
 			className={ `${ s.iconWrapper } ${ location ? s.iconActive : '' }` }>
 			{ children }
