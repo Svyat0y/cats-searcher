@@ -15,6 +15,7 @@ const HeaderNavigation: FC<THeaderNavigation> = ({ theme, onChangeTheme }) => {
 			</div>
 			<label className={ s.switcher }>
 				<input
+					role='button'
 					onClick={ onChangeTheme }
 					readOnly
 					checked={ theme === 'dark' }

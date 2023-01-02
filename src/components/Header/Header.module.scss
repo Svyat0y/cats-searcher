@@ -30,12 +30,13 @@
     position: relative;
     cursor: pointer;
     z-index: 5;
-    
+
     input {
       -webkit-appearance: none;
       appearance: none;
       position: absolute;
       z-index: -1;
+      cursor: pointer;
     }
 
     span::after {

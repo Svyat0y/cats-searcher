@@ -43,7 +43,7 @@
         height: 100%;
       }
 
-      &:hover {
+      &:hover, &:focus-within {
         border: 4px solid var(--bg_color);
 
         + .cardBtn:not(.active) {
