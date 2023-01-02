@@ -2,8 +2,8 @@ import { FC, useEffect, useState, ChangeEvent, FormEvent, DragEvent } from 'reac
 import s                                                              from './FileUploader.module.scss'
 import { TFileUploader }                                              from '../types'
 
-import { fetchUploadImage } from '../../../redux/Upload/asyncActions'
-import { setMessage }       from '../../../redux/Upload/slice'
+import { fetchUploadImage }        from '../../../redux/Upload/asyncActions'
+import { setIsLoaded, setMessage } from '../../../redux/Upload/slice'
 
 import UploadFormFooter    from './UploadFormFooter'
 import { CustomInputFile } from '../../Ui'
@@ -18,6 +18,8 @@ const FileUploader: FC<TFileUploader> = ({ dispatch, message, isLoaded, status }
 	const [ file, setFile ] = useState<File | null>(null)
 	const [ imageUrl, setImageUrl ] = useState<string | ArrayBuffer | null>(null)
 	const fileReader = new FileReader()
+
+	console.log('rerender')
 
 	fileReader.onloadend = () => {
 		setImageUrl(fileReader.result)
@@ -45,6 +47,7 @@ const FileUploader: FC<TFileUploader> = ({ dispatch, message, isLoaded, status }
 	}
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		dispatch(setIsLoaded(false))
 		setEventDefault(e)
 		file && dispatch(fetchUploadImage(file))
 	}

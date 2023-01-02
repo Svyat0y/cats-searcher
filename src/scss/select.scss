@@ -5,109 +5,107 @@
   position: relative;
 }
 
-.select {
+.select__control {
+  margin-left: 10px;
+  height: 40px !important;
+  margin-right: 10px !important;
+  background: var(--bg_grey-white_white-rgba) !important;
+  border: initial !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: initial;
+  padding: 2px;
 
-  &__control {
-    margin-left: 10px;
-    height: 40px !important;
-    margin-right: 10px !important;
-    background: var(--bg_grey-white_white-rgba) !important;
-    border: none !important;
-    border-radius: 10px !important;
-    box-shadow: none !important;
-    cursor: pointer !important;
-    transition: initial;
-    padding: 2px;
-
-    &:focus-visible {
-      outline: 2px solid $main_color !important;
-    }
-    
-    &--menu-is-open {
-      .breedSelect__dropdown-indicator {
-        transform: rotate(180deg);
-      }
-    }
+  &:focus-within {
+    outline: 2px solid $main_color !important;
   }
 
-  &__indicator {
-    transition: initial;
-    color: $main_color !important;
-
-    &:hover {
-      transition: initial;
-      color: #AAAAAA !important;
-    }
-  }
-
-  &__indicator-separator {
-    display: none !important;
-  }
-
-  &__input-container {
-    color: $main_color !important;
-  }
-
-  &__value-container {
-    padding-right: 0 !important;
-  }
-
-  &__single-value {
-    color: $main_color !important;
-  }
-
-  &__menu {
-    z-index: 20 !important;
-    background: transparent !important;
-    border-radius: 10px !important;
-    overflow: hidden !important;
-    border: none !important;
-    box-shadow: none !important;
-    animation: openMenu .3s ease !important;
-  }
-
-  &__menu-list {
-    padding: 0 !important;
-    background: var(--bg_grey-white_white-rgba) !important;
-
-    &::-webkit-scrollbar {
-      width: 10px !important;
-      height: 0 !important;
-      cursor: pointer !important;
-
-      &:hover {
-        width: 10px !important;
-      }
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var(--bg_input_search);
-      border-radius: 10px !important;
-      -webkit-border-radius: 10px !important;
-
-      &:hover {
-        background: lighten(#543C3D, 10%) !important;
-      }
-    }
-  }
-
-  &__option {
-    cursor: pointer !important;
-
-    &--is-focused {
-      background: rgba($main_color, .1) !important;
-    }
-
-    &--is-selected {
-      background: rgba($main_color, .1) !important;
-      color: inherit !important;
+  &--menu-is-open {
+    .breed.Select__dropdown-indicator {
+      transform: rotate(180deg);
     }
   }
 }
+
+.select__indicator {
+  transition: initial;
+  color: $main_color !important;
+
+  &:hover {
+    transition: initial;
+    color: #AAAAAA !important;
+  }
+}
+
+.select__indicator-separator {
+  display: none !important;
+}
+
+.select__input-container {
+  color: $main_color !important;
+}
+
+.select__value-container {
+  padding-right: 0 !important;
+}
+
+.select__single-value {
+  color: $main_color !important;
+}
+
+.select__menu {
+  z-index: 20 !important;
+  background: transparent !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: none !important;
+  animation: openMenu .3s ease !important;
+}
+
+.select__menu-list {
+  padding: 0 !important;
+  background: var(--bg_grey-white_white-rgba) !important;
+
+  &::-webkit-scrollbar {
+    width: 10px !important;
+    height: 0 !important;
+    cursor: pointer !important;
+
+    &:hover {
+      width: 10px !important;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--bg_input_search);
+    border-radius: 10px !important;
+    -webkit-border-radius: 10px !important;
+
+    &:hover {
+      background: lighten(#543C3D, 10%) !important;
+    }
+  }
+}
+
+.select__option {
+  cursor: pointer !important;
+
+  &--is-focused {
+    background: rgba($main_color, .1) !important;
+  }
+
+  &--is-selected {
+    background: rgba($main_color, .1) !important;
+    color: inherit !important;
+  }
+}
+
 
 @keyframes openMenu {
   0% {

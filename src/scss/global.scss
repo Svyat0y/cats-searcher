@@ -51,6 +51,6 @@
 
 button, label {
   &:focus-visible {
-    outline: 1px solid $main_color;
+    outline: 2px solid $main_color !important;
   }
 }
