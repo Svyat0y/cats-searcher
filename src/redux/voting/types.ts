@@ -1,5 +1,4 @@
 export interface IVote {
-	userId: string
 	voteData: TDataObj | null
 	likeData: TData[] | null
 	favoritesData: TData[] | null

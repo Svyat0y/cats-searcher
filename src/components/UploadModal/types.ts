@@ -7,7 +7,7 @@ type Status = string
 type IsLoaded = boolean
 
 export type TUploadModal = {
-	showModal: boolean
+	showModalUpload: boolean
 	message: Message
 	isLoaded: IsLoaded
 	status: Status

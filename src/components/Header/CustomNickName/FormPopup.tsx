@@ -2,13 +2,13 @@ import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react'
 import s                                                   from './CustomNickName.module.scss'
 import { TFormPopup, TPopupClick }                         from './types'
 
-import { setUserId }      from '../../../redux/voting/slice'
 import { useAppDispatch } from '../../../redux/store'
 
-import { Button } from '../../Ui'
+import { setNickNameLS } from '../../../services/localStorage/nickNameLs'
+import { Button }        from '../../Ui'
 
 
-const FormPopup: FC<TFormPopup> = ({ setVisiblePopup, userId, popupRef, animVisible, setAnimVisible, duration }) => {
+const FormPopup: FC<TFormPopup> = ({ setVisiblePopup, popupRef, animVisible, setAnimVisible, duration }) => {
 	const dispatch = useAppDispatch()
 	const [ localName, setLocalName ] = useState('')
 
@@ -22,6 +22,7 @@ const FormPopup: FC<TFormPopup> = ({ setVisiblePopup, userId, popupRef, animVisi
 	const handleClickOutside = (e: MouseEvent) => {
 		const _event = e as TPopupClick
 		const path = _event.path || (e.composedPath && e.composedPath())
+		
 		if (popupRef.current && !path.includes(popupRef.current)) {
 			setAnimVisible(false)
 			setTimeout(() => setVisiblePopup(false), duration)
@@ -31,8 +32,9 @@ const FormPopup: FC<TFormPopup> = ({ setVisiblePopup, userId, popupRef, animVisi
 	const onclickConfirm = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		e.stopPropagation()
+
 		if (localName) {
-			dispatch(setUserId(localName))
+			setNickNameLS(localName, dispatch)
 			setAnimVisible(false)
 			setTimeout(() => setVisiblePopup(false), duration)
 		}

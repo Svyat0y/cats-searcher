@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Status }                     from '../voting/types'
-import { IUpload }                    from './type'
+import { IUpload }                    from './types'
 
 import { isFulfilledAction, isPendingAction, isRejectedAction } from '../utilsAction'
 
 
 const initialState: IUpload = {
-	showModal: false,
+	showModalUpload: false,
 	isLoaded: false,
 	message: '',
 	status: Status.PENDING
@@ -16,8 +16,8 @@ export const uploadingSlice = createSlice({
 	name: 'uploadingSlice',
 	initialState,
 	reducers: {
-		setShowModal: (state, action: PayloadAction<boolean>) => {
-			state.showModal = action.payload
+		setShowModalUpload: (state, action: PayloadAction<boolean>) => {
+			state.showModalUpload = action.payload
 		},
 		setMessage: (state, action: PayloadAction<string>) => {
 			state.message = action.payload
@@ -40,6 +40,6 @@ export const uploadingSlice = createSlice({
 	}
 })
 
-export const { setShowModal, setMessage, setIsLoaded } = uploadingSlice.actions
+export const { setShowModalUpload, setMessage, setIsLoaded } = uploadingSlice.actions
 
 export default uploadingSlice.reducer

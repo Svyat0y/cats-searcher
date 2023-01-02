@@ -2,27 +2,27 @@ import { FC, useEffect, useState } from 'react'
 import s                           from './UploadModal.module.scss'
 import { TUploadModal }            from './types'
 
-import { useAppDispatch }           from '../../redux/store'
-import { setMessage, setShowModal } from '../../redux/Upload/slice'
+import { useAppDispatch }                 from '../../redux/store'
+import { setMessage, setShowModalUpload } from '../../redux/Upload/slice'
 
 import FileUploader from './FileUploader/FileUploader'
 import UploadHeader from './UploadHeader'
 
 
-const UploadModal: FC<TUploadModal> = ({ showModal, message, isLoaded, status }) => {
+const UploadModal: FC<TUploadModal> = ({ showModalUpload, message, isLoaded, status }) => {
 	const [ animShow, setAnimShow ] = useState(false)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		setAnimShow(showModal)
-	}, [ showModal ])
+		setAnimShow(showModalUpload)
+	}, [ showModalUpload ])
 
 	const onCloseModal = () => {
 		setAnimShow(false)
 
 		setTimeout(() => {
 			dispatch(setMessage(''))
-			dispatch(setShowModal(false))
+			dispatch(setShowModalUpload(false))
 		}, 200)
 	}
 

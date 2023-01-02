@@ -1,5 +1,5 @@
 export interface IUpload {
-	showModal: boolean
+	showModalUpload: boolean
 	status: string
 	message: string
 	isLoaded: boolean
