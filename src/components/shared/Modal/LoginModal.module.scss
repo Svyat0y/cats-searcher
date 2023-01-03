@@ -44,6 +44,19 @@
         background: var(--bg_dark_grey__white);
         color: $main_color;
         flex-grow: 1;
+
+        @include placeholder {
+          opacity: .7;
+          @include transition();
+        }
+
+        &:focus {
+          @include transition();
+
+          @include placeholder {
+            opacity: 0;
+          }
+        }
       }
     }
   }
