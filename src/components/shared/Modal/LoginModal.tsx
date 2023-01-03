@@ -40,7 +40,7 @@ const LoginModal: FC<TLoginModal> = ({ dispatch }) => {
 				</p>
 				<form className={ s.formWrapper } onSubmit={ onClickSubmit }>
 					<label htmlFor='login'> Your personal name: </label>
-					<input onChange={ onChangeName } id='login' type='text' value={ localName } placeholder='example: user-01'/>
+					<input onChange={ onChangeName } id='login' type='text' value={ localName } placeholder='example: Alex'/>
 					<Button name='enter'/>
 				</form>
 			</div>
