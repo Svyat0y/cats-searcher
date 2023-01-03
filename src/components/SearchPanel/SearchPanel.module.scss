@@ -62,12 +62,7 @@
         @include transition();
       }
 
-      &:hover {
-        outline: 2px solid #FBE0DC;
-      }
-
       &:focus {
-        outline: 2px solid #FF868E;
         @include transition();
 
         @include placeholder {

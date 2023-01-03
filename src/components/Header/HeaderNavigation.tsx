@@ -13,9 +13,9 @@ const HeaderNavigation: FC<THeaderNavigation> = ({ theme, onChangeTheme }) => {
 			<div className={ s.imgWrapper }>
 				<img src={ theme === 'light' ? eyeOpen : eyeClose } alt='icon'/>
 			</div>
-			<label className={ s.switcher }>
+			<label className={ s.switcher } onClick={ onChangeTheme }>
+				<button></button>
 				<input
-					onClick={ onChangeTheme }
 					readOnly
 					checked={ theme === 'dark' }
 					id='switcher'
