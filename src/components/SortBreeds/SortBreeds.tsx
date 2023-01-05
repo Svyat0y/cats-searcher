@@ -26,7 +26,7 @@ const SortBreeds: FC = () => {
 	const [ _, setSearchParams ] = useSearchParams()
 	const [ isMounted, setIsMounted ] = useState(false)
 	const { breedFilters, status, breedsList } = useSelector(selectSearch)
-
+	
 	const pageNumberForUI = breedFilters.page + 1
 
 	const props = { filters: breedFilters, pageNumberForUI, setSearchParams, dispatch, status }
