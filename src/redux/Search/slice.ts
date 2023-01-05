@@ -16,7 +16,7 @@ const initialState: ISearch = {
 		limit: '5',
 		order: 'asc',
 		page: 0,
-		type: 'all',
+		type: '',
 	},
 	galleryFilters: {
 		value: 'None',

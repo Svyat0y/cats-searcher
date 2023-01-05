@@ -10,7 +10,7 @@ const ContentWrapper: FC = () => {
 
 	return (
 		<Routes>
-			<Route path='/*' element={ <ContentWrapperLayout/> }>
+			<Route path='/' element={ <ContentWrapperLayout/> }>
 				<Route index element={ <Preview/> }/>
 				<Route path='voting/*' element={ <Voting/> }/>
 				<Route path='breeds/*' element={ <ErrorBoundary> <Breeds/></ErrorBoundary> }/>

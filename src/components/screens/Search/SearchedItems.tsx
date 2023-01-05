@@ -31,7 +31,7 @@ const SearchedItems: FC<TSearchedItems> = memo((
 
 	useLayoutEffect(() => {
 		dispatch(setIsLoadingData(true))
-	}, [ filters.page ])
+	}, [ filters, filters.page ])
 
 	useEffect(() => {
 		if (status === 'success') setTimeout(() => setLoaded(true), 0)

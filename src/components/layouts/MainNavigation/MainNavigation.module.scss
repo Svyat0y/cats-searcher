@@ -5,6 +5,10 @@
   @include flex(center);
   z-index: 5;
 
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
   .container {
     width: 480px;
     padding: 0 15px;
