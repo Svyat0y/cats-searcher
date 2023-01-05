@@ -5,8 +5,13 @@
   @include flex(flex-end);
 
   .container {
-    width: 680px;
+    max-width: 680px;
+    width: 100%;
     min-height: 840px;
     position: relative;
+
+    @media screen and (max-width: 768px) {
+      margin: 0 auto;
+    }
   }
 }

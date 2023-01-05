@@ -51,6 +51,7 @@ const SearchPanel: FC = () => {
 
 	return (
 		<div className={ `${ s.wrapper } ${ fadeIn ? s.fadeIn : '' }` }>
+			<div className={ s.burger }>burger</div>
 			<form className={ s.inputWrapper } onSubmit={ onClick }>
 				<input
 					value={ searchValue ? searchValue : '' }

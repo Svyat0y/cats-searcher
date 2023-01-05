@@ -1,18 +1,41 @@
 @import "../../scss/variables";
 
 .wrapper {
-  @include flex(space-between, center);
+  //@include flex(space-between, center);
   height: 60px;
   margin-bottom: 10px;
   opacity: 0;
   transform: translateX(100%);
   transition: all 1s ease;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "search buttons";
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+    "burger search buttons";
+  }
+
+  @media screen and (max-width: 425px) {
+    height: auto;
+    //justify-content: space-between;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "burger buttons"
+    "search search  ";
+  }
 
   .inputWrapper {
     position: relative;
     height: 60px;
     max-width: 470px;
     width: 100%;
+    grid-area: search;
+    flex-grow: 1;
 
     button {
       border: none;
@@ -73,7 +96,13 @@
   }
 
   .icons {
-    @include flex(null, flex-end);
+    @include flex(flex-end);
+    gap: 10px;
+    grid-area: buttons;
+
+    /*    @media screen and(max-width: 425px) {
+          @include flex(flex-end);
+        }*/
 
     .iconWrapper {
       width: 60px;
@@ -81,7 +110,6 @@
       background: var(--bg_white-grey);
       border-radius: 20px;
       @include flex(center, center);
-      margin-right: 10px;
       cursor: pointer;
       user-select: none;
       @include transition();
@@ -114,6 +142,21 @@
           fill: #FFFFFF;
         }
       }
+    }
+  }
+
+  .burger {
+    grid-area: burger;
+    width: 60px;
+    height: 60px;
+    background: var(--bg_white-grey);
+    border-radius: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
     }
   }
 }
