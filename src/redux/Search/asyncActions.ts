@@ -2,8 +2,8 @@ import { createAsyncThunk, Dispatch } from '@reduxjs/toolkit'
 import { instance }                   from '../../services/api/api'
 import { TSearchData }                from './types'
 
-import { RootState }                   from '../store'
-import { setIsError, setToSearchData } from './slice'
+import { RootState }                                     from '../store'
+import { setIsError, setIsLoadingData, setToSearchData } from './slice'
 
 
 const fetchSearchRightObjects = async (reference_image_id: string, dispatch: Dispatch) => {
@@ -32,6 +32,7 @@ export const fetchSearch = createAsyncThunk<void, void, { state: RootState }>(
 
 		try {
 			dispatch(setIsError(false))
+			dispatch(setIsLoadingData(true))
 			if (value === 'All breeds') {
 				const { data } = await instance.get<any>(`breeds?${ query }`)
 				const newData: TSearchData[] = await Promise.all(data.map(({ reference_image_id }: { reference_image_id: string }) => {
