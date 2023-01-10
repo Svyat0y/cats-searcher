@@ -8,9 +8,24 @@
   margin-bottom: 20px;
   min-height: 360px;
 
+  @media screen and (max-width: 567px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__imgWrapper {
     position: relative;
     @include transition();
+
+    @media screen and (max-width: 567px) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 375px) {
+      width: 308px;
+      height: 206px;
+    }
 
     img {
       width: 100%;

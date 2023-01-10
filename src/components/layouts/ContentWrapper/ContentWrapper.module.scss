@@ -3,6 +3,11 @@
 .wrapper {
   width: 100%;
   @include flex(flex-end);
+  min-width: 560px;
+
+  @media screen and (max-width: 928px) {
+    min-width: 500px;
+  }
 
   .container {
     max-width: 680px;
