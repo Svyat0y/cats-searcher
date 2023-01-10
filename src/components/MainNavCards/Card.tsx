@@ -9,7 +9,7 @@ const Card: FC<TCard> = ({ name, img, color, to, active }) => {
 	const loc = location.pathname.includes(active)
 
 	return (
-		<div className={ s.card }>
+		<div className={ s.cardWrapper }>
 			<Link to={ to } className={ `${ s.card } ${ s[color] } ${ loc ? s.active : '' }` }>
 				<div className={ s.imgWrapper }>
 					<img src={ img } alt='card'/>

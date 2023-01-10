@@ -15,6 +15,7 @@
 
 .withRefreshBtn {
   @include flex(space-between, flex-start);
+  gap: 10px;
 
   :global(.container-select) {
     flex-grow: 1 !important;

@@ -6,12 +6,15 @@
   z-index: 5;
 
   @media screen and (max-width: 768px) {
-    display: none;
+    //display: none;
   }
 
   .container {
-    width: 480px;
-    padding: 0 15px;
-    margin: 0 auto;
+    max-width: 480px;
+    width: 100%;
+
+    @media screen and (max-width: 1080px) {
+      max-width: 480px;
+    }
   }
 }

@@ -80,6 +80,10 @@
       color: #8C8C8C;
       padding: 0 60px 0 20px;
 
+      @media screen and (max-width: 928px) {
+        font-size: 17px;
+      }
+
       @include placeholder {
         opacity: .7;
         @include transition();

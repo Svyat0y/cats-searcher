@@ -36,6 +36,11 @@
   font-size: 44px;
   line-height: 58px;
   color: var(--title_color);
+
+  @media screen and (max-width: 1030px) {
+    font-size: 38px;
+    line-height: 50px;
+  }
 }
 
 .btn {

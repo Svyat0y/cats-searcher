@@ -6,13 +6,17 @@
     padding: 20px;
     background: var(--bg_white-grey);
     border-radius: 20px;
-    height: 782px;
+    height: 800px;
     overflow: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;
     transform: translateY(-50%);
     opacity: 0;
     transition: transform 1s ease;
+
+    @media screen and (max-width: 567px) {
+      height: auto;
+    }
 
     &::-webkit-scrollbar {
       width: 0;

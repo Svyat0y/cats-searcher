@@ -3,15 +3,20 @@
 .wrapper {
   width: 100%;
   @include flex(flex-end);
+  min-width: 560px;
+
+  @media screen and (max-width: 928px) {
+    min-width: 500px;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
 
   .container {
     max-width: 680px;
     width: 100%;
     min-height: 840px;
     position: relative;
-
-    @media screen and (max-width: 768px) {
-      margin: 0 auto;
-    }
   }
 }

@@ -3,8 +3,25 @@
 .wrapper {
   margin-top: 80px;
 
+  @media screen and (max-width: 1030px) {
+    margin-top: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 40px;
+  }
+
   .headerWrapper {
     margin-bottom: 60px;
+
+    @media screen and (max-width: 1030px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 60px;
+    }
+
   }
 
   .cardsDesc {
@@ -12,17 +29,55 @@
     line-height: 29px;
     margin-bottom: 20px;
     color: var(--title_color);
+
+    @media screen and (max-width: 1030px) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+      line-height: 29px;
+    }
   }
 
   .cards {
     @include flex(space-between);
     margin-top: 20px;
+    gap: 10px;
+
+    @media screen and (max-width: 1030px) {
+      @include flex(center, center, null);
+      flex-wrap: wrap;
+    }
+
+    @media screen and (max-width: 768px) {
+      @include flex(space-between);
+      flex-wrap: initial;
+    }
+
   }
 
-  .card {
+  .cardWrapper {
     width: 138px;
-    height: auto;
+    height: 200px;
     padding: 3px;
+
+    @media screen and (max-width: 1030px) {
+      margin-bottom: 60px;
+    }
+
+    @media screen and (max-width: 928px) {
+      width: 100px;
+      height: 120px;
+      margin-bottom: 45px;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 138px;
+      height: 200px;
+      margin-bottom: initial;
+    }
 
     .imgWrapper {
       width: 100%;
@@ -37,6 +92,14 @@
       border-radius: 20px;
       @include flex(center, center);
       cursor: pointer;
+
+      @media screen and (max-width: 1030px) {
+
+        img {
+          object-fit: contain;
+        }
+      }
+
 
       img {
         width: 100%;
@@ -68,6 +131,20 @@
     .cardBtn {
       margin-top: 20px;
       cursor: initial;
+
+      @media screen and (max-width: 1030px) {
+        margin-top: 10px;
+      }
+
+      @media screen and (max-width: 928px) {
+        height: 30px;
+        @include flex(center, center);
+      }
+
+      @media screen and (max-width: 768px) {
+        height: initial;
+        display: block;
+      }
 
       &.active {
         background: #FF868E;
