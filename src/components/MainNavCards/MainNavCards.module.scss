@@ -7,11 +7,19 @@
     margin-top: 40px;
   }
 
+  @media screen and (max-width: 768px) {
+    margin-top: 40px;
+  }
+
   .headerWrapper {
     margin-bottom: 60px;
 
     @media screen and (max-width: 1030px) {
       margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 60px;
     }
 
   }
@@ -26,6 +34,11 @@
       font-size: 18px;
       line-height: 24px;
     }
+
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+      line-height: 29px;
+    }
   }
 
   .cards {
@@ -36,6 +49,11 @@
     @media screen and (max-width: 1030px) {
       @include flex(center, center, null);
       flex-wrap: wrap;
+    }
+
+    @media screen and (max-width: 768px) {
+      @include flex(space-between);
+      flex-wrap: initial;
     }
 
   }
@@ -53,6 +71,12 @@
       width: 100px;
       height: 120px;
       margin-bottom: 45px;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 138px;
+      height: 200px;
+      margin-bottom: initial;
     }
 
     .imgWrapper {
@@ -115,6 +139,11 @@
       @media screen and (max-width: 928px) {
         height: 30px;
         @include flex(center, center);
+      }
+
+      @media screen and (max-width: 768px) {
+        height: initial;
+        display: block;
       }
 
       &.active {

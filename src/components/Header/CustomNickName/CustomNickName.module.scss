@@ -3,7 +3,6 @@
 .nickNameWrapper {
   grid-area: userName;
   position: relative;
-  grid-column-start: auto;
 
   .iconWrapper {
     cursor: pointer;
@@ -16,7 +15,7 @@
     color: $main_color;
 
     @media screen and (max-width: 928px) {
-      @include flex(flex-end, center);
+      @include flex(flex-start, center);
     }
 
     svg {

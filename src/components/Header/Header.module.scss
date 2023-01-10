@@ -9,9 +9,15 @@
   @media screen and (max-width: 928px) {
     gap: 20px;
     grid-template-areas:
-                'logo logo logo logo'
-                'userName userName userName switcher';
+                'logo switcher'
+                'userName userName';
   }
+  @media screen and (max-width: 768px) {
+    gap: 20px;
+    grid-template-areas:
+            'logo userName switcher';
+  }
+
 
   .logo {
     grid-area: logo;
