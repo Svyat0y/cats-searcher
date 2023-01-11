@@ -30,7 +30,7 @@ export type TVotingItems = {
 	page: number
 	status?: string
 	firstPage: boolean
-	lastPage: boolean | null
+	lastPage: boolean
 	onClickNext: () => void
 	onClickPrev: () => void
 	isLoading: boolean

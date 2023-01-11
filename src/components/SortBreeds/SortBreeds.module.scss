@@ -5,6 +5,14 @@
   @include flex(flex-end, center);
   gap: 10px;
 
+  > div:nth-child(1) {
+    width: 60%;
+
+    @media screen and (max-width: 1275px) {
+      width: 100%;
+    }
+  }
+
   .withSortButtons {
     width: 100%;
     display: flex;
@@ -15,9 +23,5 @@
 
   @media screen and (max-width: 560px) {
     @include flex(center, flex-start, column);
-
-    > div:nth-child(1) {
-      width: 100%;
-    }
   }
 }

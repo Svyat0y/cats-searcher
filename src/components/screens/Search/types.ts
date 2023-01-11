@@ -7,7 +7,7 @@ export type TSearchedItems = {
 	data: TSearchData[] | null
 	dispatch: AppDispatch
 	firstPage: boolean
-	lastPage: boolean | null
+	lastPage: boolean
 	status: string
 	filters: TFilters
 	pageNumberForUI: number

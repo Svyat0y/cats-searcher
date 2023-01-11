@@ -1,6 +1,6 @@
 export type TPagination = {
 	firstPage: boolean
-	lastPage: boolean | null
+	lastPage: boolean
 	onClickNext: () => void
 	onClickPrev: () => void
 	page?: number
