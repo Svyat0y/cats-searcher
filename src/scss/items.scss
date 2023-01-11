@@ -18,12 +18,8 @@
     position: relative;
     @include transition();
 
-    @media screen and (max-width: 567px) {
+    @media screen and (max-width: 560px) {
       width: 100%;
-    }
-
-    @media screen and (max-width: 375px) {
-      width: 308px;
       height: 206px;
     }
 

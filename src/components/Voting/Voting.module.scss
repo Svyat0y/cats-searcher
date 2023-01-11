@@ -2,14 +2,20 @@
 
 .imgWrapper {
   width: 100%;
-  min-height: 360px;
+  height: 360px;
   border-radius: 20px;
   @include flex(center, center);
   margin-bottom: 52px;
   position: relative;
 
-  img {
-    max-height: 360px;
+  @media screen and (max-width: 560px) {
+    height: 206px;
+    margin: 0 auto;
+  }
+
+  .voteImage {
+    height: 100%;
+    object-fit: cover;
     border-radius: 20px;
   }
 }

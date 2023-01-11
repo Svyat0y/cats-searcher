@@ -33,7 +33,7 @@ const VotingImage: FC<TVotingImage> = (
 	return (
 		<>
 			<div className={ s.imgWrapper }>
-				{ isLoading ? <Spinner/> : <img src={ voteData?.url } alt=''/> }
+				{ isLoading ? <Spinner/> : <img className={ s.voteImage } src={ voteData?.url } alt=''/> }
 				<NavButtons
 					imgObj={ voteData }
 					onFavourites={ onFavourites }
