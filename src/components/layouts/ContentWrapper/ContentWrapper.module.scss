@@ -4,6 +4,7 @@
   width: 100%;
   @include flex(flex-end);
   min-width: 560px;
+  display: none;
 
   @media screen and (max-width: 928px) {
     min-width: 500px;
