@@ -28,7 +28,6 @@
     border: none;
     outline-offset: -7px;
 
-
     &:focus-visible {
       outline: 2px solid $main_color;
     }
@@ -45,6 +44,18 @@
 
     svg {
       fill: white;
+
+      @media screen and (max-width: 560px) {
+        width: 22.5px;
+        height: 22.5px;
+      }
+    }
+
+    .heartImg {
+      @media screen and (max-width: 560px) {
+        width: 22.5px;
+        height: 19.5px;
+      }
     }
 
     &.likeBg {

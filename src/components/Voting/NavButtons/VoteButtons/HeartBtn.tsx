@@ -27,7 +27,7 @@ const HeartBtn: FC<THeartBtn> = ({ onFavourite, imgObj, status, onFavourites, se
 			{
 				status === 'pending' && btnName === 'voteFavourite'
 					? <SmallSpinner height={ 20 } width={ 20 } color='#FFFFFF'/>
-					: <img src={ !imgInFavourites ? heartTransparentImg : heartTWhiteImg } alt='icon'/>
+					: <img className={ s.heartImg } src={ !imgInFavourites ? heartTransparentImg : heartTWhiteImg } alt='icon'/>
 			}
 		</button>
 	)
