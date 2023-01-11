@@ -21,7 +21,6 @@
     @media screen and (max-width: 768px) {
       margin-bottom: 60px;
     }
-
   }
 
   .cardsDesc {
@@ -56,12 +55,39 @@
       flex-wrap: initial;
     }
 
+    @media screen and (max-width: 560px) {
+      @include flex(center, center, column);
+    }
+
   }
 
   .cardWrapper {
     width: 138px;
     height: 200px;
     padding: 3px;
+
+    &:hover, &:focus-within {
+      .card {
+        border: 4px solid var(--bg_color);
+
+        + .cardBtn:not(.active) {
+          background: #FBE0DC
+        }
+      }
+
+    }
+
+    &:active {
+      .card {
+        border: 4px solid var(--bg_pink);
+
+        + .cardBtn:not(.active) {
+          background: #FF868E;
+          color: #FFFFFF;
+        }
+      }
+
+    }
 
     @media screen and (max-width: 1030px) {
       margin-bottom: 60px;
@@ -81,9 +107,10 @@
       margin-bottom: initial;
     }
 
-    .imgWrapper {
+    @media screen and (max-width: 560px) {
       width: 100%;
-      height: 100%;
+      height: auto;
+      padding: initial;
     }
 
     .card {
@@ -96,33 +123,23 @@
       cursor: pointer;
 
       @media screen and (max-width: 1030px) {
-
         img {
           object-fit: contain;
         }
       }
 
+      @media screen and (max-width: 560px) {
+        display: none;
+      }
 
-      img {
+      .imgWrapper {
         width: 100%;
         height: 100%;
       }
 
-      &:hover, &:focus-within {
-        border: 4px solid var(--bg_color);
-
-        + .cardBtn:not(.active) {
-          background: #FBE0DC
-        }
-      }
-
-      &:active {
-        border: 4px solid var(--bg_pink);
-
-        + .cardBtn:not(.active) {
-          background: #FF868E;
-          color: #FFFFFF;
-        }
+      img {
+        width: 100%;
+        height: 100%;
       }
 
       &.active {
@@ -132,13 +149,13 @@
 
     .cardBtn {
       margin-top: 20px;
-      cursor: initial;
-
-      @media screen and (max-width: 1030px) {
-        margin-top: 10px;
-      }
+      display: block;
+      cursor: pointer;
+      height: 36px;
+      @include flex(center, center);
 
       @media screen and (max-width: 928px) {
+        margin-top: 10px;
         height: 30px;
         @include flex(center, center);
       }
@@ -151,6 +168,15 @@
       &.active {
         background: #FF868E;
         color: #FFFFFF;
+      }
+
+      &:hover {
+        background: #FF868E;
+        color: #FFFFFF;
+
+        ~ .card {
+          border: 4px solid var(--bg_color);
+        }
       }
     }
 

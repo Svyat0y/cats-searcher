@@ -15,7 +15,9 @@ const Card: FC<TCard> = ({ name, img, color, to, active }) => {
 					<img src={ img } alt='card'/>
 				</div>
 			</Link>
-			<div className={ `btn ${ s.cardBtn } ${ loc ? s.active : '' }` }>{ name }</div>
+			<Link to={ to } className={ `btn ${ s.cardBtn } ${ loc ? s.active : '' }` }>
+				{ name }
+			</Link>
 		</div>
 
 	)
