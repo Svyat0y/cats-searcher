@@ -2,12 +2,22 @@
 
 .wrapper {
   width: 100%;
-  //@include flex(flex-end, center);
-  display: grid;
-  grid-template-columns: repeat(2, auto);
+  @include flex(flex-end, center);
   gap: 10px;
 
+  .withSortButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
   @media screen and (max-width: 560px) {
-    grid-template-columns: repeat(1, auto);
+    @include flex(center, flex-start, column);
+
+    > div:nth-child(1) {
+      width: 100%;
+    }
   }
 }

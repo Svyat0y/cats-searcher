@@ -86,6 +86,11 @@
         font-size: 17px;
       }
 
+      @media screen and (max-width: 560px) {
+        font-size: 20px;
+      }
+
+
       @include placeholder {
         opacity: .7;
         @include transition();
