@@ -1,7 +1,6 @@
 @import "../../scss/variables";
 
 .wrapper {
-  //@include flex(space-between, center);
   height: 60px;
   margin-bottom: 10px;
   opacity: 0;
@@ -19,11 +18,10 @@
     "burger search buttons";
   }
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 626px) {
     height: auto;
-    //justify-content: space-between;
-    grid-template-rows: auto;
-    grid-template-columns: auto;
+    grid-template-rows:  auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
     "burger buttons"
     "search search  ";
@@ -36,6 +34,10 @@
     width: 100%;
     grid-area: search;
     flex-grow: 1;
+
+    @media screen and (max-width: 626px) {
+      max-width: initial;
+    }
 
     button {
       border: none;

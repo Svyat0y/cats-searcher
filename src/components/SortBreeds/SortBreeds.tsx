@@ -51,7 +51,7 @@ const SortBreeds: FC = () => {
 		<div className={ s.wrapper }>
 			<BreedSelect options={ breedsList } onChangeOption={ onChangeOption } getValue={ getValue } { ...props }/>
 			<LimitSelect options={ limitOptionsForBreeds } { ...props }/>
-			<SortButtons { ...props }/>
+			{/*<SortButtons { ...props }/>*/ }
 		</div>
 	)
 }

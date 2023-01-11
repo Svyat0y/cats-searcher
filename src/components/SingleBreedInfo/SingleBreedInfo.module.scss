@@ -56,10 +56,14 @@
   .featureWrapper {
     border: 2px solid var(--bg_input_search);
     border-radius: 20px;
-    padding: 26px 60px;
+    padding: 26px 40px;
     position: relative;
     width: 100%;
     @include flex(null, null, column);
+
+    @media screen and (max-width: 928px) {
+      padding: 26px 20px;
+    }
   }
 
   .title {
@@ -82,12 +86,16 @@
 
   .descWrapper {
     width: 100%;
-    @include flex(space-between, flex-start);
+    @include flex(flex-start, flex-start);
+
+    @media screen and (max-width: 768px) {
+      @include flex(space-around, flex-start);
+    }
   }
 
   .left, .right {
     display: inline-block;
-    min-width: 260px;
+    //min-width: 260px;
     max-width: 260px;
     padding: 10px;
   }

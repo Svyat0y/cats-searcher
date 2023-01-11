@@ -2,6 +2,12 @@
 
 .wrapper {
   width: 100%;
-  @include flex(flex-end, center);
+  //@include flex(flex-end, center);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
   gap: 10px;
+
+  @media screen and (max-width: 560px) {
+    grid-template-columns: repeat(1, auto);
+  }
 }

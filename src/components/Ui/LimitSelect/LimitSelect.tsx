@@ -8,8 +8,8 @@ import { fetchGallerySearch } from '../../../redux/Search/asyncActions'
 import { setIsLoadingData }   from '../../../redux/Search/slice'
 import { createParams }       from '../../../utils/createParams'
 
-import { RefreshButton } from '../index'
-import SelectContainer   from '../SelectContainer/SelectContainer'
+import { RefreshButton, SortButtons } from '../index'
+import SelectContainer                from '../SelectContainer/SelectContainer'
 
 
 const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pageNumberForUI, options, status }) => {
@@ -34,7 +34,16 @@ const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pag
 				defaultValue={ options[0] }
 				onChange={ onChangeLimit }
 			/>
-			{ filters.type && <RefreshButton status={ status } onclick={ clickOnRefreshBtn }/> }
+			{
+				filters.type
+					? <RefreshButton status={ status } onclick={ clickOnRefreshBtn }/>
+					: <SortButtons
+						dispatch={ dispatch }
+						status='status'
+						filters={ filters }
+						setSearchParams={ setSearchParams }
+						pageNumberForUI={ pageNumberForUI }/>
+			}
 		</SelectContainer>
 	)
 }
