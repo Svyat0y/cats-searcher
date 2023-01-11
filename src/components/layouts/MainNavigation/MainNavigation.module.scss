@@ -4,6 +4,7 @@
   width: 100%;
   @include flex(center);
   z-index: 5;
+  //display: none;
 
   @media screen and (max-width: 768px) {
     //display: none;
