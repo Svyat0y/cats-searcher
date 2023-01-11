@@ -24,7 +24,7 @@ const Gallery: FC = () => {
 	const { onFavourites } = useSelector(selectVoting)
 
 	const firstPage = galleryFilters.page === 0
-	const lastPage = searchData && (searchData.length < Number(galleryFilters.limit))
+	const lastPage = searchData && (searchData.length < Number(galleryFilters.limit)) || false
 	const pageNumberForUI = galleryFilters.page + 1
 
 	const getParam = ((s: string) => searchParams.get(s))

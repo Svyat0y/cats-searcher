@@ -90,6 +90,10 @@
         font-size: 20px;
       }
 
+      @media screen and (max-width: 350px) {
+        font-size: 17px;
+      }
+
 
       @include placeholder {
         opacity: .7;

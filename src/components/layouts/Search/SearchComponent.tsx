@@ -21,7 +21,7 @@ const SearchComponent: FC = () => {
 	const { searchData, status, breedFilters, isLoadingData } = useSelector(selectSearch)
 
 	const firstPage = breedFilters.page === 0
-	const lastPage = searchData && searchData.length < Number(breedFilters.limit)
+	const lastPage = searchData && searchData.length < Number(breedFilters.limit) || false
 	const pageNumberForUI = breedFilters.page + 1
 
 	useEffect(() => {
