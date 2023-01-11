@@ -1,4 +1,15 @@
 .wrapper {
   margin-right: 0;
   margin-left: auto;
+
+  @media screen and (max-width: 560px) {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 }

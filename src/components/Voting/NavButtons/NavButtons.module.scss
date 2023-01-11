@@ -11,6 +11,11 @@
   border: 4px solid var(--bg_white-grey);
   background: white;
 
+  @media screen and (max-width: 560px) {
+    width: 186px;
+    height: 60px;
+  }
+
   .navButtonWrapper {
     @include flex(center, center);
     width: 100%;

@@ -8,13 +8,14 @@
   @media screen and (max-width: 928px) {
     min-width: 500px;
   }
-  @media screen and (max-width: 768px) {
-    display: none;
+
+  @media screen and (max-width: 560px) {
+    min-width: initial;
+    max-width: 100%;
   }
 
 
   .container {
-    max-width: 680px;
     width: 100%;
     min-height: 840px;
     position: relative;

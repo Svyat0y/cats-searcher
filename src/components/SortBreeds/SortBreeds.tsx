@@ -50,8 +50,10 @@ const SortBreeds: FC = () => {
 	return (
 		<div className={ s.wrapper }>
 			<BreedSelect options={ breedsList } onChangeOption={ onChangeOption } getValue={ getValue } { ...props }/>
-			<LimitSelect options={ limitOptionsForBreeds } { ...props }/>
-			<SortButtons { ...props }/>
+			<div className={ s.withSortButtons }>
+				<LimitSelect options={ limitOptionsForBreeds } { ...props }/>
+				<SortButtons { ...props }/>
+			</div>
 		</div>
 	)
 }

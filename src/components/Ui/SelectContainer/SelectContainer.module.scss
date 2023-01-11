@@ -17,7 +17,19 @@
   @include flex(space-between, flex-start);
   gap: 10px;
 
+  @media screen and (max-width: 560px) {
+
+    button {
+      width: 100%;
+    }
+    @include flex(space-between, flex-start, column);
+  }
+
   :global(.container-select) {
     flex-grow: 1 !important;
+
+    @media screen and (max-width: 560px) {
+      width: 100%;
+    }
   }
 }
