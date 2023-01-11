@@ -40,15 +40,19 @@
   }
 
   .imgWrapper {
-    width: 100px;
-    min-height: 360px;
+    width: 100%;
+    height: 360px;
     border-radius: 20px;
     @include flex(center, center);
     margin-bottom: 52px;
     position: relative;
 
+    @media screen and (max-width: 560px) {
+      height: 206px;
+    }
+
     img {
-      max-height: 360px;
+      height: 100%;
       border-radius: 20px;
     }
   }
@@ -76,6 +80,13 @@
     background: var(--bg_dark_grey__white);
     border-radius: 20px;
     color: var(--title_color);
+
+    @media screen and (max-width: 560px) {
+      font-size: 20px;
+      line-height: 29px;
+      top: -20px;
+      padding: 5px 20px;
+    }
   }
 
   .subTitle {
@@ -91,13 +102,32 @@
     @media screen and (max-width: 768px) {
       @include flex(space-around, flex-start);
     }
+
+    @media screen and (max-width: 560px) {
+      @include flex(space-around, flex-start, column);
+    }
   }
 
   .left, .right {
     display: inline-block;
-    //min-width: 260px;
     max-width: 260px;
     padding: 10px;
+
+    .withBR {
+      display: block;
+    }
+
+    @media screen and (max-width: 560px) {
+      padding: 0;
+
+      li {
+        padding-bottom: 10px;
+
+        span {
+          display: block;
+        }
+      }
+    }
   }
 
   .descHighlight {

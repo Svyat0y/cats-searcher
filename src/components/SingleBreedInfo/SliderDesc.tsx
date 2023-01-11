@@ -12,7 +12,7 @@ const SliderDesc: FC<TSlider> = ({ singleBreed }) => {
 			<div className={ s.descWrapper }>
 				<ul className={ s.left }>
 					<li className={ s.desc }>
-						<span className={ s.descHighlight }>Temperament: </span><br/>
+						<span className={ `${ s.descHighlight } ${ s.withBR }` }>Temperament: </span>
 						{ singleBreed[0].temperament }
 					</li>
 				</ul>
