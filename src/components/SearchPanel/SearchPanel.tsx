@@ -9,6 +9,7 @@ import { setFilters, setIsLoadingData, setSearchValue } from '../../redux/Search
 import { selectSearch }                                 from '../../redux/Search/selectors'
 
 import SearchPanelButtons from './SearchPanelButtons'
+import Burger             from '../Ui/Burger/Burger'
 
 
 const createParams = (value: string | null) => qs.stringify({ q: value })
@@ -51,7 +52,7 @@ const SearchPanel: FC = () => {
 
 	return (
 		<div className={ `${ s.wrapper } ${ fadeIn ? s.fadeIn : '' }` }>
-			<div className={ s.burger }>burger</div>
+			<Burger/>
 			<form className={ s.inputWrapper } onSubmit={ onClick }>
 				<input
 					value={ searchValue ? searchValue : '' }

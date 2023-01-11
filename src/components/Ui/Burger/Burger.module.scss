@@ -1,0 +1,41 @@
+@import "src/scss/variables";
+
+.wrapper {
+  grid-area: burger;
+  width: 60px;
+  height: 60px;
+  background: var(--bg_white-grey);
+  border-radius: 10px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  span {
+    height: 2px;
+    background: var(--btn_color);
+    width: 30px;
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 30px;
+      background: var(--btn_color);
+      left: 0;
+    }
+
+    &:before {
+      top: 10px;
+    }
+
+    &:after {
+      bottom: 10px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}

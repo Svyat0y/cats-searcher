@@ -155,21 +155,6 @@
       }
     }
   }
-
-  .burger {
-    grid-area: burger;
-    width: 60px;
-    height: 60px;
-    background: var(--bg_white-grey);
-    border-radius: 10px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (max-width: 768px) {
-      display: flex;
-    }
-  }
 }
 
 .fadeIn {
