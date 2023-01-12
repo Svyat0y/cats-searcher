@@ -17,6 +17,9 @@ const MobileMenu = () => {
 
 	useEffect(() => {
 		setFadeIn(true)
+		document.body.classList.add('menu-is-open')
+
+		return () => document.body.classList.remove('menu-is-open')
 	}, [])
 
 	const onCloseModal = () => {
