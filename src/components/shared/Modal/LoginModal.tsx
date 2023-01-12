@@ -4,7 +4,7 @@ import { TLoginModal }                                     from './types'
 
 import { setNickNameLS } from '../../../services/localStorage/nickNameLs'
 
-import { Button } from '../../Ui'
+import LoginForm from './LoginForm'
 
 
 const LoginModal: FC<TLoginModal> = ({ dispatch }) => {
@@ -38,11 +38,7 @@ const LoginModal: FC<TLoginModal> = ({ dispatch }) => {
 					Please enter your personal username. This will be your account and any photos you like or favorites will be associated
 					with that name. In the future, you can change this name by clicking on the icon at the top of the application.
 				</p>
-				<form className={ s.formWrapper } onSubmit={ onClickSubmit }>
-					<label htmlFor='login'> Your personal name: </label>
-					<input onChange={ onChangeName } id='login' type='text' value={ localName } placeholder='example: Alex'/>
-					<Button name='enter'/>
-				</form>
+				<LoginForm localName={ localName } onChangeName={ onChangeName } onClickSubmit={ onClickSubmit }/>
 			</div>
 		</div>
 	)

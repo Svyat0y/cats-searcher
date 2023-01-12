@@ -19,9 +19,7 @@
   }
 
   @media screen and (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    @include flex(center, flex-start);
   }
 
   .menuCards {
@@ -33,5 +31,11 @@
     @media screen and (max-width: 560px) {
       @include flex(center, center, column);
     }
+  }
+
+  .userName {
+    position: absolute;
+    top: 30px;
+    left: 20px;
   }
 }

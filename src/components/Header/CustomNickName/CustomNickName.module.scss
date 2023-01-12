@@ -29,8 +29,8 @@
   }
 
   .popupWrapper {
-    @include flex(center, center, column);
     position: absolute;
+    @include flex(center, center, column);
     top: 30px;
     left: 0;
     background: var(--bg_dark_grey__white);

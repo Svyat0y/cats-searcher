@@ -5,6 +5,7 @@
   height: 100%;
   transition: all 2s ease;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';

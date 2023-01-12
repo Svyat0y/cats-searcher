@@ -7,7 +7,7 @@ import { setMessage, setShowModalUpload } from '../../redux/Upload/slice'
 
 import FileUploader from './FileUploader/FileUploader'
 import UploadHeader from './UploadHeader'
-import Close        from '../Ui/Buttons/Close/Close'
+import { Close }    from '../Ui'
 
 
 const UploadModal: FC<TUploadModal> = ({ showModalUpload, message, isLoaded, status }) => {
