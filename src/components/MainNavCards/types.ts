@@ -4,4 +4,5 @@ export type TCard = {
 	color: string
 	to: string
 	active: string
+	onClick?: () => void
 }

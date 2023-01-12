@@ -4,18 +4,18 @@ import { Link, useLocation } from 'react-router-dom'
 import { TCard }             from './types'
 
 
-const Card: FC<TCard> = ({ name, img, color, to, active }) => {
+const Card: FC<TCard> = ({ name, img, color, to, active, onClick }) => {
 	const location = useLocation()
 	const loc = location.pathname.includes(active)
 
 	return (
 		<div className={ s.cardWrapper }>
-			<Link to={ to } className={ `${ s.card } ${ s[color] } ${ loc ? s.active : '' }` }>
+			<Link to={ to } onClick={ onClick } className={ `${ s.card } ${ s[color] } ${ loc ? s.active : '' }` }>
 				<div className={ s.imgWrapper }>
 					<img src={ img } alt='card'/>
 				</div>
 			</Link>
-			<Link to={ to } className={ `btn ${ s.cardBtn } ${ loc ? s.active : '' }` }>
+			<Link to={ to } onClick={ onClick } className={ `btn ${ s.cardBtn } ${ loc ? s.active : '' }` }>
 				{ name }
 			</Link>
 		</div>

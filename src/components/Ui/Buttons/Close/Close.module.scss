@@ -1,0 +1,44 @@
+.wrapper {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg_blackWhite);
+  border: none;
+
+  &:hover {
+    &::before, &::after {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: scale(.95);
+  }
+
+  &::before, &::after {
+    opacity: 0.7;
+    display: block;
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background: #FF868E;
+    transition: all .3s ease;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+    top: 19px;
+    left: 7px;
+  }
+
+  &::after {
+    transform: rotate(45deg);
+    top: 19px;
+    left: 7px;
+  }
+}

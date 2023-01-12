@@ -11,6 +11,7 @@
   transform: translateY(-200px);
   transition: opacity 1s ease, transform 1s ease;
   z-index: 50;
+  padding: 30px;
 
   &.visible {
     opacity: 1;
@@ -20,6 +21,7 @@
 
   .body {
     max-width: 750px;
+    width: 100%;
     background: var(--bg_grey-white_white-rgba);
     border-radius: 20px;
     padding: 20px;
@@ -34,6 +36,14 @@
       margin-top: 30px;
       @include flex(space-between);
       gap: 15px;
+
+      @media screen and (max-width: 768px) {
+        @include flex(center, center, column);
+      }
+
+      @media screen and (max-width: 7560px) {
+        margin-top: 20px;
+      }
 
       input {
         outline: none;
