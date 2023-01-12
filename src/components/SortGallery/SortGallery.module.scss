@@ -9,7 +9,7 @@
   margin-bottom: 20px;
   gap: 10px;
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     @include flex(space-between, center, column);
     padding: 28px 10px 28px 10px;
     gap: 0;

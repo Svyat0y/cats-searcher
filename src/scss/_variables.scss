@@ -3,6 +3,11 @@
 $bg_light-dark: #282828;
 $main_color: #8C8C8C;
 
+//responsive
+
+$tablet_width: 928px;
+$mobileWidth: 567px;
+
 :root, [data-theme="light"] {
   --bg_color: #F8F8F7;
   --bg_grey-white_white-rgba: #F8F8F7;

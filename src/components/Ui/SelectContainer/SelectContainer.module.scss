@@ -17,7 +17,7 @@
   @include flex(space-between, flex-start);
   gap: 10px;
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
 
     button {
       width: 100%;
@@ -28,7 +28,7 @@
   :global(.container-select) {
     flex-grow: 1 !important;
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       width: 100%;
     }
   }

@@ -1,19 +1,17 @@
-import { FC }      from 'react'
-import s           from './Header.module.scss'
-import { THeader } from './types'
+import { FC } from 'react'
+import s      from './Header.module.scss'
 
-import HeaderLogo       from './HeaderLogo'
-import HeaderNavigation from './HeaderNavigation'
-import CustomNickName   from './CustomNickName/CustomNickName'
+import HeaderLogo     from './HeaderLogo'
+import ThemeSwitcher  from '../shared/ThemeSwitcher/ThemeSwitcher'
+import CustomNickName from './CustomNickName/CustomNickName'
 
 
-const Header: FC<THeader> = ({ theme, onChangeTheme }) => {
-
+const Header: FC = () => {
 	return (
 		<header className={ s.wrapper }>
-			<HeaderLogo theme={ theme }/>
+			<HeaderLogo/>
 			<CustomNickName/>
-			<HeaderNavigation theme={ theme } onChangeTheme={ onChangeTheme }/>
+			<ThemeSwitcher/>
 		</header>
 	)
 }

@@ -41,7 +41,7 @@
         @include flex(center, center, column);
       }
 
-      @media screen and (max-width: 7560px) {
+      @media screen and (max-width: $mobileWidth) {
         margin-top: 20px;
       }
 

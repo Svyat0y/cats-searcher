@@ -21,7 +21,7 @@
     gap: 10px;
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     @include flex(center, flex-start, column);
   }
 }

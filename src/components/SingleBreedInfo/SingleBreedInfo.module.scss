@@ -47,7 +47,7 @@
     margin-bottom: 52px;
     position: relative;
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       height: 206px;
     }
 
@@ -65,7 +65,7 @@
     width: 100%;
     @include flex(null, null, column);
 
-    @media screen and (max-width: 928px) {
+    @media screen and (max-width: $tablet_width) {
       padding: 26px 20px;
     }
   }
@@ -81,7 +81,7 @@
     border-radius: 20px;
     color: var(--title_color);
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       font-size: 20px;
       line-height: 29px;
       top: -20px;
@@ -103,7 +103,7 @@
       @include flex(space-around, flex-start);
     }
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       @include flex(space-around, flex-start, column);
     }
   }
@@ -117,7 +117,7 @@
       display: block;
     }
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       padding: 0;
 
       li {

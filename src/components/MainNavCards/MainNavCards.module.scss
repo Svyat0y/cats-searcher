@@ -7,7 +7,7 @@
     margin-top: 40px;
   }
 
-  @media screen and (max-width: 928px) {
+  @media screen and (max-width: $tablet_width) {
     margin-top: 30px;
   }
 
@@ -56,7 +56,7 @@
     flex-wrap: initial;
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     @include flex(center, center, column);
   }
 
@@ -96,7 +96,7 @@
     height: 160px;
   }
 
-  @media screen and (max-width: 928px) {
+  @media screen and (max-width: $tablet_width) {
     width: 100px;
     height: 120px;
     margin-bottom: 45px;
@@ -108,7 +108,7 @@
     margin-bottom: initial;
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     width: 100%;
     height: auto;
     padding: initial;
@@ -129,7 +129,7 @@
       }
     }
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       display: none;
     }
 
@@ -155,7 +155,7 @@
     height: 46px;
     @include flex(center, center);
 
-    @media screen and (max-width: 928px) {
+    @media screen and (max-width: $tablet_width) {
       margin-top: 10px;
       height: 30px;
       @include flex(center, center);

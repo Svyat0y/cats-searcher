@@ -8,7 +8,7 @@
   margin-bottom: 20px;
   min-height: 360px;
 
-  @media screen and (max-width: 567px) {
+  @media screen and (max-width: $mobileWidth) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@
     position: relative;
     @include transition();
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: $mobileWidth) {
       width: 100%;
       height: 206px;
     }
