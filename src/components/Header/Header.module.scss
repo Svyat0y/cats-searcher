@@ -6,7 +6,7 @@
   grid-template-areas:
           'logo userName switcher';
 
-  @media screen and (max-width: $tablet_width) {
+  @media screen and (max-width: $tabletWidth) {
     gap: 20px;
     grid-template-areas:
                 'logo switcher'
