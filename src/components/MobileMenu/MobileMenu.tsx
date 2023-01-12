@@ -6,8 +6,9 @@ import { setIsOpen }      from '../../redux/MobileMenu/slice'
 
 import { useCardsData } from '../../hooks/useCardsData'
 
-import Card  from '../MainNavCards/Card'
-import Close from '../Ui/Buttons/Close/Close'
+import Card           from '../MainNavCards/Card'
+import { Close }      from '../Ui'
+import CustomNickName from '../Header/CustomNickName/CustomNickName'
 
 
 const MobileMenu = () => {
@@ -31,6 +32,7 @@ const MobileMenu = () => {
 	return (
 		<div className={ `${ s.wrapper } ${ fadeIn ? s.animShow : '' }` }>
 			<Close onClick={ onCloseModal }/>
+			<div className={ s.userName }><CustomNickName/></div>
 			<div className={ s.menuCards }>
 				{ cards.map((card) => <Card key={ card.name } onClick={ onCloseModal } { ...card }/>) }
 			</div>

@@ -37,7 +37,7 @@ const App: FC = () => {
 
 	return (
 		<>
-			<main className={ `App ${ fadeIn ? 'fadeIn' : '' } ${ isModal || isOpen ? 'overlay' : '' }` }>
+			<main className={ `App ${ fadeIn ? 'fadeIn' : '' } ${ isModal ? 'overlay' : '' }` }>
 				<DesktopLayout/>
 				{ showModalLogin && <LoginModal dispatch={ dispatch }/> }
 				{ isOpen && <MobileMenu/> }

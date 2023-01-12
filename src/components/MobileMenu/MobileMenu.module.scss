@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  bottom: 0;
   background: var(--bg_color);
   display: none;
   z-index: 100;
@@ -31,5 +31,11 @@
     @media screen and (max-width: 560px) {
       @include flex(center, center, column);
     }
+  }
+
+  .userName {
+    position: absolute;
+    top: 30px;
+    left: 20px;
   }
 }
