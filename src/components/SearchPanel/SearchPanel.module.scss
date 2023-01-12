@@ -82,11 +82,11 @@
       color: #8C8C8C;
       padding: 0 60px 0 20px;
 
-      @media screen and (max-width: 928px) {
+      @media screen and (max-width: $tablet_width) {
         font-size: 17px;
       }
 
-      @media screen and (max-width: 560px) {
+      @media screen and (max-width: $mobileWidth) {
         font-size: 20px;
       }
 

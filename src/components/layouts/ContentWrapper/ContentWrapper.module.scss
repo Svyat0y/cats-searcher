@@ -6,11 +6,11 @@
   min-width: 560px;
   //display: none;
 
-  @media screen and (max-width: 928px) {
+  @media screen and (max-width: $tablet_width) {
     min-width: 500px;
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     min-width: initial;
     max-width: 100%;
   }

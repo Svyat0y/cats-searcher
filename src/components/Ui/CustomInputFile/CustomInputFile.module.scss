@@ -11,7 +11,7 @@
   position: relative;
   overflow: hidden;
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     margin: 20px 0 20px 0;
   }
 
@@ -26,7 +26,7 @@
       font-weight: 500;
       font-size: 20px;
 
-      @media screen and (max-width: 560px) {
+      @media screen and (max-width: $mobileWidth) {
         font-size: 15px;
       }
 

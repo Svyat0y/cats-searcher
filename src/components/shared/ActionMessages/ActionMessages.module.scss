@@ -9,7 +9,7 @@
   position: relative;
   margin-bottom: 10px;
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $mobileWidth) {
     display: block;
     height: auto;
     padding: 15px;
