@@ -80,6 +80,13 @@
         font-size: 32px;
         line-height: 48px;
       }
+
+      @media screen and (max-width: 560px) {
+        font-size: 20px;
+        line-height: 29px;
+        margin-bottom: 20px;
+      }
+
     }
 
     .subTitle {
@@ -90,6 +97,12 @@
         font-size: 18px;
         line-height: 26px;
       }
+
+      @media screen and (max-width: 928px) {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
 
       &__red {
         color: #FF868E;
