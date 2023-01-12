@@ -24,6 +24,7 @@ const TypeSelect: FC<TTypeSelect> = ({ setSearchParams, filters, pageNumberForUI
 	return (
 		<SelectContainer filters={ filters } label={ 'Type' }>
 			<Select
+				isSearchable={ false }
 				classNamePrefix='select'
 				value={ getValue() }
 				options={ TypesOptions }
