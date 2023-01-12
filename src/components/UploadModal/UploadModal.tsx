@@ -7,6 +7,7 @@ import { setMessage, setShowModalUpload } from '../../redux/Upload/slice'
 
 import FileUploader from './FileUploader/FileUploader'
 import UploadHeader from './UploadHeader'
+import Close        from '../Ui/Buttons/Close/Close'
 
 
 const UploadModal: FC<TUploadModal> = ({ showModalUpload, message, isLoaded, status }) => {
@@ -28,7 +29,7 @@ const UploadModal: FC<TUploadModal> = ({ showModalUpload, message, isLoaded, sta
 
 	return (
 		<div className={ `${ s.wrapper } ${ animShow ? s.aminShow : '' }` }>
-			<div className={ s.close } onClick={ onCloseModal }></div>
+			<Close onClick={ onCloseModal }/>
 			<UploadHeader/>
 			<FileUploader dispatch={ dispatch } message={ message } isLoaded={ isLoaded } status={ status }/>
 		</div>

@@ -1,0 +1,27 @@
+@import "src/scss/variables";
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg_color);
+  display: none;
+  z-index: 100;
+  opacity: 0;
+  @include transition();
+  transform: translateY(-100%);
+
+  &.animShow {
+    @include transition();
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

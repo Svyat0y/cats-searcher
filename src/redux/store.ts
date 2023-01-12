@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch }    from 'react-redux'
 
-import themeSlice     from './theme/slice'
-import votingSlice    from './voting/slice'
-import searchingSlice from './Search/slice'
-import breedsSlice    from './Breeds/slice'
-import uploadSlice    from './Upload/slice'
-import loginSlice     from './Login/slice'
+import themeSlice      from './theme/slice'
+import votingSlice     from './voting/slice'
+import searchingSlice  from './Search/slice'
+import breedsSlice     from './Breeds/slice'
+import uploadSlice     from './Upload/slice'
+import loginSlice      from './Login/slice'
+import mobileMenuSlice from './MobileMenu/slice'
 
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
 		breedsSlice,
 		uploadSlice,
 		loginSlice,
+		mobileMenuSlice,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
