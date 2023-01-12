@@ -1,11 +1,11 @@
 @import "mixins";
 
+//main
 $bg_light-dark: #282828;
 $main_color: #8C8C8C;
 
 //responsive
-
-$tablet_width: 928px;
+$tabletWidth: 928px;
 $mobileWidth: 567px;
 
 :root, [data-theme="light"] {

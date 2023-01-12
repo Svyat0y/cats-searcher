@@ -65,7 +65,7 @@
     width: 100%;
     @include flex(null, null, column);
 
-    @media screen and (max-width: $tablet_width) {
+    @media screen and (max-width: $tabletWidth) {
       padding: 26px 20px;
     }
   }

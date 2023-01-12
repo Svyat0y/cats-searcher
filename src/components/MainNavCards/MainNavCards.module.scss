@@ -7,7 +7,7 @@
     margin-top: 40px;
   }
 
-  @media screen and (max-width: $tablet_width) {
+  @media screen and (max-width: $tabletWidth) {
     margin-top: 30px;
   }
 
@@ -96,7 +96,7 @@
     height: 160px;
   }
 
-  @media screen and (max-width: $tablet_width) {
+  @media screen and (max-width: $tabletWidth) {
     width: 100px;
     height: 120px;
     margin-bottom: 45px;
@@ -155,7 +155,7 @@
     height: 46px;
     @include flex(center, center);
 
-    @media screen and (max-width: $tablet_width) {
+    @media screen and (max-width: $tabletWidth) {
       margin-top: 10px;
       height: 30px;
       @include flex(center, center);

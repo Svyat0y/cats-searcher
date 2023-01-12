@@ -32,7 +32,7 @@
       font-size: 36px;
       line-height: 52px;
 
-      @media screen and (max-width: $tablet_width) {
+      @media screen and (max-width: $tabletWidth) {
         font-size: 32px;
         line-height: 48px;
       }
@@ -49,12 +49,12 @@
       font-size: 20px;
       line-height: 30px;
 
-      @media screen and (max-width: $tablet_width) {
+      @media screen and (max-width: $tabletWidth) {
         font-size: 18px;
         line-height: 26px;
       }
 
-      @media screen and (max-width: $tablet_width) {
+      @media screen and (max-width: $tabletWidth) {
         font-size: 20px;
         line-height: 30px;
       }
