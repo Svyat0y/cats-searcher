@@ -6,7 +6,7 @@ import Select from 'react-select'
 import SelectContainer from '../SelectContainer/SelectContainer'
 
 
-const BreedSelect: FC<TBreedSelect> = memo(({ getValue, options, status, filters, onChangeOption }) => {
+const BreedSelect: FC<TBreedSelect> = memo(({ getValue, options, filters, onChangeOption }) => {
 
 	return (
 		<SelectContainer filters={ filters } label={ 'Breed' }>
@@ -15,7 +15,7 @@ const BreedSelect: FC<TBreedSelect> = memo(({ getValue, options, status, filters
 				placeholder='Select breed'
 				value={ getValue() }
 				options={ options }
-				isLoading={ status === 'pending' }
+				isLoading={ options.length === 0 }
 				onChange={ onChangeOption }
 			/>
 		</SelectContainer>

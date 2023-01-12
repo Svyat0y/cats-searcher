@@ -27,6 +27,7 @@ const LimitSelect: FC<TLimitSelect> = ({ dispatch, setSearchParams, filters, pag
 	return (
 		<SelectContainer filters={ filters } label={ 'Limit' } limit>
 			<Select
+				isSearchable={ false }
 				className='container-select'
 				value={ getValue() }
 				classNamePrefix='select'
