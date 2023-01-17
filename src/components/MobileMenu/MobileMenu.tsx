@@ -34,8 +34,6 @@ const MobileMenu = () => {
 			<Close onClick={ onCloseModal }/>
 			<div className={ s.userName }>
 				<HeaderLogo/>
-				{/*<CustomNickName/>*/ }
-				{/*<ThemeSwitcher/>*/ }
 			</div>
 			<div className={ s.menuCards }>
 				{ cards.map((card) => <Card key={ card.name } onClick={ onCloseModal } { ...card }/>) }
