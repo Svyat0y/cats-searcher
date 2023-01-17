@@ -4,11 +4,11 @@
   width: 100%;
 
   .body {
+    height: 100vh;
     user-select: none;
     padding: 20px;
     background: var(--bg_white-grey);
     border-radius: 20px;
-    height: 800px;
     overflow: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;
