@@ -9,9 +9,9 @@
   position: relative;
 
   @media screen and (max-width: $mobileWidth) {
-    height: 206px;
-    margin: 0 auto;
+    height: auto;
   }
+
 
   .voteImage {
     height: 100%;
