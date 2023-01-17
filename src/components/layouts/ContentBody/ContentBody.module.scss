@@ -2,8 +2,10 @@
 
 .wrapper {
   width: 100%;
+  flex-grow: 1;
 
   .body {
+    height: 100%;
     user-select: none;
     padding: 20px;
     background: var(--bg_white-grey);
@@ -14,10 +16,6 @@
     transform: translateY(-50%);
     opacity: 0;
     transition: transform 1s ease;
-
-    @media screen and (max-width: $mobileWidth) {
-      height: auto;
-    }
 
     &::-webkit-scrollbar {
       width: 0;
