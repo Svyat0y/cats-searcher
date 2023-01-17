@@ -4,16 +4,12 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import { Breeds, Gallery, MainNavigation, Preview, SearchComponent, SingleBreedInfo, Voting } from '../../index'
 import ContentWrapperLayout                                                                   from './ContentWrapperLayout'
 
-import ErrorBoundary       from '../../shared/ErrorBoundary/ErrorBoundary'
-import useWindowDimensions from '../../../hooks/useWindowDimensions'
-import InDesktopVisible    from '../../../hoc/InDesktopVisible'
-import InMobileVisible     from '../../../hoc/InMobileVisible'
+import ErrorBoundary    from '../../shared/ErrorBoundary/ErrorBoundary'
+import InDesktopVisible from '../../../hoc/InDesktopVisible'
+import InMobileVisible  from '../../../hoc/InMobileVisible'
 
 
 const ContentWrapper: FC = () => {
-	const viewportWidth = useWindowDimensions()
-
-	console.log(viewportWidth)
 
 	return (
 		<Routes>
