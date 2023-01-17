@@ -1,6 +1,1 @@
-# Responsive layout in development
-
-## to do:
-
-- Fix grid display in adaptive layout
-- Fix routing in adaptive layout for display of the components
+#### Cat Search is a simple application where you can find pictures or GIFs of different cats. You can vote photos you like or add to your favorites. Also, you can read about breeds.
