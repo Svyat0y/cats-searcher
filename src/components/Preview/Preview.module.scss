@@ -6,10 +6,6 @@
   background: #FBE0DC;
   position: relative;
 
-  @media (max-width: 768px) {
-    display: none;
-  }
-
   @media (max-width: 1140px) {
     width: 480px;
   }
