@@ -9,6 +9,7 @@ import { SmallSpinner } from '../../index'
 
 import heartNoAdded from '../../../assets/images/common/heartBorderRed.webp'
 import heartAdded   from '../../../assets/images/common/heartBgRed.webp'
+import noImg        from '../../../assets/images/common/noImg.svg'
 
 
 const Item: FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status }) => {
@@ -32,7 +33,7 @@ const Item: FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status 
 
 	return (
 		<div className='items__imgWrapper'>
-			<img src={ el.url } alt='image'/>
+			<img src={ el.url ? el.url : noImg } alt='image'/>
 			{
 				!locGallery &&
 				<button
@@ -42,7 +43,7 @@ const Item: FC<TItem> = ({ onClickBreedName, el, dispatch, onFavourites, status 
 				</button>
 			}
 			{
-				locGallery &&
+				(locGallery && el.url) &&
 				<button
 					disabled={ false }
 					onClick={ () => onAddToFavourites(el) }
