@@ -15,7 +15,7 @@ const RenderItems = (Component: FC<TVotingItems>) => (
 	const [ searchParams, setSearchParams ] = useSearchParams()
 
 	const firstPage = page === 0
-	const lastPage = data && data.length < 15
+	const lastPage = data && data.length < 15 || false
 	const likeLocation = location.pathname.includes('likes')
 	const favLocation = location.pathname.includes('favourites')
 	const noItemsBoolean = (data?.length === 0)
