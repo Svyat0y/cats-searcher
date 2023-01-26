@@ -11,6 +11,8 @@
   }
 
   .body {
+    max-height: 770px;
+    height: 100%;
     user-select: none;
     padding: 20px;
     background: var(--bg_white-grey);
