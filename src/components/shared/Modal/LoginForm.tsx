@@ -8,7 +8,7 @@ import { Button } from '../../Ui'
 const LoginForm: FC<TLoginForm> = ({ onChangeName, onClickSubmit, localName }) => {
 	return (
 		<form className={ s.formWrapper } onSubmit={ onClickSubmit }>
-			<label htmlFor='login'> Your personal name: </label>
+			<label htmlFor='login'> Your personal username: </label>
 			<input onChange={ onChangeName } id='login' type='text' value={ localName } placeholder='example: Alex'/>
 			<Button name='enter'/>
 		</form>
