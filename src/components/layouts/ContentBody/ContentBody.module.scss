@@ -3,24 +3,22 @@
 .wrapper {
   width: 100%;
   flex-grow: 1;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   .body {
-    height: 100%;
     user-select: none;
     padding: 20px;
     background: var(--bg_white-grey);
     border-radius: 20px;
-    overflow: hidden;
-    overflow-y: auto;
     -ms-overflow-style: none;
     transform: translateY(-50%);
     opacity: 0;
     transition: transform 1s ease;
-
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
   }
 
   .fadeIn {
