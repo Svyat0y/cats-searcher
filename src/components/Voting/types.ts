@@ -1,27 +1,5 @@
 import { AppDispatch }                       from '../../redux/store'
 import { TData, TDataObj, TInfoInfoMessage } from '../../redux/voting/types'
-import { TDislikes }                         from '../screens/Dislikes/types'
-
-
-export type TVoting = {
-	voteImgData: TVotingImage
-	favData: TFavData
-	likesData: TLikeData
-	dislikesData: TDislikes
-}
-
-type TFavData = {
-	dispatch: AppDispatch
-	data: TData[] | null
-	infoMessage?: TInfoInfoMessage[]
-	status: string
-	page: number
-}
-type TLikeData = {
-	dispatch: AppDispatch
-	data: TData[] | null
-	page: number
-}
 
 
 export type TVotingItems = {

@@ -4,9 +4,9 @@ import { TVotingItems }  from '../../Voting/types'
 
 import { setActiveBtn, setToFavoritesData } from '../../../redux/voting/slice'
 
-import RenderItems                                                 from '../../../hoc/RenderItems'
 import OnFavItem                                                   from './OnFavItem'
 import { ActionMessages, NoItemFound, Pagination, SkeletonLoader } from '../../index'
+import { RenderItems }                                             from '../../../hoc'
 
 
 const Favourites: FC<TVotingItems> = (
