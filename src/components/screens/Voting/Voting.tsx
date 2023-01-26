@@ -1,14 +1,12 @@
 import { FC, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
 
 import { useAppDispatch }  from '../../../redux/store'
 import { setToSearchData } from '../../../redux/Search/slice'
 
-import { VotingImage }  from '../../index'
-import VotingLayout     from './VotingLayout'
-import ErrorBoundary    from '../../shared/ErrorBoundary/ErrorBoundary'
-import { useSelector }  from 'react-redux'
-import { selectVoting } from '../../../redux/voting/selectors'
+import { ContentBody, ContentHeader, VotingImage } from '../../index'
+import ErrorBoundary                               from '../../shared/ErrorBoundary/ErrorBoundary'
+import { useSelector }                             from 'react-redux'
+import { selectVoting }                            from '../../../redux/voting/selectors'
 
 
 const Voting: FC = () => {
@@ -30,11 +28,10 @@ const Voting: FC = () => {
 	}, [])
 
 	return (
-		<Routes>
-			<Route path='/' element={ <VotingLayout/> }>
-				<Route index element={ <ErrorBoundary> <VotingImage { ...voteImgData }/> </ErrorBoundary> }/>
-			</Route>
-		</Routes>
+		<ContentBody>
+			<ContentHeader/>
+			<ErrorBoundary> <VotingImage { ...voteImgData }/> </ErrorBoundary>
+		</ContentBody>
 	)
 }
 
