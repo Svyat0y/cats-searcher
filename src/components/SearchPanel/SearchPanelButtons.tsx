@@ -11,9 +11,9 @@ const SearchPanelButtons: FC = () => {
 	const location = useLocation()
 	const { likePage, favPage } = useSelector(selectVoting)
 
-	const locLikes = location.pathname === '/voting/likes'
-	const locFav = location.pathname === '/voting/favourites'
-	const locDislikes = location.pathname === '/voting/dislikes'
+	const locLikes = location.pathname === '/likes'
+	const locFav = location.pathname === '/favourites'
+	const locDislikes = location.pathname === '/dislikes'
 
 	return (
 		<div className={ s.icons }>

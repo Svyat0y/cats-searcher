@@ -4,8 +4,8 @@ import { TVotingItems }  from '../../Voting/types'
 import { setActiveBtn, setToLike } from '../../../redux/voting/slice'
 
 import LikeItems                                   from './LikeItems'
-import RenderItems                                 from '../../../hoc/RenderItems'
 import { NoItemFound, Pagination, SkeletonLoader } from '../../index'
+import { RenderItems }                             from '../../../hoc'
 
 
 const Likes: FC<TVotingItems> = (
