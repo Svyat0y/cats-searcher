@@ -35,8 +35,8 @@ const LoginModal: FC<TLoginModal> = ({ dispatch }) => {
 			<div className={ s.body }>
 				<h2>Hi!</h2>
 				<p>
-					Please enter your personal username. This will be your account and any photos you like or favorites will be associated
-					with that name. In the future, you can change this name by clicking on the icon at the top of the application.
+					Enter your personal username. This is your account. Photos you like or favorites will be linked to it. Change it in
+					future by clicking the icon on top of the application.
 				</p>
 				<LoginForm localName={ localName } onChangeName={ onChangeName } onClickSubmit={ onClickSubmit }/>
 			</div>
