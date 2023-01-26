@@ -27,12 +27,12 @@ export const getLSTheme = (dispatch: AppDispatch) => {
 	const data = localStorage.getItem('theme')
 	const theme = data ? JSON.parse(data) : []
 
-	if (String(theme) === 'dark') {
-		onDarkTheme()
-		dispatch(changeTheme('dark'))
-	}
-	else{
+	if (String(theme) === 'light') {
 		onLightTheme()
 		dispatch(changeTheme('light'))
+	}
+	else{
+		onDarkTheme()
+		dispatch(changeTheme('dark'))
 	}
 }
