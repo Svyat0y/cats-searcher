@@ -4,7 +4,7 @@ import { useAppDispatch } from '../redux/store'
 import { useSelector }    from 'react-redux'
 import { selectVoting }   from '../redux/voting/selectors'
 
-import { ContentBody, Likes } from '../components'
+import { ContentBody, ContentHeader, Likes } from '../components'
 
 
 const WithLikesData: FC = () => {
@@ -15,6 +15,7 @@ const WithLikesData: FC = () => {
 
 	return (
 		<ContentBody>
+			<ContentHeader/>
 			<Likes { ...likesData }/>
 		</ContentBody>
 	)
