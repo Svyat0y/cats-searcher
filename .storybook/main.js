@@ -13,8 +13,4 @@ module.exports = {
 	"core": {
 		"builder": "@storybook/builder-webpack5"
 	},
-	"webpackFinal": async (config, {configType}) => {
-		config.outputDir = 'storybook-static';
-		return config;
-	},
 }
