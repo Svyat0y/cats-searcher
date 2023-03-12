@@ -6,6 +6,6 @@ export type TSortButtons = {
 	dispatch: AppDispatch
 	status: string
 	filters: TFilters
-	setSearchParams: (obj: string) => void
+	setSearchParams: (params: string) => void
 	pageNumberForUI: number
 }

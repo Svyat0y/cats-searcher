@@ -1,15 +1,34 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { SortButtons }                   from '../../index'
+import { CSSProperties }                 from 'react'
 
 
 export default {
-	title: 'components/buttons',
+	title: 'components/Ui/buttons',
 	component: SortButtons,
+	argTypes: {
+		theme: {
+			control: { type: 'radio', options: [ 'light', 'dark' ] }
+		}
+	},
 	parameters: {
 		controls: {
 			exclude: [ 'dispatch', 'pageNumberForUI', 'setSearchParams', 'status', 'filters' ]
 		}
 	},
+	decorators: [
+		(Story, { args }) => {
+			const backgroundColor = args.theme === 'light' ? '#F8F8F7' : '#343434'
+			const style: CSSProperties & Record<string, string> = {
+				'--bg_grey-white_white-rgba': backgroundColor,
+				display: 'flex',
+				alignItems: 'center',
+				gap: '10px'
+			}
+
+			return <div style={ style }><Story { ...args }/></div>
+		}
+	],
 } as ComponentMeta<typeof SortButtons>
 
 const sortButtonsProps = {
@@ -20,9 +39,10 @@ const sortButtonsProps = {
 		page: 0,
 		type: '',
 	},
-	setSearchParams: (obj: string) => ''
+	setSearchParams: (params: string) => '',
+	theme: 'light'
 }
-const PrimaryButtons: ComponentStory<typeof SortButtons> = (args) => <SortButtons { ...args }/>
-export const PrimarySortButtons = PrimaryButtons.bind({})
+const Template: ComponentStory<typeof SortButtons> = (args) => <SortButtons { ...args }/>
+export const DefaultSortButtons = Template.bind({})
 
-PrimarySortButtons.args = sortButtonsProps
+DefaultSortButtons.args = sortButtonsProps

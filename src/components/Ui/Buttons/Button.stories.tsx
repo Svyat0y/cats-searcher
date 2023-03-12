@@ -1,9 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button }                        from '../index'
+import { CSSProperties }                 from 'react'
 
 
 export default {
-	title: 'components/buttons',
+	title: 'components/Ui/buttons',
 	component: Button,
 	argTypes: {
 		name: {
@@ -24,12 +25,23 @@ export default {
 				type: 'radio'
 			}
 		},
+		theme: {
+			control: { type: 'radio', options: [ 'light', 'dark' ] }
+		}
 	},
 	parameters: {
 		controls: {
 			exclude: [ 'breadCrumbs', 'onclick', 'linkTo', 'link' ]
 		},
-	}
+	},
+	decorators: [
+		(Story, { args }) => {
+			const backgroundColor = args.theme === 'light' ? '#FBE0DC' : '#543C3D'
+			const style: CSSProperties & Record<string, string> = { '--bg_input_search': backgroundColor }
+
+			return <div style={ style }><Story { ...args }/></div>
+		}
+	]
 } as ComponentMeta<typeof Button>
 
 const defaultButtonProps = {
@@ -38,6 +50,8 @@ const defaultButtonProps = {
 	modalUpload: false,
 	upload: false,
 	name: 'Upload',
+	status: 'success',
+	theme: 'light',
 }
 const uploadButtonProps = {
 	isActive: false,
@@ -45,6 +59,8 @@ const uploadButtonProps = {
 	modalUpload: false,
 	upload: true,
 	name: 'Upload',
+	status: 'success',
+	theme: 'light',
 }
 const uploadPendingButtonProps = {
 	sActive: false,
@@ -53,16 +69,13 @@ const uploadPendingButtonProps = {
 	upload: false,
 	name: 'Upload Photo',
 	status: 'pending',
+	theme: 'light',
 }
 
-const Primary: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
-export const DefaultButton = Primary.bind({})
+const Template: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
+export const DefaultButton = Template.bind({})
 DefaultButton.args = defaultButtonProps
-
-const Upload: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
-export const UploadButton = Upload.bind({})
+export const UploadButton = Template.bind({})
 UploadButton.args = uploadButtonProps
-
-const UploadPending: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
-export const UploadPendingButton = UploadPending.bind({})
+export const UploadPendingButton = Template.bind({})
 UploadPendingButton.args = uploadPendingButtonProps
