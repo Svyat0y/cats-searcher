@@ -1,6 +1,5 @@
-import { Meta, Story }  from '@storybook/react'
-import { SortButtons }  from '../../index'
-import { TSortButtons } from './types'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { SortButtons }                   from '../../index'
 
 
 export default {
@@ -11,7 +10,7 @@ export default {
 			exclude: [ 'dispatch', 'pageNumberForUI', 'setSearchParams', 'status', 'filters' ]
 		}
 	},
-} as Meta<TSortButtons>
+} as ComponentMeta<typeof SortButtons>
 
 const sortButtonsProps = {
 	filters: {
@@ -21,9 +20,9 @@ const sortButtonsProps = {
 		page: 0,
 		type: '',
 	},
-	setSearchParams: (obj: string) => 'string'
+	setSearchParams: (obj: string) => ''
 }
-const PrimaryButtons: Story<TSortButtons> = (args) => <SortButtons { ...args }/>
+const PrimaryButtons: ComponentStory<typeof SortButtons> = (args) => <SortButtons { ...args }/>
 export const PrimarySortButtons = PrimaryButtons.bind({})
 
 PrimarySortButtons.args = sortButtonsProps

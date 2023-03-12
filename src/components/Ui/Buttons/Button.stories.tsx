@@ -1,6 +1,5 @@
-import { Meta, Story } from '@storybook/react'
-import { Button }      from '../index'
-import { TButton }     from './types'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Button }                        from '../index'
 
 
 export default {
@@ -28,10 +27,10 @@ export default {
 	},
 	parameters: {
 		controls: {
-			exclude: [ 'breadCrumbs', 'onclick', 'linkTo' ]
+			exclude: [ 'breadCrumbs', 'onclick', 'linkTo', 'link' ]
 		},
 	}
-} as Meta<TButton>
+} as ComponentMeta<typeof Button>
 
 const defaultButtonProps = {
 	isActive: false,
@@ -56,14 +55,14 @@ const uploadPendingButtonProps = {
 	status: 'pending',
 }
 
-const Primary: Story<TButton> = (args) => <Button { ...args }/>
+const Primary: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
 export const DefaultButton = Primary.bind({})
 DefaultButton.args = defaultButtonProps
 
-const Upload: Story<TButton> = (args) => <Button { ...args }/>
+const Upload: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
 export const UploadButton = Upload.bind({})
 UploadButton.args = uploadButtonProps
 
-const UploadPending: Story<TButton> = (args) => <Button { ...args }/>
+const UploadPending: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
 export const UploadPendingButton = UploadPending.bind({})
 UploadPendingButton.args = uploadPendingButtonProps
