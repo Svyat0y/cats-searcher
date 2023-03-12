@@ -20,7 +20,7 @@ export default {
 			return (
 				<div style={ style }>
 					<Router>
-						{ Story() }
+						<Story/>
 					</Router>
 				</div>
 			)

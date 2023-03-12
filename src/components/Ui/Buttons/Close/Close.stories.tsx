@@ -19,12 +19,13 @@ export default {
 
 			const style: Record<string, string> = {
 				position: 'relative',
-				margin: '-35px 0 0 -40px',
+				margin: '-20px 0 0 -40px',
+				height: '60px',
 				maxWidth: '100px',
 				'--bg_blackWhite': bgColor
 			}
 
-			return <div style={ style }>{ Story() }</div>
+			return <div style={ style }><Story/></div>
 		}
 	]
 } as ComponentMeta<typeof Close>

@@ -39,7 +39,7 @@ export default {
 			const backgroundColor = args.theme === 'light' ? '#FBE0DC' : '#543C3D'
 			const style: CSSProperties & Record<string, string> = { '--bg_input_search': backgroundColor }
 
-			return <div style={ style }>{ Story() }</div>
+			return <div style={ style }><Story/></div>
 		}
 	]
 } as ComponentMeta<typeof Button>
