@@ -73,8 +73,8 @@ const uploadPendingButtonProps = {
 }
 
 const Template: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
-export const DefaultButton = Template.bind({})
-DefaultButton.args = defaultButtonProps
+export const PrimaryButton = Template.bind({})
+PrimaryButton.args = defaultButtonProps
 export const UploadButton = Template.bind({})
 UploadButton.args = uploadButtonProps
 export const UploadPendingButton = Template.bind({})

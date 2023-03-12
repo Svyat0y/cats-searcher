@@ -34,5 +34,5 @@ const refreshBtnProps = {
 }
 
 const Template: ComponentStory<typeof RefreshButton> = (args) => <RefreshButton { ...args } />
-export const PrimaryRefreshBtn = Template.bind({})
-PrimaryRefreshBtn.args = refreshBtnProps
+export const DefaultRefreshButton = Template.bind({})
+DefaultRefreshButton.args = refreshBtnProps

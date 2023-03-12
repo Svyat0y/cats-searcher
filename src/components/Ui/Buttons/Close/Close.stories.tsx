@@ -19,7 +19,7 @@ export default {
 
 			const style: Record<string, string> = {
 				position: 'relative',
-				margin: '-40px 0 0 -40px',
+				margin: '-35px 0 0 -40px',
 				maxWidth: '100px',
 				'--bg_blackWhite': bgColor
 			}
