@@ -22,7 +22,7 @@ export default {
 			const borderColor = args.theme === 'light' ? '#FBE0DC' : '#543C3D'
 			const style: CSSProperties & Record<string, string> = { '--bg_dark_grey__white': backgroundColor, '--bg_input_search': borderColor }
 
-			return <div style={ style }><Story { ...args }/></div>
+			return <div style={ style }>{ Story() }</div>
 		}
 	]
 } as ComponentMeta<typeof RefreshButton>

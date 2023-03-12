@@ -26,7 +26,7 @@ export default {
 				gap: '10px'
 			}
 
-			return <div style={ style }><Story { ...args }/></div>
+			return <div style={ style }>{ Story() }</div>
 		}
 	],
 } as ComponentMeta<typeof SortButtons>
