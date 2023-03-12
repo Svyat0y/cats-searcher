@@ -39,7 +39,7 @@ export default {
 			const backgroundColor = args.theme === 'light' ? '#FBE0DC' : '#543C3D'
 			const style: CSSProperties & Record<string, string> = { '--bg_input_search': backgroundColor }
 
-			return <div style={ style }><Story { ...args }/></div>
+			return <div style={ style }>{ Story() }</div>
 		}
 	]
 } as ComponentMeta<typeof Button>
@@ -73,8 +73,8 @@ const uploadPendingButtonProps = {
 }
 
 const Template: ComponentStory<typeof Button> = (args) => <Button { ...args }/>
-export const DefaultButton = Template.bind({})
-DefaultButton.args = defaultButtonProps
+export const PrimaryButton = Template.bind({})
+PrimaryButton.args = defaultButtonProps
 export const UploadButton = Template.bind({})
 UploadButton.args = uploadButtonProps
 export const UploadPendingButton = Template.bind({})
