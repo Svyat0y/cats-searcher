@@ -29,7 +29,7 @@ export default {
 } as ComponentMeta<typeof BackButton>
 
 const backBtnProps = {
-	theme: 'light'
+	theme: 'dark'
 }
 
 const Template: ComponentStory<typeof BackButton> = (args) => <BackButton { ...args }/>
