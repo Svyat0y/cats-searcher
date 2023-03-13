@@ -30,7 +30,7 @@ export default {
 const refreshBtnProps = {
 	status: 'success',
 	onclick: () => '',
-	theme: 'light',
+	theme: 'dark',
 }
 
 const Template: ComponentStory<typeof RefreshButton> = (args) => <RefreshButton { ...args } />

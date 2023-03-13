@@ -51,7 +51,7 @@ const defaultButtonProps = {
 	upload: false,
 	name: 'Upload',
 	status: 'success',
-	theme: 'light',
+	theme: 'dark',
 }
 const uploadButtonProps = {
 	isActive: false,
@@ -60,7 +60,7 @@ const uploadButtonProps = {
 	upload: true,
 	name: 'Upload',
 	status: 'success',
-	theme: 'light',
+	theme: 'dark',
 }
 const uploadPendingButtonProps = {
 	sActive: false,
@@ -69,7 +69,7 @@ const uploadPendingButtonProps = {
 	upload: false,
 	name: 'Upload Photo',
 	status: 'pending',
-	theme: 'light',
+	theme: 'dark',
 }
 
 const Template: ComponentStory<typeof Button> = (args) => <Button { ...args }/>

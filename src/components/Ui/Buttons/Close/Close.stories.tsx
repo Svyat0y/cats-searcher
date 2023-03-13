@@ -32,7 +32,7 @@ export default {
 
 const closeBtnProps = {
 	onClick: () => '',
-	theme: 'light',
+	theme: 'dark',
 }
 
 const Template: ComponentStory<typeof Close> = (args) => <Close { ...args }/>

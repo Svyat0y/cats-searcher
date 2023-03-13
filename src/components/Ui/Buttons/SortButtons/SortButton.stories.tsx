@@ -40,7 +40,7 @@ const sortButtonsProps = {
 		type: '',
 	},
 	setSearchParams: (params: string) => '',
-	theme: 'light'
+	theme: 'dark'
 }
 const Template: ComponentStory<typeof SortButtons> = (args) => <SortButtons { ...args }/>
 export const DefaultSortButtons = Template.bind({})

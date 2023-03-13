@@ -28,8 +28,13 @@ export default {
 	],
 } as ComponentMeta<typeof Burger>
 
+const BurgerButtonProps = {
+	theme: 'dark'
+}
+
 const Template: ComponentStory<typeof Burger> = (args) => <Burger { ...args } />
-export const DefaultBurger = Template.bind({})
+export const DefaultBurgerButton = Template.bind({})
+DefaultBurgerButton.args = BurgerButtonProps
 
 
 
