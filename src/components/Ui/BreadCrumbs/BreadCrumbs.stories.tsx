@@ -12,8 +12,7 @@ export default {
 	argTypes: {
 		name: {
 			type: 'string',
-			description: 'breadCrumbs button',
-			options: [ 'breeds', 'american cur' ],
+			options: [ 'breeds', 'american curl' ],
 			control: {
 				type: 'radio'
 			}
